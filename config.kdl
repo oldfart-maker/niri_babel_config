@@ -1,4 +1,4 @@
-// LAST BUILD / DEPLOY: 2025-07-25 19:26:54
+// LAST BUILD / DEPLOY: 2025-07-26 06:40:46
 // ## NOTES  ###########################################################  
 // This config file has been created by emacs org babel. This was done
 // mostly as a learning experiment and to address the gaps that .kdl
@@ -39,7 +39,7 @@
 
 // ## ENVIRONMENT  ###########################################################  
   environment {
-          DISPLAY ":2"
+          DISPLAY ":1"
   }
 
 // ## STARTUP APPS  ###########################################################  
@@ -49,7 +49,7 @@
   spawn-at-startup      "~/.config/niri/scripts/notifications"
   spawn-at-startup      "~/.config/niri/scripts/statusbar"
   spawn-at-startup      "spotify"
-  spawn-at-startup      "element_desktop"
+  spawn-at-startup      "element-desktop"
   spawn-at-startup      "googlemessages"
   spawn-at-startup      "google-calendar-nativefier-dark"
   spawn-at-startup      "vesktop"
@@ -179,10 +179,10 @@
 
 // ## LAYOUT CONFIGURATION ####################################################  
   layout {
-
           gaps 4
 
           center-focused-column "never"
+        
           always-center-single-column
 
           preset-column-widths {
@@ -204,51 +204,32 @@
           background-color "transparent"
 
           focus-ring {
-
                   // off
-
                   width 2
-
-                  active-color "#fc7303"
-
-                  inactive-color "#878684"
-
+                  active-color "#e3dcca"
+                  inactive-color "#121110"
                   // active-gradient from="#80c8ff" to="#bbddff" angle=45
-
                   // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
           }
 
 
           border {
                   off
-
                   width 1
-
                   active-color "#ffc87f"
-
                   inactive-color "#505050"
-
                   urgent-color "#9b0000"
-
                   active-gradient from="#ffbb66" to="#ffc880" angle=45 relative-to="workspace-view"
-
                   inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
           }
           
           shadow {
-
                   // on
-
                   draw-behind-window false
-
                   softness 30
-
                   spread 5
-
                   offset x=0 y=5
-
                   color "#00000080"
-                  
                   inactive-color "#00000060"
           }
 
@@ -469,7 +450,7 @@ binds {
     Mod+M                                         { spawn "~/.config/niri/scripts/rofi_music"; }
     Mod+N                                         { spawn "~/.config/niri/scripts/rofi_network"; }
     Mod+Shift+D                                   { spawn "~/.config/niri/scripts/rofi_showwindows"; }
-    Mod+E                                         { spawn "sh" "-c" "'~/.config/niri/scripts/emacs-profile' 'emacs-alt'"; }
+    Mod+E                                         { spawn "sh" "-c" "~/.config/niri/scripts/emacs-profile 'emacs-alt'"; }
     Mod+T                                         { spawn "thunar"; }
     Mod+Shift+Y                                   { spawn "sh" "-c" "kitty --detach yazi"; }
     Mod+Shift+W                                   { spawn "vivaldi-snapshot"; }

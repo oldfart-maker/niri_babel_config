@@ -10,7 +10,7 @@ return datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 #+end_src
 
 #+RESULTS: timestamp
-: 2025-07-25 19:26:41
+: 2025-07-26 06:40:34
 
 * Block error checker.
 #+NAME: lint_command
@@ -56,37 +56,60 @@ return json.dumps(theme)
 #+end_src
 
 #+RESULTS: theme-colors-json
-: {"wallpaper": "/home/username/Pictures/wallpapers/ign_unsplash43.png", "background": "#1a1e25", "foreground": "#d4d7d8", "cursor": "#d4d7d8", "color0": "#1a1e25", "color1": "#76898D", "color2": "#7D9AA1", "color3": "#8A9396", "color4": "#949DA2", "color5": "#99A5A8", "color6": "#AAAFB2", "color7": "#d4d7d8", "color8": "#949697", "color9": "#76898D", "color10": "#7D9AA1", "color11": "#8A9396", "color12": "#949DA2", "color13": "#99A5A8", "color14": "#AAAFB2", "color15": "#d4d7d8", "FZF_DEFAULT_OPTS": "", "LS_COLORS": "${LS_COLORS}:su=30;41:ow=30;42:st=30;44:"}
+: {"wallpaper": "/home/username/Pictures/wallpapers/burning-earth.png", "background": "#121110", "foreground": "#e3dcca", "cursor": "#e3dcca", "color0": "#121110", "color1": "#938B76", "color2": "#A0977F", "color3": "#A59B83", "color4": "#B5AA8D", "color5": "#C6B999", "color6": "#D5C7A3", "color7": "#e3dcca", "color8": "#9e9a8d", "color9": "#938B76", "color10": "#A0977F", "color11": "#A59B83", "color12": "#B5AA8D", "color13": "#C6B999", "color14": "#D5C7A3", "color15": "#e3dcca", "FZF_DEFAULT_OPTS": "", "LS_COLORS": "${LS_COLORS}:su=30;41:ow=30;42:st=30;44:"}
 
 #+name: colors-dict
 #+begin_src python :var colors_raw=theme-colors-json :results value
-# [colors.normal]
-# black   = "${color0}"
-# red     = "${color1}"
-# green   = "${color2}"
-# yellow  = "${color3}"
-# blue    = "${color4}"
-# magenta = "${color5}"
-# cyan    = "${color6}"
-# white   = "${color7}"
-	
-# [colors.bright]
-# black   = "${color8}"
-# red     = "${color9}"
-# green   = "${color10}"
-# yellow  = "${color11}"
-# blue    = "${color12}"
-# magenta = "${color13}"
-# cyan    = "${color14}"
-# white   = "${color15}"
-  
-import json  
-colors = json.loads(colors_raw)
-return colors
+  # [colors.normal]
+  # black   = "${color0}"
+  # red     = "${color1}"
+  # green   = "${color2}"
+  # yellow  = "${color3}"
+  # blue    = "${color4}"
+  # magenta = "${color5}"
+  # cyan    = "${color6}"
+  # white   = "${color7}"
+  	
+  # [colors.bright]
+  # black   = "${color8}"
+  # red     = "${color9}"
+  # green   = "${color10}"
+  # yellow  = "${color11}"
+  # blue    = "${color12}"
+  # magenta = "${color13}"
+  # cyan    = "${color14}"
+  # white   = "${color15}"
+
+  # background = background
+  # foreground = foreground
+
+  import json  
+  colors = json.loads(colors_raw)
+  return colors
 #+end_src
 
 #+RESULTS: colors-dict
-: {'wallpaper': '/home/username/Pictures/wallpapers/ign_unsplash43.png', 'background': '#1a1e25', 'foreground': '#d4d7d8', 'cursor': '#d4d7d8', 'color0': '#1a1e25', 'color1': '#76898D', 'color2': '#7D9AA1', 'color3': '#8A9396', 'color4': '#949DA2', 'color5': '#99A5A8', 'color6': '#AAAFB2', 'color7': '#d4d7d8', 'color8': '#949697', 'color9': '#76898D', 'color10': '#7D9AA1', 'color11': '#8A9396', 'color12': '#949DA2', 'color13': '#99A5A8', 'color14': '#AAAFB2', 'color15': '#d4d7d8', 'FZF_DEFAULT_OPTS': '', 'LS_COLORS': '${LS_COLORS}:su=30;41:ow=30;42:st=30;44:'}
+: {'wallpaper': '/home/username/Pictures/wallpapers/burning-earth.png', 'background': '#121110', 'foreground': '#e3dcca', 'cursor': '#e3dcca', 'color0': '#121110', 'color1': '#938B76', 'color2': '#A0977F', 'color3': '#A59B83', 'color4': '#B5AA8D', 'color5': '#C6B999', 'color6': '#D5C7A3', 'color7': '#e3dcca', 'color8': '#9e9a8d', 'color9': '#938B76', 'color10': '#A0977F', 'color11': '#A59B83', 'color12': '#B5AA8D', 'color13': '#C6B999', 'color14': '#D5C7A3', 'color15': '#e3dcca', 'FZF_DEFAULT_OPTS': '', 'LS_COLORS': '${LS_COLORS}:su=30;41:ow=30;42:st=30;44:'}
+
+#+name: background
+#+begin_src python :var colors_raw=theme-colors-json :results value
+import json
+colors = json.loads(colors_raw)
+return colors["background"]
+#+end_src
+
+#+RESULTS: background
+: #121110
+
+#+name: foreground
+#+begin_src python :var colors_raw=theme-colors-json :results value
+import json
+colors = json.loads(colors_raw)
+return colors["foreground"]
+#+end_src
+
+#+RESULTS: foreground
+: #e3dcca
 
 #+name: color0
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -96,7 +119,7 @@ return colors["color0"]
 #+end_src
 
 #+RESULTS: color0
-: #1a1e25
+: #121110
 
 #+name: color1
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -106,7 +129,7 @@ return colors["color1"]
 #+end_src
 
 #+RESULTS: color1
-: #76898D
+: #938B76
 
 #+name: color2
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -116,7 +139,7 @@ return colors["color2"]
 #+end_src
 
 #+RESULTS: color2
-: #7D9AA1
+: #A0977F
 
 #+name: color3
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -126,7 +149,7 @@ return colors["color3"]
 #+end_src
 
 #+RESULTS: color3
-: #8A9396
+: #A59B83
 
 #+name: color4
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -136,7 +159,7 @@ return colors["color4"]
 #+end_src
 
 #+RESULTS: color4
-: #949DA2
+: #B5AA8D
 
 #+name: color5
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -146,7 +169,7 @@ return colors["color5"]
 #+end_src
 
 #+RESULTS: color5
-: #99A5A8
+: #C6B999
 
 #+name: color6
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -156,7 +179,7 @@ return colors["color6"]
 #+end_src
 
 #+RESULTS: color6
-: #AAAFB2
+: #D5C7A3
 
 #+name: color7
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -166,7 +189,7 @@ return colors["color7"]
 #+end_src
 
 #+RESULTS: color7
-: #d4d7d8
+: #e3dcca
 
 #+name: color8
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -176,7 +199,7 @@ return colors["color8"]
 #+end_src
 
 #+RESULTS: color8
-: #949697
+: #9e9a8d
 
 #+name: color9
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -186,7 +209,7 @@ return colors["color9"]
 #+end_src
 
 #+RESULTS: color9
-: #76898D
+: #938B76
 
 #+name: color10
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -196,7 +219,7 @@ return colors["color10"]
 #+end_src
 
 #+RESULTS: color10
-: #7D9AA1
+: #A0977F
 
 #+name: color11
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -206,7 +229,7 @@ return colors["color11"]
 #+end_src
 
 #+RESULTS: color11
-: #8A9396
+: #A59B83
 
 #+name: color12
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -216,7 +239,7 @@ return colors["color12"]
 #+end_src
 
 #+RESULTS: color12
-: #949DA2
+: #B5AA8D
 
 #+name: color13
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -226,7 +249,7 @@ return colors["color13"]
 #+end_src
 
 #+RESULTS: color13
-: #99A5A8
+: #C6B999
 
 #+name: color14
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -236,7 +259,7 @@ return colors["color14"]
 #+end_src
 
 #+RESULTS: color14
-: #AAAFB2
+: #D5C7A3
 
 #+name: color15
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -246,7 +269,7 @@ return colors["color15"]
 #+end_src
 
 #+RESULTS: color15
-: #d4d7d8
+: #e3dcca
 
 * Variables - Paths
 #+NAME: niri_scripts
@@ -256,7 +279,6 @@ return colors["color15"]
 
 #+RESULTS: niri_scripts
 : ~/.config/niri/scripts
-
 
 #+NAME: screenshot_path
 #+BEGIN_SRC python :results value
@@ -368,13 +390,13 @@ return colors["color15"]
 
 #+NAME: editor
 #+BEGIN_SRC python :results value :var script=niri_scripts
-  inner = f"'{script}/emacs-profile' 'emacs-alt'"
+  inner = f"{script}/emacs-profile 'emacs-alt'"
   cmd = [ '"sh"', '"-c"', f'"{inner}"' ]
   return " ".join(cmd)
 #+END_SRC
 
 #+RESULTS: editor
-: "sh" "-c" "'~/.config/niri/scripts/emacs-profile' 'emacs-alt'"
+: "sh" "-c" "~/.config/niri/scripts/emacs-profile 'emacs-alt'"
 
 #+NAME: file_gui
 #+BEGIN_SRC python
@@ -558,11 +580,11 @@ return " ".join(cmd)
 
 #+NAME: element
 #+BEGIN_SRC python
-  return f'"\\"element_desktop\\""'  
+  return f'"\\"element-desktop\\""'  
 #+END_SRC
 
 #+RESULTS: element
-: "element_desktop"
+: "element-desktop"
 
 #+NAME: sms
 #+BEGIN_SRC python
@@ -650,7 +672,7 @@ return " ".join(cmd)
 #+BEGIN_SRC kdl :tangle ./config.kdl
 // ## ENVIRONMENT  ###########################################################  
   environment {
-          DISPLAY ":2"
+          DISPLAY ":1"
   }
 #+END_SRC
 * Startup Apps
@@ -802,16 +824,14 @@ return " ".join(cmd)
   }  
 #+END_SRC
 
-
-
 * Layout
 #+BEGIN_SRC kdl :tangle ./config.kdl :noweb yes :eval no :results value  
   // ## LAYOUT CONFIGURATION ####################################################  
     layout {
-
             gaps 4
 
             center-focused-column "never"
+          
             always-center-single-column
 
             preset-column-widths {
@@ -833,51 +853,32 @@ return " ".join(cmd)
             background-color "transparent"
 
             focus-ring {
-
                     // off
-
                     width 2
-
-                    active-color "#fc7303"
-
-                    inactive-color "#878684"
-
+                    active-color "<<foreground()>>"
+                    inactive-color "<<background()>>"
                     // active-gradient from="#80c8ff" to="#bbddff" angle=45
-
                     // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
             }
 
 
             border {
                     off
-
                     width 1
-
                     active-color "#ffc87f"
-
                     inactive-color "#505050"
-
                     urgent-color "#9b0000"
-
                     active-gradient from="#ffbb66" to="#ffc880" angle=45 relative-to="workspace-view"
-
                     inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
             }
             
             shadow {
-
                     // on
-
                     draw-behind-window false
-
                     softness 30
-
                     spread 5
-
                     offset x=0 y=5
-
                     color "#00000080"
-                    
                     inactive-color "#00000060"
             }
 

@@ -6,7 +6,7 @@ To generate the `niri config.kdl` using each of the Emacs steps:
 
 ## GENERATE FILE
 
-1. Open `niri_config.babel`
+1. Open `niri_config.org`
 
 2. Run `M-x org-babel-execute-buffer`  
    *(This will evaluate all of the code blocks that have been marked for evaluation and display the results just below the code block. To evaluate any code block individually, place the cursor inside the code block and press `C-c C-c`.)*

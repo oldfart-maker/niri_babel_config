@@ -844,6 +844,7 @@ return " ".join(cmd)
     spawn-at-startup      <<discord()>>
     spawn-at-startup      <<xwayland()>>
 #+END_SRC
+
 * Workspaces
 #+BEGIN_SRC kdl :tangle ./config.kdl
 // ## SETUP WORKSPACES ##################################################  

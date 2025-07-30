@@ -1,4 +1,4 @@
-// LAST BUILD / DEPLOY: 2025-07-26 06:40:46
+// LAST BUILD / DEPLOY: 2025-07-29 20:23:14
 // ## NOTES  ###########################################################  
 // This config file has been created by emacs org babel. This was done
 // mostly as a learning experiment and to address the gaps that .kdl
@@ -39,55 +39,7 @@
 
 // ## ENVIRONMENT  ###########################################################  
   environment {
-          DISPLAY ":1"
-  }
-
-// ## STARTUP APPS  ###########################################################  
-  spawn-at-startup      "sh" "-c" "swayidle -w timeout 600 ~/.config/niri/scripts/lockscreen"
-  spawn-at-startup      "~/.config/niri/scripts/setup_theme"
-  spawn-at-startup      "~/.config/niri/scripts/wallpaper"
-  spawn-at-startup      "~/.config/niri/scripts/notifications"
-  spawn-at-startup      "~/.config/niri/scripts/statusbar"
-  spawn-at-startup      "spotify"
-  spawn-at-startup      "element-desktop"
-  spawn-at-startup      "googlemessages"
-  spawn-at-startup      "google-calendar-nativefier-dark"
-  spawn-at-startup      "vesktop"
-  spawn-at-startup      "geary"
-  spawn-at-startup      "xwayland-satellite"
-
-// ## SETUP WORKSPACES ##################################################  
-  workspace "scratchpad" {
-          open-on-output "HDMI-A-3"
-  }
-
-  workspace "spotify" {
-          open-on-output "HDMI-A-3"
-  }
-
-  workspace "discord" {
-          open-on-output "HDMI-A-3"
-  }
-
-  workspace "cameras" {
-          open-on-output "HDMI-A-3"
-  }
-
-  workspace "virtbox" {
-          open-on-output "HDMI-A-3"
-  }
-
-  workspace "element" {
-          open-on-output "HDMI-A-3"
-  }
-
-  workspace "messaging" {
-          open-on-output "HDMI-A-3"
-  }
-
-// ## MISCELLANEOUS ##########################################################  
-  hotkey-overlay {
-          skip-at-startup
+          DISPLAY ":2"
   }
 
 // ## INPUT CONFIGURATION ####################################################  
@@ -175,6 +127,53 @@
           transform "normal"
 
           position x=3840 y=0
+  }
+
+// ## STARTUP APPS  ###########################################################  
+  spawn-at-startup      "sh" "-c" "swayidle -w timeout 600 ~/.config/niri/scripts/lockscreen"
+  spawn-at-startup      "~/.config/niri/scripts/setup_theme"
+  spawn-at-startup      "~/.config/niri/scripts/wallpaper"
+  spawn-at-startup      "~/.config/niri/scripts/notifications"
+  spawn-at-startup      "~/.config/niri/scripts/statusbar"
+  spawn-at-startup      "spotify"
+  spawn-at-startup      "element-desktop"
+  spawn-at-startup      "googlemessages"
+  spawn-at-startup      "google-calendar-nativefier-dark"
+  spawn-at-startup      "vesktop"
+  spawn-at-startup      "xwayland-satellite"
+
+// ## SETUP WORKSPACES ##################################################  
+  workspace "scratchpad" {
+          open-on-output "HDMI-A-3"
+  }
+
+  workspace "spotify" {
+          open-on-output "HDMI-A-3"
+  }
+
+  workspace "discord" {
+          open-on-output "HDMI-A-3"
+  }
+
+  workspace "cameras" {
+          open-on-output "HDMI-A-3"
+  }
+
+  workspace "virtbox" {
+          open-on-output "HDMI-A-3"
+  }
+
+  workspace "element" {
+          open-on-output "HDMI-A-3"
+  }
+
+  workspace "messaging" {
+          open-on-output "HDMI-A-3"
+  }
+
+// ## MISCELLANEOUS ##########################################################  
+  hotkey-overlay {
+          skip-at-startup
   }
 
 // ## LAYOUT CONFIGURATION ####################################################  
@@ -265,7 +264,7 @@
   // ## COMPOSITOR / OTHER CONFIGURATION ########################################
   prefer-no-csd
 
-  screenshot-path "~/Pictures/screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+  screenshot-path "~/Pictures/screenshots/Screenshot-from-%Y-%m-%d-%H-%M-%S.png"
 
   // ## ANIMATIONS ##############################################################
   animations {
@@ -437,6 +436,13 @@
           open-maximized true
   }
 
+  window-rule {
+          match app-id="feh"
+          open-floating true
+          default-column-width { fixed 1200; }
+          default-window-height { fixed 800; }
+  }
+
   layer-rule {
           place-within-backdrop true
   }
@@ -450,24 +456,28 @@ binds {
     Mod+M                                         { spawn "~/.config/niri/scripts/rofi_music"; }
     Mod+N                                         { spawn "~/.config/niri/scripts/rofi_network"; }
     Mod+Shift+D                                   { spawn "~/.config/niri/scripts/rofi_showwindows"; }
-    Mod+E                                         { spawn "sh" "-c" "~/.config/niri/scripts/emacs-profile 'emacs-alt'"; }
+    Mod+E                                         { spawn "emacsclient" "-c" "-s" "emacs-alt"; }
+    Mod+Shift+E                                   { spawn "emacsclient" "-c" "-s" "emacs-isolated"; }
     Mod+T                                         { spawn "thunar"; }
     Mod+Shift+Y                                   { spawn "sh" "-c" "kitty --detach yazi"; }
     Mod+Shift+W                                   { spawn "vivaldi-snapshot"; }
     Mod+Shift+N                                   { spawn "pluma"; }
     Mod+1                                         { spawn "~/projects/niri_toolkit/niri-move-window.py" "--match" "Messages" "--target" "m" "--target_id" "HDMI-A-2" "--focus"; }
     Mod+Shift+1                                   { spawn "~/projects/niri_toolkit/niri-move-window.py" "--match" "Messages" "--target" "w" "--target_id" "messaging"; }
+    Mod+2                                         { spawn "~/projects/niri_toolkit/niri-move-window.py" "--match" "mu4e" "--target" "m" "--target_id" "HDMI-A-2" "--focus"; }
+    Mod+Shift+2                                   { spawn "~/projects/niri_toolkit/niri-move-window.py" "--match" "mu4e" "--target" "w" "--target_id" "messaging"; }
+    Mod+P                                         { spawn "~/projects/niri_toolkit/niri_scratchpad" "--action" "put" "--scratchpad_name" "scratchpad"; }
+    Mod+Shift+P                                   { spawn "~/projects/niri_toolkit/niri_scratchpad" "--action" "get" "--scratchpad_name" "scratchpad"; }  
     Mod+Return                                    { spawn "~/.config/niri/scripts/alacritty"; }
     Mod+Alt+L                                     { spawn "~/.config/niri/scripts/lockscreen"; }
-    Mod+P                                         { spawn "~/.config/niri/scripts/send_to_scratchpad"; }
-    Mod+Shift+P                                   { spawn "~/.config/niri/scripts/niri_scratchpad"; }  
     XF86AudioRaiseVolume allow-when-locked=true   { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
     XF86AudioLowerVolume allow-when-locked=true   { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }
     XF86AudioMute allow-when-locked=true          { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
     XF86AudioMicMute allow-when-locked=true       { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
+    Mod+Shift+S                                   { spawn "~/projects/niri_toolkit/niri-screenshot-picker"; }
+    Mod+S                                         { screenshot; }          
     Mod+O repeat=false                            { toggle-overview; }
     Mod+Q                                         { close-window; }
-    Mod+S                                         { screenshot; }
     Mod+h                                         { focus-column-left; }
     Mod+j                                         { focus-window-down; }
     Mod+k                                         { focus-window-up; }

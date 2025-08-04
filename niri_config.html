@@ -1,0 +1,771 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2025-08-04 Mon 18:55 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Niri Config.kdl</title>
+<meta name="author" content="Mike Burns" />
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Niri Config.kdl</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org9175f88">1. Overview</a></li>
+<li><a href="#org74db871">2. Date/Timestamp of Last Update/Deployment</a></li>
+<li><a href="#org8577823">3. Target System</a></li>
+<li><a href="#orgd33fb75">4. Variables - Colors</a></li>
+<li><a href="#orgd613ed9">5. Variables - Paths</a></li>
+<li><a href="#orgbdb579e">6. Variables - Apps &amp; Scripts</a></li>
+<li><a href="#org204e252">7. Environment</a></li>
+<li><a href="#org098472f">8. Inputs</a></li>
+<li><a href="#orgae21deb">9. Outputs</a></li>
+<li><a href="#org56700e1">10. Startup Apps</a></li>
+<li><a href="#org26e29d4">11. Workspaces</a></li>
+<li><a href="#org4f96b05">12. Other</a></li>
+<li><a href="#org595d6b2">13. Layout</a></li>
+<li><a href="#orgc2b6438">14. Window Rules</a></li>
+<li><a href="#orgf17bc65">15. Bindings</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org9175f88" class="outline-2">
+<h2 id="org9175f88"><span class="section-number-2">1.</span> Overview</h2>
+</div>
+<div id="outline-container-org74db871" class="outline-2">
+<h2 id="org74db871"><span class="section-number-2">2.</span> Date/Timestamp of Last Update/Deployment</h2>
+<div class="outline-text-2" id="text-2">
+<pre class="example">
+2025-08-04 18:55:19
+</pre>
+</div>
+</div>
+<div id="outline-container-org8577823" class="outline-2">
+<h2 id="org8577823"><span class="section-number-2">3.</span> Target System</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+Target system for niri.
+</p>
+
+<p>
+lenovo | dell | pi
+</p>
+
+<pre class="example">
+lenovo
+</pre>
+</div>
+</div>
+<div id="outline-container-orgd33fb75" class="outline-2">
+<h2 id="orgd33fb75"><span class="section-number-2">4.</span> Variables - Colors</h2>
+<div class="outline-text-2" id="text-4">
+<pre class="example">
+{"wallpaper": "/home/username/Pictures/wallpapers/ign_unsplash15.png", "background": "#1c1f27", "foreground": "#d2dadc", "cursor": "#d2dadc", "color0": "#1c1f27", "color1": "#848187", "color2": "#A09CA1", "color3": "#D1A997", "color4": "#DBC9B5", "color5": "#E1D3B7", "color6": "#B0BDC3", "color7": "#d2dadc", "color8": "#93989a", "color9": "#848187", "color10": "#A09CA1", "color11": "#D1A997", "color12": "#DBC9B5", "color13": "#E1D3B7", "color14": "#B0BDC3", "color15": "#d2dadc", "FZF_DEFAULT_OPTS": "", "LS_COLORS": "${LS_COLORS}:su=30;41:ow=30;42:st=30;44:"}
+</pre>
+
+
+<pre class="example">
+{'wallpaper': '/home/username/Pictures/wallpapers/ign_unsplash15.png', 'background': '#1c1f27', 'foreground': '#d2dadc', 'cursor': '#d2dadc', 'color0': '#1c1f27', 'color1': '#848187', 'color2': '#A09CA1', 'color3': '#D1A997', 'color4': '#DBC9B5', 'color5': '#E1D3B7', 'color6': '#B0BDC3', 'color7': '#d2dadc', 'color8': '#93989a', 'color9': '#848187', 'color10': '#A09CA1', 'color11': '#D1A997', 'color12': '#DBC9B5', 'color13': '#E1D3B7', 'color14': '#B0BDC3', 'color15': '#d2dadc', 'FZF_DEFAULT_OPTS': '', 'LS_COLORS': '${LS_COLORS}:su=30;41:ow=30;42:st=30;44:'}
+</pre>
+
+
+<pre class="example">
+#1c1f27
+</pre>
+
+
+<pre class="example">
+#d2dadc
+</pre>
+
+
+<pre class="example">
+#1c1f27
+</pre>
+
+
+<pre class="example">
+#848187
+</pre>
+
+
+<pre class="example">
+#A09CA1
+</pre>
+
+
+<pre class="example">
+#D1A997
+</pre>
+
+
+<pre class="example">
+#DBC9B5
+</pre>
+
+
+<pre class="example">
+#E1D3B7
+</pre>
+
+
+<pre class="example">
+#B0BDC3
+</pre>
+
+
+<pre class="example">
+#d2dadc
+</pre>
+
+
+<pre class="example">
+#93989a
+</pre>
+
+
+<pre class="example">
+#848187
+</pre>
+
+
+<pre class="example">
+#A09CA1
+</pre>
+
+
+<pre class="example">
+#D1A997
+</pre>
+
+
+<pre class="example">
+#DBC9B5
+</pre>
+
+
+<pre class="example">
+#E1D3B7
+</pre>
+
+
+<pre class="example">
+#B0BDC3
+</pre>
+
+
+<pre class="example">
+#d2dadc
+</pre>
+</div>
+</div>
+<div id="outline-container-orgd613ed9" class="outline-2">
+<h2 id="orgd613ed9"><span class="section-number-2">5.</span> Variables - Paths</h2>
+<div class="outline-text-2" id="text-5">
+<pre class="example">
+~/.config/niri/scripts
+</pre>
+
+
+<pre class="example">
+~/projects/niri_toolkit
+</pre>
+
+
+<pre class="example">
+~/Pictures/screenshots
+</pre>
+
+
+<pre class="example">
+Screenshot-from-%Y-%m-%d-%H-%M-%S.png
+</pre>
+</div>
+</div>
+<div id="outline-container-orgbdb579e" class="outline-2">
+<h2 id="orgbdb579e"><span class="section-number-2">6.</span> Variables - Apps &amp; Scripts</h2>
+<div class="outline-text-2" id="text-6">
+<pre class="example">
+"~/.config/niri/scripts/rofi_bindings"
+</pre>
+
+
+<pre class="example">
+"~/.config/niri/scripts/rofi_launcher"
+</pre>
+
+
+<pre class="example">
+"~/.config/niri/scripts/rofi_bluetooth"
+</pre>
+
+
+<pre class="example">
+"~/.config/niri/scripts/rofi_powermenu"
+</pre>
+
+
+<pre class="example">
+"~/.config/niri/scripts/rofi_music"
+</pre>
+
+
+<pre class="example">
+"~/.config/niri/scripts/rofi_network"
+</pre>
+
+
+<pre class="example">
+"~/.config/niri/scripts/rofi_showwindows"
+</pre>
+
+
+<pre class="example">
+"~/.config/niri/scripts/alacritty"
+</pre>
+
+
+<pre class="example">
+"~/.config/niri/scripts/lockscreen"
+</pre>
+
+
+<pre class="example">
+"~/projects/niri_toolkit/niri_scratchpad" "--action" "put" "--scratchpad_name" "scratchpad"
+</pre>
+
+
+<pre class="example">
+"~/projects/niri_toolkit/niri_scratchpad" "--action" "get" "--scratchpad_name" "scratchpad"
+</pre>
+
+
+<pre class="example">
+"emacsclient" "-c" "-s" "emacs-prod"
+</pre>
+
+
+<pre class="example">
+"emacsclient" "-c" "-s" "emacs-dev"
+</pre>
+
+
+<pre class="example">
+"thunar"
+</pre>
+
+
+
+<pre class="example">
+"sh" "-c" "kitty --detach yazi"
+</pre>
+
+
+<pre class="example">
+"vivaldi-snapshot"
+</pre>
+
+
+<pre class="example">
+"pluma"
+</pre>
+
+
+<pre class="example">
+"~/projects/niri_toolkit/niri-move-window.py" "--match" "mu4e" "--target" "m" "--target_id" "HDMI-A-2" "--focus"
+</pre>
+
+
+<pre class="example">
+"~/projects/niri_toolkit/niri-move-window.py" "--match" "mu4e" "--target" "w" "--target_id" "messaging"
+</pre>
+
+
+<pre class="example">
+"~/projects/niri_toolkit/niri-move-window.py" "--match" "Messages" "--target" "m" "--target_id" "HDMI-A-2" "--focus"
+</pre>
+
+
+<pre class="example">
+"~/projects/niri_toolkit/niri-move-window.py" "--match" "Messages" "--target" "w" "--target_id" "messaging"
+</pre>
+
+
+<pre class="example">
+"wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"
+</pre>
+
+
+<pre class="example">
+"wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"
+</pre>
+
+
+<pre class="example">
+"wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"
+</pre>
+
+
+<pre class="example">
+"wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"
+</pre>
+
+
+
+<pre class="example">
+"sh" "-c" "swayidle -w timeout 600 ~/.config/niri/scripts/lockscreen"
+</pre>
+
+
+<pre class="example">
+"~/.config/niri/scripts/setup_theme"
+</pre>
+
+
+<pre class="example">
+"~/.config/niri/scripts/wallpaper"
+</pre>
+
+
+<pre class="example">
+"~/.config/niri/scripts/notifications"
+</pre>
+
+
+<pre class="example">
+"~/.config/niri/scripts/statusbar"
+</pre>
+
+
+<pre class="example">
+"spotify"
+</pre>
+
+
+<pre class="example">
+"element-desktop"
+</pre>
+
+
+<pre class="example">
+"googlemessages"
+</pre>
+
+
+<pre class="example">
+"google-calendar-nativefier-dark"
+</pre>
+
+
+<pre class="example">
+"vesktop"
+</pre>
+
+
+<pre class="example">
+"geary"
+</pre>
+
+
+<pre class="example">
+"xwayland-satellite" "--display 2"
+</pre>
+
+
+<pre class="example">
+"~/projects/niri_toolkit/niri-screenshot-picker"
+</pre>
+
+
+<pre class="example">
+"~/projects/niri_toolkit/niri-screenshot-picker-emacs"
+</pre>
+</div>
+</div>
+<div id="outline-container-org204e252" class="outline-2">
+<h2 id="org204e252"><span class="section-number-2">7.</span> Environment</h2>
+</div>
+<div id="outline-container-org098472f" class="outline-2">
+<h2 id="org098472f"><span class="section-number-2">8.</span> Inputs</h2>
+</div>
+<div id="outline-container-orgae21deb" class="outline-2">
+<h2 id="orgae21deb"><span class="section-number-2">9.</span> Outputs</h2>
+<div class="outline-text-2" id="text-9">
+<pre class="example" id="org2306acd">
+output "HDMI-A-1" {
+
+          // off
+
+          mode "1920x1080@60"
+
+          scale 1
+          transform "normal"
+
+          position x=0 y=0
+ }
+
+ output "HDMI-A-2" {
+
+        // off
+
+        mode "1920x1080@60"
+
+        scale 1
+        transform "normal"
+
+        position x=1920 y=0
+ }
+
+ output "HDMI-A-3" {
+
+       // off
+
+       mode "1920x1080@60"
+
+       scale 1
+       transform "normal"
+
+       position x=3840 y=0
+ }
+</pre>
+
+<pre class="example" id="orge9e2994">
+output "eDP1" {
+
+          // off
+
+          mode "1920x1080@60"
+
+          scale 1
+          transform "normal"
+
+          position x=0 y=0
+ }
+</pre>
+
+<pre class="example" id="org3a738e2">
+output "HDMI-A-1" {
+
+          // off
+
+          mode "1920x1080@60"
+
+          scale 1
+          transform "normal"
+
+          position x=0 y=0
+ }
+
+ output "HDMI-A-2" {
+
+        // off
+
+        mode "1920x1080@60"
+
+        scale 1
+        transform "normal"
+
+        position x=1920 y=0
+ }
+
+ output "HDMI-A-3" {
+
+       // off
+
+       mode "1920x1080@60"
+
+       scale 1
+       transform "normal"
+
+       position x=3840 y=0
+ }
+</pre>
+</div>
+</div>
+<div id="outline-container-org56700e1" class="outline-2">
+<h2 id="org56700e1"><span class="section-number-2">10.</span> Startup Apps</h2>
+</div>
+<div id="outline-container-org26e29d4" class="outline-2">
+<h2 id="org26e29d4"><span class="section-number-2">11.</span> Workspaces</h2>
+<div class="outline-text-2" id="text-11">
+<pre class="example" id="org3698a3f">
+
+workspace "scratchpad" {
+        open-on-output "HDMI-A-3"
+}
+
+workspace "spotify" {
+        open-on-output "HDMI-A-3"
+}
+
+workspace "discord" {
+        open-on-output "HDMI-A-3"
+}
+
+workspace "cameras" {
+        open-on-output "HDMI-A-3"
+}
+
+workspace "virtbox" {
+        open-on-output "HDMI-A-3"
+}
+
+workspace "element" {
+        open-on-output "HDMI-A-3"
+}
+
+workspace "messaging" {
+        open-on-output "HDMI-A-3"
+}
+</pre>
+
+<pre class="example">
+
+workspace "scratchpad" {
+        open-on-output "eDP1"
+}
+</pre>
+
+
+<pre class="example" id="orgd28eb89">
+
+workspace "scratchpad" {
+        open-on-output "HDMI-A-3"
+}
+
+workspace "spotify" {
+        open-on-output "HDMI-A-3"
+}
+
+workspace "discord" {
+        open-on-output "HDMI-A-3"
+}
+
+workspace "cameras" {
+        open-on-output "HDMI-A-3"
+}
+
+workspace "virtbox" {
+        open-on-output "HDMI-A-3"
+}
+
+workspace "element" {
+        open-on-output "HDMI-A-3"
+}
+
+workspace "messaging" {
+        open-on-output "HDMI-A-3"
+}
+</pre>
+</div>
+</div>
+<div id="outline-container-org4f96b05" class="outline-2">
+<h2 id="org4f96b05"><span class="section-number-2">12.</span> Other</h2>
+</div>
+<div id="outline-container-org595d6b2" class="outline-2">
+<h2 id="org595d6b2"><span class="section-number-2">13.</span> Layout</h2>
+</div>
+<div id="outline-container-orgc2b6438" class="outline-2">
+<h2 id="orgc2b6438"><span class="section-number-2">14.</span> Window Rules</h2>
+</div>
+<div id="outline-container-orgf17bc65" class="outline-2">
+<h2 id="orgf17bc65"><span class="section-number-2">15.</span> Bindings</h2>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Mike Burns</p>
+<p class="date">Created: 2025-08-04 Mon 18:55</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

@@ -1,4 +1,4 @@
-// LAST BUILD / DEPLOY: 2025-07-29 20:23:14
+// LAST BUILD / DEPLOY: 2025-08-04 18:50:56
 // ## NOTES  ###########################################################  
 // This config file has been created by emacs org babel. This was done
 // mostly as a learning experiment and to address the gaps that .kdl
@@ -89,84 +89,82 @@
           focus-follows-mouse max-scroll-amount="50%"
   }
 
-// ## OUTPUT CONFIGURATION ####################################################  
+// ## OUTPUT CONFIGURATION ####################################################    
   output "HDMI-A-1" {
-
+  
+            // off
+  
+            mode "1920x1080@60"
+  
+            scale 1
+            transform "normal"
+  
+            position x=0 y=0
+   }
+  
+   output "HDMI-A-2" {
+  
           // off
-
+  
           mode "1920x1080@60"
-
+  
           scale 1
-
           transform "normal"
-
-          position x=0 y=0
-
-  }
-
-  output "HDMI-A-2" {
-
-          // off
-
-          mode "1920x1080@60"
-
-          scale 1
-
-          transform "normal"
-
+  
           position x=1920 y=0
-  }
-
-  output "HDMI-A-3" {
-
-          // off
-
-          mode "1920x1080@60"
-
-          scale 1
-          transform "normal"
-
-          position x=3840 y=0
-  }
+   }
+  
+   output "HDMI-A-3" {
+  
+         // off
+  
+         mode "1920x1080@60"
+  
+         scale 1
+         transform "normal"
+  
+         position x=3840 y=0
+   }
 
 // ## STARTUP APPS  ###########################################################  
-  spawn-at-startup      "sh" "-c" "swayidle -w timeout 600 ~/.config/niri/scripts/lockscreen"
-  spawn-at-startup      "~/.config/niri/scripts/setup_theme"
-  spawn-at-startup      "~/.config/niri/scripts/wallpaper"
-  spawn-at-startup      "~/.config/niri/scripts/notifications"
-  spawn-at-startup      "~/.config/niri/scripts/statusbar"
-  spawn-at-startup      "spotify"
-  spawn-at-startup      "element-desktop"
-  spawn-at-startup      "googlemessages"
-  spawn-at-startup      "google-calendar-nativefier-dark"
-  spawn-at-startup      "vesktop"
-  spawn-at-startup      "xwayland-satellite"
+    spawn-at-startup      "sh" "-c" "swayidle -w timeout 600 ~/.config/niri/scripts/lockscreen"
+    spawn-at-startup      "~/.config/niri/scripts/setup_theme"
+    spawn-at-startup      "~/.config/niri/scripts/wallpaper"
+    spawn-at-startup      "~/.config/niri/scripts/notifications"
+    spawn-at-startup      "~/.config/niri/scripts/statusbar"
+    spawn-at-startup      "spotify"
+    spawn-at-startup      "element-desktop"
+    spawn-at-startup      "googlemessages"
+    spawn-at-startup      "google-calendar-nativefier-dark"
+    spawn-at-startup      "vesktop"
+    spawn-at-startup      "xwayland-satellite" "--display 2"
 
-// ## SETUP WORKSPACES ##################################################  
+// ## SETUP WORKSPACES ##################################################    
+  
   workspace "scratchpad" {
           open-on-output "HDMI-A-3"
   }
-
+  
   workspace "spotify" {
           open-on-output "HDMI-A-3"
   }
-
+  
   workspace "discord" {
           open-on-output "HDMI-A-3"
   }
-
+  
   workspace "cameras" {
           open-on-output "HDMI-A-3"
   }
-
+  
   workspace "virtbox" {
           open-on-output "HDMI-A-3"
   }
-
+  
   workspace "element" {
           open-on-output "HDMI-A-3"
   }
-
+  
   workspace "messaging" {
           open-on-output "HDMI-A-3"
   }
@@ -205,8 +203,8 @@
           focus-ring {
                   // off
                   width 2
-                  active-color "#e3dcca"
-                  inactive-color "#121110"
+                  active-color "#d2dadc"
+                  inactive-color "#1c1f27"
                   // active-gradient from="#80c8ff" to="#bbddff" angle=45
                   // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
           }
@@ -341,7 +339,6 @@
           opacity 1.0
   }
 
-  //	# App behaviour
   window-rule {
           match app-id="pluma"
           open-floating true
@@ -456,8 +453,8 @@ binds {
     Mod+M                                         { spawn "~/.config/niri/scripts/rofi_music"; }
     Mod+N                                         { spawn "~/.config/niri/scripts/rofi_network"; }
     Mod+Shift+D                                   { spawn "~/.config/niri/scripts/rofi_showwindows"; }
-    Mod+E                                         { spawn "emacsclient" "-c" "-s" "emacs-alt"; }
-    Mod+Shift+E                                   { spawn "emacsclient" "-c" "-s" "emacs-isolated"; }
+    Mod+E                                         { spawn "emacsclient" "-c" "-s" "emacs-prod"; }
+    Mod+Shift+E                                   { spawn "emacsclient" "-c" "-s" "emacs-dev"; }
     Mod+T                                         { spawn "thunar"; }
     Mod+Shift+Y                                   { spawn "sh" "-c" "kitty --detach yazi"; }
     Mod+Shift+W                                   { spawn "vivaldi-snapshot"; }
@@ -475,6 +472,7 @@ binds {
     XF86AudioMute allow-when-locked=true          { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
     XF86AudioMicMute allow-when-locked=true       { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
     Mod+Shift+S                                   { spawn "~/projects/niri_toolkit/niri-screenshot-picker"; }
+    Mod+Ctrl+S                                    { spawn "~/projects/niri_toolkit/niri-screenshot-picker-emacs"; }          
     Mod+S                                         { screenshot; }          
     Mod+O repeat=false                            { toggle-overview; }
     Mod+Q                                         { close-window; }

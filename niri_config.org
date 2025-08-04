@@ -52,7 +52,20 @@ return datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 #+end_src
 
 #+RESULTS: timestamp
-: 2025-07-29 20:22:58
+: 2025-08-04 18:48:41
+
+* Target System
+Target system for niri.
+
+lenovo | dell | pi
+
+#+name: target-system
+#+begin_src python :results value
+  return "lenovo"
+#+end_src
+
+#+RESULTS: target-system
+: lenovo
 
 * Variables - Colors
 #+name: theme-colors-json
@@ -75,7 +88,7 @@ return json.dumps(theme)
 #+end_src
 
 #+RESULTS: theme-colors-json
-: {"wallpaper": "/home/username/Pictures/wallpapers/burning-earth.png", "background": "#121110", "foreground": "#e3dcca", "cursor": "#e3dcca", "color0": "#121110", "color1": "#938B76", "color2": "#A0977F", "color3": "#A59B83", "color4": "#B5AA8D", "color5": "#C6B999", "color6": "#D5C7A3", "color7": "#e3dcca", "color8": "#9e9a8d", "color9": "#938B76", "color10": "#A0977F", "color11": "#A59B83", "color12": "#B5AA8D", "color13": "#C6B999", "color14": "#D5C7A3", "color15": "#e3dcca", "FZF_DEFAULT_OPTS": "", "LS_COLORS": "${LS_COLORS}:su=30;41:ow=30;42:st=30;44:"}
+: {"wallpaper": "/home/username/Pictures/wallpapers/ign_unsplash15.png", "background": "#1c1f27", "foreground": "#d2dadc", "cursor": "#d2dadc", "color0": "#1c1f27", "color1": "#848187", "color2": "#A09CA1", "color3": "#D1A997", "color4": "#DBC9B5", "color5": "#E1D3B7", "color6": "#B0BDC3", "color7": "#d2dadc", "color8": "#93989a", "color9": "#848187", "color10": "#A09CA1", "color11": "#D1A997", "color12": "#DBC9B5", "color13": "#E1D3B7", "color14": "#B0BDC3", "color15": "#d2dadc", "FZF_DEFAULT_OPTS": "", "LS_COLORS": "${LS_COLORS}:su=30;41:ow=30;42:st=30;44:"}
 
 #+name: colors-dict
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -108,7 +121,7 @@ return json.dumps(theme)
 #+end_src
 
 #+RESULTS: colors-dict
-: {'wallpaper': '/home/username/Pictures/wallpapers/burning-earth.png', 'background': '#121110', 'foreground': '#e3dcca', 'cursor': '#e3dcca', 'color0': '#121110', 'color1': '#938B76', 'color2': '#A0977F', 'color3': '#A59B83', 'color4': '#B5AA8D', 'color5': '#C6B999', 'color6': '#D5C7A3', 'color7': '#e3dcca', 'color8': '#9e9a8d', 'color9': '#938B76', 'color10': '#A0977F', 'color11': '#A59B83', 'color12': '#B5AA8D', 'color13': '#C6B999', 'color14': '#D5C7A3', 'color15': '#e3dcca', 'FZF_DEFAULT_OPTS': '', 'LS_COLORS': '${LS_COLORS}:su=30;41:ow=30;42:st=30;44:'}
+: {'wallpaper': '/home/username/Pictures/wallpapers/ign_unsplash15.png', 'background': '#1c1f27', 'foreground': '#d2dadc', 'cursor': '#d2dadc', 'color0': '#1c1f27', 'color1': '#848187', 'color2': '#A09CA1', 'color3': '#D1A997', 'color4': '#DBC9B5', 'color5': '#E1D3B7', 'color6': '#B0BDC3', 'color7': '#d2dadc', 'color8': '#93989a', 'color9': '#848187', 'color10': '#A09CA1', 'color11': '#D1A997', 'color12': '#DBC9B5', 'color13': '#E1D3B7', 'color14': '#B0BDC3', 'color15': '#d2dadc', 'FZF_DEFAULT_OPTS': '', 'LS_COLORS': '${LS_COLORS}:su=30;41:ow=30;42:st=30;44:'}
 
 #+name: background
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -118,7 +131,7 @@ return colors["background"]
 #+end_src
 
 #+RESULTS: background
-: #121110
+: #1c1f27
 
 #+name: foreground
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -128,7 +141,7 @@ return colors["foreground"]
 #+end_src
 
 #+RESULTS: foreground
-: #e3dcca
+: #d2dadc
 
 #+name: color0
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -138,7 +151,7 @@ return colors["color0"]
 #+end_src
 
 #+RESULTS: color0
-: #121110
+: #1c1f27
 
 #+name: color1
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -148,7 +161,7 @@ return colors["color1"]
 #+end_src
 
 #+RESULTS: color1
-: #938B76
+: #848187
 
 #+name: color2
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -158,7 +171,7 @@ return colors["color2"]
 #+end_src
 
 #+RESULTS: color2
-: #A0977F
+: #A09CA1
 
 #+name: color3
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -168,7 +181,7 @@ return colors["color3"]
 #+end_src
 
 #+RESULTS: color3
-: #A59B83
+: #D1A997
 
 #+name: color4
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -178,7 +191,7 @@ return colors["color4"]
 #+end_src
 
 #+RESULTS: color4
-: #B5AA8D
+: #DBC9B5
 
 #+name: color5
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -188,7 +201,7 @@ return colors["color5"]
 #+end_src
 
 #+RESULTS: color5
-: #C6B999
+: #E1D3B7
 
 #+name: color6
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -198,7 +211,7 @@ return colors["color6"]
 #+end_src
 
 #+RESULTS: color6
-: #D5C7A3
+: #B0BDC3
 
 #+name: color7
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -208,7 +221,7 @@ return colors["color7"]
 #+end_src
 
 #+RESULTS: color7
-: #e3dcca
+: #d2dadc
 
 #+name: color8
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -218,7 +231,7 @@ return colors["color8"]
 #+end_src
 
 #+RESULTS: color8
-: #9e9a8d
+: #93989a
 
 #+name: color9
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -228,7 +241,7 @@ return colors["color9"]
 #+end_src
 
 #+RESULTS: color9
-: #938B76
+: #848187
 
 #+name: color10
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -238,7 +251,7 @@ return colors["color10"]
 #+end_src
 
 #+RESULTS: color10
-: #A0977F
+: #A09CA1
 
 #+name: color11
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -248,7 +261,7 @@ return colors["color11"]
 #+end_src
 
 #+RESULTS: color11
-: #A59B83
+: #D1A997
 
 #+name: color12
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -258,7 +271,7 @@ return colors["color12"]
 #+end_src
 
 #+RESULTS: color12
-: #B5AA8D
+: #DBC9B5
 
 #+name: color13
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -268,7 +281,7 @@ return colors["color13"]
 #+end_src
 
 #+RESULTS: color13
-: #C6B999
+: #E1D3B7
 
 #+name: color14
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -278,7 +291,7 @@ return colors["color14"]
 #+end_src
 
 #+RESULTS: color14
-: #D5C7A3
+: #B0BDC3
 
 #+name: color15
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -288,7 +301,7 @@ return colors["color15"]
 #+end_src
 
 #+RESULTS: color15
-: #e3dcca
+: #d2dadc
 
 * Variables - Paths
 #+NAME: niri_scripts
@@ -438,26 +451,26 @@ return colors["color15"]
       cmd = [
           '"emacsclient"',
           '"-c"',
-          '"-s"', '"emacs-alt"'
+          '"-s"', '"emacs-prod"'
       ]
       return " ".join(cmd)  
 #+END_SRC
 
 #+RESULTS: emacs_alt
-: "emacsclient" "-c" "-s" "emacs-alt"
+: "emacsclient" "-c" "-s" "emacs-prod"
 
 #+NAME: emacs_isolated
 #+BEGIN_SRC python :results value
     cmd = [
         '"emacsclient"',
         '"-c"', 
-        '"-s"', '"emacs-isolated"'
+        '"-s"', '"emacs-dev"'
     ]
     return " ".join(cmd)  
 #+END_SRC
 
 #+RESULTS: emacs_isolated
-: "emacsclient" "-c" "-s" "emacs-isolated"
+: "emacsclient" "-c" "-s" "emacs-dev"
 
 #+NAME: file_gui
 #+BEGIN_SRC python
@@ -714,11 +727,11 @@ return " ".join(cmd)
 
 #+NAME: xwayland
 #+BEGIN_SRC python
-  return f'"\\"xwayland-satellite\\""'  
+  return f'"\\"xwayland-satellite\\" \\"--display 2\\""'  
 #+END_SRC
 
 #+RESULTS: xwayland
-: "xwayland-satellite"
+: "xwayland-satellite" "--display 2"
 
 #+NAME: screenshot_viewer
 #+BEGIN_SRC python :var _temp=niri_toolkit :results value
@@ -729,6 +742,15 @@ return " ".join(cmd)
 #+RESULTS: screenshot_viewer
 : "~/projects/niri_toolkit/niri-screenshot-picker"
 
+#+NAME: screenshot_viewer_emacs
+#+BEGIN_SRC python :var _temp=niri_toolkit :results value
+  _temp = f"{_temp}/niri-screenshot-picker-emacs"
+  return f'"\\"{_temp}\\""'    
+#+END_SRC
+
+#+RESULTS: screenshot_viewer_emacs
+: "~/projects/niri_toolkit/niri-screenshot-picker-emacs"
+
 * Environment
 #+BEGIN_SRC kdl :tangle ./config.kdl
 // ## ENVIRONMENT  ###########################################################  
@@ -736,6 +758,7 @@ return " ".join(cmd)
           DISPLAY ":2"
   }
 #+END_SRC
+
 * Inputs
 #+BEGIN_SRC kdl :tangle ./config.kdl
 // ## INPUT CONFIGURATION ####################################################  
@@ -787,36 +810,127 @@ return " ".join(cmd)
 #+END_SRC
 
 * Outputs
-#+BEGIN_SRC kdl :tangle ./config.kdl :noweb yes
-// ## OUTPUT CONFIGURATION ####################################################  
-  output "HDMI-A-1" {
+#+NAME: lenovo-output-config
+#+BEGIN_SRC emacs-lisp :eval yes
+     (format "%s" "output \"HDMI-A-1\" {
+
+               // off
+
+               mode \"1920x1080@60\"
+
+               scale 1
+               transform \"normal\"
+
+               position x=0 y=0
+      }
+    
+      output \"HDMI-A-2\" {
+
+             // off
+
+             mode \"1920x1080@60\"
+
+             scale 1
+             transform \"normal\"
+
+             position x=1920 y=0
+      }
+  
+      output \"HDMI-A-3\" {
+
+            // off
+
+            mode \"1920x1080@60\"
+
+            scale 1
+            transform \"normal\"
+
+            position x=3840 y=0
+      }")  
+#+END_SRC
+
+#+RESULTS: lenovo-output-config
+#+begin_example
+output "HDMI-A-1" {
 
           // off
 
           mode "1920x1080@60"
 
           scale 1
-
           transform "normal"
 
           position x=0 y=0
+ }
 
-  }
+ output "HDMI-A-2" {
 
-  output "HDMI-A-2" {
+        // off
+
+        mode "1920x1080@60"
+
+        scale 1
+        transform "normal"
+
+        position x=1920 y=0
+ }
+
+ output "HDMI-A-3" {
+
+       // off
+
+       mode "1920x1080@60"
+
+       scale 1
+       transform "normal"
+
+       position x=3840 y=0
+ }
+#+end_example
+
+#+NAME: dell-output-config
+#+BEGIN_SRC emacs-lisp :eval yes
+     (format "%s" "output \"eDP1\" {
+
+               // off
+
+               mode \"1920x1080@60\"
+
+               scale 1
+               transform \"normal\"
+
+               position x=0 y=0
+      }")  
+#+END_SRC
+
+#+RESULTS: dell-output-config
+#+begin_example
+output "eDP1" {
 
           // off
 
           mode "1920x1080@60"
 
           scale 1
-
           transform "normal"
 
-          position x=1920 y=0
-  }
+          position x=0 y=0
+ }
+#+end_example
 
-  output "HDMI-A-3" {
+#+NAME: output_config_eval
+#+BEGIN_SRC python :eval yes :var loc=lenovo-output-config :var doc=dell-output-config :var ts=target-system
+  if ts=="lenovo":
+      _config=loc
+  elif ts==dell:
+      _config=doc
+      
+  return _config
+#+END_SRC
+
+#+RESULTS: output_config_eval
+#+begin_example
+output "HDMI-A-1" {
 
           // off
 
@@ -825,13 +939,43 @@ return " ".join(cmd)
           scale 1
           transform "normal"
 
-          position x=3840 y=0
-  }  
+          position x=0 y=0
+ }
+
+ output "HDMI-A-2" {
+
+        // off
+
+        mode "1920x1080@60"
+
+        scale 1
+        transform "normal"
+
+        position x=1920 y=0
+ }
+
+ output "HDMI-A-3" {
+
+       // off
+
+       mode "1920x1080@60"
+
+       scale 1
+       transform "normal"
+
+       position x=3840 y=0
+ }
+#+end_example
+
+#+NAME: output_config
+#+BEGIN_SRC kdl :exports results :noweb yes :tangle ./config.kdl
+// ## OUTPUT CONFIGURATION ####################################################    
+  <<output_config_eval()>>
 #+END_SRC
 
 * Startup Apps
 #+BEGIN_SRC kdl :noweb yes :eval yes :exports results :tangle ./config.kdl
-  // ## STARTUP APPS  ###########################################################  
+// ## STARTUP APPS  ###########################################################  
     spawn-at-startup      <<idle_lock()>>
     spawn-at-startup      <<setup_theme()>>
     spawn-at-startup      <<wallpaper()>>
@@ -846,35 +990,130 @@ return " ".join(cmd)
 #+END_SRC
 
 * Workspaces
-#+BEGIN_SRC kdl :tangle ./config.kdl
-// ## SETUP WORKSPACES ##################################################  
-  workspace "scratchpad" {
-          open-on-output "HDMI-A-3"
+#+NAME: lenovo-workspace-config
+#+BEGIN_SRC emacs-lisp :eval yes
+  (format "%s" "
+  workspace \"scratchpad\" {
+          open-on-output \"HDMI-A-3\"
   }
 
-  workspace "spotify" {
-          open-on-output "HDMI-A-3"
+  workspace \"spotify\" {
+          open-on-output \"HDMI-A-3\"
   }
 
-  workspace "discord" {
-          open-on-output "HDMI-A-3"
+  workspace \"discord\" {
+          open-on-output \"HDMI-A-3\"
   }
 
-  workspace "cameras" {
-          open-on-output "HDMI-A-3"
+  workspace \"cameras\" {
+          open-on-output \"HDMI-A-3\"
   }
 
-  workspace "virtbox" {
-          open-on-output "HDMI-A-3"
+  workspace \"virtbox\" {
+          open-on-output \"HDMI-A-3\"
   }
 
-  workspace "element" {
-          open-on-output "HDMI-A-3"
+  workspace \"element\" {
+          open-on-output \"HDMI-A-3\"
   }
 
-  workspace "messaging" {
-          open-on-output "HDMI-A-3"
-  }
+  workspace \"messaging\" {
+          open-on-output \"HDMI-A-3\"
+  }")  
+#+END_SRC
+
+#+RESULTS: lenovo-workspace-config
+#+begin_example
+
+workspace "scratchpad" {
+        open-on-output "HDMI-A-3"
+}
+
+workspace "spotify" {
+        open-on-output "HDMI-A-3"
+}
+
+workspace "discord" {
+        open-on-output "HDMI-A-3"
+}
+
+workspace "cameras" {
+        open-on-output "HDMI-A-3"
+}
+
+workspace "virtbox" {
+        open-on-output "HDMI-A-3"
+}
+
+workspace "element" {
+        open-on-output "HDMI-A-3"
+}
+
+workspace "messaging" {
+        open-on-output "HDMI-A-3"
+}
+#+end_example
+
+#+NAME: dell-workspace-config
+#+BEGIN_SRC emacs-lisp :eval yes
+  (format "%s" "
+  workspace \"scratchpad\" {
+          open-on-output \"eDP1\"
+  }")  
+#+END_SRC
+
+#+RESULTS: dell-workspace-config
+: 
+: workspace "scratchpad" {
+:         open-on-output "eDP1"
+: }
+
+#+NAME: workspace_config_eval
+#+BEGIN_SRC python :eval yes :var loc=lenovo-workspace-config :var doc=dell-workspace-config :var ts=target-system
+  if ts=="lenovo":
+      _config=loc
+  elif ts==dell:
+      _config=doc
+      
+  return _config
+#+END_SRC
+
+#+RESULTS: workspace_config_eval
+#+begin_example
+
+workspace "scratchpad" {
+        open-on-output "HDMI-A-3"
+}
+
+workspace "spotify" {
+        open-on-output "HDMI-A-3"
+}
+
+workspace "discord" {
+        open-on-output "HDMI-A-3"
+}
+
+workspace "cameras" {
+        open-on-output "HDMI-A-3"
+}
+
+workspace "virtbox" {
+        open-on-output "HDMI-A-3"
+}
+
+workspace "element" {
+        open-on-output "HDMI-A-3"
+}
+
+workspace "messaging" {
+        open-on-output "HDMI-A-3"
+}
+#+end_example
+
+#+NAME: workspace_config
+#+BEGIN_SRC kdl :exports results :noweb yes :tangle ./config.kdl
+// ## SETUP WORKSPACES ##################################################    
+  <<workspace_config_eval()>>
 #+END_SRC
 
 * Other
@@ -1055,7 +1294,6 @@ return " ".join(cmd)
             opacity 1.0
     }
 
-    //	# App behaviour
     window-rule {
             match app-id="pluma"
             open-floating true
@@ -1163,7 +1401,7 @@ return " ".join(cmd)
 #+END_SRC
 
 * Bindings
-#+BEGIN_SRC kdl :tangle ./config.kdl :noweb yes :eval no :results value
+#+BEGIN_SRC kdl :tangle ./config.kdl :noweb yes :eval no :exports results
     // ## BINDINGS ###############################################################
   binds {
       Mod+Shift+Slash                               { spawn <<bindings()>>; }
@@ -1192,6 +1430,7 @@ return " ".join(cmd)
       XF86AudioMute allow-when-locked=true          { spawn <<audio_mute()>>; }
       XF86AudioMicMute allow-when-locked=true       { spawn <<audio_mic_mute()>>; }
       Mod+Shift+S                                   { spawn <<screenshot_viewer()>>; }
+      Mod+Ctrl+S                                    { spawn <<screenshot_viewer_emacs()>>; }          
       Mod+S                                         { screenshot; }          
       Mod+O repeat=false                            { toggle-overview; }
       Mod+Q                                         { close-window; }

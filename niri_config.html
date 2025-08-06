@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-08-05 Tue 19:53 -->
+<!-- 2025-08-06 Wed 13:08 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Niri Config.kdl</title>
@@ -201,54 +201,56 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org5392f81">1. Overview</a></li>
-<li><a href="#org0d04c40">2. Date/Timestamp of Last Update/Deployment</a></li>
-<li><a href="#org6561893">3. Target System</a></li>
-<li><a href="#orgcf58ec2">4. Variables - Colors</a></li>
-<li><a href="#org655099e">5. Variables - Paths</a></li>
-<li><a href="#orgee6a65e">6. Variables - Apps &amp; Scripts</a></li>
-<li><a href="#org22fe787">7. Environment</a></li>
-<li><a href="#orgbef8e29">8. Inputs</a></li>
-<li><a href="#orga9668e4">9. Outputs</a></li>
-<li><a href="#org383e695">10. Startup Apps</a></li>
-<li><a href="#orgddcd8fc">11. Workspaces</a></li>
-<li><a href="#orga5e775b">12. Other</a></li>
-<li><a href="#org83dab3e">13. Layout</a></li>
-<li><a href="#org74cec5f">14. Window Rules</a></li>
-<li><a href="#orgebd24c5">15. Bindings</a></li>
+<li><a href="#org79c0315">1. Overview</a></li>
+<li><a href="#orgc886827">2. Date/Timestamp of Last Update/Deployment</a></li>
+<li><a href="#org8b206e0">3. Target System</a></li>
+<li><a href="#org3608e59">4. Variables - Colors</a></li>
+<li><a href="#org53a3624">5. Variables - Paths</a></li>
+<li><a href="#org2ed4cef">6. Variables - Apps &amp; Scripts</a></li>
+<li><a href="#orgfe1b951">7. Environment</a></li>
+<li><a href="#orgc3adad1">8. Inputs</a></li>
+<li><a href="#org2bac097">9. Outputs</a></li>
+<li><a href="#org6f9f76b">10. Startup Apps</a></li>
+<li><a href="#org3877c0c">11. Workspaces</a></li>
+<li><a href="#org7e75c54">12. Other</a></li>
+<li><a href="#orgc8ee916">13. Layout</a></li>
+<li><a href="#org5bdf786">14. Window Rules</a></li>
+<li><a href="#orga6572e1">15. Bindings</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org5392f81" class="outline-2">
-<h2 id="org5392f81"><span class="section-number-2">1.</span> Overview</h2>
+<div id="outline-container-org79c0315" class="outline-2">
+<h2 id="org79c0315"><span class="section-number-2">1.</span> Overview</h2>
 </div>
-<div id="outline-container-org0d04c40" class="outline-2">
-<h2 id="org0d04c40"><span class="section-number-2">2.</span> Date/Timestamp of Last Update/Deployment</h2>
+<div id="outline-container-orgc886827" class="outline-2">
+<h2 id="orgc886827"><span class="section-number-2">2.</span> Date/Timestamp of Last Update/Deployment</h2>
 <div class="outline-text-2" id="text-2">
 <pre class="example">
-2025-08-05 19:52:24
+2025-08-06 13:07:43
 </pre>
 </div>
 </div>
-<div id="outline-container-org6561893" class="outline-2">
-<h2 id="org6561893"><span class="section-number-2">3.</span> Target System</h2>
+<div id="outline-container-org8b206e0" class="outline-2">
+<h2 id="org8b206e0"><span class="section-number-2">3.</span> Target System</h2>
 <div class="outline-text-2" id="text-3">
 <p>
-Target system for niri config.
+I have multiple systems (e.g. laptop, desktop, pi) that need different configurations mostly as
+it relates to monitor, workspace and some limited customization if keybindings. Change the
+return value to be either "lenovo", "dell", or "pi" based on the target system.
 </p>
-
-<p>
-lenovo | dell | pi
-</p>
-
 <pre class="example">
 lenovo
 </pre>
 </div>
 </div>
-<div id="outline-container-orgcf58ec2" class="outline-2">
-<h2 id="orgcf58ec2"><span class="section-number-2">4.</span> Variables - Colors</h2>
+<div id="outline-container-org3608e59" class="outline-2">
+<h2 id="org3608e59"><span class="section-number-2">4.</span> Variables - Colors</h2>
 <div class="outline-text-2" id="text-4">
+<p>
+I currently use archraft as my base distro which included pywal for themeing. This section
+integrates the archcraft themeing approach by loading the colors.css file and applying
+them in a few areas like focued / unfocused window ring / border.
+</p>
 <pre class="example">
 {"wallpaper": "/home/username/Pictures/wallpapers/rubiks-cube.png", "background": "#1e1c1c", "foreground": "#dfd7c6", "cursor": "#dfd7c6", "color0": "#1e1c1c", "color1": "#948B77", "color2": "#A1967E", "color3": "#9D9882", "color4": "#A79C83", "color5": "#B5A98D", "color6": "#C8B999", "color7": "#dfd7c6", "color8": "#9c968a", "color9": "#948B77", "color10": "#A1967E", "color11": "#9D9882", "color12": "#A79C83", "color13": "#B5A98D", "color14": "#C8B999", "color15": "#dfd7c6", "FZF_DEFAULT_OPTS": "", "LS_COLORS": "${LS_COLORS}:su=30;41:ow=30;42:st=30;44:"}
 </pre>
@@ -349,9 +351,14 @@ lenovo
 </pre>
 </div>
 </div>
-<div id="outline-container-org655099e" class="outline-2">
-<h2 id="org655099e"><span class="section-number-2">5.</span> Variables - Paths</h2>
+<div id="outline-container-org53a3624" class="outline-2">
+<h2 id="org53a3624"><span class="section-number-2">5.</span> Variables - Paths</h2>
 <div class="outline-text-2" id="text-5">
+<p>
+All shared niri variables are set in this section. This overcomes the limitation that .kdl
+has in using variables. Other ways to work around this in niri is to place most logic
+in shell scripts which simplifies constructing commands.
+</p>
 <pre class="example">
 ~/.config/niri/scripts
 </pre>
@@ -372,9 +379,14 @@ Screenshot-from-%Y-%m-%d-%H-%M-%S.png
 </pre>
 </div>
 </div>
-<div id="outline-container-orgee6a65e" class="outline-2">
-<h2 id="orgee6a65e"><span class="section-number-2">6.</span> Variables - Apps &amp; Scripts</h2>
+<div id="outline-container-org2ed4cef" class="outline-2">
+<h2 id="org2ed4cef"><span class="section-number-2">6.</span> Variables - Apps &amp; Scripts</h2>
 <div class="outline-text-2" id="text-6">
+<p>
+All my applications and shells scripts are set to variables here. This gives a little bit more
+flexibility in constructing more complex statements mostly in the use of quoting. This also
+give you the opportunity to execute some preprocessing logic if necessary.
+</p>
 <pre class="example">
 "~/.config/niri/scripts/rofi_bindings"
 </pre>
@@ -572,16 +584,37 @@ Screenshot-from-%Y-%m-%d-%H-%M-%S.png
 </pre>
 </div>
 </div>
-<div id="outline-container-org22fe787" class="outline-2">
-<h2 id="org22fe787"><span class="section-number-2">7.</span> Environment</h2>
+<div id="outline-container-orgfe1b951" class="outline-2">
+<h2 id="orgfe1b951"><span class="section-number-2">7.</span> Environment</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+This sets the niri environment variables. You can also pull environment variables in
+externally if you need reference to them which is a limitation in .kdl.  Currently
+I only need to set the DISPLAY variable for xwayland.
+</p>
 </div>
-<div id="outline-container-orgbef8e29" class="outline-2">
-<h2 id="orgbef8e29"><span class="section-number-2">8.</span> Inputs</h2>
 </div>
-<div id="outline-container-orga9668e4" class="outline-2">
-<h2 id="orga9668e4"><span class="section-number-2">9.</span> Outputs</h2>
+<div id="outline-container-orgc3adad1" class="outline-2">
+<h2 id="orgc3adad1"><span class="section-number-2">8.</span> Inputs</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+This section defined inputs such as keyboard, mouse, pen etc. Focus follows mouse it
+probably the most critical setting for my use so that when hovering a mouse over
+a windows the focus also it set to the window being hovered. I have adopted this sam
+behaviour in emacs since using tile managers.
+</p>
+</div>
+</div>
+<div id="outline-container-org2bac097" class="outline-2">
+<h2 id="org2bac097"><span class="section-number-2">9.</span> Outputs</h2>
 <div class="outline-text-2" id="text-9">
-<pre class="example" id="orgef8187c">
+<p>
+This section sets the monitor configurations. These are different across environments so there
+has to be evaluation performed to determine which monitor configurations get exported to config.kdl.
+I've chose emacs-lisp for this because I found the string manipulation to be a little simper than
+python, although I'm sure most of it is a limitation in my knowledge.
+</p>
+<pre class="example" id="orgb043d4d">
 output "HDMI-A-1" {
 
           // off
@@ -619,7 +652,7 @@ output "HDMI-A-1" {
  }
 </pre>
 
-<pre class="example" id="orgce1d146">
+<pre class="example" id="org0030ac4">
 output "eDP1" {
 
           // off
@@ -634,9 +667,11 @@ output "eDP1" {
 </pre>
 
 <p>
-Generate output config for target system.
+This generates the output section based on the target-system. After now knowing more about how
+babel works, this can be done more elegantly and likely doe not need any if statements but just
+variable matching logic.
 </p>
-<pre class="example" id="org2a6f268">
+<pre class="example" id="org2418a2f">
 output "HDMI-A-1" {
 
           // off
@@ -675,13 +710,25 @@ output "HDMI-A-1" {
 </pre>
 </div>
 </div>
-<div id="outline-container-org383e695" class="outline-2">
-<h2 id="org383e695"><span class="section-number-2">10.</span> Startup Apps</h2>
+<div id="outline-container-org6f9f76b" class="outline-2">
+<h2 id="org6f9f76b"><span class="section-number-2">10.</span> Startup Apps</h2>
+<div class="outline-text-2" id="text-10">
+<p>
+These are the apps that startup when niri starts. This actually works better in my opinion just
+putting all these in a single shell script and calling the shell script which enables
+preprocessing and progamatic control to ensure they startup in the correct sequence etc.
+</p>
 </div>
-<div id="outline-container-orgddcd8fc" class="outline-2">
-<h2 id="orgddcd8fc"><span class="section-number-2">11.</span> Workspaces</h2>
+</div>
+<div id="outline-container-org3877c0c" class="outline-2">
+<h2 id="org3877c0c"><span class="section-number-2">11.</span> Workspaces</h2>
 <div class="outline-text-2" id="text-11">
-<pre class="example" id="org19d609d">
+<p>
+This where I setup my static workspaces. These are mostly used for my 3 monitor setup, where I have
+a dedicated monitor for these workspaces. Similar to output there needs to evaluation to determine
+the target system as this is different between my desktop and laptop.
+</p>
+<pre class="example" id="orgf0f9b8f">
 
 workspace "scratchpad" {
         open-on-output "HDMI-A-3"
@@ -721,9 +768,9 @@ workspace "scratchpad" {
 
 
 <p>
-Generate workspace config for target system.
+This section will determine which workspace configuration to output into config.kdl.
 </p>
-<pre class="example" id="org16cc8c4">
+<pre class="example" id="orgd4ae848">
 
 workspace "scratchpad" {
         open-on-output "HDMI-A-3"
@@ -755,33 +802,55 @@ workspace "messaging" {
 </pre>
 </div>
 </div>
-<div id="outline-container-orga5e775b" class="outline-2">
-<h2 id="orga5e775b"><span class="section-number-2">12.</span> Other</h2>
+<div id="outline-container-org7e75c54" class="outline-2">
+<h2 id="org7e75c54"><span class="section-number-2">12.</span> Other</h2>
+<div class="outline-text-2" id="text-12">
+<p>
+Niri has some miscellaneous config options that I've placed in this section. I've created
+my own hotkey overlay referenced later.
+</p>
 </div>
-<div id="outline-container-org83dab3e" class="outline-2">
-<h2 id="org83dab3e"><span class="section-number-2">13.</span> Layout</h2>
 </div>
-<div id="outline-container-org74cec5f" class="outline-2">
-<h2 id="org74cec5f"><span class="section-number-2">14.</span> Window Rules</h2>
+<div id="outline-container-orgc8ee916" class="outline-2">
+<h2 id="orgc8ee916"><span class="section-number-2">13.</span> Layout</h2>
+<div class="outline-text-2" id="text-13">
+<p>
+This section defines the basic layout, decorations and animations. Since niri supports hot
+loading a config, I've toyed with the idea of creating a popup based on this content that
+will allow me to change it on the fly and save the configurations to reapply periodically.
+So for example, you would hit key sequence which pops up a window of these values, alter
+the values save the config and apply. This would allow for quick visual changes to fine tune
+QOL.
+</p>
 </div>
-<div id="outline-container-orgebd24c5" class="outline-2">
-<h2 id="orgebd24c5"><span class="section-number-2">15.</span> Bindings</h2>
+</div>
+<div id="outline-container-org5bdf786" class="outline-2">
+<h2 id="org5bdf786"><span class="section-number-2">14.</span> Window Rules</h2>
+<div class="outline-text-2" id="text-14">
+<p>
+This section defines the window rules for my windows. I mostly use this to set an app to
+floating / size and to assign the app to a specific workspace.
+</p>
+</div>
+</div>
+<div id="outline-container-orga6572e1" class="outline-2">
+<h2 id="orga6572e1"><span class="section-number-2">15.</span> Bindings</h2>
 <div class="outline-text-2" id="text-15">
 <p>
-Key bindings Dictionary Columns
+This is the bindings data section. Each key binding is loaded into a python dict which contains
+5 columns:
 </p>
+
 <ol class="org-ol">
-<li>Keybinding</li>
-<li>Command</li>
-<li>Spawn Y | N</li>
-<li>Description</li>
-<li>Target "" | all | lenovo | dell</li>
+<li>Keybinding - the key sequence (e.g. Mod+Shift+X).</li>
+<li>Command - the command to invoke (.e.g. "floorp").</li>
+<li>Spawn Y | N - if a spawn command needs to be prepended to the command.</li>
+<li>Description - A description of the binding to be used for a custom hotkey overlay.</li>
+<li>Target "" (all) | all (common) | lenovo | dell - The target system for the keybinding. If
+the target is left blank it will generate all keybindings which is used for documenting
+the overlay. If you pass a target system in like "lenovo" it will return the commond
+bindings use across all systems plus the lenovo specific ones.</li>
 </ol>
-
-<p>
-Note Target "" = return all key bindings.
-</p>
-
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -1639,7 +1708,11 @@ Note Target "" = return all key bindings.
 </tbody>
 </table>
 
-
+<p>
+This is the keybindings-config code block which returns the keybindings base on the
+target system. There is mode option which will return the keybinding content to
+be used for configuration use or doc use.
+</p>
 <p>
 Mod+Shift+Slash                                    { spawn "~/.config/niri/scripts/rofi<sub>bindings</sub>"; }
 Mod+D                                              { spawn "~/.config/niri/scripts/rofi<sub>launcher</sub>"; }
@@ -1661,6 +1734,216 @@ Mod+Shift+P                                        { spawn "~/projects/niri<sub>
 Mod+Return                                         { spawn "~/.config/niri/scripts/alacritty"; }
 Mod+Alt+L                                          { spawn "~/.config/niri/scripts/lockscreen"; }
 XF86AudioRaiseVolume allow-when-locked=true        { spawn "wpctl" "set-volume" "@DEFAULT<sub>AUDIO</sub><sub>SINK</sub>@" "0.1+"; }
+XF86AudioLowerVolume allow-when-locked=true        { spawn "wpctl" "set-volume" "@DEFAULT<sub>AUDIO</sub><sub>SINK</sub>@" "0.1-"; }
+XF86AudioMute allow-when-locked=true               { spawn "wpctl" "set-mute" "@DEFAULT<sub>AUDIO</sub><sub>SINK</sub>@" "toggle"; }
+XF86AudioMicMute allow-when-locked=true            { spawn "wpctl" "set-mute" "@DEFAULT<sub>AUDIO</sub><sub>SOURCE</sub>@" "toggle"; }
+Mod+Shift+S                                        { spawn "~/projects/niri<sub>toolkit</sub>/niri-screenshot-picker"; }
+Mod+Ctrl+S                                         { spawn "~/projects/niri<sub>toolkit</sub>/niri-screenshot-picker-emacs"; }
+Mod+S                                              { screenshot; }
+Mod+O repeat=false                                 { toggle-overview; }
+Mod+Q                                              { close-window; }
+Mod+h                                              { focus-column-left; }
+Mod+j                                              { focus-window-down; }
+Mod+k                                              { focus-window-up; }
+Mod+l                                              { focus-column-right; }
+Mod+Shift+h                                        { move-column-left; }
+Mod+Shift+j                                        { move-window-down; }
+Mod+Shift+k                                        { move-window-up; }
+Mod+Shift+l                                        { move-column-right; }
+Mod+Home                                           { focus-column-first; }
+Mod+End                                            { focus-column-last; }
+Mod+Ctrl+Home                                      { move-column-to-first; }
+Mod+Ctrl+End                                       { move-column-to-last; }
+Mod+Ctrl+h                                         { focus-monitor-left; }
+Mod+Ctrl+j                                         { focus-monitor-down; }
+Mod+Ctrl+k                                         { focus-monitor-up; }
+Mod+Ctrl+l                                         { focus-monitor-right; }
+Mod+Shift+Ctrl+h                                   { move-column-to-monitor-left; }
+Mod+Shift+Ctrl+j                                   { move-column-to-monitor-down; }
+Mod+Shift+Ctrl+k                                   { move-column-to-monitor-up; }
+Mod+Shift+Ctrl+l                                   { move-column-to-monitor-right; }
+Mod+Page<sub>Down</sub>                                      { focus-workspace-down; }
+Mod+Page<sub>Up</sub>                                        { focus-workspace-up; }
+Mod+U                                              { focus-workspace-down; }
+Mod+I                                              { focus-workspace-up; }
+Mod+Ctrl+Page<sub>Down</sub>                                 { move-column-to-workspace-down; }
+Mod+Ctrl+Page<sub>Up</sub>                                   { move-column-to-workspace-up; }
+Mod+Ctrl+U                                         { move-column-to-workspace-down; }
+Mod+Ctrl+I                                         { move-column-to-workspace-up; }
+Mod+Shift+Page<sub>Down</sub>                                { move-workspace-down; }
+Mod+Shift+Page<sub>Up</sub>                                  { move-workspace-up; }
+Mod+Shift+U                                        { move-workspace-down; }
+Mod+Shift+I                                        { move-workspace-up; }
+Mod+WheelScrollDown cooldown-ms=150                { focus-workspace-down; }
+Mod+WheelScrollUp cooldown-ms=150                  { focus-workspace-up; }
+Mod+Ctrl+WheelScrollDown cooldown-ms=150           { move-column-to-workspace-down; }
+Mod+Ctrl+WheelScrollUp cooldown-ms=150             { move-column-to-workspace-up; }
+Mod+Shift+WheelScrollDown                          { focus-column-right; }
+Mod+Shift+WheelScrollUp                            { focus-column-left; }
+Mod+Ctrl+Shift+WheelScrollDown                     { move-column-right; }
+Mod+Ctrl+Shift+WheelScrollUp                       { move-column-left; }
+Mod+Tab                                            { focus-workspace-previous; }
+Mod+BracketLeft                                    { consume-or-expel-window-left; }
+Mod+BracketRight                                   { consume-or-expel-window-right; }
+Mod+Comma                                          { consume-window-into-column; }
+Mod+Period                                         { expel-window-from-column; }
+Mod+R                                              { switch-preset-column-width; }
+Mod+Shift+R                                        { switch-preset-window-height; }
+Mod+Ctrl+R                                         { reset-window-height; }
+Mod+F                                              { maximize-column; }
+Mod+Shift+F                                        { fullscreen-window; }
+Mod+Ctrl+F                                         { expand-column-to-available-width; }
+Mod+C                                              { center-column; }
+Mod+Ctrl+C                                         { center-visible-columns; }
+Mod+Minus                                          { set-column-width "-10%"; }
+Mod+Equal                                          { set-column-width "<del>10%"; }
+Mod+Ctrl+Minus                                     { set-column-width "-1"; }
+Mod+Ctrl+Equal                                     { set-column-width "+1"; }
+Mod+Shift+Minus                                    { set-window-height "-10%"; }
+Mod+Shift+Equal                                    { set-window-height "+10%"; }
+Mod+Shift+Ctrl+Minus                               { set-window-height "-1"; }
+Mod+Shift+Ctrl+Equal                               { set-window-height "+1"; }
+Mod+0                                              { set-column-width "960"; }
+Mod+Shift+0                                        { set-window-height "540"; }
+Mod+Alt+0                                          { set-column-width "1280"; }
+Mod+Shift+Alt+0                                    { set-window-height "720"; }
+Mod+Ctrl+0                                         { set-column-width "1920"; }
+Mod+Shift+Ctrl+0                                   { set-window-height "1080"; }
+Mod+V                                              { toggle-window-floating; }
+Mod+Shift+V                                        { switch-focus-between-floating-and-tiling; }
+Mod+W                                              { toggle-column-tabbed-display; }
+Mod+Space                                          { switch-layout "next"; }
+Mod+Shift+Space                                    { switch-layout "prev"; }
+Print                                              { screenshot; }
+Ctrl+Print                                         { screenshot-screen; }
+Alt+Print                                          { screenshot-window; }
+Mod+Escape allow-inhibiting=false                  { toggle-keyboard-shortcuts-inhibit; }
+Ctrl+Alt+Delete                                    { quit; }
+Mod+Shift+Slash                                    { spawn "~/.config/niri/scripts/rofi<sub>bindings</sub>"; }
+Mod+D                                              { spawn "~/.config/niri/scripts/rofi<sub>launcher</sub>"; }
+Mod+B                                              { spawn "~/.config/niri/scripts/rofi<sub>bluetooth</sub>"; }
+Mod+M                                              { spawn "~/.config/niri/scripts/rofi<sub>music</sub>"; }
+Mod+N                                              { spawn "~/.config/niri/scripts/rofi<sub>network</sub>"; }
+Mod+Shift+D                                        { spawn "~/.config/niri/scripts/rofi<sub>showwindows</sub>"; }
+Mod+E                                              { spawn "emacsclient" "-c" "-s" "emacs-prod"; }
+Mod+Shift+E                                        { spawn "emacsclient" "-c" "-s" "emacs-dev"; }
+Mod+T                                              { spawn "thunar"; }
+Mod+Shift+Y                                        { spawn "sh" "-c" "kitty &#x2013;detach yazi"; }
+Mod+Shift+N                                        { spawn "pluma"; }
+Mod+1                                              { spawn "~/projects/niri<sub>toolkit</sub>/niri-move-window.py" "&#x2013;match" "Messages" "&#x2013;target" "m" "&#x2013;target<sub>id</sub>" "HDMI-A-2" "&#x2013;focus"; }
+Mod+Shift+1                                        { spawn "~/projects/niri<sub>toolkit</sub>/niri-move-window.py" "&#x2013;match" "Messages" "&#x2013;target" "w" "&#x2013;target<sub>id</sub>" "messaging"; }
+Mod+2                                              { spawn "~/projects/niri<sub>toolkit</sub>/niri-move-window.py" "&#x2013;match" "mu4e" "&#x2013;target" "m" "&#x2013;target<sub>id</sub>" "HDMI-A-2" "&#x2013;focus"; }
+Mod+Shift+2                                        { spawn "~/projects/niri<sub>toolkit</sub>/niri-move-window.py" "&#x2013;match" "mu4e" "&#x2013;target" "w" "&#x2013;target<sub>id</sub>" "messaging"; }
+Mod+P                                              { spawn "~/projects/niri<sub>toolkit</sub>/niri<sub>scratchpad</sub>" "&#x2013;action" "put" "&#x2013;scratchpad<sub>name</sub>" "scratchpad"; }
+Mod+Shift+P                                        { spawn "~/projects/niri<sub>toolkit</sub>/niri<sub>scratchpad</sub>" "&#x2013;action" "get" "&#x2013;scratchpad<sub>name</sub>" "scratchpad"; }
+Mod+Return                                         { spawn "~/.config/niri/scripts/alacritty"; }
+Mod+Alt+L                                          { spawn "~/.config/niri/scripts/lockscreen"; }
+XF86AudioRaiseVolume allow-when-locked=true        { spawn "wpctl" "set-volume" "@DEFAULT<sub>AUDIO</sub><sub>SINK</sub>@" "0.1</del>"; }
+XF86AudioLowerVolume allow-when-locked=true        { spawn "wpctl" "set-volume" "@DEFAULT<sub>AUDIO</sub><sub>SINK</sub>@" "0.1-"; }
+XF86AudioMute allow-when-locked=true               { spawn "wpctl" "set-mute" "@DEFAULT<sub>AUDIO</sub><sub>SINK</sub>@" "toggle"; }
+XF86AudioMicMute allow-when-locked=true            { spawn "wpctl" "set-mute" "@DEFAULT<sub>AUDIO</sub><sub>SOURCE</sub>@" "toggle"; }
+Mod+Shift+S                                        { spawn "~/projects/niri<sub>toolkit</sub>/niri-screenshot-picker"; }
+Mod+Ctrl+S                                         { spawn "~/projects/niri<sub>toolkit</sub>/niri-screenshot-picker-emacs"; }
+Mod+S                                              { screenshot; }
+Mod+O repeat=false                                 { toggle-overview; }
+Mod+Q                                              { close-window; }
+Mod+h                                              { focus-column-left; }
+Mod+j                                              { focus-window-down; }
+Mod+k                                              { focus-window-up; }
+Mod+l                                              { focus-column-right; }
+Mod+Shift+h                                        { move-column-left; }
+Mod+Shift+j                                        { move-window-down; }
+Mod+Shift+k                                        { move-window-up; }
+Mod+Shift+l                                        { move-column-right; }
+Mod+Home                                           { focus-column-first; }
+Mod+End                                            { focus-column-last; }
+Mod+Ctrl+Home                                      { move-column-to-first; }
+Mod+Ctrl+End                                       { move-column-to-last; }
+Mod+Ctrl+h                                         { focus-monitor-left; }
+Mod+Ctrl+j                                         { focus-monitor-down; }
+Mod+Ctrl+k                                         { focus-monitor-up; }
+Mod+Ctrl+l                                         { focus-monitor-right; }
+Mod+Shift+Ctrl+h                                   { move-column-to-monitor-left; }
+Mod+Shift+Ctrl+j                                   { move-column-to-monitor-down; }
+Mod+Shift+Ctrl+k                                   { move-column-to-monitor-up; }
+Mod+Shift+Ctrl+l                                   { move-column-to-monitor-right; }
+Mod+Page<sub>Down</sub>                                      { focus-workspace-down; }
+Mod+Page<sub>Up</sub>                                        { focus-workspace-up; }
+Mod+U                                              { focus-workspace-down; }
+Mod+I                                              { focus-workspace-up; }
+Mod+Ctrl+Page<sub>Down</sub>                                 { move-column-to-workspace-down; }
+Mod+Ctrl+Page<sub>Up</sub>                                   { move-column-to-workspace-up; }
+Mod+Ctrl+U                                         { move-column-to-workspace-down; }
+Mod+Ctrl+I                                         { move-column-to-workspace-up; }
+Mod+Shift+Page<sub>Down</sub>                                { move-workspace-down; }
+Mod+Shift+Page<sub>Up</sub>                                  { move-workspace-up; }
+Mod+Shift+U                                        { move-workspace-down; }
+Mod+Shift+I                                        { move-workspace-up; }
+Mod+WheelScrollDown cooldown-ms=150                { focus-workspace-down; }
+Mod+WheelScrollUp cooldown-ms=150                  { focus-workspace-up; }
+Mod+Ctrl+WheelScrollDown cooldown-ms=150           { move-column-to-workspace-down; }
+Mod+Ctrl+WheelScrollUp cooldown-ms=150             { move-column-to-workspace-up; }
+Mod+Shift+WheelScrollDown                          { focus-column-right; }
+Mod+Shift+WheelScrollUp                            { focus-column-left; }
+Mod+Ctrl+Shift+WheelScrollDown                     { move-column-right; }
+Mod+Ctrl+Shift+WheelScrollUp                       { move-column-left; }
+Mod+Tab                                            { focus-workspace-previous; }
+Mod+BracketLeft                                    { consume-or-expel-window-left; }
+Mod+BracketRight                                   { consume-or-expel-window-right; }
+Mod+Comma                                          { consume-window-into-column; }
+Mod+Period                                         { expel-window-from-column; }
+Mod+R                                              { switch-preset-column-width; }
+Mod+Shift+R                                        { switch-preset-window-height; }
+Mod+Ctrl+R                                         { reset-window-height; }
+Mod+F                                              { maximize-column; }
+Mod+Shift+F                                        { fullscreen-window; }
+Mod+Ctrl+F                                         { expand-column-to-available-width; }
+Mod+C                                              { center-column; }
+Mod+Ctrl+C                                         { center-visible-columns; }
+Mod+Minus                                          { set-column-width "-10%"; }
+Mod+Equal                                          { set-column-width "<del>10%"; }
+Mod+Ctrl+Minus                                     { set-column-width "-1"; }
+Mod+Ctrl+Equal                                     { set-column-width "+1"; }
+Mod+Shift+Minus                                    { set-window-height "-10%"; }
+Mod+Shift+Equal                                    { set-window-height "+10%"; }
+Mod+Shift+Ctrl+Minus                               { set-window-height "-1"; }
+Mod+Shift+Ctrl+Equal                               { set-window-height "+1"; }
+Mod+0                                              { set-column-width "960"; }
+Mod+Shift+0                                        { set-window-height "540"; }
+Mod+Alt+0                                          { set-column-width "1280"; }
+Mod+Shift+Alt+0                                    { set-window-height "720"; }
+Mod+Ctrl+0                                         { set-column-width "1920"; }
+Mod+Shift+Ctrl+0                                   { set-window-height "1080"; }
+Mod+V                                              { toggle-window-floating; }
+Mod+Shift+V                                        { switch-focus-between-floating-and-tiling; }
+Mod+W                                              { toggle-column-tabbed-display; }
+Mod+Space                                          { switch-layout "next"; }
+Mod+Shift+Space                                    { switch-layout "prev"; }
+Print                                              { screenshot; }
+Ctrl+Print                                         { screenshot-screen; }
+Alt+Print                                          { screenshot-window; }
+Mod+Escape allow-inhibiting=false                  { toggle-keyboard-shortcuts-inhibit; }
+Ctrl+Alt+Delete                                    { quit; }
+Mod+Shift+Slash                                    { spawn "~/.config/niri/scripts/rofi<sub>bindings</sub>"; }
+Mod+D                                              { spawn "~/.config/niri/scripts/rofi<sub>launcher</sub>"; }
+Mod+B                                              { spawn "~/.config/niri/scripts/rofi<sub>bluetooth</sub>"; }
+Mod+M                                              { spawn "~/.config/niri/scripts/rofi<sub>music</sub>"; }
+Mod+N                                              { spawn "~/.config/niri/scripts/rofi<sub>network</sub>"; }
+Mod+Shift+D                                        { spawn "~/.config/niri/scripts/rofi<sub>showwindows</sub>"; }
+Mod+E                                              { spawn "emacsclient" "-c" "-s" "emacs-prod"; }
+Mod+Shift+E                                        { spawn "emacsclient" "-c" "-s" "emacs-dev"; }
+Mod+T                                              { spawn "thunar"; }
+Mod+Shift+Y                                        { spawn "sh" "-c" "kitty &#x2013;detach yazi"; }
+Mod+Shift+N                                        { spawn "pluma"; }
+Mod+1                                              { spawn "~/projects/niri<sub>toolkit</sub>/niri-move-window.py" "&#x2013;match" "Messages" "&#x2013;target" "m" "&#x2013;target<sub>id</sub>" "HDMI-A-2" "&#x2013;focus"; }
+Mod+Shift+1                                        { spawn "~/projects/niri<sub>toolkit</sub>/niri-move-window.py" "&#x2013;match" "Messages" "&#x2013;target" "w" "&#x2013;target<sub>id</sub>" "messaging"; }
+Mod+2                                              { spawn "~/projects/niri<sub>toolkit</sub>/niri-move-window.py" "&#x2013;match" "mu4e" "&#x2013;target" "m" "&#x2013;target<sub>id</sub>" "HDMI-A-2" "&#x2013;focus"; }
+Mod+Shift+2                                        { spawn "~/projects/niri<sub>toolkit</sub>/niri-move-window.py" "&#x2013;match" "mu4e" "&#x2013;target" "w" "&#x2013;target<sub>id</sub>" "messaging"; }
+Mod+P                                              { spawn "~/projects/niri<sub>toolkit</sub>/niri<sub>scratchpad</sub>" "&#x2013;action" "put" "&#x2013;scratchpad<sub>name</sub>" "scratchpad"; }
+Mod+Shift+P                                        { spawn "~/projects/niri<sub>toolkit</sub>/niri<sub>scratchpad</sub>" "&#x2013;action" "get" "&#x2013;scratchpad<sub>name</sub>" "scratchpad"; }
+Mod+Return                                         { spawn "~/.config/niri/scripts/alacritty"; }
+Mod+Alt+L                                          { spawn "~/.config/niri/scripts/lockscreen"; }
+XF86AudioRaiseVolume allow-when-locked=true        { spawn "wpctl" "set-volume" "@DEFAULT<sub>AUDIO</sub><sub>SINK</sub>@" "0.1</del>"; }
 XF86AudioLowerVolume allow-when-locked=true        { spawn "wpctl" "set-volume" "@DEFAULT<sub>AUDIO</sub><sub>SINK</sub>@" "0.1-"; }
 XF86AudioMute allow-when-locked=true               { spawn "wpctl" "set-mute" "@DEFAULT<sub>AUDIO</sub><sub>SINK</sub>@" "toggle"; }
 XF86AudioMicMute allow-when-locked=true            { spawn "wpctl" "set-mute" "@DEFAULT<sub>AUDIO</sub><sub>SOURCE</sub>@" "toggle"; }
@@ -1747,12 +2030,18 @@ Alt+Print                                          { screenshot-window; }
 Mod+Escape allow-inhibiting=false                  { toggle-keyboard-shortcuts-inhibit; }
 Ctrl+Alt+Delete                                    { quit; }
 </p>
+
+<p>
+This generates the keybindings and outputs them to the config.kdl file.
+This generates the keybindings documentation and writes it to a text file that is
+referenced by a custom overlay displayed using a keybinding + rofi.
+</p>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Mike Burns</p>
-<p class="date">Created: 2025-08-05 Tue 19:53</p>
+<p class="date">Created: 2025-08-06 Wed 13:08</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

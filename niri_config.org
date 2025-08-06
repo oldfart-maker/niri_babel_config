@@ -41,13 +41,12 @@ return datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 #+end_src
 
 #+RESULTS: timestamp
-: 2025-08-04 18:48:41
+: 2025-08-06 13:05:52
 
 * Target System
-Target system for niri config.
-
-lenovo | dell | pi
-
+I have multiple systems (e.g. laptop, desktop, pi) that need different configurations mostly as
+it relates to monitor, workspace and some limited customization if keybindings. Change the
+return value to be either "lenovo", "dell", or "pi" based on the target system.
 #+name: target-system
 #+begin_src python :results value
   return "lenovo"
@@ -57,6 +56,9 @@ lenovo | dell | pi
 : lenovo
 
 * Variables - Colors
+I currently use archraft as my base distro which included pywal for themeing. This section
+integrates the archcraft themeing approach by loading the colors.css file and applying
+them in a few areas like focued / unfocused window ring / border.
 #+name: theme-colors-json
 #+begin_src python :results value
 import json
@@ -77,7 +79,7 @@ return json.dumps(theme)
 #+end_src
 
 #+RESULTS: theme-colors-json
-: {"wallpaper": "/home/username/Pictures/wallpapers/ign_unsplash15.png", "background": "#1c1f27", "foreground": "#d2dadc", "cursor": "#d2dadc", "color0": "#1c1f27", "color1": "#848187", "color2": "#A09CA1", "color3": "#D1A997", "color4": "#DBC9B5", "color5": "#E1D3B7", "color6": "#B0BDC3", "color7": "#d2dadc", "color8": "#93989a", "color9": "#848187", "color10": "#A09CA1", "color11": "#D1A997", "color12": "#DBC9B5", "color13": "#E1D3B7", "color14": "#B0BDC3", "color15": "#d2dadc", "FZF_DEFAULT_OPTS": "", "LS_COLORS": "${LS_COLORS}:su=30;41:ow=30;42:st=30;44:"}
+: {"wallpaper": "/home/username/Pictures/wallpapers/rubiks-cube.png", "background": "#1e1c1c", "foreground": "#dfd7c6", "cursor": "#dfd7c6", "color0": "#1e1c1c", "color1": "#948B77", "color2": "#A1967E", "color3": "#9D9882", "color4": "#A79C83", "color5": "#B5A98D", "color6": "#C8B999", "color7": "#dfd7c6", "color8": "#9c968a", "color9": "#948B77", "color10": "#A1967E", "color11": "#9D9882", "color12": "#A79C83", "color13": "#B5A98D", "color14": "#C8B999", "color15": "#dfd7c6", "FZF_DEFAULT_OPTS": "", "LS_COLORS": "${LS_COLORS}:su=30;41:ow=30;42:st=30;44:"}
 
 #+name: colors-dict
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -110,7 +112,7 @@ return json.dumps(theme)
 #+end_src
 
 #+RESULTS: colors-dict
-: {'wallpaper': '/home/username/Pictures/wallpapers/ign_unsplash15.png', 'background': '#1c1f27', 'foreground': '#d2dadc', 'cursor': '#d2dadc', 'color0': '#1c1f27', 'color1': '#848187', 'color2': '#A09CA1', 'color3': '#D1A997', 'color4': '#DBC9B5', 'color5': '#E1D3B7', 'color6': '#B0BDC3', 'color7': '#d2dadc', 'color8': '#93989a', 'color9': '#848187', 'color10': '#A09CA1', 'color11': '#D1A997', 'color12': '#DBC9B5', 'color13': '#E1D3B7', 'color14': '#B0BDC3', 'color15': '#d2dadc', 'FZF_DEFAULT_OPTS': '', 'LS_COLORS': '${LS_COLORS}:su=30;41:ow=30;42:st=30;44:'}
+: {'wallpaper': '/home/username/Pictures/wallpapers/rubiks-cube.png', 'background': '#1e1c1c', 'foreground': '#dfd7c6', 'cursor': '#dfd7c6', 'color0': '#1e1c1c', 'color1': '#948B77', 'color2': '#A1967E', 'color3': '#9D9882', 'color4': '#A79C83', 'color5': '#B5A98D', 'color6': '#C8B999', 'color7': '#dfd7c6', 'color8': '#9c968a', 'color9': '#948B77', 'color10': '#A1967E', 'color11': '#9D9882', 'color12': '#A79C83', 'color13': '#B5A98D', 'color14': '#C8B999', 'color15': '#dfd7c6', 'FZF_DEFAULT_OPTS': '', 'LS_COLORS': '${LS_COLORS}:su=30;41:ow=30;42:st=30;44:'}
 
 #+name: background
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -120,7 +122,7 @@ return colors["background"]
 #+end_src
 
 #+RESULTS: background
-: #1c1f27
+: #1e1c1c
 
 #+name: foreground
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -130,7 +132,7 @@ return colors["foreground"]
 #+end_src
 
 #+RESULTS: foreground
-: #d2dadc
+: #dfd7c6
 
 #+name: color0
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -140,7 +142,7 @@ return colors["color0"]
 #+end_src
 
 #+RESULTS: color0
-: #1c1f27
+: #1e1c1c
 
 #+name: color1
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -150,7 +152,7 @@ return colors["color1"]
 #+end_src
 
 #+RESULTS: color1
-: #848187
+: #948B77
 
 #+name: color2
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -160,7 +162,7 @@ return colors["color2"]
 #+end_src
 
 #+RESULTS: color2
-: #A09CA1
+: #A1967E
 
 #+name: color3
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -170,7 +172,7 @@ return colors["color3"]
 #+end_src
 
 #+RESULTS: color3
-: #D1A997
+: #9D9882
 
 #+name: color4
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -180,7 +182,7 @@ return colors["color4"]
 #+end_src
 
 #+RESULTS: color4
-: #DBC9B5
+: #A79C83
 
 #+name: color5
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -190,7 +192,7 @@ return colors["color5"]
 #+end_src
 
 #+RESULTS: color5
-: #E1D3B7
+: #B5A98D
 
 #+name: color6
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -200,7 +202,7 @@ return colors["color6"]
 #+end_src
 
 #+RESULTS: color6
-: #B0BDC3
+: #C8B999
 
 #+name: color7
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -210,7 +212,7 @@ return colors["color7"]
 #+end_src
 
 #+RESULTS: color7
-: #d2dadc
+: #dfd7c6
 
 #+name: color8
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -220,7 +222,7 @@ return colors["color8"]
 #+end_src
 
 #+RESULTS: color8
-: #93989a
+: #9c968a
 
 #+name: color9
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -230,7 +232,7 @@ return colors["color9"]
 #+end_src
 
 #+RESULTS: color9
-: #848187
+: #948B77
 
 #+name: color10
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -240,7 +242,7 @@ return colors["color10"]
 #+end_src
 
 #+RESULTS: color10
-: #A09CA1
+: #A1967E
 
 #+name: color11
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -250,7 +252,7 @@ return colors["color11"]
 #+end_src
 
 #+RESULTS: color11
-: #D1A997
+: #9D9882
 
 #+name: color12
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -260,7 +262,7 @@ return colors["color12"]
 #+end_src
 
 #+RESULTS: color12
-: #DBC9B5
+: #A79C83
 
 #+name: color13
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -270,7 +272,7 @@ return colors["color13"]
 #+end_src
 
 #+RESULTS: color13
-: #E1D3B7
+: #B5A98D
 
 #+name: color14
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -280,7 +282,7 @@ return colors["color14"]
 #+end_src
 
 #+RESULTS: color14
-: #B0BDC3
+: #C8B999
 
 #+name: color15
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -290,9 +292,12 @@ return colors["color15"]
 #+end_src
 
 #+RESULTS: color15
-: #d2dadc
+: #dfd7c6
 
 * Variables - Paths
+All shared niri variables are set in this section. This overcomes the limitation that .kdl
+has in using variables. Other ways to work around this in niri is to place most logic
+in shell scripts which simplifies constructing commands.
 #+NAME: niri_scripts
 #+BEGIN_SRC python :results value
   return "~/.config/niri/scripts"
@@ -326,6 +331,9 @@ return colors["color15"]
 : Screenshot-from-%Y-%m-%d-%H-%M-%S.png
 
 * Variables - Apps & Scripts
+All my applications and shells scripts are set to variables here. This gives a little bit more
+flexibility in constructing more complex statements mostly in the use of quoting. This also
+give you the opportunity to execute some preprocessing logic if necessary.
 #+NAME: bindings
 #+BEGIN_SRC python :var _temp=niri_scripts :results value
   _temp = f'{_temp}/rofi_bindings'
@@ -741,6 +749,9 @@ return " ".join(cmd)
 : "~/projects/niri_toolkit/niri-screenshot-picker-emacs"
 
 * Environment
+This sets the niri environment variables. You can also pull environment variables in
+externally if you need reference to them which is a limitation in .kdl.  Currently
+I only need to set the DISPLAY variable for xwayland.
 #+BEGIN_SRC kdl :tangle ./config.kdl
 // ## ENVIRONMENT  ###########################################################  
   environment {
@@ -749,6 +760,10 @@ return " ".join(cmd)
 #+END_SRC
 
 * Inputs
+This section defined inputs such as keyboard, mouse, pen etc. Focus follows mouse it
+probably the most critical setting for my use so that when hovering a mouse over
+a windows the focus also it set to the window being hovered. I have adopted this sam
+behaviour in emacs since using tile managers.
 #+BEGIN_SRC kdl :tangle ./config.kdl
 // ## INPUT CONFIGURATION ####################################################  
   input {
@@ -799,6 +814,10 @@ return " ".join(cmd)
 #+END_SRC
 
 * Outputs
+This section sets the monitor configurations. These are different across environments so there
+has to be evaluation performed to determine which monitor configurations get exported to config.kdl.
+I've chose emacs-lisp for this because I found the string manipulation to be a little simper than
+python, although I'm sure most of it is a limitation in my knowledge.
 #+NAME: lenovo-output-config
 #+BEGIN_SRC emacs-lisp :eval yes
      (format "%s" "output \"HDMI-A-1\" {
@@ -892,12 +911,29 @@ output "HDMI-A-1" {
       }")  
 #+END_SRC
 
-Generate output config for target system.
+#+RESULTS: dell-output-config
+#+begin_example
+output "eDP1" {
+
+          // off
+
+          mode "1920x1080@60"
+
+          scale 1
+          transform "normal"
+
+          position x=0 y=0
+ }
+#+end_example
+
+This generates the output section based on the target-system. After now knowing more about how
+babel works, this can be done more elegantly and likely doe not need any if statements but just
+variable matching logic.
 #+NAME: output_config_eval
 #+BEGIN_SRC python :eval yes :var loc=lenovo-output-config :var doc=dell-output-config :var ts=target-system
   if ts=="lenovo":
       _config=loc
-  elif ts==dell:
+  elif ts=="dell":
       _config=doc
       
   return _config
@@ -949,6 +985,9 @@ output "HDMI-A-1" {
 #+END_SRC
 
 * Startup Apps
+These are the apps that startup when niri starts. This actually works better in my opinion just
+putting all these in a single shell script and calling the shell script which enables
+preprocessing and progamatic control to ensure they startup in the correct sequence etc.
 #+BEGIN_SRC kdl :noweb yes :eval yes :tangle ./config.kdl
 // ## STARTUP APPS  ###########################################################  
     spawn-at-startup      <<idle_lock()>>
@@ -965,6 +1004,9 @@ output "HDMI-A-1" {
 #+END_SRC
 
 * Workspaces
+This where I setup my static workspaces. These are mostly used for my 3 monitor setup, where I have
+a dedicated monitor for these workspaces. Similar to output there needs to evaluation to determine
+the target system as this is different between my desktop and laptop.
 #+NAME: lenovo-workspace-config
 #+BEGIN_SRC emacs-lisp :eval yes
   (format "%s" "
@@ -1043,12 +1085,12 @@ workspace "messaging" {
 :         open-on-output "eDP1"
 : }
 
-Generate workspace config for target system.
+This section will determine which workspace configuration to output into config.kdl.
 #+NAME: workspace_config_eval
 #+BEGIN_SRC python :eval yes :var loc=lenovo-workspace-config :var doc=dell-workspace-config :var ts=target-system
   if ts=="lenovo":
       _config=loc
-  elif ts==dell:
+  elif ts=="dell":
       _config=doc
       
   return _config
@@ -1086,13 +1128,14 @@ workspace "messaging" {
 }
 #+end_example
 
-#+NAME: workspace_config
 #+BEGIN_SRC kdl :noweb yes :tangle ./config.kdl
 // ## SETUP WORKSPACES ##################################################    
   <<workspace_config_eval()>>
 #+END_SRC
 
 * Other
+Niri has some miscellaneous config options that I've placed in this section. I've created
+my own hotkey overlay referenced later.
 #+BEGIN_SRC kdl :tangle ./config.kdl
 // ## MISCELLANEOUS ##########################################################  
   hotkey-overlay {
@@ -1101,6 +1144,12 @@ workspace "messaging" {
 #+END_SRC
 
 * Layout
+This section defines the basic layout, decorations and animations. Since niri supports hot
+loading a config, I've toyed with the idea of creating a popup based on this content that
+will allow me to change it on the fly and save the configurations to reapply periodically.
+So for example, you would hit key sequence which pops up a window of these values, alter
+the values save the config and apply. This would allow for quick visual changes to fine tune
+QOL.
 #+BEGIN_SRC kdl :tangle ./config.kdl :noweb yes :eval no :results value
 // ## LAYOUT CONFIGURATION ####################################################  
     layout {
@@ -1254,7 +1303,9 @@ workspace "messaging" {
     }
 #+END_SRC
 
-* Window Rules 
+* Window Rules
+This section defines the window rules for my windows. I mostly use this to set an app to
+floating / size and to assign the app to a specific workspace.
 #+BEGIN_SRC kdl :tangle ./config.kdl
 // ## WINDOW / LAYER RULES #####################################################  
     window-rule {
@@ -1377,15 +1428,17 @@ workspace "messaging" {
 #+END_SRC
 
 * Bindings
-Key bindings Dictionary Columns
-1) Keybinding
-2) Command
-3) Spawn Y | N
-4) Description
-5) Target "" | all | lenovo | dell
+This is the bindings data section. Each key binding is loaded into a python dict which contains
+5 columns:
 
-Note Target "" = return all key bindings.
-  
+1) Keybinding - the key sequence (e.g. Mod+Shift+X).
+2) Command - the command to invoke (.e.g. "floorp").
+3) Spawn Y | N - if a spawn command needs to be prepended to the command.
+4) Description - A description of the binding to be used for a custom hotkey overlay.
+5) Target "" (all) | all (common) | lenovo | dell - The target system for the keybinding. If
+   the target is left blank it will generate all keybindings which is used for documenting
+   the overlay. If you pass a target system in like "lenovo" it will return the commond
+   bindings use across all systems plus the lenovo specific ones.
 #+NAME: keybindings-data
 #+BEGIN_SRC python :noweb= yes :results value :var _bindings=bindings :var _launcher=launcher :var _bluetooth=bluetooth :var _power_menu=power_menu :var _music=music :var _network=network :var _show_windows=show_windows :var _emacs_prod=emacs_prod :var _emacs_dev=emacs_dev :var _file_gui=file_gui :var _file_term=file_term :var _browser=browser :var _notes=notes :var _sms_get=sms_get :var _sms_put=sms_put :var _email_get=email_get :var _email_put=email_put :var _scratchpad_put=scratchpad_put :var _scratchpad_get=scratchpad_get :var _term=term :var _lock_screen=lock_screen :var _audio_raise_volume=audio_raise_volume :var _audio_lower_volume=audio_lower_volume :var _audio_mute=audio_mute :var _audio_mic_mute=audio_mic_mute :var _screenshot_viewer=screenshot_viewer :var _screenshot_viewer_emacs=screenshot_viewer_emacs
       return [
@@ -1604,7 +1657,9 @@ Note Target "" = return all key bindings.
 | Mod+Escape allow-inhibiting=false           | toggle-keyboard-shortcuts-inhibit                                                                                    | N | Toggle Keyboard Shortcuts - Inhibit | all    |
 | Ctrl+Alt+Delete                             | quit                                                                                                                 | N | Quit                                | all    |
 
-
+This is the keybindings-config code block which returns the keybindings base on the
+target system. There is mode option which will return the keybinding content to
+be used for configuration use or doc use.
 #+NAME: keybindings-config
 #+BEGIN_SRC python :results value raw :var data=keybindings-data :var ts="" :var mode="config"
 lines = []
@@ -1624,7 +1679,218 @@ return "\n".join(lines)
 #+END_SRC
 
 #+RESULTS: keybindings-config
+Mod+Shift+Slash                                    { spawn "~/.config/niri/scripts/rofi_bindings"; }
+Mod+D                                              { spawn "~/.config/niri/scripts/rofi_launcher"; }
+Mod+B                                              { spawn "~/.config/niri/scripts/rofi_bluetooth"; }
+Mod+M                                              { spawn "~/.config/niri/scripts/rofi_music"; }
+Mod+N                                              { spawn "~/.config/niri/scripts/rofi_network"; }
+Mod+Shift+D                                        { spawn "~/.config/niri/scripts/rofi_showwindows"; }
+Mod+E                                              { spawn "emacsclient" "-c" "-s" "emacs-prod"; }
+Mod+Shift+E                                        { spawn "emacsclient" "-c" "-s" "emacs-dev"; }
+Mod+T                                              { spawn "thunar"; }
+Mod+Shift+Y                                        { spawn "sh" "-c" "kitty --detach yazi"; }
+Mod+Shift+N                                        { spawn "pluma"; }
+Mod+1                                              { spawn "~/projects/niri_toolkit/niri-move-window.py" "--match" "Messages" "--target" "m" "--target_id" "HDMI-A-2" "--focus"; }
+Mod+Shift+1                                        { spawn "~/projects/niri_toolkit/niri-move-window.py" "--match" "Messages" "--target" "w" "--target_id" "messaging"; }
+Mod+2                                              { spawn "~/projects/niri_toolkit/niri-move-window.py" "--match" "mu4e" "--target" "m" "--target_id" "HDMI-A-2" "--focus"; }
+Mod+Shift+2                                        { spawn "~/projects/niri_toolkit/niri-move-window.py" "--match" "mu4e" "--target" "w" "--target_id" "messaging"; }
+Mod+P                                              { spawn "~/projects/niri_toolkit/niri_scratchpad" "--action" "put" "--scratchpad_name" "scratchpad"; }
+Mod+Shift+P                                        { spawn "~/projects/niri_toolkit/niri_scratchpad" "--action" "get" "--scratchpad_name" "scratchpad"; }
+Mod+Return                                         { spawn "~/.config/niri/scripts/alacritty"; }
+Mod+Alt+L                                          { spawn "~/.config/niri/scripts/lockscreen"; }
+XF86AudioRaiseVolume allow-when-locked=true        { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
+XF86AudioLowerVolume allow-when-locked=true        { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }
+XF86AudioMute allow-when-locked=true               { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
+XF86AudioMicMute allow-when-locked=true            { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
+Mod+Shift+S                                        { spawn "~/projects/niri_toolkit/niri-screenshot-picker"; }
+Mod+Ctrl+S                                         { spawn "~/projects/niri_toolkit/niri-screenshot-picker-emacs"; }
+Mod+S                                              { screenshot; }
+Mod+O repeat=false                                 { toggle-overview; }
+Mod+Q                                              { close-window; }
+Mod+h                                              { focus-column-left; }
+Mod+j                                              { focus-window-down; }
+Mod+k                                              { focus-window-up; }
+Mod+l                                              { focus-column-right; }
+Mod+Shift+h                                        { move-column-left; }
+Mod+Shift+j                                        { move-window-down; }
+Mod+Shift+k                                        { move-window-up; }
+Mod+Shift+l                                        { move-column-right; }
+Mod+Home                                           { focus-column-first; }
+Mod+End                                            { focus-column-last; }
+Mod+Ctrl+Home                                      { move-column-to-first; }
+Mod+Ctrl+End                                       { move-column-to-last; }
+Mod+Ctrl+h                                         { focus-monitor-left; }
+Mod+Ctrl+j                                         { focus-monitor-down; }
+Mod+Ctrl+k                                         { focus-monitor-up; }
+Mod+Ctrl+l                                         { focus-monitor-right; }
+Mod+Shift+Ctrl+h                                   { move-column-to-monitor-left; }
+Mod+Shift+Ctrl+j                                   { move-column-to-monitor-down; }
+Mod+Shift+Ctrl+k                                   { move-column-to-monitor-up; }
+Mod+Shift+Ctrl+l                                   { move-column-to-monitor-right; }
+Mod+Page_Down                                      { focus-workspace-down; }
+Mod+Page_Up                                        { focus-workspace-up; }
+Mod+U                                              { focus-workspace-down; }
+Mod+I                                              { focus-workspace-up; }
+Mod+Ctrl+Page_Down                                 { move-column-to-workspace-down; }
+Mod+Ctrl+Page_Up                                   { move-column-to-workspace-up; }
+Mod+Ctrl+U                                         { move-column-to-workspace-down; }
+Mod+Ctrl+I                                         { move-column-to-workspace-up; }
+Mod+Shift+Page_Down                                { move-workspace-down; }
+Mod+Shift+Page_Up                                  { move-workspace-up; }
+Mod+Shift+U                                        { move-workspace-down; }
+Mod+Shift+I                                        { move-workspace-up; }
+Mod+WheelScrollDown cooldown-ms=150                { focus-workspace-down; }
+Mod+WheelScrollUp cooldown-ms=150                  { focus-workspace-up; }
+Mod+Ctrl+WheelScrollDown cooldown-ms=150           { move-column-to-workspace-down; }
+Mod+Ctrl+WheelScrollUp cooldown-ms=150             { move-column-to-workspace-up; }
+Mod+Shift+WheelScrollDown                          { focus-column-right; }
+Mod+Shift+WheelScrollUp                            { focus-column-left; }
+Mod+Ctrl+Shift+WheelScrollDown                     { move-column-right; }
+Mod+Ctrl+Shift+WheelScrollUp                       { move-column-left; }
+Mod+Tab                                            { focus-workspace-previous; }
+Mod+BracketLeft                                    { consume-or-expel-window-left; }
+Mod+BracketRight                                   { consume-or-expel-window-right; }
+Mod+Comma                                          { consume-window-into-column; }
+Mod+Period                                         { expel-window-from-column; }
+Mod+R                                              { switch-preset-column-width; }
+Mod+Shift+R                                        { switch-preset-window-height; }
+Mod+Ctrl+R                                         { reset-window-height; }
+Mod+F                                              { maximize-column; }
+Mod+Shift+F                                        { fullscreen-window; }
+Mod+Ctrl+F                                         { expand-column-to-available-width; }
+Mod+C                                              { center-column; }
+Mod+Ctrl+C                                         { center-visible-columns; }
+Mod+Minus                                          { set-column-width "-10%"; }
+Mod+Equal                                          { set-column-width "+10%"; }
+Mod+Ctrl+Minus                                     { set-column-width "-1"; }
+Mod+Ctrl+Equal                                     { set-column-width "+1"; }
+Mod+Shift+Minus                                    { set-window-height "-10%"; }
+Mod+Shift+Equal                                    { set-window-height "+10%"; }
+Mod+Shift+Ctrl+Minus                               { set-window-height "-1"; }
+Mod+Shift+Ctrl+Equal                               { set-window-height "+1"; }
+Mod+0                                              { set-column-width "960"; }
+Mod+Shift+0                                        { set-window-height "540"; }
+Mod+Alt+0                                          { set-column-width "1280"; }
+Mod+Shift+Alt+0                                    { set-window-height "720"; }
+Mod+Ctrl+0                                         { set-column-width "1920"; }
+Mod+Shift+Ctrl+0                                   { set-window-height "1080"; }
+Mod+V                                              { toggle-window-floating; }
+Mod+Shift+V                                        { switch-focus-between-floating-and-tiling; }
+Mod+W                                              { toggle-column-tabbed-display; }
+Mod+Space                                          { switch-layout "next"; }
+Mod+Shift+Space                                    { switch-layout "prev"; }
+Print                                              { screenshot; }
+Ctrl+Print                                         { screenshot-screen; }
+Alt+Print                                          { screenshot-window; }
+Mod+Escape allow-inhibiting=false                  { toggle-keyboard-shortcuts-inhibit; }
+Ctrl+Alt+Delete                                    { quit; }
+Mod+Shift+Slash                                    { spawn "~/.config/niri/scripts/rofi_bindings"; }
+Mod+D                                              { spawn "~/.config/niri/scripts/rofi_launcher"; }
+Mod+B                                              { spawn "~/.config/niri/scripts/rofi_bluetooth"; }
+Mod+M                                              { spawn "~/.config/niri/scripts/rofi_music"; }
+Mod+N                                              { spawn "~/.config/niri/scripts/rofi_network"; }
+Mod+Shift+D                                        { spawn "~/.config/niri/scripts/rofi_showwindows"; }
+Mod+E                                              { spawn "emacsclient" "-c" "-s" "emacs-prod"; }
+Mod+Shift+E                                        { spawn "emacsclient" "-c" "-s" "emacs-dev"; }
+Mod+T                                              { spawn "thunar"; }
+Mod+Shift+Y                                        { spawn "sh" "-c" "kitty --detach yazi"; }
+Mod+Shift+N                                        { spawn "pluma"; }
+Mod+1                                              { spawn "~/projects/niri_toolkit/niri-move-window.py" "--match" "Messages" "--target" "m" "--target_id" "HDMI-A-2" "--focus"; }
+Mod+Shift+1                                        { spawn "~/projects/niri_toolkit/niri-move-window.py" "--match" "Messages" "--target" "w" "--target_id" "messaging"; }
+Mod+2                                              { spawn "~/projects/niri_toolkit/niri-move-window.py" "--match" "mu4e" "--target" "m" "--target_id" "HDMI-A-2" "--focus"; }
+Mod+Shift+2                                        { spawn "~/projects/niri_toolkit/niri-move-window.py" "--match" "mu4e" "--target" "w" "--target_id" "messaging"; }
+Mod+P                                              { spawn "~/projects/niri_toolkit/niri_scratchpad" "--action" "put" "--scratchpad_name" "scratchpad"; }
+Mod+Shift+P                                        { spawn "~/projects/niri_toolkit/niri_scratchpad" "--action" "get" "--scratchpad_name" "scratchpad"; }
+Mod+Return                                         { spawn "~/.config/niri/scripts/alacritty"; }
+Mod+Alt+L                                          { spawn "~/.config/niri/scripts/lockscreen"; }
+XF86AudioRaiseVolume allow-when-locked=true        { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
+XF86AudioLowerVolume allow-when-locked=true        { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }
+XF86AudioMute allow-when-locked=true               { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
+XF86AudioMicMute allow-when-locked=true            { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
+Mod+Shift+S                                        { spawn "~/projects/niri_toolkit/niri-screenshot-picker"; }
+Mod+Ctrl+S                                         { spawn "~/projects/niri_toolkit/niri-screenshot-picker-emacs"; }
+Mod+S                                              { screenshot; }
+Mod+O repeat=false                                 { toggle-overview; }
+Mod+Q                                              { close-window; }
+Mod+h                                              { focus-column-left; }
+Mod+j                                              { focus-window-down; }
+Mod+k                                              { focus-window-up; }
+Mod+l                                              { focus-column-right; }
+Mod+Shift+h                                        { move-column-left; }
+Mod+Shift+j                                        { move-window-down; }
+Mod+Shift+k                                        { move-window-up; }
+Mod+Shift+l                                        { move-column-right; }
+Mod+Home                                           { focus-column-first; }
+Mod+End                                            { focus-column-last; }
+Mod+Ctrl+Home                                      { move-column-to-first; }
+Mod+Ctrl+End                                       { move-column-to-last; }
+Mod+Ctrl+h                                         { focus-monitor-left; }
+Mod+Ctrl+j                                         { focus-monitor-down; }
+Mod+Ctrl+k                                         { focus-monitor-up; }
+Mod+Ctrl+l                                         { focus-monitor-right; }
+Mod+Shift+Ctrl+h                                   { move-column-to-monitor-left; }
+Mod+Shift+Ctrl+j                                   { move-column-to-monitor-down; }
+Mod+Shift+Ctrl+k                                   { move-column-to-monitor-up; }
+Mod+Shift+Ctrl+l                                   { move-column-to-monitor-right; }
+Mod+Page_Down                                      { focus-workspace-down; }
+Mod+Page_Up                                        { focus-workspace-up; }
+Mod+U                                              { focus-workspace-down; }
+Mod+I                                              { focus-workspace-up; }
+Mod+Ctrl+Page_Down                                 { move-column-to-workspace-down; }
+Mod+Ctrl+Page_Up                                   { move-column-to-workspace-up; }
+Mod+Ctrl+U                                         { move-column-to-workspace-down; }
+Mod+Ctrl+I                                         { move-column-to-workspace-up; }
+Mod+Shift+Page_Down                                { move-workspace-down; }
+Mod+Shift+Page_Up                                  { move-workspace-up; }
+Mod+Shift+U                                        { move-workspace-down; }
+Mod+Shift+I                                        { move-workspace-up; }
+Mod+WheelScrollDown cooldown-ms=150                { focus-workspace-down; }
+Mod+WheelScrollUp cooldown-ms=150                  { focus-workspace-up; }
+Mod+Ctrl+WheelScrollDown cooldown-ms=150           { move-column-to-workspace-down; }
+Mod+Ctrl+WheelScrollUp cooldown-ms=150             { move-column-to-workspace-up; }
+Mod+Shift+WheelScrollDown                          { focus-column-right; }
+Mod+Shift+WheelScrollUp                            { focus-column-left; }
+Mod+Ctrl+Shift+WheelScrollDown                     { move-column-right; }
+Mod+Ctrl+Shift+WheelScrollUp                       { move-column-left; }
+Mod+Tab                                            { focus-workspace-previous; }
+Mod+BracketLeft                                    { consume-or-expel-window-left; }
+Mod+BracketRight                                   { consume-or-expel-window-right; }
+Mod+Comma                                          { consume-window-into-column; }
+Mod+Period                                         { expel-window-from-column; }
+Mod+R                                              { switch-preset-column-width; }
+Mod+Shift+R                                        { switch-preset-window-height; }
+Mod+Ctrl+R                                         { reset-window-height; }
+Mod+F                                              { maximize-column; }
+Mod+Shift+F                                        { fullscreen-window; }
+Mod+Ctrl+F                                         { expand-column-to-available-width; }
+Mod+C                                              { center-column; }
+Mod+Ctrl+C                                         { center-visible-columns; }
+Mod+Minus                                          { set-column-width "-10%"; }
+Mod+Equal                                          { set-column-width "+10%"; }
+Mod+Ctrl+Minus                                     { set-column-width "-1"; }
+Mod+Ctrl+Equal                                     { set-column-width "+1"; }
+Mod+Shift+Minus                                    { set-window-height "-10%"; }
+Mod+Shift+Equal                                    { set-window-height "+10%"; }
+Mod+Shift+Ctrl+Minus                               { set-window-height "-1"; }
+Mod+Shift+Ctrl+Equal                               { set-window-height "+1"; }
+Mod+0                                              { set-column-width "960"; }
+Mod+Shift+0                                        { set-window-height "540"; }
+Mod+Alt+0                                          { set-column-width "1280"; }
+Mod+Shift+Alt+0                                    { set-window-height "720"; }
+Mod+Ctrl+0                                         { set-column-width "1920"; }
+Mod+Shift+Ctrl+0                                   { set-window-height "1080"; }
+Mod+V                                              { toggle-window-floating; }
+Mod+Shift+V                                        { switch-focus-between-floating-and-tiling; }
+Mod+W                                              { toggle-column-tabbed-display; }
+Mod+Space                                          { switch-layout "next"; }
+Mod+Shift+Space                                    { switch-layout "prev"; }
+Print                                              { screenshot; }
+Ctrl+Print                                         { screenshot-screen; }
+Alt+Print                                          { screenshot-window; }
+Mod+Escape allow-inhibiting=false                  { toggle-keyboard-shortcuts-inhibit; }
+Ctrl+Alt+Delete                                    { quit; }
 
+This generates the keybindings and outputs them to the config.kdl file.
 #+BEGIN_SRC kdl :noweb yes :tangle ./config.kdl
   // ## BINDINGS ################################################################      
    binds {
@@ -1632,6 +1898,8 @@ return "\n".join(lines)
    }
 #+END_SRC
 
+This generates the keybindings documentation and writes it to a text file that is
+referenced by a custom overlay displayed using a keybinding + rofi.
 #+BEGIN_SRC kdl :noweb yes :tangle ./key_bindings.txt
   <<keybindings-config(data=keybindings-data, ts="", mode="doc")>>
 #+END_SRC

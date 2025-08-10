@@ -23,6 +23,7 @@ XF86AudioMute allow-when-locked=true               Mute
 XF86AudioMicMute allow-when-locked=true            Mic Mute
 Mod+Shift+S                                        Screenshot Picker
 Mod+Ctrl+S                                         Screenshot Picker - Emacs
+Mod+Shift+T                                        Niri Hot Change Config
 Mod+S                                              Screenshot
 Mod+O repeat=false                                 Toggle Overview
 Mod+Q                                              Close Window

@@ -1,4 +1,4 @@
-// LAST BUILD / DEPLOY: 2025-08-06 13:06:12
+// LAST BUILD / DEPLOY: 2025-08-09 19:20:17
 // ## NOTES  ###########################################################  
 // This config file has been created by emacs org babel. This was done
 // mostly as a learning experiment and to address the gaps that .kdl
@@ -28,7 +28,7 @@
 
 // ## ENVIRONMENT  ###########################################################  
   environment {
-          DISPLAY ":2"
+          DISPLAY ":1"
   }
 
 // ## INPUT CONFIGURATION ####################################################  
@@ -115,18 +115,18 @@
          position x=3840 y=0
    }
 
-// ## STARTUP APPS  ###########################################################  
-    spawn-at-startup      "sh" "-c" "swayidle -w timeout 600 ~/.config/niri/scripts/lockscreen"
-    spawn-at-startup      "~/.config/niri/scripts/setup_theme"
-    spawn-at-startup      "~/.config/niri/scripts/wallpaper"
-    spawn-at-startup      "~/.config/niri/scripts/notifications"
-    spawn-at-startup      "~/.config/niri/scripts/statusbar"
-    spawn-at-startup      "spotify"
-    spawn-at-startup      "element-desktop"
-    spawn-at-startup      "googlemessages"
-    spawn-at-startup      "google-calendar-nativefier-dark"
-    spawn-at-startup      "vesktop"
-    spawn-at-startup      "xwayland-satellite" "--display 2"
+// ## STARTUP APPS  ###########################################################
+      spawn-at-startup      "xwayland-satellite" "--display 2"  
+      spawn-at-startup      "sh" "-c" "swayidle -w timeout 600 ~/.config/niri/scripts/lockscreen"
+      spawn-at-startup      "~/.config/niri/scripts/setup_theme"
+      spawn-at-startup      "~/.config/niri/scripts/wallpaper"
+      spawn-at-startup      "~/.config/niri/scripts/notifications"
+      spawn-at-startup      "~/.config/niri/scripts/statusbar"
+      spawn-at-startup      "spotify"
+      spawn-at-startup      "element-desktop"
+      spawn-at-startup      "googlemessages"
+      spawn-at-startup      "google-calendar-nativefier-dark"
+      spawn-at-startup      "vesktop"
 
 // ## SETUP WORKSPACES ##################################################    
   
@@ -192,8 +192,10 @@
             focus-ring {
                     // off
                     width 2
-                    active-color "#dfd7c6"
-                    inactive-color "#1e1c1c"
+                    // active-color "#dfd7c6"
+                    // inactive-color "#1e1c1c"
+                    // active-color "#A79C83"
+                    // inactive-color "#1e1c1c"
                     // active-gradient from="#80c8ff" to="#bbddff" angle=45
                     // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
             }
@@ -429,6 +431,13 @@
             default-window-height { fixed 800; }
     }
 
+    window-rule {
+          match app-id="Tk"
+          open-floating true
+          default-column-width { fixed 1400; }
+          default-window-height { fixed 450; }
+    }
+
     layer-rule {
             place-within-backdrop true
     }
@@ -460,6 +469,7 @@
     XF86AudioMicMute allow-when-locked=true            { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
     Mod+Shift+S                                        { spawn "~/projects/niri_toolkit/niri-screenshot-picker"; }
     Mod+Ctrl+S                                         { spawn "~/projects/niri_toolkit/niri-screenshot-picker-emacs"; }
+    Mod+Shift+T                                        { spawn "~/projects/niri_toolkit/niri-hot-change"; }
     Mod+S                                              { screenshot; }
     Mod+O repeat=false                                 { toggle-overview; }
     Mod+Q                                              { close-window; }

@@ -1,4 +1,4 @@
-// LAST BUILD / DEPLOY: 2025-08-09 19:20:17
+// LAST BUILD / DEPLOY: 2025-08-16 16:42:03
 // ## NOTES  ###########################################################  
 // This config file has been created by emacs org babel. This was done
 // mostly as a learning experiment and to address the gaps that .kdl
@@ -121,12 +121,13 @@
       spawn-at-startup      "~/.config/niri/scripts/setup_theme"
       spawn-at-startup      "~/.config/niri/scripts/wallpaper"
       spawn-at-startup      "~/.config/niri/scripts/notifications"
-      spawn-at-startup      "~/.config/niri/scripts/statusbar"
+      spawn-at-startup      "qs" "-c" "DankMaterialShell"
       spawn-at-startup      "spotify"
       spawn-at-startup      "element-desktop"
       spawn-at-startup      "googlemessages"
       spawn-at-startup      "google-calendar-nativefier-dark"
       spawn-at-startup      "vesktop"
+      spawn-at-startup      "bash" "-c" "wl-paste --watch cliphist store &"
 
 // ## SETUP WORKSPACES ##################################################    
   
@@ -192,10 +193,8 @@
             focus-ring {
                     // off
                     width 2
-                    // active-color "#dfd7c6"
-                    // inactive-color "#1e1c1c"
-                    // active-color "#A79C83"
-                    // inactive-color "#1e1c1c"
+                    active-color "#DDC9A6"
+                    inactive-color "#272220"
                     // active-gradient from="#80c8ff" to="#bbddff" angle=45
                     // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
             }
@@ -432,10 +431,10 @@
     }
 
     window-rule {
-          match app-id="Tk"
+          match app-id="niri-hot-change"
           open-floating true
-          default-column-width { fixed 1400; }
-          default-window-height { fixed 450; }
+          default-column-width { fixed 1050; }
+          default-window-height { fixed 500; }
     }
 
     layer-rule {
@@ -447,12 +446,9 @@
     Mod+Shift+Slash                                    { spawn "~/.config/niri/scripts/rofi_bindings"; }
     Mod+D                                              { spawn "~/.config/niri/scripts/rofi_launcher"; }
     Mod+B                                              { spawn "~/.config/niri/scripts/rofi_bluetooth"; }
-    Mod+M                                              { spawn "~/.config/niri/scripts/rofi_music"; }
-    Mod+N                                              { spawn "~/.config/niri/scripts/rofi_network"; }
     Mod+Shift+D                                        { spawn "~/.config/niri/scripts/rofi_showwindows"; }
     Mod+E                                              { spawn "emacsclient" "-c" "-s" "emacs-prod"; }
     Mod+Shift+E                                        { spawn "emacsclient" "-c" "-s" "emacs-dev"; }
-    Mod+T                                              { spawn "thunar"; }
     Mod+Shift+Y                                        { spawn "sh" "-c" "kitty --detach yazi"; }
     Mod+Shift+N                                        { spawn "pluma"; }
     Mod+1                                              { spawn "~/projects/niri_toolkit/niri-move-window.py" "--match" "Messages" "--target" "m" "--target_id" "HDMI-A-2" "--focus"; }
@@ -462,13 +458,9 @@
     Mod+P                                              { spawn "~/projects/niri_toolkit/niri_scratchpad" "--action" "put" "--scratchpad_name" "scratchpad"; }
     Mod+Shift+P                                        { spawn "~/projects/niri_toolkit/niri_scratchpad" "--action" "get" "--scratchpad_name" "scratchpad"; }
     Mod+Return                                         { spawn "~/.config/niri/scripts/alacritty"; }
-    Mod+Alt+L                                          { spawn "~/.config/niri/scripts/lockscreen"; }
-    XF86AudioRaiseVolume allow-when-locked=true        { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
-    XF86AudioLowerVolume allow-when-locked=true        { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }
-    XF86AudioMute allow-when-locked=true               { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
-    XF86AudioMicMute allow-when-locked=true            { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
     Mod+Shift+S                                        { spawn "~/projects/niri_toolkit/niri-screenshot-picker"; }
     Mod+Ctrl+S                                         { spawn "~/projects/niri_toolkit/niri-screenshot-picker-emacs"; }
+    Mod+T                                              { spawn "~/.config/niri/theme/theme.sh" "--pywal"; }
     Mod+Shift+T                                        { spawn "~/projects/niri_toolkit/niri-hot-change"; }
     Mod+S                                              { screenshot; }
     Mod+O repeat=false                                 { toggle-overview; }
@@ -481,38 +473,14 @@
     Mod+Shift+j                                        { move-window-down; }
     Mod+Shift+k                                        { move-window-up; }
     Mod+Shift+l                                        { move-column-right; }
-    Mod+Home                                           { focus-column-first; }
-    Mod+End                                            { focus-column-last; }
-    Mod+Ctrl+Home                                      { move-column-to-first; }
-    Mod+Ctrl+End                                       { move-column-to-last; }
     Mod+Ctrl+h                                         { focus-monitor-left; }
-    Mod+Ctrl+j                                         { focus-monitor-down; }
-    Mod+Ctrl+k                                         { focus-monitor-up; }
     Mod+Ctrl+l                                         { focus-monitor-right; }
     Mod+Shift+Ctrl+h                                   { move-column-to-monitor-left; }
-    Mod+Shift+Ctrl+j                                   { move-column-to-monitor-down; }
-    Mod+Shift+Ctrl+k                                   { move-column-to-monitor-up; }
     Mod+Shift+Ctrl+l                                   { move-column-to-monitor-right; }
-    Mod+Page_Down                                      { focus-workspace-down; }
-    Mod+Page_Up                                        { focus-workspace-up; }
-    Mod+U                                              { focus-workspace-down; }
-    Mod+I                                              { focus-workspace-up; }
-    Mod+Ctrl+Page_Down                                 { move-column-to-workspace-down; }
-    Mod+Ctrl+Page_Up                                   { move-column-to-workspace-up; }
-    Mod+Ctrl+U                                         { move-column-to-workspace-down; }
-    Mod+Ctrl+I                                         { move-column-to-workspace-up; }
-    Mod+Shift+Page_Down                                { move-workspace-down; }
-    Mod+Shift+Page_Up                                  { move-workspace-up; }
-    Mod+Shift+U                                        { move-workspace-down; }
-    Mod+Shift+I                                        { move-workspace-up; }
     Mod+WheelScrollDown cooldown-ms=150                { focus-workspace-down; }
     Mod+WheelScrollUp cooldown-ms=150                  { focus-workspace-up; }
-    Mod+Ctrl+WheelScrollDown cooldown-ms=150           { move-column-to-workspace-down; }
-    Mod+Ctrl+WheelScrollUp cooldown-ms=150             { move-column-to-workspace-up; }
     Mod+Shift+WheelScrollDown                          { focus-column-right; }
     Mod+Shift+WheelScrollUp                            { focus-column-left; }
-    Mod+Ctrl+Shift+WheelScrollDown                     { move-column-right; }
-    Mod+Ctrl+Shift+WheelScrollUp                       { move-column-left; }
     Mod+Tab                                            { focus-workspace-previous; }
     Mod+BracketLeft                                    { consume-or-expel-window-left; }
     Mod+BracketRight                                   { consume-or-expel-window-right; }
@@ -534,20 +502,17 @@
     Mod+Shift+Equal                                    { set-window-height "+10%"; }
     Mod+Shift+Ctrl+Minus                               { set-window-height "-1"; }
     Mod+Shift+Ctrl+Equal                               { set-window-height "+1"; }
-    Mod+0                                              { set-column-width "960"; }
-    Mod+Shift+0                                        { set-window-height "540"; }
-    Mod+Alt+0                                          { set-column-width "1280"; }
-    Mod+Shift+Alt+0                                    { set-window-height "720"; }
-    Mod+Ctrl+0                                         { set-column-width "1920"; }
-    Mod+Shift+Ctrl+0                                   { set-window-height "1080"; }
     Mod+V                                              { toggle-window-floating; }
     Mod+Shift+V                                        { switch-focus-between-floating-and-tiling; }
     Mod+W                                              { toggle-column-tabbed-display; }
-    Mod+Space                                          { switch-layout "next"; }
     Mod+Shift+Space                                    { switch-layout "prev"; }
-    Print                                              { screenshot; }
-    Ctrl+Print                                         { screenshot-screen; }
-    Alt+Print                                          { screenshot-window; }
     Mod+Escape allow-inhibiting=false                  { toggle-keyboard-shortcuts-inhibit; }
-    Ctrl+Alt+Delete                                    { quit; }          
+    Ctrl+Alt+Delete                                    { quit; }
+    Mod+Space                                          { spawn "qs" "-c" "DankMaterialShell" "ipc" "call" "spotlight" "toggle"; }
+    XF86AudioRaiseVolume allow-when-locked=true        { spawn "qs" "-c" "DankMaterialShell" "ipc" "call" "audio" "increment" "3"; }
+    XF86AudioLowerVolume allow-when-locked=true        { spawn "qs" "-c" "DankMaterialShell" "ipc" "call" "audio" "decrement" "3"; }
+    XF86AudioMute allow-when-locked=true               { spawn "qs" "-c" "DankMaterialShell" "ipc" "call" "audio" "mute"; }
+    XF86AudioMicMute allow-when-locked=true            { spawn "qs" "-c" "DankMaterialShell" "ipc" "call" "audio" "micmute"; }
+    XF86MonBrightnessUp allow-when-locked=true         { spawn "qs" "-c" "DankMaterialShell" "ipc" "call" "brightness" "increment" "5" ""; }
+    XF86MonBrightnessDown allow-when-locked=true       { spawn "qs" "-c" "DankMaterialShell" "ipc" "call" "brightness" "decrement" "5" ""; }          
  }

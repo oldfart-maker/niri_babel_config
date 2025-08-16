@@ -1,12 +1,9 @@
 Mod+Shift+Slash                                    Niri Key Bindings
 Mod+D                                              Launcher
 Mod+B                                              Bluetooth
-Mod+M                                              Music
-Mod+N                                              Network
 Mod+Shift+D                                        Show Active Windows
 Mod+E                                              Emacs - Prod
 Mod+Shift+E                                        Emacs - Dev
-Mod+T                                              File Manager - GUI
 Mod+Shift+Y                                        File Manager - Term
 Mod+Shift+N                                        Notes
 Mod+1                                              SMS Get
@@ -16,13 +13,9 @@ Mod+Shift+2                                        Email Put
 Mod+P                                              Scratchpad Put
 Mod+Shift+P                                        Scratchpad Get
 Mod+Return                                         Terminal
-Mod+Alt+L                                          Lock Screen
-XF86AudioRaiseVolume allow-when-locked=true        Vol+
-XF86AudioLowerVolume allow-when-locked=true        Vol-
-XF86AudioMute allow-when-locked=true               Mute
-XF86AudioMicMute allow-when-locked=true            Mic Mute
 Mod+Shift+S                                        Screenshot Picker
 Mod+Ctrl+S                                         Screenshot Picker - Emacs
+Mod+T                                              Niri Theme Change
 Mod+Shift+T                                        Niri Hot Change Config
 Mod+S                                              Screenshot
 Mod+O repeat=false                                 Toggle Overview
@@ -35,38 +28,14 @@ Mod+Shift+h                                        Move Column Left
 Mod+Shift+j                                        Move Window Down
 Mod+Shift+k                                        Move Window Up
 Mod+Shift+l                                        Move Column Right
-Mod+Home                                           Focus Column First
-Mod+End                                            Focus Column Last
-Mod+Ctrl+Home                                      Move Column To First
-Mod+Ctrl+End                                       Move Column To Last
 Mod+Ctrl+h                                         Focus Monitor Left
-Mod+Ctrl+j                                         Focus Monitor Down
-Mod+Ctrl+k                                         Focus Monitor Up
 Mod+Ctrl+l                                         Focus Monitor Right
 Mod+Shift+Ctrl+h                                   Move Column To Monitor Left
-Mod+Shift+Ctrl+j                                   Move Column To Monitor Down
-Mod+Shift+Ctrl+k                                   Move Column To Monitor Up
 Mod+Shift+Ctrl+l                                   Move Column To Monitor Right
-Mod+Page_Down                                      Focus Workspace Down
-Mod+Page_Up                                        Focus Workspace Up
-Mod+U                                              Focus Workspace Down
-Mod+I                                              Focus Workspace Up
-Mod+Ctrl+Page_Down                                 Move Column To Workspace Down
-Mod+Ctrl+Page_Up                                   Move Column To Workspace Up
-Mod+Ctrl+U                                         Move Column To Workspace Down
-Mod+Ctrl+I                                         Move Column To Workspace Up
-Mod+Shift+Page_Down                                Move Workspace Down
-Mod+Shift+Page_Up                                  Move Workspace Up
-Mod+Shift+U                                        Move Workspace Down
-Mod+Shift+I                                        Move Workspace Up
 Mod+WheelScrollDown cooldown-ms=150                Focus Workspace Down
 Mod+WheelScrollUp cooldown-ms=150                  Focus Workspace Up
-Mod+Ctrl+WheelScrollDown cooldown-ms=150           Move Column To Workspace Down
-Mod+Ctrl+WheelScrollUp cooldown-ms=150             Move Column To Workspace Up
 Mod+Shift+WheelScrollDown                          Focus Column Right
 Mod+Shift+WheelScrollUp                            Focus Column Left
-Mod+Ctrl+Shift+WheelScrollDown                     Move Column Right
-Mod+Ctrl+Shift+WheelScrollUp                       Move Column Left
 Mod+Tab                                            Focus Workspace Previous
 Mod+BracketLeft                                    Consume Or Expel Window Left
 Mod+BracketRight                                   Consume Or Expel Window Right
@@ -88,19 +57,16 @@ Mod+Shift+Minus                                    Set Window Height -10%
 Mod+Shift+Equal                                    Set Window Height +10%
 Mod+Shift+Ctrl+Minus                               Set Window Height -1
 Mod+Shift+Ctrl+Equal                               Set Window Height +1
-Mod+0                                              Set Column Width
-Mod+Shift+0                                        Set Window Height 540
-Mod+Alt+0                                          Set Column Width 1280
-Mod+Shift+Alt+0                                    Set Window Height 720
-Mod+Ctrl+0                                         Set Column Width 1920
-Mod+Shift+Ctrl+0                                   Set Window Height 1080
 Mod+V                                              Toggle Window Floating
 Mod+Shift+V                                        Switch Focus Floating And Tiling
 Mod+W                                              Toggle Column Tabbed Display
-Mod+Space                                          Switch Layout - Next
 Mod+Shift+Space                                    Switch Layout - Prev
-Print                                              Screenshot
-Ctrl+Print                                         Screenshot Sreen
-Alt+Print                                          Screenshot Window
 Mod+Escape allow-inhibiting=false                  Toggle Keyboard Shortcuts - Inhibit
 Ctrl+Alt+Delete                                    Quit
+Mod+Space                                          Launcher
+XF86AudioRaiseVolume allow-when-locked=true        Vol+
+XF86AudioLowerVolume allow-when-locked=true        Vol-
+XF86AudioMute allow-when-locked=true               Mute
+XF86AudioMicMute allow-when-locked=true            Mic Mute
+XF86MonBrightnessUp allow-when-locked=true         Brightness Up
+XF86MonBrightnessDown allow-when-locked=true       Brightness Down

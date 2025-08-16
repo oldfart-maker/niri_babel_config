@@ -41,7 +41,7 @@ return datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 #+end_src
 
 #+RESULTS: timestamp
-: 2025-08-09 19:19:56
+: 2025-08-16 16:41:38
 
 * Target System
 I have multiple systems (e.g. laptop, desktop, pi) that need different configurations mostly as
@@ -79,7 +79,7 @@ return json.dumps(theme)
 #+end_src
 
 #+RESULTS: theme-colors-json
-: {"wallpaper": "/home/username/Pictures/wallpapers/rubiks-cube.png", "background": "#1e1c1c", "foreground": "#dfd7c6", "cursor": "#dfd7c6", "color0": "#1e1c1c", "color1": "#948B77", "color2": "#A1967E", "color3": "#9D9882", "color4": "#A79C83", "color5": "#B5A98D", "color6": "#C8B999", "color7": "#dfd7c6", "color8": "#9c968a", "color9": "#948B77", "color10": "#A1967E", "color11": "#9D9882", "color12": "#A79C83", "color13": "#B5A98D", "color14": "#C8B999", "color15": "#dfd7c6", "FZF_DEFAULT_OPTS": "", "LS_COLORS": "${LS_COLORS}:su=30;41:ow=30;42:st=30;44:"}
+: {"wallpaper": "/home/username/Pictures/wallpapers/chinese-hills.jpg", "background": "#272220", "foreground": "#ede5d8", "cursor": "#ede5d8", "color0": "#272220", "color1": "#CDB492", "color2": "#D2BDA2", "color3": "#D8C39D", "color4": "#DDC9A6", "color5": "#E7D8B7", "color6": "#EDE0BD", "color7": "#ede5d8", "color8": "#a5a097", "color9": "#CDB492", "color10": "#D2BDA2", "color11": "#D8C39D", "color12": "#DDC9A6", "color13": "#E7D8B7", "color14": "#EDE0BD", "color15": "#ede5d8", "FZF_DEFAULT_OPTS": "", "LS_COLORS": "${LS_COLORS}:su=30;41:ow=30;42:st=30;44:"}
 
 #+name: colors-dict
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -106,13 +106,13 @@ return json.dumps(theme)
   # background = background
   # foreground = foreground
 
-  import json  
-  colors = json.loads(colors_raw)
-  return colors
+import json  
+colors = json.loads(colors_raw)
+return colors
 #+end_src
 
 #+RESULTS: colors-dict
-: {'wallpaper': '/home/username/Pictures/wallpapers/rubiks-cube.png', 'background': '#1e1c1c', 'foreground': '#dfd7c6', 'cursor': '#dfd7c6', 'color0': '#1e1c1c', 'color1': '#948B77', 'color2': '#A1967E', 'color3': '#9D9882', 'color4': '#A79C83', 'color5': '#B5A98D', 'color6': '#C8B999', 'color7': '#dfd7c6', 'color8': '#9c968a', 'color9': '#948B77', 'color10': '#A1967E', 'color11': '#9D9882', 'color12': '#A79C83', 'color13': '#B5A98D', 'color14': '#C8B999', 'color15': '#dfd7c6', 'FZF_DEFAULT_OPTS': '', 'LS_COLORS': '${LS_COLORS}:su=30;41:ow=30;42:st=30;44:'}
+: {'wallpaper': '/home/username/Pictures/wallpapers/chinese-hills.jpg', 'background': '#272220', 'foreground': '#ede5d8', 'cursor': '#ede5d8', 'color0': '#272220', 'color1': '#CDB492', 'color2': '#D2BDA2', 'color3': '#D8C39D', 'color4': '#DDC9A6', 'color5': '#E7D8B7', 'color6': '#EDE0BD', 'color7': '#ede5d8', 'color8': '#a5a097', 'color9': '#CDB492', 'color10': '#D2BDA2', 'color11': '#D8C39D', 'color12': '#DDC9A6', 'color13': '#E7D8B7', 'color14': '#EDE0BD', 'color15': '#ede5d8', 'FZF_DEFAULT_OPTS': '', 'LS_COLORS': '${LS_COLORS}:su=30;41:ow=30;42:st=30;44:'}
 
 #+name: background
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -122,7 +122,7 @@ return colors["background"]
 #+end_src
 
 #+RESULTS: background
-: #1e1c1c
+: #272220
 
 #+name: foreground
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -132,7 +132,7 @@ return colors["foreground"]
 #+end_src
 
 #+RESULTS: foreground
-: #dfd7c6
+: #ede5d8
 
 #+name: color0
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -142,7 +142,7 @@ return colors["color0"]
 #+end_src
 
 #+RESULTS: color0
-: #1e1c1c
+: #272220
 
 #+name: color1
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -152,7 +152,7 @@ return colors["color1"]
 #+end_src
 
 #+RESULTS: color1
-: #948B77
+: #CDB492
 
 #+name: color2
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -162,7 +162,7 @@ return colors["color2"]
 #+end_src
 
 #+RESULTS: color2
-: #A1967E
+: #D2BDA2
 
 #+name: color3
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -172,7 +172,7 @@ return colors["color3"]
 #+end_src
 
 #+RESULTS: color3
-: #9D9882
+: #D8C39D
 
 #+name: color4
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -182,7 +182,7 @@ return colors["color4"]
 #+end_src
 
 #+RESULTS: color4
-: #A79C83
+: #DDC9A6
 
 #+name: color5
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -192,7 +192,7 @@ return colors["color5"]
 #+end_src
 
 #+RESULTS: color5
-: #B5A98D
+: #E7D8B7
 
 #+name: color6
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -202,7 +202,7 @@ return colors["color6"]
 #+end_src
 
 #+RESULTS: color6
-: #C8B999
+: #EDE0BD
 
 #+name: color7
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -212,7 +212,7 @@ return colors["color7"]
 #+end_src
 
 #+RESULTS: color7
-: #dfd7c6
+: #ede5d8
 
 #+name: color8
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -222,7 +222,7 @@ return colors["color8"]
 #+end_src
 
 #+RESULTS: color8
-: #9c968a
+: #a5a097
 
 #+name: color9
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -232,7 +232,7 @@ return colors["color9"]
 #+end_src
 
 #+RESULTS: color9
-: #948B77
+: #CDB492
 
 #+name: color10
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -242,7 +242,7 @@ return colors["color10"]
 #+end_src
 
 #+RESULTS: color10
-: #A1967E
+: #D2BDA2
 
 #+name: color11
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -252,7 +252,7 @@ return colors["color11"]
 #+end_src
 
 #+RESULTS: color11
-: #9D9882
+: #D8C39D
 
 #+name: color12
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -262,7 +262,7 @@ return colors["color12"]
 #+end_src
 
 #+RESULTS: color12
-: #A79C83
+: #DDC9A6
 
 #+name: color13
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -272,7 +272,7 @@ return colors["color13"]
 #+end_src
 
 #+RESULTS: color13
-: #B5A98D
+: #E7D8B7
 
 #+name: color14
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -282,7 +282,7 @@ return colors["color14"]
 #+end_src
 
 #+RESULTS: color14
-: #C8B999
+: #EDE0BD
 
 #+name: color15
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -292,7 +292,7 @@ return colors["color15"]
 #+end_src
 
 #+RESULTS: color15
-: #dfd7c6
+: #ede5d8
 
 * Variables - Paths
 All shared niri variables are set in this section. This overcomes the limitation that .kdl
@@ -305,6 +305,14 @@ in shell scripts which simplifies constructing commands.
 
 #+RESULTS: niri_scripts
 : ~/.config/niri/scripts
+
+#+NAME: niri_theme
+#+BEGIN_SRC python :results value
+  return "~/.config/niri/theme"
+#+END_SRC
+
+#+RESULTS: niri_theme
+: ~/.config/niri/theme
 
 #+NAME: niri_toolkit
 #+BEGIN_SRC python :results value
@@ -665,14 +673,40 @@ return " ".join(cmd)
 #+RESULTS: notifications
 : "~/.config/niri/scripts/notifications"
 
-#+NAME: status_bar
+#+NAME: status_bar_waybar
 #+BEGIN_SRC python :var _temp=niri_scripts :results value
   _temp = f"{_temp}/statusbar"
   return f'"\\"{_temp}\\""'    
 #+END_SRC
 
-#+RESULTS: status_bar
+#+RESULTS: status_bar_waybar
 : "~/.config/niri/scripts/statusbar"
+
+#+NAME: status_bar
+#+BEGIN_SRC python :results value
+  cmd = [
+      '"qs"',
+      '"-c"',
+      '"DankMaterialShell"'
+  ]
+  return " ".join(cmd)
+#+END_SRC
+
+#+RESULTS: status_bar
+: "qs" "-c" "DankMaterialShell"
+
+#+NAME: clipboard
+#+BEGIN_SRC python :results value
+  cmd = [
+      '"bash"',
+      '"-c"',
+      '"wl-paste --watch cliphist store &"'
+  ]
+  return " ".join(cmd)
+#+END_SRC
+
+#+RESULTS: clipboard
+: "bash" "-c" "wl-paste --watch cliphist store &"
 
 #+NAME: spotify
 #+BEGIN_SRC python
@@ -756,6 +790,19 @@ return " ".join(cmd)
 
 #+RESULTS: niri_hot_change
 : "~/projects/niri_toolkit/niri-hot-change"
+
+#+NAME: niri_theme_change
+#+BEGIN_SRC python :var _temp=niri_theme :results value
+  _temp = f"{_temp}/theme.sh"
+  cmd = [
+      f'"{_temp}"',
+      '"--pywal"'
+  ]
+  return " ".join(cmd)
+#+END_SRC
+
+#+RESULTS: niri_theme_change
+: "~/.config/niri/theme/theme.sh" "--pywal"
 
 * Environment
 This sets the niri environment variables. You can also pull environment variables in
@@ -1030,18 +1077,19 @@ These are the apps that startup when niri starts. This actually works better in 
 putting all these in a single shell script and calling the shell script which enables
 preprocessing and progamatic control to ensure they startup in the correct sequence etc.
 #+BEGIN_SRC kdl :noweb yes :eval yes :tangle ./config.kdl
-// ## STARTUP APPS  ###########################################################
-      spawn-at-startup      <<xwayland()>>  
-      spawn-at-startup      <<idle_lock()>>
-      spawn-at-startup      <<setup_theme()>>
-      spawn-at-startup      <<wallpaper()>>
-      spawn-at-startup      <<notifications()>>
-      spawn-at-startup      <<status_bar()>>
-      spawn-at-startup      <<spotify()>>
-      spawn-at-startup      <<element()>>
-      spawn-at-startup      <<sms()>>
-      spawn-at-startup      <<calendar()>>
-      spawn-at-startup      <<discord()>>
+  // ## STARTUP APPS  ###########################################################
+        spawn-at-startup      <<xwayland()>>  
+        spawn-at-startup      <<idle_lock()>>
+        spawn-at-startup      <<setup_theme()>>
+        spawn-at-startup      <<wallpaper()>>
+        spawn-at-startup      <<notifications()>>
+        spawn-at-startup      <<status_bar()>>
+        spawn-at-startup      <<spotify()>>
+        spawn-at-startup      <<element()>>
+        spawn-at-startup      <<sms()>>
+        spawn-at-startup      <<calendar()>>
+        spawn-at-startup      <<discord()>>
+        spawn-at-startup      <<clipboard()>>
 #+END_SRC
 
 * Workspaces
@@ -1285,10 +1333,8 @@ QOL.
               focus-ring {
                       // off
                       width 2
-                      // active-color "<<foreground()>>"
-                      // inactive-color "<<background()>>"
-                      // active-color "<<color4()>>"
-                      // inactive-color "<<background()>>"
+                      active-color "<<color4()>>"
+                      inactive-color "<<background()>>"
                       // active-gradient from="#80c8ff" to="#bbddff" angle=45
                       // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
               }
@@ -1530,10 +1576,10 @@ floating / size and to assign the app to a specific workspace.
       }
 
       window-rule {
-            match app-id="Tk"
+            match app-id="niri-hot-change"
             open-floating true
             default-column-width { fixed 1050; }
-            default-window-height { fixed 325; }
+            default-window-height { fixed 500; }
       }
 
       layer-rule {
@@ -1554,224 +1600,156 @@ This is the bindings data section. Each key binding is loaded into a python dict
    the overlay. If you pass a target system in like "lenovo" it will return the commond
    bindings use across all systems plus the lenovo specific ones.
 #+NAME: keybindings-data
-#+BEGIN_SRC python :noweb= yes :results value :var _niri_hot_change=niri_hot_change :var _bindings=bindings :var _launcher=launcher :var _bluetooth=bluetooth :var _power_menu=power_menu :var _music=music :var _network=network :var _show_windows=show_windows :var _emacs_prod=emacs_prod :var _emacs_dev=emacs_dev :var _file_gui=file_gui :var _file_term=file_term :var _browser=browser :var _notes=notes :var _sms_get=sms_get :var _sms_put=sms_put :var _email_get=email_get :var _email_put=email_put :var _scratchpad_put=scratchpad_put :var _scratchpad_get=scratchpad_get :var _term=term :var _lock_screen=lock_screen :var _audio_raise_volume=audio_raise_volume :var _audio_lower_volume=audio_lower_volume :var _audio_mute=audio_mute :var _audio_mic_mute=audio_mic_mute :var _screenshot_viewer=screenshot_viewer :var _screenshot_viewer_emacs=screenshot_viewer_emacs
-        return [
-            ("Mod+Shift+Slash", _bindings, "Y", "Niri Key Bindings", "all"),
-            ("Mod+D", _launcher,"Y", "Launcher", "all"),
-            ("Mod+B", _bluetooth, "Y", "Bluetooth", "all"),
-            ("Mod+M", _music, "Y", "Music", "all"),
-            ("Mod+N", _network, "Y", "Network", "all"),
-            ("Mod+Shift+D", _show_windows, "Y", "Show Active Windows", "all"),
-            ("Mod+E", _emacs_prod, "Y", "Emacs - Prod", "all"),
-            ("Mod+Shift+E", _emacs_dev, "Y", "Emacs - Dev", "lenovo"),
-            ("Mod+T", _file_gui, "Y", "File Manager - GUI", "all"),
-            ("Mod+Shift+Y", _file_term, "Y", "File Manager - Term", "all"),
-            ("Mod+Shift+N", _notes, "Y", "Notes", "all"),
-            ("Mod+1", _sms_get, "Y", "SMS Get", "all"),
-            ("Mod+Shift+1", _sms_put, "Y", "SMS Put", "all"),
-            ("Mod+2", _email_get, "Y", "Email Get", "all"),
-            ("Mod+Shift+2", _email_put, "Y", "Email Put", "all"),
-            ("Mod+P", _scratchpad_put, "Y", "Scratchpad Put", "all"),
-            ("Mod+Shift+P", _scratchpad_get, "Y", "Scratchpad Get", "all"),
-            ("Mod+Return", _term, "Y", "Terminal", "all"),
-            ("Mod+Alt+L", _lock_screen, "Y", "Lock Screen", "all"),
-            ("XF86AudioRaiseVolume allow-when-locked=true", _audio_raise_volume, "Y", "Vol+", "all"),
-            ("XF86AudioLowerVolume allow-when-locked=true", _audio_lower_volume, "Y", "Vol-", "all"),
-            ("XF86AudioMute allow-when-locked=true", _audio_mute, "Y", "Mute", "all"),
-            ("XF86AudioMicMute allow-when-locked=true", _audio_mic_mute, "Y", "Mic Mute", "all"),
-            ("Mod+Shift+S", _screenshot_viewer, "Y", "Screenshot Picker", "all"),
-            ("Mod+Ctrl+S", _screenshot_viewer_emacs, "Y", "Screenshot Picker - Emacs", "lenovo"),
-            ("Mod+Shift+T", _niri_hot_change, "Y", "Niri Hot Change Config", "all"),
-            ("Mod+S", "screenshot", "N", "Screenshot", "all"),                                          
-            ("Mod+O repeat=false", "toggle-overview", "N", "Toggle Overview", "all"),                           
-            ("Mod+Q", "close-window", "N", "Close Window", "all"),                                       
-            ("Mod+h", "focus-column-left", "N", "Focus Column Left", "all"),                
-            ("Mod+j", "focus-window-down", "N", "Focus Column Down", "all"),                                       
-            ("Mod+k", "focus-window-up", "N", "Focus Window Down", "all"),                  
-            ("Mod+l", "focus-column-right", "N", "Focus Column Right", "all"),                                      
-            ("Mod+Shift+h", "move-column-left", "N", "Move Column Left", "all"),                                  
-            ("Mod+Shift+j", "move-window-down", "N", "Move Window Down", "all"),                               
-            ("Mod+Shift+k", "move-window-up", "N", "Move Window Up", "all"),                               
-            ("Mod+Shift+l", "move-column-right", "N", "Move Column Right", "all"),                                
-            ("Mod+Home", "focus-column-first", "N", "Focus Column First", "all"),                                   
-            ("Mod+End",  "focus-column-last", "N", "Focus Column Last", "all"),                                  
-            ("Mod+Ctrl+Home", "move-column-to-first", "N", "Move Column To First", "all"),
-            ("Mod+Ctrl+End", "move-column-to-last", "N", "Move Column To Last", "all"),                               
-            ("Mod+Ctrl+h", "focus-monitor-left", "N", "Focus Monitor Left", "all"),                                 
-            ("Mod+Ctrl+j", "focus-monitor-down", "N", "Focus Monitor Down", "all"),           
-            ("Mod+Ctrl+k", "focus-monitor-up", "N", "Focus Monitor Up", "all"),
-            ("Mod+Ctrl+l", "focus-monitor-right", "N", "Focus Monitor Right", "all"),
-            ("Mod+Shift+Ctrl+h", "move-column-to-monitor-left", "N", "Move Column To Monitor Left", "all"),
-            ("Mod+Shift+Ctrl+j", "move-column-to-monitor-down", "N", "Move Column To Monitor Down", "all"),
-            ("Mod+Shift+Ctrl+k", "move-column-to-monitor-up", "N", "Move Column To Monitor Up", "all"),
-            ("Mod+Shift+Ctrl+l", "move-column-to-monitor-right", "N", "Move Column To Monitor Right", "all"),
-            ("Mod+Page_Down", "focus-workspace-down", "N", "Focus Workspace Down", "all"),
-            ("Mod+Page_Up", "focus-workspace-up", "N", "Focus Workspace Up", "all"),
-            ("Mod+U", "focus-workspace-down", "N", "Focus Workspace Down", "all"),
-            ("Mod+I", "focus-workspace-up", "N", "Focus Workspace Up", "all"),
-            ("Mod+Ctrl+Page_Down", "move-column-to-workspace-down", "N", "Move Column To Workspace Down", "all"),
-            ("Mod+Ctrl+Page_Up", "move-column-to-workspace-up", "N", "Move Column To Workspace Up", "all"),
-            ("Mod+Ctrl+U", "move-column-to-workspace-down", "N", "Move Column To Workspace Down", "all"),
-            ("Mod+Ctrl+I", "move-column-to-workspace-up", "N", "Move Column To Workspace Up", "all"),
-            ("Mod+Shift+Page_Down", "move-workspace-down", "N", "Move Workspace Down", "all"),
-            ("Mod+Shift+Page_Up", "move-workspace-up", "N", "Move Workspace Up", "all"),
-            ("Mod+Shift+U", "move-workspace-down", "N", "Move Workspace Down", "all"),
-            ("Mod+Shift+I", "move-workspace-up", "N", "Move Workspace Up", "all"),
-            ("Mod+WheelScrollDown cooldown-ms=150", "focus-workspace-down", "N", "Focus Workspace Down", "all"),
-            ("Mod+WheelScrollUp cooldown-ms=150", "focus-workspace-up", "N", "Focus Workspace Up", "all"),
-            ("Mod+Ctrl+WheelScrollDown cooldown-ms=150", "move-column-to-workspace-down", "N", "Move Column To Workspace Down", "all"),
-            ("Mod+Ctrl+WheelScrollUp cooldown-ms=150", "move-column-to-workspace-up", "N", "Move Column To Workspace Up", "all"),
-            ("Mod+Shift+WheelScrollDown", "focus-column-right", "N", "Focus Column Right", "all"),
-            ("Mod+Shift+WheelScrollUp", "focus-column-left", "N", "Focus Column Left", "all"),
-            ("Mod+Ctrl+Shift+WheelScrollDown", "move-column-right", "N", "Move Column Right", "all"),
-            ("Mod+Ctrl+Shift+WheelScrollUp", "move-column-left", "N", "Move Column Left", "all"),
-            ("Mod+Tab", "focus-workspace-previous", "N", "Focus Workspace Previous", "all"),
-            ("Mod+BracketLeft", "consume-or-expel-window-left", "N", "Consume Or Expel Window Left", "all"),
-            ("Mod+BracketRight", "consume-or-expel-window-right", "N", "Consume Or Expel Window Right", "all"),
-            ("Mod+Comma", "consume-window-into-column", "N", "Consume Window Into Column", "all"),
-            ("Mod+Period", "expel-window-from-column", "N", "Expel Window From Column", "all"),
-            ("Mod+R", "switch-preset-column-width", "N", "Switch Preset Column Width", "all"),
-            ("Mod+Shift+R", "switch-preset-window-height", "N", "Switch Preset Column Height", "all"),
-            ("Mod+Ctrl+R", "reset-window-height", "N", "Reset Window Height", "all"),
-            ("Mod+F", "maximize-column", "N", "Maximize Column", "all"),
-            ("Mod+Shift+F", "fullscreen-window", "N", "Fullscreen Window", "all"),
-            ("Mod+Ctrl+F", "expand-column-to-available-width", "N", "Expand Column To Available Width", "all"),
-            ("Mod+C", "center-column", "N", "Center Column", "all"),
-            ("Mod+Ctrl+C", "center-visible-columns", "N", "Center Visible Columns", "all"),
-            ("Mod+Minus", "set-column-width \"-10%\"", "N", "Set Column Width -10%", "all"),
-            ("Mod+Equal", "set-column-width \"+10%\"", "N", "Set Column Width +10%", "all"),
-            ("Mod+Ctrl+Minus", "set-column-width \"-1\"", "N", "Set Column Width -1", "all"),
-            ("Mod+Ctrl+Equal", "set-column-width \"+1\"", "N", "Set Column Width +1", "all"),
-            ("Mod+Shift+Minus", "set-window-height \"-10%\"", "N", "Set Window Height -10%", "all"),
-            ("Mod+Shift+Equal", "set-window-height \"+10%\"", "N", "Set Window Height +10%", "all"),
-            ("Mod+Shift+Ctrl+Minus", "set-window-height \"-1\"", "N", "Set Window Height -1", "all"),
-            ("Mod+Shift+Ctrl+Equal", "set-window-height \"+1\"", "N", "Set Window Height +1", "all"),
-            ("Mod+0", "set-column-width \"960\"", "N", "Set Column Width", "all"),
-            ("Mod+Shift+0", "set-window-height \"540\"", "N", "Set Window Height 540", "all"),
-            ("Mod+Alt+0", "set-column-width \"1280\"", "N", "Set Column Width 1280", "all"),
-            ("Mod+Shift+Alt+0", "set-window-height \"720\"", "N", "Set Window Height 720", "all"),
-            ("Mod+Ctrl+0", "set-column-width \"1920\"", "N", "Set Column Width 1920", "all"),
-            ("Mod+Shift+Ctrl+0", "set-window-height \"1080\"", "N", "Set Window Height 1080", "all"),
-            ("Mod+V", "toggle-window-floating", "N", "Toggle Window Floating", "all"),
-            ("Mod+Shift+V", "switch-focus-between-floating-and-tiling", "N", "Switch Focus Floating And Tiling", "all"),
-            ("Mod+W", "toggle-column-tabbed-display", "N", "Toggle Column Tabbed Display", "all"),
-            ("Mod+Space", "switch-layout \"next\"", "N", "Switch Layout - Next", "all"),
-            ("Mod+Shift+Space", "switch-layout \"prev\"", "N", "Switch Layout - Prev", "all"),
-            ("Print", "screenshot", "N", "Screenshot", "all"),
-            ("Ctrl+Print", "screenshot-screen", "N", "Screenshot Sreen", "all"),
-            ("Alt+Print", "screenshot-window", "N", "Screenshot Window", "all"),
-            ("Mod+Escape allow-inhibiting=false", "toggle-keyboard-shortcuts-inhibit", "N", "Toggle Keyboard Shortcuts - Inhibit", "all"),
-            ("Ctrl+Alt+Delete", "quit", "N", "Quit", "all",)
-        ]
+#+BEGIN_SRC python :noweb= yes :results value :var _niri_hot_change=niri_hot_change :var _bindings=bindings :var _launcher=launcher :var _bluetooth=bluetooth :var _power_menu=power_menu :var _music=music :var _network=network :var _show_windows=show_windows :var _emacs_prod=emacs_prod :var _emacs_dev=emacs_dev :var _file_gui=file_gui :var _file_term=file_term :var _browser=browser :var _notes=notes :var _sms_get=sms_get :var _sms_put=sms_put :var _email_get=email_get :var _email_put=email_put :var _scratchpad_put=scratchpad_put :var _scratchpad_get=scratchpad_get :var _term=term :var _lock_screen=lock_screen :var _audio_raise_volume=audio_raise_volume :var _audio_lower_volume=audio_lower_volume :var _audio_mute=audio_mute :var _audio_mic_mute=audio_mic_mute :var _screenshot_viewer=screenshot_viewer :var _screenshot_viewer_emacs=screenshot_viewer_emacs :var _niri_theme_change=niri_theme_change
+  return [
+      ("Mod+Shift+Slash", _bindings, "Y", "Niri Key Bindings", "all"),
+      ("Mod+D", _launcher,"Y", "Launcher", "all"),
+      ("Mod+B", _bluetooth, "Y", "Bluetooth", "all"),
+      ("Mod+Shift+D", _show_windows, "Y", "Show Active Windows", "all"),
+      ("Mod+E", _emacs_prod, "Y", "Emacs - Prod", "all"),
+      ("Mod+Shift+E", _emacs_dev, "Y", "Emacs - Dev", "lenovo"),
+      ("Mod+Shift+Y", _file_term, "Y", "File Manager - Term", "all"),
+      ("Mod+Shift+N", _notes, "Y", "Notes", "all"),
+      ("Mod+1", _sms_get, "Y", "SMS Get", "all"),
+      ("Mod+Shift+1", _sms_put, "Y", "SMS Put", "all"),
+      ("Mod+2", _email_get, "Y", "Email Get", "all"),
+      ("Mod+Shift+2", _email_put, "Y", "Email Put", "all"),
+      ("Mod+P", _scratchpad_put, "Y", "Scratchpad Put", "all"),
+      ("Mod+Shift+P", _scratchpad_get, "Y", "Scratchpad Get", "all"),
+      ("Mod+Return", _term, "Y", "Terminal", "all"),
+      ("Mod+Shift+S", _screenshot_viewer, "Y", "Screenshot Picker", "all"),
+      ("Mod+Ctrl+S", _screenshot_viewer_emacs, "Y", "Screenshot Picker - Emacs", "lenovo"),
+      ("Mod+T", _niri_theme_change, "Y", "Niri Theme Change", "all"),      
+      ("Mod+Shift+T", _niri_hot_change, "Y", "Niri Hot Change Config", "all"),
+      ("Mod+S", "screenshot", "N", "Screenshot", "all"),                                          
+      ("Mod+O repeat=false", "toggle-overview", "N", "Toggle Overview", "all"),                           
+      ("Mod+Q", "close-window", "N", "Close Window", "all"),                                       
+      ("Mod+h", "focus-column-left", "N", "Focus Column Left", "all"),                
+      ("Mod+j", "focus-window-down", "N", "Focus Column Down", "all"),                                       
+      ("Mod+k", "focus-window-up", "N", "Focus Window Down", "all"),                  
+      ("Mod+l", "focus-column-right", "N", "Focus Column Right", "all"),                                      
+      ("Mod+Shift+h", "move-column-left", "N", "Move Column Left", "all"),                                  
+      ("Mod+Shift+j", "move-window-down", "N", "Move Window Down", "all"),                               
+      ("Mod+Shift+k", "move-window-up", "N", "Move Window Up", "all"),                               
+      ("Mod+Shift+l", "move-column-right", "N", "Move Column Right", "all"),                                
+      ("Mod+Ctrl+h", "focus-monitor-left", "N", "Focus Monitor Left", "all"),                                 
+      ("Mod+Ctrl+l", "focus-monitor-right", "N", "Focus Monitor Right", "all"),
+      ("Mod+Shift+Ctrl+h", "move-column-to-monitor-left", "N", "Move Column To Monitor Left", "all"),
+      ("Mod+Shift+Ctrl+l", "move-column-to-monitor-right", "N", "Move Column To Monitor Right", "all"),
+      ("Mod+WheelScrollDown cooldown-ms=150", "focus-workspace-down", "N", "Focus Workspace Down", "all"),
+      ("Mod+WheelScrollUp cooldown-ms=150", "focus-workspace-up", "N", "Focus Workspace Up", "all"),
+      ("Mod+Shift+WheelScrollDown", "focus-column-right", "N", "Focus Column Right", "all"),
+      ("Mod+Shift+WheelScrollUp", "focus-column-left", "N", "Focus Column Left", "all"),
+      ("Mod+Tab", "focus-workspace-previous", "N", "Focus Workspace Previous", "all"),
+      ("Mod+BracketLeft", "consume-or-expel-window-left", "N", "Consume Or Expel Window Left", "all"),
+      ("Mod+BracketRight", "consume-or-expel-window-right", "N", "Consume Or Expel Window Right", "all"),
+      ("Mod+Comma", "consume-window-into-column", "N", "Consume Window Into Column", "all"),
+      ("Mod+Period", "expel-window-from-column", "N", "Expel Window From Column", "all"),
+      ("Mod+R", "switch-preset-column-width", "N", "Switch Preset Column Width", "all"),
+      ("Mod+Shift+R", "switch-preset-window-height", "N", "Switch Preset Column Height", "all"),
+      ("Mod+Ctrl+R", "reset-window-height", "N", "Reset Window Height", "all"),
+      ("Mod+F", "maximize-column", "N", "Maximize Column", "all"),
+      ("Mod+Shift+F", "fullscreen-window", "N", "Fullscreen Window", "all"),
+      ("Mod+Ctrl+F", "expand-column-to-available-width", "N", "Expand Column To Available Width", "all"),
+      ("Mod+C", "center-column", "N", "Center Column", "all"),
+      ("Mod+Ctrl+C", "center-visible-columns", "N", "Center Visible Columns", "all"),
+      ("Mod+Minus", "set-column-width \"-10%\"", "N", "Set Column Width -10%", "all"),
+      ("Mod+Equal", "set-column-width \"+10%\"", "N", "Set Column Width +10%", "all"),
+      ("Mod+Ctrl+Minus", "set-column-width \"-1\"", "N", "Set Column Width -1", "all"),
+      ("Mod+Ctrl+Equal", "set-column-width \"+1\"", "N", "Set Column Width +1", "all"),
+      ("Mod+Shift+Minus", "set-window-height \"-10%\"", "N", "Set Window Height -10%", "all"),
+      ("Mod+Shift+Equal", "set-window-height \"+10%\"", "N", "Set Window Height +10%", "all"),
+      ("Mod+Shift+Ctrl+Minus", "set-window-height \"-1\"", "N", "Set Window Height -1", "all"),
+      ("Mod+Shift+Ctrl+Equal", "set-window-height \"+1\"", "N", "Set Window Height +1", "all"),
+      ("Mod+V", "toggle-window-floating", "N", "Toggle Window Floating", "all"),
+      ("Mod+Shift+V", "switch-focus-between-floating-and-tiling", "N", "Switch Focus Floating And Tiling", "all"),
+      ("Mod+W", "toggle-column-tabbed-display", "N", "Toggle Column Tabbed Display", "all"),
+      ("Mod+Shift+Space", "switch-layout \"prev\"", "N", "Switch Layout - Prev", "all"),
+      ("Mod+Escape allow-inhibiting=false", "toggle-keyboard-shortcuts-inhibit", "N", "Toggle Keyboard Shortcuts - Inhibit", "all"),
+      ("Ctrl+Alt+Delete", "quit", "N", "Quit", "all",),
+      ("Mod+Space", '\"qs\" \"-c\" \"DankMaterialShell\" \"ipc\" \"call\" \"spotlight\" \"toggle\"', "Y", "Launcher", "all"),
+      ("XF86AudioRaiseVolume allow-when-locked=true",'\"qs\" \"-c\" \"DankMaterialShell\" \"ipc\" \"call\" \"audio\" \"increment\" \"3\"', "Y", "Vol+", "all"),
+      ("XF86AudioLowerVolume allow-when-locked=true",'\"qs\" \"-c\" \"DankMaterialShell\" \"ipc\" \"call\" \"audio\" \"decrement\" \"3\"', "Y", "Vol-", "all"),
+      ("XF86AudioMute allow-when-locked=true",'\"qs\" \"-c\" \"DankMaterialShell\" \"ipc\" \"call\" \"audio\" \"mute\"', "Y", "Mute", "all"),
+      ("XF86AudioMicMute allow-when-locked=true",'\"qs\" \"-c\" \"DankMaterialShell\" \"ipc\" \"call\" \"audio\" \"micmute\"', "Y", "Mic Mute", "all"),
+      ("XF86MonBrightnessUp allow-when-locked=true",'\"qs\" \"-c\" \"DankMaterialShell\" \"ipc\" \"call\" \"brightness\" \"increment\" \"5\" \"\"', "Y", "Brightness Up", "all"),
+      ("XF86MonBrightnessDown allow-when-locked=true",'\"qs\" \"-c\" \"DankMaterialShell\" \"ipc\" \"call\" \"brightness\" \"decrement\" \"5\" \"\"', "Y", "Brightness Down", "all")
+  ]
 #+END_SRC
 
 #+RESULTS: keybindings-data
-| Mod+Shift+Slash                             | "~/.config/niri/scripts/rofi_bindings"                                                                               | Y | Niri Key Bindings                   | all    |
-| Mod+D                                       | "~/.config/niri/scripts/rofi_launcher"                                                                               | Y | Launcher                            | all    |
-| Mod+B                                       | "~/.config/niri/scripts/rofi_bluetooth"                                                                              | Y | Bluetooth                           | all    |
-| Mod+M                                       | "~/.config/niri/scripts/rofi_music"                                                                                  | Y | Music                               | all    |
-| Mod+N                                       | "~/.config/niri/scripts/rofi_network"                                                                                | Y | Network                             | all    |
-| Mod+Shift+D                                 | "~/.config/niri/scripts/rofi_showwindows"                                                                            | Y | Show Active Windows                 | all    |
-| Mod+E                                       | "emacsclient" "-c" "-s" "emacs-prod"                                                                                 | Y | Emacs - Prod                        | all    |
-| Mod+Shift+E                                 | "emacsclient" "-c" "-s" "emacs-dev"                                                                                  | Y | Emacs - Dev                         | lenovo |
-| Mod+T                                       | "thunar"                                                                                                             | Y | File Manager - GUI                  | all    |
-| Mod+Shift+Y                                 | "sh" "-c" "kitty --detach yazi"                                                                                      | Y | File Manager - Term                 | all    |
-| Mod+Shift+N                                 | "pluma"                                                                                                              | Y | Notes                               | all    |
-| Mod+1                                       | "~/projects/niri_toolkit/niri-move-window.py" "--match" "Messages" "--target" "m" "--target_id" "HDMI-A-2" "--focus" | Y | SMS Get                             | all    |
-| Mod+Shift+1                                 | "~/projects/niri_toolkit/niri-move-window.py" "--match" "Messages" "--target" "w" "--target_id" "messaging"          | Y | SMS Put                             | all    |
-| Mod+2                                       | "~/projects/niri_toolkit/niri-move-window.py" "--match" "mu4e" "--target" "m" "--target_id" "HDMI-A-2" "--focus"     | Y | Email Get                           | all    |
-| Mod+Shift+2                                 | "~/projects/niri_toolkit/niri-move-window.py" "--match" "mu4e" "--target" "w" "--target_id" "messaging"              | Y | Email Put                           | all    |
-| Mod+P                                       | "~/projects/niri_toolkit/niri_scratchpad" "--action" "put" "--scratchpad_name" "scratchpad"                          | Y | Scratchpad Put                      | all    |
-| Mod+Shift+P                                 | "~/projects/niri_toolkit/niri_scratchpad" "--action" "get" "--scratchpad_name" "scratchpad"                          | Y | Scratchpad Get                      | all    |
-| Mod+Return                                  | "~/.config/niri/scripts/alacritty"                                                                                   | Y | Terminal                            | all    |
-| Mod+Alt+L                                   | "~/.config/niri/scripts/lockscreen"                                                                                  | Y | Lock Screen                         | all    |
-| XF86AudioRaiseVolume allow-when-locked=true | "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"                                                                   | Y | Vol+                                | all    |
-| XF86AudioLowerVolume allow-when-locked=true | "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"                                                                   | Y | Vol-                                | all    |
-| XF86AudioMute allow-when-locked=true        | "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"                                                                   | Y | Mute                                | all    |
-| XF86AudioMicMute allow-when-locked=true     | "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"                                                                 | Y | Mic Mute                            | all    |
-| Mod+Shift+S                                 | "~/projects/niri_toolkit/niri-screenshot-picker"                                                                     | Y | Screenshot Picker                   | all    |
-| Mod+Ctrl+S                                  | "~/projects/niri_toolkit/niri-screenshot-picker-emacs"                                                               | Y | Screenshot Picker - Emacs           | lenovo |
-| Mod+Shift+T                                 | "~/projects/niri_toolkit/niri-hot-change"                                                                            | Y | Niri Hot Change Config              | all    |
-| Mod+S                                       | screenshot                                                                                                           | N | Screenshot                          | all    |
-| Mod+O repeat=false                          | toggle-overview                                                                                                      | N | Toggle Overview                     | all    |
-| Mod+Q                                       | close-window                                                                                                         | N | Close Window                        | all    |
-| Mod+h                                       | focus-column-left                                                                                                    | N | Focus Column Left                   | all    |
-| Mod+j                                       | focus-window-down                                                                                                    | N | Focus Column Down                   | all    |
-| Mod+k                                       | focus-window-up                                                                                                      | N | Focus Window Down                   | all    |
-| Mod+l                                       | focus-column-right                                                                                                   | N | Focus Column Right                  | all    |
-| Mod+Shift+h                                 | move-column-left                                                                                                     | N | Move Column Left                    | all    |
-| Mod+Shift+j                                 | move-window-down                                                                                                     | N | Move Window Down                    | all    |
-| Mod+Shift+k                                 | move-window-up                                                                                                       | N | Move Window Up                      | all    |
-| Mod+Shift+l                                 | move-column-right                                                                                                    | N | Move Column Right                   | all    |
-| Mod+Home                                    | focus-column-first                                                                                                   | N | Focus Column First                  | all    |
-| Mod+End                                     | focus-column-last                                                                                                    | N | Focus Column Last                   | all    |
-| Mod+Ctrl+Home                               | move-column-to-first                                                                                                 | N | Move Column To First                | all    |
-| Mod+Ctrl+End                                | move-column-to-last                                                                                                  | N | Move Column To Last                 | all    |
-| Mod+Ctrl+h                                  | focus-monitor-left                                                                                                   | N | Focus Monitor Left                  | all    |
-| Mod+Ctrl+j                                  | focus-monitor-down                                                                                                   | N | Focus Monitor Down                  | all    |
-| Mod+Ctrl+k                                  | focus-monitor-up                                                                                                     | N | Focus Monitor Up                    | all    |
-| Mod+Ctrl+l                                  | focus-monitor-right                                                                                                  | N | Focus Monitor Right                 | all    |
-| Mod+Shift+Ctrl+h                            | move-column-to-monitor-left                                                                                          | N | Move Column To Monitor Left         | all    |
-| Mod+Shift+Ctrl+j                            | move-column-to-monitor-down                                                                                          | N | Move Column To Monitor Down         | all    |
-| Mod+Shift+Ctrl+k                            | move-column-to-monitor-up                                                                                            | N | Move Column To Monitor Up           | all    |
-| Mod+Shift+Ctrl+l                            | move-column-to-monitor-right                                                                                         | N | Move Column To Monitor Right        | all    |
-| Mod+Page_Down                               | focus-workspace-down                                                                                                 | N | Focus Workspace Down                | all    |
-| Mod+Page_Up                                 | focus-workspace-up                                                                                                   | N | Focus Workspace Up                  | all    |
-| Mod+U                                       | focus-workspace-down                                                                                                 | N | Focus Workspace Down                | all    |
-| Mod+I                                       | focus-workspace-up                                                                                                   | N | Focus Workspace Up                  | all    |
-| Mod+Ctrl+Page_Down                          | move-column-to-workspace-down                                                                                        | N | Move Column To Workspace Down       | all    |
-| Mod+Ctrl+Page_Up                            | move-column-to-workspace-up                                                                                          | N | Move Column To Workspace Up         | all    |
-| Mod+Ctrl+U                                  | move-column-to-workspace-down                                                                                        | N | Move Column To Workspace Down       | all    |
-| Mod+Ctrl+I                                  | move-column-to-workspace-up                                                                                          | N | Move Column To Workspace Up         | all    |
-| Mod+Shift+Page_Down                         | move-workspace-down                                                                                                  | N | Move Workspace Down                 | all    |
-| Mod+Shift+Page_Up                           | move-workspace-up                                                                                                    | N | Move Workspace Up                   | all    |
-| Mod+Shift+U                                 | move-workspace-down                                                                                                  | N | Move Workspace Down                 | all    |
-| Mod+Shift+I                                 | move-workspace-up                                                                                                    | N | Move Workspace Up                   | all    |
-| Mod+WheelScrollDown cooldown-ms=150         | focus-workspace-down                                                                                                 | N | Focus Workspace Down                | all    |
-| Mod+WheelScrollUp cooldown-ms=150           | focus-workspace-up                                                                                                   | N | Focus Workspace Up                  | all    |
-| Mod+Ctrl+WheelScrollDown cooldown-ms=150    | move-column-to-workspace-down                                                                                        | N | Move Column To Workspace Down       | all    |
-| Mod+Ctrl+WheelScrollUp cooldown-ms=150      | move-column-to-workspace-up                                                                                          | N | Move Column To Workspace Up         | all    |
-| Mod+Shift+WheelScrollDown                   | focus-column-right                                                                                                   | N | Focus Column Right                  | all    |
-| Mod+Shift+WheelScrollUp                     | focus-column-left                                                                                                    | N | Focus Column Left                   | all    |
-| Mod+Ctrl+Shift+WheelScrollDown              | move-column-right                                                                                                    | N | Move Column Right                   | all    |
-| Mod+Ctrl+Shift+WheelScrollUp                | move-column-left                                                                                                     | N | Move Column Left                    | all    |
-| Mod+Tab                                     | focus-workspace-previous                                                                                             | N | Focus Workspace Previous            | all    |
-| Mod+BracketLeft                             | consume-or-expel-window-left                                                                                         | N | Consume Or Expel Window Left        | all    |
-| Mod+BracketRight                            | consume-or-expel-window-right                                                                                        | N | Consume Or Expel Window Right       | all    |
-| Mod+Comma                                   | consume-window-into-column                                                                                           | N | Consume Window Into Column          | all    |
-| Mod+Period                                  | expel-window-from-column                                                                                             | N | Expel Window From Column            | all    |
-| Mod+R                                       | switch-preset-column-width                                                                                           | N | Switch Preset Column Width          | all    |
-| Mod+Shift+R                                 | switch-preset-window-height                                                                                          | N | Switch Preset Column Height         | all    |
-| Mod+Ctrl+R                                  | reset-window-height                                                                                                  | N | Reset Window Height                 | all    |
-| Mod+F                                       | maximize-column                                                                                                      | N | Maximize Column                     | all    |
-| Mod+Shift+F                                 | fullscreen-window                                                                                                    | N | Fullscreen Window                   | all    |
-| Mod+Ctrl+F                                  | expand-column-to-available-width                                                                                     | N | Expand Column To Available Width    | all    |
-| Mod+C                                       | center-column                                                                                                        | N | Center Column                       | all    |
-| Mod+Ctrl+C                                  | center-visible-columns                                                                                               | N | Center Visible Columns              | all    |
-| Mod+Minus                                   | set-column-width "-10%"                                                                                              | N | Set Column Width -10%               | all    |
-| Mod+Equal                                   | set-column-width "+10%"                                                                                              | N | Set Column Width +10%               | all    |
-| Mod+Ctrl+Minus                              | set-column-width "-1"                                                                                                | N | Set Column Width -1                 | all    |
-| Mod+Ctrl+Equal                              | set-column-width "+1"                                                                                                | N | Set Column Width +1                 | all    |
-| Mod+Shift+Minus                             | set-window-height "-10%"                                                                                             | N | Set Window Height -10%              | all    |
-| Mod+Shift+Equal                             | set-window-height "+10%"                                                                                             | N | Set Window Height +10%              | all    |
-| Mod+Shift+Ctrl+Minus                        | set-window-height "-1"                                                                                               | N | Set Window Height -1                | all    |
-| Mod+Shift+Ctrl+Equal                        | set-window-height "+1"                                                                                               | N | Set Window Height +1                | all    |
-| Mod+0                                       | set-column-width "960"                                                                                               | N | Set Column Width                    | all    |
-| Mod+Shift+0                                 | set-window-height "540"                                                                                              | N | Set Window Height 540               | all    |
-| Mod+Alt+0                                   | set-column-width "1280"                                                                                              | N | Set Column Width 1280               | all    |
-| Mod+Shift+Alt+0                             | set-window-height "720"                                                                                              | N | Set Window Height 720               | all    |
-| Mod+Ctrl+0                                  | set-column-width "1920"                                                                                              | N | Set Column Width 1920               | all    |
-| Mod+Shift+Ctrl+0                            | set-window-height "1080"                                                                                             | N | Set Window Height 1080              | all    |
-| Mod+V                                       | toggle-window-floating                                                                                               | N | Toggle Window Floating              | all    |
-| Mod+Shift+V                                 | switch-focus-between-floating-and-tiling                                                                             | N | Switch Focus Floating And Tiling    | all    |
-| Mod+W                                       | toggle-column-tabbed-display                                                                                         | N | Toggle Column Tabbed Display        | all    |
-| Mod+Space                                   | switch-layout "next"                                                                                                 | N | Switch Layout - Next                | all    |
-| Mod+Shift+Space                             | switch-layout "prev"                                                                                                 | N | Switch Layout - Prev                | all    |
-| Print                                       | screenshot                                                                                                           | N | Screenshot                          | all    |
-| Ctrl+Print                                  | screenshot-screen                                                                                                    | N | Screenshot Sreen                    | all    |
-| Alt+Print                                   | screenshot-window                                                                                                    | N | Screenshot Window                   | all    |
-| Mod+Escape allow-inhibiting=false           | toggle-keyboard-shortcuts-inhibit                                                                                    | N | Toggle Keyboard Shortcuts - Inhibit | all    |
-| Ctrl+Alt+Delete                             | quit                                                                                                                 | N | Quit                                | all    |
+| Mod+Shift+Slash                              | "~/.config/niri/scripts/rofi_bindings"                                                                               | Y | Niri Key Bindings                   | all    |
+| Mod+D                                        | "~/.config/niri/scripts/rofi_launcher"                                                                               | Y | Launcher                            | all    |
+| Mod+B                                        | "~/.config/niri/scripts/rofi_bluetooth"                                                                              | Y | Bluetooth                           | all    |
+| Mod+Shift+D                                  | "~/.config/niri/scripts/rofi_showwindows"                                                                            | Y | Show Active Windows                 | all    |
+| Mod+E                                        | "emacsclient" "-c" "-s" "emacs-prod"                                                                                 | Y | Emacs - Prod                        | all    |
+| Mod+Shift+E                                  | "emacsclient" "-c" "-s" "emacs-dev"                                                                                  | Y | Emacs - Dev                         | lenovo |
+| Mod+Shift+Y                                  | "sh" "-c" "kitty --detach yazi"                                                                                      | Y | File Manager - Term                 | all    |
+| Mod+Shift+N                                  | "pluma"                                                                                                              | Y | Notes                               | all    |
+| Mod+1                                        | "~/projects/niri_toolkit/niri-move-window.py" "--match" "Messages" "--target" "m" "--target_id" "HDMI-A-2" "--focus" | Y | SMS Get                             | all    |
+| Mod+Shift+1                                  | "~/projects/niri_toolkit/niri-move-window.py" "--match" "Messages" "--target" "w" "--target_id" "messaging"          | Y | SMS Put                             | all    |
+| Mod+2                                        | "~/projects/niri_toolkit/niri-move-window.py" "--match" "mu4e" "--target" "m" "--target_id" "HDMI-A-2" "--focus"     | Y | Email Get                           | all    |
+| Mod+Shift+2                                  | "~/projects/niri_toolkit/niri-move-window.py" "--match" "mu4e" "--target" "w" "--target_id" "messaging"              | Y | Email Put                           | all    |
+| Mod+P                                        | "~/projects/niri_toolkit/niri_scratchpad" "--action" "put" "--scratchpad_name" "scratchpad"                          | Y | Scratchpad Put                      | all    |
+| Mod+Shift+P                                  | "~/projects/niri_toolkit/niri_scratchpad" "--action" "get" "--scratchpad_name" "scratchpad"                          | Y | Scratchpad Get                      | all    |
+| Mod+Return                                   | "~/.config/niri/scripts/alacritty"                                                                                   | Y | Terminal                            | all    |
+| Mod+Shift+S                                  | "~/projects/niri_toolkit/niri-screenshot-picker"                                                                     | Y | Screenshot Picker                   | all    |
+| Mod+Ctrl+S                                   | "~/projects/niri_toolkit/niri-screenshot-picker-emacs"                                                               | Y | Screenshot Picker - Emacs           | lenovo |
+| Mod+T                                        | "~/.config/niri/theme/theme.sh" "--pywal"                                                                            | Y | Niri Theme Change                   | all    |
+| Mod+Shift+T                                  | "~/projects/niri_toolkit/niri-hot-change"                                                                            | Y | Niri Hot Change Config              | all    |
+| Mod+S                                        | screenshot                                                                                                           | N | Screenshot                          | all    |
+| Mod+O repeat=false                           | toggle-overview                                                                                                      | N | Toggle Overview                     | all    |
+| Mod+Q                                        | close-window                                                                                                         | N | Close Window                        | all    |
+| Mod+h                                        | focus-column-left                                                                                                    | N | Focus Column Left                   | all    |
+| Mod+j                                        | focus-window-down                                                                                                    | N | Focus Column Down                   | all    |
+| Mod+k                                        | focus-window-up                                                                                                      | N | Focus Window Down                   | all    |
+| Mod+l                                        | focus-column-right                                                                                                   | N | Focus Column Right                  | all    |
+| Mod+Shift+h                                  | move-column-left                                                                                                     | N | Move Column Left                    | all    |
+| Mod+Shift+j                                  | move-window-down                                                                                                     | N | Move Window Down                    | all    |
+| Mod+Shift+k                                  | move-window-up                                                                                                       | N | Move Window Up                      | all    |
+| Mod+Shift+l                                  | move-column-right                                                                                                    | N | Move Column Right                   | all    |
+| Mod+Ctrl+h                                   | focus-monitor-left                                                                                                   | N | Focus Monitor Left                  | all    |
+| Mod+Ctrl+l                                   | focus-monitor-right                                                                                                  | N | Focus Monitor Right                 | all    |
+| Mod+Shift+Ctrl+h                             | move-column-to-monitor-left                                                                                          | N | Move Column To Monitor Left         | all    |
+| Mod+Shift+Ctrl+l                             | move-column-to-monitor-right                                                                                         | N | Move Column To Monitor Right        | all    |
+| Mod+WheelScrollDown cooldown-ms=150          | focus-workspace-down                                                                                                 | N | Focus Workspace Down                | all    |
+| Mod+WheelScrollUp cooldown-ms=150            | focus-workspace-up                                                                                                   | N | Focus Workspace Up                  | all    |
+| Mod+Shift+WheelScrollDown                    | focus-column-right                                                                                                   | N | Focus Column Right                  | all    |
+| Mod+Shift+WheelScrollUp                      | focus-column-left                                                                                                    | N | Focus Column Left                   | all    |
+| Mod+Tab                                      | focus-workspace-previous                                                                                             | N | Focus Workspace Previous            | all    |
+| Mod+BracketLeft                              | consume-or-expel-window-left                                                                                         | N | Consume Or Expel Window Left        | all    |
+| Mod+BracketRight                             | consume-or-expel-window-right                                                                                        | N | Consume Or Expel Window Right       | all    |
+| Mod+Comma                                    | consume-window-into-column                                                                                           | N | Consume Window Into Column          | all    |
+| Mod+Period                                   | expel-window-from-column                                                                                             | N | Expel Window From Column            | all    |
+| Mod+R                                        | switch-preset-column-width                                                                                           | N | Switch Preset Column Width          | all    |
+| Mod+Shift+R                                  | switch-preset-window-height                                                                                          | N | Switch Preset Column Height         | all    |
+| Mod+Ctrl+R                                   | reset-window-height                                                                                                  | N | Reset Window Height                 | all    |
+| Mod+F                                        | maximize-column                                                                                                      | N | Maximize Column                     | all    |
+| Mod+Shift+F                                  | fullscreen-window                                                                                                    | N | Fullscreen Window                   | all    |
+| Mod+Ctrl+F                                   | expand-column-to-available-width                                                                                     | N | Expand Column To Available Width    | all    |
+| Mod+C                                        | center-column                                                                                                        | N | Center Column                       | all    |
+| Mod+Ctrl+C                                   | center-visible-columns                                                                                               | N | Center Visible Columns              | all    |
+| Mod+Minus                                    | set-column-width "-10%"                                                                                              | N | Set Column Width -10%               | all    |
+| Mod+Equal                                    | set-column-width "+10%"                                                                                              | N | Set Column Width +10%               | all    |
+| Mod+Ctrl+Minus                               | set-column-width "-1"                                                                                                | N | Set Column Width -1                 | all    |
+| Mod+Ctrl+Equal                               | set-column-width "+1"                                                                                                | N | Set Column Width +1                 | all    |
+| Mod+Shift+Minus                              | set-window-height "-10%"                                                                                             | N | Set Window Height -10%              | all    |
+| Mod+Shift+Equal                              | set-window-height "+10%"                                                                                             | N | Set Window Height +10%              | all    |
+| Mod+Shift+Ctrl+Minus                         | set-window-height "-1"                                                                                               | N | Set Window Height -1                | all    |
+| Mod+Shift+Ctrl+Equal                         | set-window-height "+1"                                                                                               | N | Set Window Height +1                | all    |
+| Mod+V                                        | toggle-window-floating                                                                                               | N | Toggle Window Floating              | all    |
+| Mod+Shift+V                                  | switch-focus-between-floating-and-tiling                                                                             | N | Switch Focus Floating And Tiling    | all    |
+| Mod+W                                        | toggle-column-tabbed-display                                                                                         | N | Toggle Column Tabbed Display        | all    |
+| Mod+Shift+Space                              | switch-layout "prev"                                                                                                 | N | Switch Layout - Prev                | all    |
+| Mod+Escape allow-inhibiting=false            | toggle-keyboard-shortcuts-inhibit                                                                                    | N | Toggle Keyboard Shortcuts - Inhibit | all    |
+| Ctrl+Alt+Delete                              | quit                                                                                                                 | N | Quit                                | all    |
+| Mod+Space                                    | "qs" "-c" "DankMaterialShell" "ipc" "call" "spotlight" "toggle"                                                      | Y | Launcher                            | all    |
+| XF86AudioRaiseVolume allow-when-locked=true  | "qs" "-c" "DankMaterialShell" "ipc" "call" "audio" "increment" "3"                                                   | Y | Vol+                                | all    |
+| XF86AudioLowerVolume allow-when-locked=true  | "qs" "-c" "DankMaterialShell" "ipc" "call" "audio" "decrement" "3"                                                   | Y | Vol-                                | all    |
+| XF86AudioMute allow-when-locked=true         | "qs" "-c" "DankMaterialShell" "ipc" "call" "audio" "mute"                                                            | Y | Mute                                | all    |
+| XF86AudioMicMute allow-when-locked=true      | "qs" "-c" "DankMaterialShell" "ipc" "call" "audio" "micmute"                                                         | Y | Mic Mute                            | all    |
+| XF86MonBrightnessUp allow-when-locked=true   | "qs" "-c" "DankMaterialShell" "ipc" "call" "brightness" "increment" "5" ""                                           | Y | Brightness Up                       | all    |
+| XF86MonBrightnessDown allow-when-locked=true | "qs" "-c" "DankMaterialShell" "ipc" "call" "brightness" "decrement" "5" ""                                           | Y | Brightness Down                     | all    |
 
 This is the keybindings-config code block which returns the keybindings base on the
 target system. There is mode option which will return the keybinding content to
@@ -1798,12 +1776,9 @@ return "\n".join(lines)
 Mod+Shift+Slash                                    { spawn "~/.config/niri/scripts/rofi_bindings"; }
 Mod+D                                              { spawn "~/.config/niri/scripts/rofi_launcher"; }
 Mod+B                                              { spawn "~/.config/niri/scripts/rofi_bluetooth"; }
-Mod+M                                              { spawn "~/.config/niri/scripts/rofi_music"; }
-Mod+N                                              { spawn "~/.config/niri/scripts/rofi_network"; }
 Mod+Shift+D                                        { spawn "~/.config/niri/scripts/rofi_showwindows"; }
 Mod+E                                              { spawn "emacsclient" "-c" "-s" "emacs-prod"; }
 Mod+Shift+E                                        { spawn "emacsclient" "-c" "-s" "emacs-dev"; }
-Mod+T                                              { spawn "thunar"; }
 Mod+Shift+Y                                        { spawn "sh" "-c" "kitty --detach yazi"; }
 Mod+Shift+N                                        { spawn "pluma"; }
 Mod+1                                              { spawn "~/projects/niri_toolkit/niri-move-window.py" "--match" "Messages" "--target" "m" "--target_id" "HDMI-A-2" "--focus"; }
@@ -1813,13 +1788,9 @@ Mod+Shift+2                                        { spawn "~/projects/niri_tool
 Mod+P                                              { spawn "~/projects/niri_toolkit/niri_scratchpad" "--action" "put" "--scratchpad_name" "scratchpad"; }
 Mod+Shift+P                                        { spawn "~/projects/niri_toolkit/niri_scratchpad" "--action" "get" "--scratchpad_name" "scratchpad"; }
 Mod+Return                                         { spawn "~/.config/niri/scripts/alacritty"; }
-Mod+Alt+L                                          { spawn "~/.config/niri/scripts/lockscreen"; }
-XF86AudioRaiseVolume allow-when-locked=true        { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
-XF86AudioLowerVolume allow-when-locked=true        { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }
-XF86AudioMute allow-when-locked=true               { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
-XF86AudioMicMute allow-when-locked=true            { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
 Mod+Shift+S                                        { spawn "~/projects/niri_toolkit/niri-screenshot-picker"; }
 Mod+Ctrl+S                                         { spawn "~/projects/niri_toolkit/niri-screenshot-picker-emacs"; }
+Mod+T                                              { spawn "~/.config/niri/theme/theme.sh" "--pywal"; }
 Mod+Shift+T                                        { spawn "~/projects/niri_toolkit/niri-hot-change"; }
 Mod+S                                              { screenshot; }
 Mod+O repeat=false                                 { toggle-overview; }
@@ -1832,38 +1803,14 @@ Mod+Shift+h                                        { move-column-left; }
 Mod+Shift+j                                        { move-window-down; }
 Mod+Shift+k                                        { move-window-up; }
 Mod+Shift+l                                        { move-column-right; }
-Mod+Home                                           { focus-column-first; }
-Mod+End                                            { focus-column-last; }
-Mod+Ctrl+Home                                      { move-column-to-first; }
-Mod+Ctrl+End                                       { move-column-to-last; }
 Mod+Ctrl+h                                         { focus-monitor-left; }
-Mod+Ctrl+j                                         { focus-monitor-down; }
-Mod+Ctrl+k                                         { focus-monitor-up; }
 Mod+Ctrl+l                                         { focus-monitor-right; }
 Mod+Shift+Ctrl+h                                   { move-column-to-monitor-left; }
-Mod+Shift+Ctrl+j                                   { move-column-to-monitor-down; }
-Mod+Shift+Ctrl+k                                   { move-column-to-monitor-up; }
 Mod+Shift+Ctrl+l                                   { move-column-to-monitor-right; }
-Mod+Page_Down                                      { focus-workspace-down; }
-Mod+Page_Up                                        { focus-workspace-up; }
-Mod+U                                              { focus-workspace-down; }
-Mod+I                                              { focus-workspace-up; }
-Mod+Ctrl+Page_Down                                 { move-column-to-workspace-down; }
-Mod+Ctrl+Page_Up                                   { move-column-to-workspace-up; }
-Mod+Ctrl+U                                         { move-column-to-workspace-down; }
-Mod+Ctrl+I                                         { move-column-to-workspace-up; }
-Mod+Shift+Page_Down                                { move-workspace-down; }
-Mod+Shift+Page_Up                                  { move-workspace-up; }
-Mod+Shift+U                                        { move-workspace-down; }
-Mod+Shift+I                                        { move-workspace-up; }
 Mod+WheelScrollDown cooldown-ms=150                { focus-workspace-down; }
 Mod+WheelScrollUp cooldown-ms=150                  { focus-workspace-up; }
-Mod+Ctrl+WheelScrollDown cooldown-ms=150           { move-column-to-workspace-down; }
-Mod+Ctrl+WheelScrollUp cooldown-ms=150             { move-column-to-workspace-up; }
 Mod+Shift+WheelScrollDown                          { focus-column-right; }
 Mod+Shift+WheelScrollUp                            { focus-column-left; }
-Mod+Ctrl+Shift+WheelScrollDown                     { move-column-right; }
-Mod+Ctrl+Shift+WheelScrollUp                       { move-column-left; }
 Mod+Tab                                            { focus-workspace-previous; }
 Mod+BracketLeft                                    { consume-or-expel-window-left; }
 Mod+BracketRight                                   { consume-or-expel-window-right; }
@@ -1885,549 +1832,19 @@ Mod+Shift+Minus                                    { set-window-height "-10%"; }
 Mod+Shift+Equal                                    { set-window-height "+10%"; }
 Mod+Shift+Ctrl+Minus                               { set-window-height "-1"; }
 Mod+Shift+Ctrl+Equal                               { set-window-height "+1"; }
-Mod+0                                              { set-column-width "960"; }
-Mod+Shift+0                                        { set-window-height "540"; }
-Mod+Alt+0                                          { set-column-width "1280"; }
-Mod+Shift+Alt+0                                    { set-window-height "720"; }
-Mod+Ctrl+0                                         { set-column-width "1920"; }
-Mod+Shift+Ctrl+0                                   { set-window-height "1080"; }
 Mod+V                                              { toggle-window-floating; }
 Mod+Shift+V                                        { switch-focus-between-floating-and-tiling; }
 Mod+W                                              { toggle-column-tabbed-display; }
-Mod+Space                                          { switch-layout "next"; }
 Mod+Shift+Space                                    { switch-layout "prev"; }
-Print                                              { screenshot; }
-Ctrl+Print                                         { screenshot-screen; }
-Alt+Print                                          { screenshot-window; }
 Mod+Escape allow-inhibiting=false                  { toggle-keyboard-shortcuts-inhibit; }
 Ctrl+Alt+Delete                                    { quit; }
-Mod+Shift+Slash                                    { spawn "~/.config/niri/scripts/rofi_bindings"; }
-Mod+D                                              { spawn "~/.config/niri/scripts/rofi_launcher"; }
-Mod+B                                              { spawn "~/.config/niri/scripts/rofi_bluetooth"; }
-Mod+M                                              { spawn "~/.config/niri/scripts/rofi_music"; }
-Mod+N                                              { spawn "~/.config/niri/scripts/rofi_network"; }
-Mod+Shift+D                                        { spawn "~/.config/niri/scripts/rofi_showwindows"; }
-Mod+E                                              { spawn "emacsclient" "-c" "-s" "emacs-prod"; }
-Mod+Shift+E                                        { spawn "emacsclient" "-c" "-s" "emacs-dev"; }
-Mod+T                                              { spawn "thunar"; }
-Mod+Shift+Y                                        { spawn "sh" "-c" "kitty --detach yazi"; }
-Mod+Shift+N                                        { spawn "pluma"; }
-Mod+1                                              { spawn "~/projects/niri_toolkit/niri-move-window.py" "--match" "Messages" "--target" "m" "--target_id" "HDMI-A-2" "--focus"; }
-Mod+Shift+1                                        { spawn "~/projects/niri_toolkit/niri-move-window.py" "--match" "Messages" "--target" "w" "--target_id" "messaging"; }
-Mod+2                                              { spawn "~/projects/niri_toolkit/niri-move-window.py" "--match" "mu4e" "--target" "m" "--target_id" "HDMI-A-2" "--focus"; }
-Mod+Shift+2                                        { spawn "~/projects/niri_toolkit/niri-move-window.py" "--match" "mu4e" "--target" "w" "--target_id" "messaging"; }
-Mod+P                                              { spawn "~/projects/niri_toolkit/niri_scratchpad" "--action" "put" "--scratchpad_name" "scratchpad"; }
-Mod+Shift+P                                        { spawn "~/projects/niri_toolkit/niri_scratchpad" "--action" "get" "--scratchpad_name" "scratchpad"; }
-Mod+Return                                         { spawn "~/.config/niri/scripts/alacritty"; }
-Mod+Alt+L                                          { spawn "~/.config/niri/scripts/lockscreen"; }
-XF86AudioRaiseVolume allow-when-locked=true        { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
-XF86AudioLowerVolume allow-when-locked=true        { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }
-XF86AudioMute allow-when-locked=true               { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
-XF86AudioMicMute allow-when-locked=true            { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
-Mod+Shift+S                                        { spawn "~/projects/niri_toolkit/niri-screenshot-picker"; }
-Mod+Ctrl+S                                         { spawn "~/projects/niri_toolkit/niri-screenshot-picker-emacs"; }
-Mod+Shift+T                                        { spawn "~/projects/niri_toolkit/niri-hot-change"; }
-Mod+S                                              { screenshot; }
-Mod+O repeat=false                                 { toggle-overview; }
-Mod+Q                                              { close-window; }
-Mod+h                                              { focus-column-left; }
-Mod+j                                              { focus-window-down; }
-Mod+k                                              { focus-window-up; }
-Mod+l                                              { focus-column-right; }
-Mod+Shift+h                                        { move-column-left; }
-Mod+Shift+j                                        { move-window-down; }
-Mod+Shift+k                                        { move-window-up; }
-Mod+Shift+l                                        { move-column-right; }
-Mod+Home                                           { focus-column-first; }
-Mod+End                                            { focus-column-last; }
-Mod+Ctrl+Home                                      { move-column-to-first; }
-Mod+Ctrl+End                                       { move-column-to-last; }
-Mod+Ctrl+h                                         { focus-monitor-left; }
-Mod+Ctrl+j                                         { focus-monitor-down; }
-Mod+Ctrl+k                                         { focus-monitor-up; }
-Mod+Ctrl+l                                         { focus-monitor-right; }
-Mod+Shift+Ctrl+h                                   { move-column-to-monitor-left; }
-Mod+Shift+Ctrl+j                                   { move-column-to-monitor-down; }
-Mod+Shift+Ctrl+k                                   { move-column-to-monitor-up; }
-Mod+Shift+Ctrl+l                                   { move-column-to-monitor-right; }
-Mod+Page_Down                                      { focus-workspace-down; }
-Mod+Page_Up                                        { focus-workspace-up; }
-Mod+U                                              { focus-workspace-down; }
-Mod+I                                              { focus-workspace-up; }
-Mod+Ctrl+Page_Down                                 { move-column-to-workspace-down; }
-Mod+Ctrl+Page_Up                                   { move-column-to-workspace-up; }
-Mod+Ctrl+U                                         { move-column-to-workspace-down; }
-Mod+Ctrl+I                                         { move-column-to-workspace-up; }
-Mod+Shift+Page_Down                                { move-workspace-down; }
-Mod+Shift+Page_Up                                  { move-workspace-up; }
-Mod+Shift+U                                        { move-workspace-down; }
-Mod+Shift+I                                        { move-workspace-up; }
-Mod+WheelScrollDown cooldown-ms=150                { focus-workspace-down; }
-Mod+WheelScrollUp cooldown-ms=150                  { focus-workspace-up; }
-Mod+Ctrl+WheelScrollDown cooldown-ms=150           { move-column-to-workspace-down; }
-Mod+Ctrl+WheelScrollUp cooldown-ms=150             { move-column-to-workspace-up; }
-Mod+Shift+WheelScrollDown                          { focus-column-right; }
-Mod+Shift+WheelScrollUp                            { focus-column-left; }
-Mod+Ctrl+Shift+WheelScrollDown                     { move-column-right; }
-Mod+Ctrl+Shift+WheelScrollUp                       { move-column-left; }
-Mod+Tab                                            { focus-workspace-previous; }
-Mod+BracketLeft                                    { consume-or-expel-window-left; }
-Mod+BracketRight                                   { consume-or-expel-window-right; }
-Mod+Comma                                          { consume-window-into-column; }
-Mod+Period                                         { expel-window-from-column; }
-Mod+R                                              { switch-preset-column-width; }
-Mod+Shift+R                                        { switch-preset-window-height; }
-Mod+Ctrl+R                                         { reset-window-height; }
-Mod+F                                              { maximize-column; }
-Mod+Shift+F                                        { fullscreen-window; }
-Mod+Ctrl+F                                         { expand-column-to-available-width; }
-Mod+C                                              { center-column; }
-Mod+Ctrl+C                                         { center-visible-columns; }
-Mod+Minus                                          { set-column-width "-10%"; }
-Mod+Equal                                          { set-column-width "+10%"; }
-Mod+Ctrl+Minus                                     { set-column-width "-1"; }
-Mod+Ctrl+Equal                                     { set-column-width "+1"; }
-Mod+Shift+Minus                                    { set-window-height "-10%"; }
-Mod+Shift+Equal                                    { set-window-height "+10%"; }
-Mod+Shift+Ctrl+Minus                               { set-window-height "-1"; }
-Mod+Shift+Ctrl+Equal                               { set-window-height "+1"; }
-Mod+0                                              { set-column-width "960"; }
-Mod+Shift+0                                        { set-window-height "540"; }
-Mod+Alt+0                                          { set-column-width "1280"; }
-Mod+Shift+Alt+0                                    { set-window-height "720"; }
-Mod+Ctrl+0                                         { set-column-width "1920"; }
-Mod+Shift+Ctrl+0                                   { set-window-height "1080"; }
-Mod+V                                              { toggle-window-floating; }
-Mod+Shift+V                                        { switch-focus-between-floating-and-tiling; }
-Mod+W                                              { toggle-column-tabbed-display; }
-Mod+Space                                          { switch-layout "next"; }
-Mod+Shift+Space                                    { switch-layout "prev"; }
-Print                                              { screenshot; }
-Ctrl+Print                                         { screenshot-screen; }
-Alt+Print                                          { screenshot-window; }
-Mod+Escape allow-inhibiting=false                  { toggle-keyboard-shortcuts-inhibit; }
-Ctrl+Alt+Delete                                    { quit; }
-Mod+Shift+Slash                                    { spawn "~/.config/niri/scripts/rofi_bindings"; }
-Mod+D                                              { spawn "~/.config/niri/scripts/rofi_launcher"; }
-Mod+B                                              { spawn "~/.config/niri/scripts/rofi_bluetooth"; }
-Mod+M                                              { spawn "~/.config/niri/scripts/rofi_music"; }
-Mod+N                                              { spawn "~/.config/niri/scripts/rofi_network"; }
-Mod+Shift+D                                        { spawn "~/.config/niri/scripts/rofi_showwindows"; }
-Mod+E                                              { spawn "emacsclient" "-c" "-s" "emacs-prod"; }
-Mod+Shift+E                                        { spawn "emacsclient" "-c" "-s" "emacs-dev"; }
-Mod+T                                              { spawn "thunar"; }
-Mod+Shift+Y                                        { spawn "sh" "-c" "kitty --detach yazi"; }
-Mod+Shift+N                                        { spawn "pluma"; }
-Mod+1                                              { spawn "~/projects/niri_toolkit/niri-move-window.py" "--match" "Messages" "--target" "m" "--target_id" "HDMI-A-2" "--focus"; }
-Mod+Shift+1                                        { spawn "~/projects/niri_toolkit/niri-move-window.py" "--match" "Messages" "--target" "w" "--target_id" "messaging"; }
-Mod+2                                              { spawn "~/projects/niri_toolkit/niri-move-window.py" "--match" "mu4e" "--target" "m" "--target_id" "HDMI-A-2" "--focus"; }
-Mod+Shift+2                                        { spawn "~/projects/niri_toolkit/niri-move-window.py" "--match" "mu4e" "--target" "w" "--target_id" "messaging"; }
-Mod+P                                              { spawn "~/projects/niri_toolkit/niri_scratchpad" "--action" "put" "--scratchpad_name" "scratchpad"; }
-Mod+Shift+P                                        { spawn "~/projects/niri_toolkit/niri_scratchpad" "--action" "get" "--scratchpad_name" "scratchpad"; }
-Mod+Return                                         { spawn "~/.config/niri/scripts/alacritty"; }
-Mod+Alt+L                                          { spawn "~/.config/niri/scripts/lockscreen"; }
-XF86AudioRaiseVolume allow-when-locked=true        { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
-XF86AudioLowerVolume allow-when-locked=true        { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }
-XF86AudioMute allow-when-locked=true               { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
-XF86AudioMicMute allow-when-locked=true            { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
-Mod+Shift+S                                        { spawn "~/projects/niri_toolkit/niri-screenshot-picker"; }
-Mod+Ctrl+S                                         { spawn "~/projects/niri_toolkit/niri-screenshot-picker-emacs"; }
-Mod+Shift+T                                        { spawn "~/projects/niri_toolkit/niri-hot-change"; }
-Mod+S                                              { screenshot; }
-Mod+O repeat=false                                 { toggle-overview; }
-Mod+Q                                              { close-window; }
-Mod+h                                              { focus-column-left; }
-Mod+j                                              { focus-window-down; }
-Mod+k                                              { focus-window-up; }
-Mod+l                                              { focus-column-right; }
-Mod+Shift+h                                        { move-column-left; }
-Mod+Shift+j                                        { move-window-down; }
-Mod+Shift+k                                        { move-window-up; }
-Mod+Shift+l                                        { move-column-right; }
-Mod+Home                                           { focus-column-first; }
-Mod+End                                            { focus-column-last; }
-Mod+Ctrl+Home                                      { move-column-to-first; }
-Mod+Ctrl+End                                       { move-column-to-last; }
-Mod+Ctrl+h                                         { focus-monitor-left; }
-Mod+Ctrl+j                                         { focus-monitor-down; }
-Mod+Ctrl+k                                         { focus-monitor-up; }
-Mod+Ctrl+l                                         { focus-monitor-right; }
-Mod+Shift+Ctrl+h                                   { move-column-to-monitor-left; }
-Mod+Shift+Ctrl+j                                   { move-column-to-monitor-down; }
-Mod+Shift+Ctrl+k                                   { move-column-to-monitor-up; }
-Mod+Shift+Ctrl+l                                   { move-column-to-monitor-right; }
-Mod+Page_Down                                      { focus-workspace-down; }
-Mod+Page_Up                                        { focus-workspace-up; }
-Mod+U                                              { focus-workspace-down; }
-Mod+I                                              { focus-workspace-up; }
-Mod+Ctrl+Page_Down                                 { move-column-to-workspace-down; }
-Mod+Ctrl+Page_Up                                   { move-column-to-workspace-up; }
-Mod+Ctrl+U                                         { move-column-to-workspace-down; }
-Mod+Ctrl+I                                         { move-column-to-workspace-up; }
-Mod+Shift+Page_Down                                { move-workspace-down; }
-Mod+Shift+Page_Up                                  { move-workspace-up; }
-Mod+Shift+U                                        { move-workspace-down; }
-Mod+Shift+I                                        { move-workspace-up; }
-Mod+WheelScrollDown cooldown-ms=150                { focus-workspace-down; }
-Mod+WheelScrollUp cooldown-ms=150                  { focus-workspace-up; }
-Mod+Ctrl+WheelScrollDown cooldown-ms=150           { move-column-to-workspace-down; }
-Mod+Ctrl+WheelScrollUp cooldown-ms=150             { move-column-to-workspace-up; }
-Mod+Shift+WheelScrollDown                          { focus-column-right; }
-Mod+Shift+WheelScrollUp                            { focus-column-left; }
-Mod+Ctrl+Shift+WheelScrollDown                     { move-column-right; }
-Mod+Ctrl+Shift+WheelScrollUp                       { move-column-left; }
-Mod+Tab                                            { focus-workspace-previous; }
-Mod+BracketLeft                                    { consume-or-expel-window-left; }
-Mod+BracketRight                                   { consume-or-expel-window-right; }
-Mod+Comma                                          { consume-window-into-column; }
-Mod+Period                                         { expel-window-from-column; }
-Mod+R                                              { switch-preset-column-width; }
-Mod+Shift+R                                        { switch-preset-window-height; }
-Mod+Ctrl+R                                         { reset-window-height; }
-Mod+F                                              { maximize-column; }
-Mod+Shift+F                                        { fullscreen-window; }
-Mod+Ctrl+F                                         { expand-column-to-available-width; }
-Mod+C                                              { center-column; }
-Mod+Ctrl+C                                         { center-visible-columns; }
-Mod+Minus                                          { set-column-width "-10%"; }
-Mod+Equal                                          { set-column-width "+10%"; }
-Mod+Ctrl+Minus                                     { set-column-width "-1"; }
-Mod+Ctrl+Equal                                     { set-column-width "+1"; }
-Mod+Shift+Minus                                    { set-window-height "-10%"; }
-Mod+Shift+Equal                                    { set-window-height "+10%"; }
-Mod+Shift+Ctrl+Minus                               { set-window-height "-1"; }
-Mod+Shift+Ctrl+Equal                               { set-window-height "+1"; }
-Mod+0                                              { set-column-width "960"; }
-Mod+Shift+0                                        { set-window-height "540"; }
-Mod+Alt+0                                          { set-column-width "1280"; }
-Mod+Shift+Alt+0                                    { set-window-height "720"; }
-Mod+Ctrl+0                                         { set-column-width "1920"; }
-Mod+Shift+Ctrl+0                                   { set-window-height "1080"; }
-Mod+V                                              { toggle-window-floating; }
-Mod+Shift+V                                        { switch-focus-between-floating-and-tiling; }
-Mod+W                                              { toggle-column-tabbed-display; }
-Mod+Space                                          { switch-layout "next"; }
-Mod+Shift+Space                                    { switch-layout "prev"; }
-Print                                              { screenshot; }
-Ctrl+Print                                         { screenshot-screen; }
-Alt+Print                                          { screenshot-window; }
-Mod+Escape allow-inhibiting=false                  { toggle-keyboard-shortcuts-inhibit; }
-Ctrl+Alt+Delete                                    { quit; }
-Mod+Shift+Slash                                    { spawn "~/.config/niri/scripts/rofi_bindings"; }
-Mod+D                                              { spawn "~/.config/niri/scripts/rofi_launcher"; }
-Mod+B                                              { spawn "~/.config/niri/scripts/rofi_bluetooth"; }
-Mod+M                                              { spawn "~/.config/niri/scripts/rofi_music"; }
-Mod+N                                              { spawn "~/.config/niri/scripts/rofi_network"; }
-Mod+Shift+D                                        { spawn "~/.config/niri/scripts/rofi_showwindows"; }
-Mod+E                                              { spawn "emacsclient" "-c" "-s" "emacs-prod"; }
-Mod+Shift+E                                        { spawn "emacsclient" "-c" "-s" "emacs-dev"; }
-Mod+T                                              { spawn "thunar"; }
-Mod+Shift+Y                                        { spawn "sh" "-c" "kitty --detach yazi"; }
-Mod+Shift+N                                        { spawn "pluma"; }
-Mod+1                                              { spawn "~/projects/niri_toolkit/niri-move-window.py" "--match" "Messages" "--target" "m" "--target_id" "HDMI-A-2" "--focus"; }
-Mod+Shift+1                                        { spawn "~/projects/niri_toolkit/niri-move-window.py" "--match" "Messages" "--target" "w" "--target_id" "messaging"; }
-Mod+2                                              { spawn "~/projects/niri_toolkit/niri-move-window.py" "--match" "mu4e" "--target" "m" "--target_id" "HDMI-A-2" "--focus"; }
-Mod+Shift+2                                        { spawn "~/projects/niri_toolkit/niri-move-window.py" "--match" "mu4e" "--target" "w" "--target_id" "messaging"; }
-Mod+P                                              { spawn "~/projects/niri_toolkit/niri_scratchpad" "--action" "put" "--scratchpad_name" "scratchpad"; }
-Mod+Shift+P                                        { spawn "~/projects/niri_toolkit/niri_scratchpad" "--action" "get" "--scratchpad_name" "scratchpad"; }
-Mod+Return                                         { spawn "~/.config/niri/scripts/alacritty"; }
-Mod+Alt+L                                          { spawn "~/.config/niri/scripts/lockscreen"; }
-XF86AudioRaiseVolume allow-when-locked=true        { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
-XF86AudioLowerVolume allow-when-locked=true        { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }
-XF86AudioMute allow-when-locked=true               { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
-XF86AudioMicMute allow-when-locked=true            { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
-Mod+Shift+S                                        { spawn "~/projects/niri_toolkit/niri-screenshot-picker"; }
-Mod+Ctrl+S                                         { spawn "~/projects/niri_toolkit/niri-screenshot-picker-emacs"; }
-Mod+S                                              { screenshot; }
-Mod+O repeat=false                                 { toggle-overview; }
-Mod+Q                                              { close-window; }
-Mod+h                                              { focus-column-left; }
-Mod+j                                              { focus-window-down; }
-Mod+k                                              { focus-window-up; }
-Mod+l                                              { focus-column-right; }
-Mod+Shift+h                                        { move-column-left; }
-Mod+Shift+j                                        { move-window-down; }
-Mod+Shift+k                                        { move-window-up; }
-Mod+Shift+l                                        { move-column-right; }
-Mod+Home                                           { focus-column-first; }
-Mod+End                                            { focus-column-last; }
-Mod+Ctrl+Home                                      { move-column-to-first; }
-Mod+Ctrl+End                                       { move-column-to-last; }
-Mod+Ctrl+h                                         { focus-monitor-left; }
-Mod+Ctrl+j                                         { focus-monitor-down; }
-Mod+Ctrl+k                                         { focus-monitor-up; }
-Mod+Ctrl+l                                         { focus-monitor-right; }
-Mod+Shift+Ctrl+h                                   { move-column-to-monitor-left; }
-Mod+Shift+Ctrl+j                                   { move-column-to-monitor-down; }
-Mod+Shift+Ctrl+k                                   { move-column-to-monitor-up; }
-Mod+Shift+Ctrl+l                                   { move-column-to-monitor-right; }
-Mod+Page_Down                                      { focus-workspace-down; }
-Mod+Page_Up                                        { focus-workspace-up; }
-Mod+U                                              { focus-workspace-down; }
-Mod+I                                              { focus-workspace-up; }
-Mod+Ctrl+Page_Down                                 { move-column-to-workspace-down; }
-Mod+Ctrl+Page_Up                                   { move-column-to-workspace-up; }
-Mod+Ctrl+U                                         { move-column-to-workspace-down; }
-Mod+Ctrl+I                                         { move-column-to-workspace-up; }
-Mod+Shift+Page_Down                                { move-workspace-down; }
-Mod+Shift+Page_Up                                  { move-workspace-up; }
-Mod+Shift+U                                        { move-workspace-down; }
-Mod+Shift+I                                        { move-workspace-up; }
-Mod+WheelScrollDown cooldown-ms=150                { focus-workspace-down; }
-Mod+WheelScrollUp cooldown-ms=150                  { focus-workspace-up; }
-Mod+Ctrl+WheelScrollDown cooldown-ms=150           { move-column-to-workspace-down; }
-Mod+Ctrl+WheelScrollUp cooldown-ms=150             { move-column-to-workspace-up; }
-Mod+Shift+WheelScrollDown                          { focus-column-right; }
-Mod+Shift+WheelScrollUp                            { focus-column-left; }
-Mod+Ctrl+Shift+WheelScrollDown                     { move-column-right; }
-Mod+Ctrl+Shift+WheelScrollUp                       { move-column-left; }
-Mod+Tab                                            { focus-workspace-previous; }
-Mod+BracketLeft                                    { consume-or-expel-window-left; }
-Mod+BracketRight                                   { consume-or-expel-window-right; }
-Mod+Comma                                          { consume-window-into-column; }
-Mod+Period                                         { expel-window-from-column; }
-Mod+R                                              { switch-preset-column-width; }
-Mod+Shift+R                                        { switch-preset-window-height; }
-Mod+Ctrl+R                                         { reset-window-height; }
-Mod+F                                              { maximize-column; }
-Mod+Shift+F                                        { fullscreen-window; }
-Mod+Ctrl+F                                         { expand-column-to-available-width; }
-Mod+C                                              { center-column; }
-Mod+Ctrl+C                                         { center-visible-columns; }
-Mod+Minus                                          { set-column-width "-10%"; }
-Mod+Equal                                          { set-column-width "+10%"; }
-Mod+Ctrl+Minus                                     { set-column-width "-1"; }
-Mod+Ctrl+Equal                                     { set-column-width "+1"; }
-Mod+Shift+Minus                                    { set-window-height "-10%"; }
-Mod+Shift+Equal                                    { set-window-height "+10%"; }
-Mod+Shift+Ctrl+Minus                               { set-window-height "-1"; }
-Mod+Shift+Ctrl+Equal                               { set-window-height "+1"; }
-Mod+0                                              { set-column-width "960"; }
-Mod+Shift+0                                        { set-window-height "540"; }
-Mod+Alt+0                                          { set-column-width "1280"; }
-Mod+Shift+Alt+0                                    { set-window-height "720"; }
-Mod+Ctrl+0                                         { set-column-width "1920"; }
-Mod+Shift+Ctrl+0                                   { set-window-height "1080"; }
-Mod+V                                              { toggle-window-floating; }
-Mod+Shift+V                                        { switch-focus-between-floating-and-tiling; }
-Mod+W                                              { toggle-column-tabbed-display; }
-Mod+Space                                          { switch-layout "next"; }
-Mod+Shift+Space                                    { switch-layout "prev"; }
-Print                                              { screenshot; }
-Ctrl+Print                                         { screenshot-screen; }
-Alt+Print                                          { screenshot-window; }
-Mod+Escape allow-inhibiting=false                  { toggle-keyboard-shortcuts-inhibit; }
-Ctrl+Alt+Delete                                    { quit; }
-Mod+Shift+Slash                                    { spawn "~/.config/niri/scripts/rofi_bindings"; }
-Mod+D                                              { spawn "~/.config/niri/scripts/rofi_launcher"; }
-Mod+B                                              { spawn "~/.config/niri/scripts/rofi_bluetooth"; }
-Mod+M                                              { spawn "~/.config/niri/scripts/rofi_music"; }
-Mod+N                                              { spawn "~/.config/niri/scripts/rofi_network"; }
-Mod+Shift+D                                        { spawn "~/.config/niri/scripts/rofi_showwindows"; }
-Mod+E                                              { spawn "emacsclient" "-c" "-s" "emacs-prod"; }
-Mod+Shift+E                                        { spawn "emacsclient" "-c" "-s" "emacs-dev"; }
-Mod+T                                              { spawn "thunar"; }
-Mod+Shift+Y                                        { spawn "sh" "-c" "kitty --detach yazi"; }
-Mod+Shift+N                                        { spawn "pluma"; }
-Mod+1                                              { spawn "~/projects/niri_toolkit/niri-move-window.py" "--match" "Messages" "--target" "m" "--target_id" "HDMI-A-2" "--focus"; }
-Mod+Shift+1                                        { spawn "~/projects/niri_toolkit/niri-move-window.py" "--match" "Messages" "--target" "w" "--target_id" "messaging"; }
-Mod+2                                              { spawn "~/projects/niri_toolkit/niri-move-window.py" "--match" "mu4e" "--target" "m" "--target_id" "HDMI-A-2" "--focus"; }
-Mod+Shift+2                                        { spawn "~/projects/niri_toolkit/niri-move-window.py" "--match" "mu4e" "--target" "w" "--target_id" "messaging"; }
-Mod+P                                              { spawn "~/projects/niri_toolkit/niri_scratchpad" "--action" "put" "--scratchpad_name" "scratchpad"; }
-Mod+Shift+P                                        { spawn "~/projects/niri_toolkit/niri_scratchpad" "--action" "get" "--scratchpad_name" "scratchpad"; }
-Mod+Return                                         { spawn "~/.config/niri/scripts/alacritty"; }
-Mod+Alt+L                                          { spawn "~/.config/niri/scripts/lockscreen"; }
-XF86AudioRaiseVolume allow-when-locked=true        { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
-XF86AudioLowerVolume allow-when-locked=true        { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }
-XF86AudioMute allow-when-locked=true               { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
-XF86AudioMicMute allow-when-locked=true            { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
-Mod+Shift+S                                        { spawn "~/projects/niri_toolkit/niri-screenshot-picker"; }
-Mod+Ctrl+S                                         { spawn "~/projects/niri_toolkit/niri-screenshot-picker-emacs"; }
-Mod+S                                              { screenshot; }
-Mod+O repeat=false                                 { toggle-overview; }
-Mod+Q                                              { close-window; }
-Mod+h                                              { focus-column-left; }
-Mod+j                                              { focus-window-down; }
-Mod+k                                              { focus-window-up; }
-Mod+l                                              { focus-column-right; }
-Mod+Shift+h                                        { move-column-left; }
-Mod+Shift+j                                        { move-window-down; }
-Mod+Shift+k                                        { move-window-up; }
-Mod+Shift+l                                        { move-column-right; }
-Mod+Home                                           { focus-column-first; }
-Mod+End                                            { focus-column-last; }
-Mod+Ctrl+Home                                      { move-column-to-first; }
-Mod+Ctrl+End                                       { move-column-to-last; }
-Mod+Ctrl+h                                         { focus-monitor-left; }
-Mod+Ctrl+j                                         { focus-monitor-down; }
-Mod+Ctrl+k                                         { focus-monitor-up; }
-Mod+Ctrl+l                                         { focus-monitor-right; }
-Mod+Shift+Ctrl+h                                   { move-column-to-monitor-left; }
-Mod+Shift+Ctrl+j                                   { move-column-to-monitor-down; }
-Mod+Shift+Ctrl+k                                   { move-column-to-monitor-up; }
-Mod+Shift+Ctrl+l                                   { move-column-to-monitor-right; }
-Mod+Page_Down                                      { focus-workspace-down; }
-Mod+Page_Up                                        { focus-workspace-up; }
-Mod+U                                              { focus-workspace-down; }
-Mod+I                                              { focus-workspace-up; }
-Mod+Ctrl+Page_Down                                 { move-column-to-workspace-down; }
-Mod+Ctrl+Page_Up                                   { move-column-to-workspace-up; }
-Mod+Ctrl+U                                         { move-column-to-workspace-down; }
-Mod+Ctrl+I                                         { move-column-to-workspace-up; }
-Mod+Shift+Page_Down                                { move-workspace-down; }
-Mod+Shift+Page_Up                                  { move-workspace-up; }
-Mod+Shift+U                                        { move-workspace-down; }
-Mod+Shift+I                                        { move-workspace-up; }
-Mod+WheelScrollDown cooldown-ms=150                { focus-workspace-down; }
-Mod+WheelScrollUp cooldown-ms=150                  { focus-workspace-up; }
-Mod+Ctrl+WheelScrollDown cooldown-ms=150           { move-column-to-workspace-down; }
-Mod+Ctrl+WheelScrollUp cooldown-ms=150             { move-column-to-workspace-up; }
-Mod+Shift+WheelScrollDown                          { focus-column-right; }
-Mod+Shift+WheelScrollUp                            { focus-column-left; }
-Mod+Ctrl+Shift+WheelScrollDown                     { move-column-right; }
-Mod+Ctrl+Shift+WheelScrollUp                       { move-column-left; }
-Mod+Tab                                            { focus-workspace-previous; }
-Mod+BracketLeft                                    { consume-or-expel-window-left; }
-Mod+BracketRight                                   { consume-or-expel-window-right; }
-Mod+Comma                                          { consume-window-into-column; }
-Mod+Period                                         { expel-window-from-column; }
-Mod+R                                              { switch-preset-column-width; }
-Mod+Shift+R                                        { switch-preset-window-height; }
-Mod+Ctrl+R                                         { reset-window-height; }
-Mod+F                                              { maximize-column; }
-Mod+Shift+F                                        { fullscreen-window; }
-Mod+Ctrl+F                                         { expand-column-to-available-width; }
-Mod+C                                              { center-column; }
-Mod+Ctrl+C                                         { center-visible-columns; }
-Mod+Minus                                          { set-column-width "-10%"; }
-Mod+Equal                                          { set-column-width "+10%"; }
-Mod+Ctrl+Minus                                     { set-column-width "-1"; }
-Mod+Ctrl+Equal                                     { set-column-width "+1"; }
-Mod+Shift+Minus                                    { set-window-height "-10%"; }
-Mod+Shift+Equal                                    { set-window-height "+10%"; }
-Mod+Shift+Ctrl+Minus                               { set-window-height "-1"; }
-Mod+Shift+Ctrl+Equal                               { set-window-height "+1"; }
-Mod+0                                              { set-column-width "960"; }
-Mod+Shift+0                                        { set-window-height "540"; }
-Mod+Alt+0                                          { set-column-width "1280"; }
-Mod+Shift+Alt+0                                    { set-window-height "720"; }
-Mod+Ctrl+0                                         { set-column-width "1920"; }
-Mod+Shift+Ctrl+0                                   { set-window-height "1080"; }
-Mod+V                                              { toggle-window-floating; }
-Mod+Shift+V                                        { switch-focus-between-floating-and-tiling; }
-Mod+W                                              { toggle-column-tabbed-display; }
-Mod+Space                                          { switch-layout "next"; }
-Mod+Shift+Space                                    { switch-layout "prev"; }
-Print                                              { screenshot; }
-Ctrl+Print                                         { screenshot-screen; }
-Alt+Print                                          { screenshot-window; }
-Mod+Escape allow-inhibiting=false                  { toggle-keyboard-shortcuts-inhibit; }
-Ctrl+Alt+Delete                                    { quit; }
-Mod+Shift+Slash                                    { spawn "~/.config/niri/scripts/rofi_bindings"; }
-Mod+D                                              { spawn "~/.config/niri/scripts/rofi_launcher"; }
-Mod+B                                              { spawn "~/.config/niri/scripts/rofi_bluetooth"; }
-Mod+M                                              { spawn "~/.config/niri/scripts/rofi_music"; }
-Mod+N                                              { spawn "~/.config/niri/scripts/rofi_network"; }
-Mod+Shift+D                                        { spawn "~/.config/niri/scripts/rofi_showwindows"; }
-Mod+E                                              { spawn "emacsclient" "-c" "-s" "emacs-prod"; }
-Mod+Shift+E                                        { spawn "emacsclient" "-c" "-s" "emacs-dev"; }
-Mod+T                                              { spawn "thunar"; }
-Mod+Shift+Y                                        { spawn "sh" "-c" "kitty --detach yazi"; }
-Mod+Shift+N                                        { spawn "pluma"; }
-Mod+1                                              { spawn "~/projects/niri_toolkit/niri-move-window.py" "--match" "Messages" "--target" "m" "--target_id" "HDMI-A-2" "--focus"; }
-Mod+Shift+1                                        { spawn "~/projects/niri_toolkit/niri-move-window.py" "--match" "Messages" "--target" "w" "--target_id" "messaging"; }
-Mod+2                                              { spawn "~/projects/niri_toolkit/niri-move-window.py" "--match" "mu4e" "--target" "m" "--target_id" "HDMI-A-2" "--focus"; }
-Mod+Shift+2                                        { spawn "~/projects/niri_toolkit/niri-move-window.py" "--match" "mu4e" "--target" "w" "--target_id" "messaging"; }
-Mod+P                                              { spawn "~/projects/niri_toolkit/niri_scratchpad" "--action" "put" "--scratchpad_name" "scratchpad"; }
-Mod+Shift+P                                        { spawn "~/projects/niri_toolkit/niri_scratchpad" "--action" "get" "--scratchpad_name" "scratchpad"; }
-Mod+Return                                         { spawn "~/.config/niri/scripts/alacritty"; }
-Mod+Alt+L                                          { spawn "~/.config/niri/scripts/lockscreen"; }
-XF86AudioRaiseVolume allow-when-locked=true        { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
-XF86AudioLowerVolume allow-when-locked=true        { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }
-XF86AudioMute allow-when-locked=true               { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
-XF86AudioMicMute allow-when-locked=true            { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
-Mod+Shift+S                                        { spawn "~/projects/niri_toolkit/niri-screenshot-picker"; }
-Mod+Ctrl+S                                         { spawn "~/projects/niri_toolkit/niri-screenshot-picker-emacs"; }
-Mod+S                                              { screenshot; }
-Mod+O repeat=false                                 { toggle-overview; }
-Mod+Q                                              { close-window; }
-Mod+h                                              { focus-column-left; }
-Mod+j                                              { focus-window-down; }
-Mod+k                                              { focus-window-up; }
-Mod+l                                              { focus-column-right; }
-Mod+Shift+h                                        { move-column-left; }
-Mod+Shift+j                                        { move-window-down; }
-Mod+Shift+k                                        { move-window-up; }
-Mod+Shift+l                                        { move-column-right; }
-Mod+Home                                           { focus-column-first; }
-Mod+End                                            { focus-column-last; }
-Mod+Ctrl+Home                                      { move-column-to-first; }
-Mod+Ctrl+End                                       { move-column-to-last; }
-Mod+Ctrl+h                                         { focus-monitor-left; }
-Mod+Ctrl+j                                         { focus-monitor-down; }
-Mod+Ctrl+k                                         { focus-monitor-up; }
-Mod+Ctrl+l                                         { focus-monitor-right; }
-Mod+Shift+Ctrl+h                                   { move-column-to-monitor-left; }
-Mod+Shift+Ctrl+j                                   { move-column-to-monitor-down; }
-Mod+Shift+Ctrl+k                                   { move-column-to-monitor-up; }
-Mod+Shift+Ctrl+l                                   { move-column-to-monitor-right; }
-Mod+Page_Down                                      { focus-workspace-down; }
-Mod+Page_Up                                        { focus-workspace-up; }
-Mod+U                                              { focus-workspace-down; }
-Mod+I                                              { focus-workspace-up; }
-Mod+Ctrl+Page_Down                                 { move-column-to-workspace-down; }
-Mod+Ctrl+Page_Up                                   { move-column-to-workspace-up; }
-Mod+Ctrl+U                                         { move-column-to-workspace-down; }
-Mod+Ctrl+I                                         { move-column-to-workspace-up; }
-Mod+Shift+Page_Down                                { move-workspace-down; }
-Mod+Shift+Page_Up                                  { move-workspace-up; }
-Mod+Shift+U                                        { move-workspace-down; }
-Mod+Shift+I                                        { move-workspace-up; }
-Mod+WheelScrollDown cooldown-ms=150                { focus-workspace-down; }
-Mod+WheelScrollUp cooldown-ms=150                  { focus-workspace-up; }
-Mod+Ctrl+WheelScrollDown cooldown-ms=150           { move-column-to-workspace-down; }
-Mod+Ctrl+WheelScrollUp cooldown-ms=150             { move-column-to-workspace-up; }
-Mod+Shift+WheelScrollDown                          { focus-column-right; }
-Mod+Shift+WheelScrollUp                            { focus-column-left; }
-Mod+Ctrl+Shift+WheelScrollDown                     { move-column-right; }
-Mod+Ctrl+Shift+WheelScrollUp                       { move-column-left; }
-Mod+Tab                                            { focus-workspace-previous; }
-Mod+BracketLeft                                    { consume-or-expel-window-left; }
-Mod+BracketRight                                   { consume-or-expel-window-right; }
-Mod+Comma                                          { consume-window-into-column; }
-Mod+Period                                         { expel-window-from-column; }
-Mod+R                                              { switch-preset-column-width; }
-Mod+Shift+R                                        { switch-preset-window-height; }
-Mod+Ctrl+R                                         { reset-window-height; }
-Mod+F                                              { maximize-column; }
-Mod+Shift+F                                        { fullscreen-window; }
-Mod+Ctrl+F                                         { expand-column-to-available-width; }
-Mod+C                                              { center-column; }
-Mod+Ctrl+C                                         { center-visible-columns; }
-Mod+Minus                                          { set-column-width "-10%"; }
-Mod+Equal                                          { set-column-width "+10%"; }
-Mod+Ctrl+Minus                                     { set-column-width "-1"; }
-Mod+Ctrl+Equal                                     { set-column-width "+1"; }
-Mod+Shift+Minus                                    { set-window-height "-10%"; }
-Mod+Shift+Equal                                    { set-window-height "+10%"; }
-Mod+Shift+Ctrl+Minus                               { set-window-height "-1"; }
-Mod+Shift+Ctrl+Equal                               { set-window-height "+1"; }
-Mod+0                                              { set-column-width "960"; }
-Mod+Shift+0                                        { set-window-height "540"; }
-Mod+Alt+0                                          { set-column-width "1280"; }
-Mod+Shift+Alt+0                                    { set-window-height "720"; }
-Mod+Ctrl+0                                         { set-column-width "1920"; }
-Mod+Shift+Ctrl+0                                   { set-window-height "1080"; }
-Mod+V                                              { toggle-window-floating; }
-Mod+Shift+V                                        { switch-focus-between-floating-and-tiling; }
-Mod+W                                              { toggle-column-tabbed-display; }
-Mod+Space                                          { switch-layout "next"; }
-Mod+Shift+Space                                    { switch-layout "prev"; }
-Print                                              { screenshot; }
-Ctrl+Print                                         { screenshot-screen; }
-Alt+Print                                          { screenshot-window; }
-Mod+Escape allow-inhibiting=false                  { toggle-keyboard-shortcuts-inhibit; }
-Ctrl+Alt+Delete                                    { quit; }
+Mod+Space                                          { spawn "qs" "-c" "DankMaterialShell" "ipc" "call" "spotlight" "toggle"; }
+XF86AudioRaiseVolume allow-when-locked=true        { spawn "qs" "-c" "DankMaterialShell" "ipc" "call" "audio" "increment" "3"; }
+XF86AudioLowerVolume allow-when-locked=true        { spawn "qs" "-c" "DankMaterialShell" "ipc" "call" "audio" "decrement" "3"; }
+XF86AudioMute allow-when-locked=true               { spawn "qs" "-c" "DankMaterialShell" "ipc" "call" "audio" "mute"; }
+XF86AudioMicMute allow-when-locked=true            { spawn "qs" "-c" "DankMaterialShell" "ipc" "call" "audio" "micmute"; }
+XF86MonBrightnessUp allow-when-locked=true         { spawn "qs" "-c" "DankMaterialShell" "ipc" "call" "brightness" "increment" "5" ""; }
+XF86MonBrightnessDown allow-when-locked=true       { spawn "qs" "-c" "DankMaterialShell" "ipc" "call" "brightness" "decrement" "5" ""; }
 
 This generates the keybindings and outputs them to the config.kdl file.
 #+BEGIN_SRC kdl :noweb yes :tangle ./config.kdl

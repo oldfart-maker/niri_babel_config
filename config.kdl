@@ -1,4 +1,4 @@
-// LAST BUILD / DEPLOY: 2025-08-16 16:42:03
+// LAST BUILD / DEPLOY: 2025-08-17 06:23:44
 // ## NOTES  ###########################################################  
 // This config file has been created by emacs org babel. This was done
 // mostly as a learning experiment and to address the gaps that .kdl
@@ -121,7 +121,6 @@
       spawn-at-startup      "~/.config/niri/scripts/setup_theme"
       spawn-at-startup      "~/.config/niri/scripts/wallpaper"
       spawn-at-startup      "~/.config/niri/scripts/notifications"
-      spawn-at-startup      "qs" "-c" "DankMaterialShell"
       spawn-at-startup      "spotify"
       spawn-at-startup      "element-desktop"
       spawn-at-startup      "googlemessages"
@@ -135,11 +134,11 @@
           open-on-output "HDMI-A-3"
   }
   
-  workspace "spotify" {
+  workspace "messaging" {
           open-on-output "HDMI-A-3"
   }
   
-  workspace "discord" {
+  workspace "spotify" {
           open-on-output "HDMI-A-3"
   }
   
@@ -151,11 +150,11 @@
           open-on-output "HDMI-A-3"
   }
   
-  workspace "element" {
+  workspace "discord" {
           open-on-output "HDMI-A-3"
   }
   
-  workspace "messaging" {
+  workspace "element" {
           open-on-output "HDMI-A-3"
   }
 
@@ -193,8 +192,8 @@
             focus-ring {
                     // off
                     width 2
-                    active-color "#DDC9A6"
-                    inactive-color "#272220"
+                    active-color "#AF9C93"
+                    inactive-color "#1d1f27"
                     // active-gradient from="#80c8ff" to="#bbddff" angle=45
                     // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
             }

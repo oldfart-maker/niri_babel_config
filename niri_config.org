@@ -1,5 +1,5 @@
 # -*- indent-tabs-mode: nil; coding: utf-8-unix; -*-
-#+PROPERTY: header-args :noweb yes :eval yes :exports results :results value
+#+PROPERTY: header-args :results value silent
 #+TITLE: Niri Config.kdl
 
 * Overview
@@ -41,7 +41,7 @@ return datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 #+end_src
 
 #+RESULTS: timestamp
-: 2025-08-16 16:41:38
+: 2025-08-17 06:23:11
 
 * Target System
 I have multiple systems (e.g. laptop, desktop, pi) that need different configurations mostly as
@@ -79,7 +79,7 @@ return json.dumps(theme)
 #+end_src
 
 #+RESULTS: theme-colors-json
-: {"wallpaper": "/home/username/Pictures/wallpapers/chinese-hills.jpg", "background": "#272220", "foreground": "#ede5d8", "cursor": "#ede5d8", "color0": "#272220", "color1": "#CDB492", "color2": "#D2BDA2", "color3": "#D8C39D", "color4": "#DDC9A6", "color5": "#E7D8B7", "color6": "#EDE0BD", "color7": "#ede5d8", "color8": "#a5a097", "color9": "#CDB492", "color10": "#D2BDA2", "color11": "#D8C39D", "color12": "#DDC9A6", "color13": "#E7D8B7", "color14": "#EDE0BD", "color15": "#ede5d8", "FZF_DEFAULT_OPTS": "", "LS_COLORS": "${LS_COLORS}:su=30;41:ow=30;42:st=30;44:"}
+: {"wallpaper": "/home/username/Pictures/wallpapers/ign_unsplash52.png", "background": "#1d1f27", "foreground": "#e1d9d1", "cursor": "#e1d9d1", "color0": "#1d1f27", "color1": "#9E857A", "color2": "#D09577", "color3": "#887B83", "color4": "#AF9C93", "color5": "#CAB4A4", "color6": "#C0BFBF", "color7": "#e1d9d1", "color8": "#9d9792", "color9": "#9E857A", "color10": "#D09577", "color11": "#887B83", "color12": "#AF9C93", "color13": "#CAB4A4", "color14": "#C0BFBF", "color15": "#e1d9d1", "FZF_DEFAULT_OPTS": "", "LS_COLORS": "${LS_COLORS}:su=30;41:ow=30;42:st=30;44:"}
 
 #+name: colors-dict
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -112,7 +112,7 @@ return colors
 #+end_src
 
 #+RESULTS: colors-dict
-: {'wallpaper': '/home/username/Pictures/wallpapers/chinese-hills.jpg', 'background': '#272220', 'foreground': '#ede5d8', 'cursor': '#ede5d8', 'color0': '#272220', 'color1': '#CDB492', 'color2': '#D2BDA2', 'color3': '#D8C39D', 'color4': '#DDC9A6', 'color5': '#E7D8B7', 'color6': '#EDE0BD', 'color7': '#ede5d8', 'color8': '#a5a097', 'color9': '#CDB492', 'color10': '#D2BDA2', 'color11': '#D8C39D', 'color12': '#DDC9A6', 'color13': '#E7D8B7', 'color14': '#EDE0BD', 'color15': '#ede5d8', 'FZF_DEFAULT_OPTS': '', 'LS_COLORS': '${LS_COLORS}:su=30;41:ow=30;42:st=30;44:'}
+: {'wallpaper': '/home/username/Pictures/wallpapers/ign_unsplash52.png', 'background': '#1d1f27', 'foreground': '#e1d9d1', 'cursor': '#e1d9d1', 'color0': '#1d1f27', 'color1': '#9E857A', 'color2': '#D09577', 'color3': '#887B83', 'color4': '#AF9C93', 'color5': '#CAB4A4', 'color6': '#C0BFBF', 'color7': '#e1d9d1', 'color8': '#9d9792', 'color9': '#9E857A', 'color10': '#D09577', 'color11': '#887B83', 'color12': '#AF9C93', 'color13': '#CAB4A4', 'color14': '#C0BFBF', 'color15': '#e1d9d1', 'FZF_DEFAULT_OPTS': '', 'LS_COLORS': '${LS_COLORS}:su=30;41:ow=30;42:st=30;44:'}
 
 #+name: background
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -122,7 +122,7 @@ return colors["background"]
 #+end_src
 
 #+RESULTS: background
-: #272220
+: #1d1f27
 
 #+name: foreground
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -132,7 +132,7 @@ return colors["foreground"]
 #+end_src
 
 #+RESULTS: foreground
-: #ede5d8
+: #e1d9d1
 
 #+name: color0
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -142,7 +142,7 @@ return colors["color0"]
 #+end_src
 
 #+RESULTS: color0
-: #272220
+: #1d1f27
 
 #+name: color1
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -152,7 +152,7 @@ return colors["color1"]
 #+end_src
 
 #+RESULTS: color1
-: #CDB492
+: #9E857A
 
 #+name: color2
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -162,7 +162,7 @@ return colors["color2"]
 #+end_src
 
 #+RESULTS: color2
-: #D2BDA2
+: #D09577
 
 #+name: color3
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -172,7 +172,7 @@ return colors["color3"]
 #+end_src
 
 #+RESULTS: color3
-: #D8C39D
+: #887B83
 
 #+name: color4
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -182,7 +182,7 @@ return colors["color4"]
 #+end_src
 
 #+RESULTS: color4
-: #DDC9A6
+: #AF9C93
 
 #+name: color5
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -192,7 +192,7 @@ return colors["color5"]
 #+end_src
 
 #+RESULTS: color5
-: #E7D8B7
+: #CAB4A4
 
 #+name: color6
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -202,7 +202,7 @@ return colors["color6"]
 #+end_src
 
 #+RESULTS: color6
-: #EDE0BD
+: #C0BFBF
 
 #+name: color7
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -212,7 +212,7 @@ return colors["color7"]
 #+end_src
 
 #+RESULTS: color7
-: #ede5d8
+: #e1d9d1
 
 #+name: color8
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -222,7 +222,7 @@ return colors["color8"]
 #+end_src
 
 #+RESULTS: color8
-: #a5a097
+: #9d9792
 
 #+name: color9
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -232,7 +232,7 @@ return colors["color9"]
 #+end_src
 
 #+RESULTS: color9
-: #CDB492
+: #9E857A
 
 #+name: color10
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -242,7 +242,7 @@ return colors["color10"]
 #+end_src
 
 #+RESULTS: color10
-: #D2BDA2
+: #D09577
 
 #+name: color11
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -252,7 +252,7 @@ return colors["color11"]
 #+end_src
 
 #+RESULTS: color11
-: #D8C39D
+: #887B83
 
 #+name: color12
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -262,7 +262,7 @@ return colors["color12"]
 #+end_src
 
 #+RESULTS: color12
-: #DDC9A6
+: #AF9C93
 
 #+name: color13
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -272,7 +272,7 @@ return colors["color13"]
 #+end_src
 
 #+RESULTS: color13
-: #E7D8B7
+: #CAB4A4
 
 #+name: color14
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -282,7 +282,7 @@ return colors["color14"]
 #+end_src
 
 #+RESULTS: color14
-: #EDE0BD
+: #C0BFBF
 
 #+name: color15
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -292,7 +292,7 @@ return colors["color15"]
 #+end_src
 
 #+RESULTS: color15
-: #ede5d8
+: #e1d9d1
 
 * Variables - Paths
 All shared niri variables are set in this section. This overcomes the limitation that .kdl
@@ -1083,7 +1083,6 @@ preprocessing and progamatic control to ensure they startup in the correct seque
         spawn-at-startup      <<setup_theme()>>
         spawn-at-startup      <<wallpaper()>>
         spawn-at-startup      <<notifications()>>
-        spawn-at-startup      <<status_bar()>>
         spawn-at-startup      <<spotify()>>
         spawn-at-startup      <<element()>>
         spawn-at-startup      <<sms()>>
@@ -1103,11 +1102,11 @@ the target system as this is different between my desktop and laptop.
           open-on-output \"HDMI-A-3\"
   }
 
-  workspace \"spotify\" {
+  workspace \"messaging\" {
           open-on-output \"HDMI-A-3\"
   }
 
-  workspace \"discord\" {
+  workspace \"spotify\" {
           open-on-output \"HDMI-A-3\"
   }
 
@@ -1119,13 +1118,14 @@ the target system as this is different between my desktop and laptop.
           open-on-output \"HDMI-A-3\"
   }
 
-  workspace \"element\" {
+  workspace \"discord\" {
           open-on-output \"HDMI-A-3\"
   }
 
-  workspace \"messaging\" {
+  workspace \"element\" {
           open-on-output \"HDMI-A-3\"
-  }")  
+  }")
+
 #+END_SRC
 
 #+RESULTS: lenovo-workspace-config
@@ -1135,11 +1135,11 @@ workspace "scratchpad" {
         open-on-output "HDMI-A-3"
 }
 
-workspace "spotify" {
+workspace "messaging" {
         open-on-output "HDMI-A-3"
 }
 
-workspace "discord" {
+workspace "spotify" {
         open-on-output "HDMI-A-3"
 }
 
@@ -1151,11 +1151,11 @@ workspace "virtbox" {
         open-on-output "HDMI-A-3"
 }
 
-workspace "element" {
+workspace "discord" {
         open-on-output "HDMI-A-3"
 }
 
-workspace "messaging" {
+workspace "element" {
         open-on-output "HDMI-A-3"
 }
 #+end_example
@@ -1256,11 +1256,11 @@ workspace "scratchpad" {
         open-on-output "HDMI-A-3"
 }
 
-workspace "spotify" {
+workspace "messaging" {
         open-on-output "HDMI-A-3"
 }
 
-workspace "discord" {
+workspace "spotify" {
         open-on-output "HDMI-A-3"
 }
 
@@ -1272,11 +1272,11 @@ workspace "virtbox" {
         open-on-output "HDMI-A-3"
 }
 
-workspace "element" {
+workspace "discord" {
         open-on-output "HDMI-A-3"
 }
 
-workspace "messaging" {
+workspace "element" {
         open-on-output "HDMI-A-3"
 }
 #+end_example
@@ -1755,7 +1755,7 @@ This is the keybindings-config code block which returns the keybindings base on 
 target system. There is mode option which will return the keybinding content to
 be used for configuration use or doc use.
 #+NAME: keybindings-config
-#+BEGIN_SRC python :results value raw :var data=keybindings-data :var ts="" :var mode="config"
+#+BEGIN_SRC python :var data=keybindings-data :var ts="" :var mode="config"
 lines = []
 
 for mod, cmd, spawn, desc, target in data:
@@ -1773,6 +1773,7 @@ return "\n".join(lines)
 #+END_SRC
 
 #+RESULTS: keybindings-config
+#+begin_example
 Mod+Shift+Slash                                    { spawn "~/.config/niri/scripts/rofi_bindings"; }
 Mod+D                                              { spawn "~/.config/niri/scripts/rofi_launcher"; }
 Mod+B                                              { spawn "~/.config/niri/scripts/rofi_bluetooth"; }
@@ -1845,6 +1846,7 @@ XF86AudioMute allow-when-locked=true               { spawn "qs" "-c" "DankMateri
 XF86AudioMicMute allow-when-locked=true            { spawn "qs" "-c" "DankMaterialShell" "ipc" "call" "audio" "micmute"; }
 XF86MonBrightnessUp allow-when-locked=true         { spawn "qs" "-c" "DankMaterialShell" "ipc" "call" "brightness" "increment" "5" ""; }
 XF86MonBrightnessDown allow-when-locked=true       { spawn "qs" "-c" "DankMaterialShell" "ipc" "call" "brightness" "decrement" "5" ""; }
+#+end_example
 
 This generates the keybindings and outputs them to the config.kdl file.
 #+BEGIN_SRC kdl :noweb yes :tangle ./config.kdl

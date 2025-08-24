@@ -13,14 +13,19 @@
   // To generate this file without automation do the following (these are
   // notes to myself as I will forget this since once the changes
   // become stable I doubt I will remember any of this:
+  
   // 1) Open ~/.config/org/babel/niri_config/niri_config.org
+  
   // 2) M-x org-babel-execute-buffer (This will evaluate all of the code
   // blocks that have been marked for evaluation and display the results
   // just below the code block. To evaluate any code block place the
   // cursor inside the code block and C-c C-c.
+  
   // 3) While inside of the niri_config.org file M-x org-babel-tangle
   // This will produce the config.kdl file in the niri_config dir.
-  // 4) Copy config.kdl to the niri directory.
+  
+  // 4) Copy config.kdl and key_bindings.txt to the niri directory.
+  
   // 5) To run steps 1-4 fully automated M-x niri-build-and-deploy. The
   // live config.kdl will be copied to config.999, where 999 is a
   // sequencial number and also keep the last 5 copies for rollback.
@@ -40,9 +45,6 @@ from datetime import datetime
 return datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 #+end_src
 
-#+RESULTS: timestamp
-: 2025-08-17 06:23:11
-
 * Target System
 I have multiple systems (e.g. laptop, desktop, pi) that need different configurations mostly as
 it relates to monitor, workspace and some limited customization if keybindings. Change the
@@ -51,9 +53,6 @@ return value to be either "lenovo", "dell", or "pi" based on the target system.
 #+begin_src python :results value
   return "lenovo"
 #+end_src
-
-#+RESULTS: target-system
-: lenovo
 
 * Variables - Colors
 I currently use archraft as my base distro which included pywal for themeing. This section
@@ -77,9 +76,6 @@ with open("/home/username/.cache/wal/colors.sh", "r") as f:
 
 return json.dumps(theme)
 #+end_src
-
-#+RESULTS: theme-colors-json
-: {"wallpaper": "/home/username/Pictures/wallpapers/ign_unsplash52.png", "background": "#1d1f27", "foreground": "#e1d9d1", "cursor": "#e1d9d1", "color0": "#1d1f27", "color1": "#9E857A", "color2": "#D09577", "color3": "#887B83", "color4": "#AF9C93", "color5": "#CAB4A4", "color6": "#C0BFBF", "color7": "#e1d9d1", "color8": "#9d9792", "color9": "#9E857A", "color10": "#D09577", "color11": "#887B83", "color12": "#AF9C93", "color13": "#CAB4A4", "color14": "#C0BFBF", "color15": "#e1d9d1", "FZF_DEFAULT_OPTS": "", "LS_COLORS": "${LS_COLORS}:su=30;41:ow=30;42:st=30;44:"}
 
 #+name: colors-dict
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -111,18 +107,12 @@ colors = json.loads(colors_raw)
 return colors
 #+end_src
 
-#+RESULTS: colors-dict
-: {'wallpaper': '/home/username/Pictures/wallpapers/ign_unsplash52.png', 'background': '#1d1f27', 'foreground': '#e1d9d1', 'cursor': '#e1d9d1', 'color0': '#1d1f27', 'color1': '#9E857A', 'color2': '#D09577', 'color3': '#887B83', 'color4': '#AF9C93', 'color5': '#CAB4A4', 'color6': '#C0BFBF', 'color7': '#e1d9d1', 'color8': '#9d9792', 'color9': '#9E857A', 'color10': '#D09577', 'color11': '#887B83', 'color12': '#AF9C93', 'color13': '#CAB4A4', 'color14': '#C0BFBF', 'color15': '#e1d9d1', 'FZF_DEFAULT_OPTS': '', 'LS_COLORS': '${LS_COLORS}:su=30;41:ow=30;42:st=30;44:'}
-
 #+name: background
 #+begin_src python :var colors_raw=theme-colors-json :results value
 import json
 colors = json.loads(colors_raw)
 return colors["background"]
 #+end_src
-
-#+RESULTS: background
-: #1d1f27
 
 #+name: foreground
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -131,18 +121,12 @@ colors = json.loads(colors_raw)
 return colors["foreground"]
 #+end_src
 
-#+RESULTS: foreground
-: #e1d9d1
-
 #+name: color0
 #+begin_src python :var colors_raw=theme-colors-json :results value
 import json
 colors = json.loads(colors_raw)
 return colors["color0"]
 #+end_src
-
-#+RESULTS: color0
-: #1d1f27
 
 #+name: color1
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -151,18 +135,12 @@ colors = json.loads(colors_raw)
 return colors["color1"]
 #+end_src
 
-#+RESULTS: color1
-: #9E857A
-
 #+name: color2
 #+begin_src python :var colors_raw=theme-colors-json :results value
 import json
 colors = json.loads(colors_raw)
 return colors["color2"]
 #+end_src
-
-#+RESULTS: color2
-: #D09577
 
 #+name: color3
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -171,18 +149,12 @@ colors = json.loads(colors_raw)
 return colors["color3"]
 #+end_src
 
-#+RESULTS: color3
-: #887B83
-
 #+name: color4
 #+begin_src python :var colors_raw=theme-colors-json :results value
 import json
 colors = json.loads(colors_raw)
 return colors["color4"]
 #+end_src
-
-#+RESULTS: color4
-: #AF9C93
 
 #+name: color5
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -191,18 +163,12 @@ colors = json.loads(colors_raw)
 return colors["color5"]
 #+end_src
 
-#+RESULTS: color5
-: #CAB4A4
-
 #+name: color6
 #+begin_src python :var colors_raw=theme-colors-json :results value
 import json
 colors = json.loads(colors_raw)
 return colors["color6"]
 #+end_src
-
-#+RESULTS: color6
-: #C0BFBF
 
 #+name: color7
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -211,18 +177,12 @@ colors = json.loads(colors_raw)
 return colors["color7"]
 #+end_src
 
-#+RESULTS: color7
-: #e1d9d1
-
 #+name: color8
 #+begin_src python :var colors_raw=theme-colors-json :results value
 import json
 colors = json.loads(colors_raw)
 return colors["color8"]
 #+end_src
-
-#+RESULTS: color8
-: #9d9792
 
 #+name: color9
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -231,18 +191,12 @@ colors = json.loads(colors_raw)
 return colors["color9"]
 #+end_src
 
-#+RESULTS: color9
-: #9E857A
-
 #+name: color10
 #+begin_src python :var colors_raw=theme-colors-json :results value
 import json
 colors = json.loads(colors_raw)
 return colors["color10"]
 #+end_src
-
-#+RESULTS: color10
-: #D09577
 
 #+name: color11
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -251,18 +205,12 @@ colors = json.loads(colors_raw)
 return colors["color11"]
 #+end_src
 
-#+RESULTS: color11
-: #887B83
-
 #+name: color12
 #+begin_src python :var colors_raw=theme-colors-json :results value
 import json
 colors = json.loads(colors_raw)
 return colors["color12"]
 #+end_src
-
-#+RESULTS: color12
-: #AF9C93
 
 #+name: color13
 #+begin_src python :var colors_raw=theme-colors-json :results value
@@ -271,9 +219,6 @@ colors = json.loads(colors_raw)
 return colors["color13"]
 #+end_src
 
-#+RESULTS: color13
-: #CAB4A4
-
 #+name: color14
 #+begin_src python :var colors_raw=theme-colors-json :results value
 import json
@@ -281,18 +226,12 @@ colors = json.loads(colors_raw)
 return colors["color14"]
 #+end_src
 
-#+RESULTS: color14
-: #C0BFBF
-
 #+name: color15
 #+begin_src python :var colors_raw=theme-colors-json :results value
 import json
 colors = json.loads(colors_raw)
 return colors["color15"]
 #+end_src
-
-#+RESULTS: color15
-: #e1d9d1
 
 * Variables - Paths
 All shared niri variables are set in this section. This overcomes the limitation that .kdl
@@ -303,40 +242,25 @@ in shell scripts which simplifies constructing commands.
   return "~/.config/niri/scripts"
 #+END_SRC
 
-#+RESULTS: niri_scripts
-: ~/.config/niri/scripts
-
 #+NAME: niri_theme
 #+BEGIN_SRC python :results value
   return "~/.config/niri/theme"
 #+END_SRC
-
-#+RESULTS: niri_theme
-: ~/.config/niri/theme
 
 #+NAME: niri_toolkit
 #+BEGIN_SRC python :results value
   return "~/projects/niri_toolkit"
 #+END_SRC
 
-#+RESULTS: niri_toolkit
-: ~/projects/niri_toolkit
-
 #+NAME: screenshot_path
 #+BEGIN_SRC python :results value
   return "~/Pictures/screenshots"
 #+END_SRC
 
-#+RESULTS: screenshot_path
-: ~/Pictures/screenshots
-
 #+NAME: screenshot_file
 #+BEGIN_SRC python :results value
   return "Screenshot-from-%Y-%m-%d-%H-%M-%S.png"  
 #+END_SRC
-
-#+RESULTS: screenshot_file
-: Screenshot-from-%Y-%m-%d-%H-%M-%S.png
 
 * Variables - Apps & Scripts
 All my applications and shells scripts are set to variables here. This gives a little bit more
@@ -348,17 +272,11 @@ give you the opportunity to execute some preprocessing logic if necessary.
   return f'"\\"{_temp}\\""'  
 #+END_SRC
 
-#+RESULTS: bindings
-: "~/.config/niri/scripts/rofi_bindings"
-
 #+NAME: launcher
 #+BEGIN_SRC python :var _temp=niri_scripts :results value
   _temp = f"{_temp}/rofi_launcher"
   return f'"\\"{_temp}\\""'    
 #+END_SRC
-
-#+RESULTS: launcher
-: "~/.config/niri/scripts/rofi_launcher"
 
 #+NAME: bluetooth
 #+BEGIN_SRC python :var _temp=niri_scripts :results value
@@ -366,8 +284,6 @@ give you the opportunity to execute some preprocessing logic if necessary.
   return f'"\\"{_temp}\\""'    
 #+END_SRC
 
-#+RESULTS: bluetooth
-: "~/.config/niri/scripts/rofi_bluetooth"
 
 #+NAME: power_menu
 #+BEGIN_SRC python :var _temp=niri_scripts :results value
@@ -375,17 +291,11 @@ give you the opportunity to execute some preprocessing logic if necessary.
   return f'"\\"{_temp}\\""'    
 #+END_SRC
 
-#+RESULTS: power_menu
-: "~/.config/niri/scripts/rofi_powermenu"
-
 #+NAME: music
 #+BEGIN_SRC python :var _temp=niri_scripts :results value
   _temp = f"{_temp}/rofi_music"
   return f'"\\"{_temp}\\""'    
 #+END_SRC
-
-#+RESULTS: music
-: "~/.config/niri/scripts/rofi_music"
 
 #+NAME: network
 #+BEGIN_SRC python :var _temp=niri_scripts :results value
@@ -393,17 +303,11 @@ give you the opportunity to execute some preprocessing logic if necessary.
   return f'"\\"{_temp}\\""'    
 #+END_SRC
 
-#+RESULTS: network
-: "~/.config/niri/scripts/rofi_network"
-
 #+NAME: show_windows
 #+BEGIN_SRC python :var _temp=niri_scripts :results value
   _temp = f"{_temp}/rofi_showwindows"
   return f'"\\"{_temp}\\""'    
 #+END_SRC
-
-#+RESULTS: show_windows
-: "~/.config/niri/scripts/rofi_showwindows"
 
 #+NAME: term
 #+BEGIN_SRC python :var _temp=niri_scripts :results value
@@ -411,17 +315,11 @@ give you the opportunity to execute some preprocessing logic if necessary.
   return f'"\\"{_temp}\\""'    
 #+END_SRC
 
-#+RESULTS: term
-: "~/.config/niri/scripts/alacritty"
-
 #+NAME: lock_screen
 #+BEGIN_SRC python :var _temp=niri_scripts :results value
   _temp = f"{_temp}/lockscreen"
   return f'"\\"{_temp}\\""'    
 #+END_SRC
-
-#+RESULTS: lock_screen
-: "~/.config/niri/scripts/lockscreen"
 
 #+NAME: scratchpad_put
 #+BEGIN_SRC python :var _temp=niri_toolkit :results value
@@ -434,9 +332,6 @@ give you the opportunity to execute some preprocessing logic if necessary.
   return " ".join(cmd)  
 #+END_SRC
 
-#+RESULTS: scratchpad_put
-: "~/projects/niri_toolkit/niri_scratchpad" "--action" "put" "--scratchpad_name" "scratchpad"
-
 #+NAME: scratchpad_get
 #+BEGIN_SRC python :var _temp=niri_toolkit :results value
   _temp = f"{_temp}/niri_scratchpad"    
@@ -448,9 +343,6 @@ give you the opportunity to execute some preprocessing logic if necessary.
   return " ".join(cmd)  
 #+END_SRC
 
-#+RESULTS: scratchpad_get
-: "~/projects/niri_toolkit/niri_scratchpad" "--action" "get" "--scratchpad_name" "scratchpad"
-
 #+NAME: emacs_prod
 #+BEGIN_SRC python :results value
       cmd = [
@@ -460,9 +352,6 @@ give you the opportunity to execute some preprocessing logic if necessary.
       ]
       return " ".join(cmd)  
 #+END_SRC
-
-#+RESULTS: emacs_prod
-: "emacsclient" "-c" "-s" "emacs-prod"
 
 #+NAME: emacs_dev
 #+BEGIN_SRC python :results value
@@ -474,16 +363,10 @@ give you the opportunity to execute some preprocessing logic if necessary.
     return " ".join(cmd)  
 #+END_SRC
 
-#+RESULTS: emacs_dev
-: "emacsclient" "-c" "-s" "emacs-dev"
-
 #+NAME: file_gui
 #+BEGIN_SRC python
   return f'"\\"thunar\\""'
 #+END_SRC
-
-#+RESULTS: file_gui
-: "thunar"
 
 
 #+NAME: file_term
@@ -495,24 +378,15 @@ cmd = [
 return " ".join(cmd)
 #+END_SRC
 
-#+RESULTS: file_term
-: "sh" "-c" "kitty --detach yazi"
-
 #+NAME: browser
 #+BEGIN_SRC python
   return f'"\\"vivaldi-snapshot\\""'
 #+END_SRC
 
-#+RESULTS: browser
-: "vivaldi-snapshot"
-
 #+NAME: notes
 #+BEGIN_SRC python
   return f'"\\"pluma\\""'  
 #+END_SRC
-
-#+RESULTS: notes
-: "pluma"
 
 #+NAME: email_get
 #+BEGIN_SRC python :var _temp=niri_toolkit :results value
@@ -527,9 +401,6 @@ return " ".join(cmd)
   return " ".join(cmd)
 #+END_SRC
 
-#+RESULTS: email_get
-: "~/projects/niri_toolkit/niri-move-window.py" "--match" "mu4e" "--target" "m" "--target_id" "HDMI-A-2" "--focus"
-
 #+NAME: email_put
 #+BEGIN_SRC python :var _temp=niri_toolkit :results value
   _temp = f"{_temp}/niri-move-window.py"
@@ -541,9 +412,6 @@ return " ".join(cmd)
   ]
   return " ".join(cmd)
 #+END_SRC
-
-#+RESULTS: email_put
-: "~/projects/niri_toolkit/niri-move-window.py" "--match" "mu4e" "--target" "w" "--target_id" "messaging"
 
 #+NAME: sms_get
 #+BEGIN_SRC python :var _temp=niri_toolkit :results value
@@ -557,9 +425,6 @@ return " ".join(cmd)
   ]
   return " ".join(cmd)
 #+END_SRC
-
-#+RESULTS: sms_get
-: "~/projects/niri_toolkit/niri-move-window.py" "--match" "Messages" "--target" "m" "--target_id" "HDMI-A-2" "--focus"
 
 #+NAME: sms_put
 #+BEGIN_SRC python :var _temp=niri_toolkit :results value
@@ -582,13 +447,10 @@ return " ".join(cmd)
       '"wpctl"',
       '"set-volume"',
       '"@DEFAULT_AUDIO_SINK@"',
-      '"0.1+"'
+      '"5%+"'
   ]
   return " ".join(cmd)
 #+END_SRC
-
-#+RESULTS: audio_raise_volume
-: "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"
 
 #+NAME: audio_lower_volume
 #+BEGIN_SRC python :results value
@@ -596,13 +458,10 @@ return " ".join(cmd)
       '"wpctl"',
       '"set-volume"',
       '"@DEFAULT_AUDIO_SINK@"',
-      '"0.1-"'
+      '"5%-"'
   ]
   return " ".join(cmd)
 #+END_SRC
-
-#+RESULTS: audio_lower_volume
-: "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"
 
 #+NAME: audio_mute
 #+BEGIN_SRC python :results value
@@ -615,9 +474,6 @@ return " ".join(cmd)
   return " ".join(cmd)
 #+END_SRC
 
-#+RESULTS: audio_mute
-: "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"
-
 #+NAME: audio_mic_mute
 #+BEGIN_SRC python :results value
   cmd = [
@@ -628,9 +484,6 @@ return " ".join(cmd)
   ]
   return " ".join(cmd)
 #+END_SRC
-
-#+RESULTS: audio_mic_mute
-: "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"
 
 
 #+NAME: idle_lock
@@ -643,17 +496,11 @@ return " ".join(cmd)
   return " ".join(cmd)
 #+END_SRC
 
-#+RESULTS: idle_lock
-: "sh" "-c" "swayidle -w timeout 600 ~/.config/niri/scripts/lockscreen"
-
 #+NAME: setup_theme
 #+BEGIN_SRC python :var _temp=niri_scripts :results value
   _temp = f"{_temp}/setup_theme"
   return f'"\\"{_temp}\\""'    
 #+END_SRC
-
-#+RESULTS: setup_theme
-: "~/.config/niri/scripts/setup_theme"
 
 #+NAME: wallpaper
 #+BEGIN_SRC python :var _temp=niri_scripts :results value
@@ -661,26 +508,17 @@ return " ".join(cmd)
   return f'"\\"{_temp}\\""'    
 #+END_SRC
 
-#+RESULTS: wallpaper
-: "~/.config/niri/scripts/wallpaper"
-
 #+NAME: notifications
 #+BEGIN_SRC python :var _temp=niri_scripts :results value
   _temp = f"{_temp}/notifications"
   return f'"\\"{_temp}\\""'    
 #+END_SRC
 
-#+RESULTS: notifications
-: "~/.config/niri/scripts/notifications"
-
 #+NAME: status_bar_waybar
 #+BEGIN_SRC python :var _temp=niri_scripts :results value
   _temp = f"{_temp}/statusbar"
   return f'"\\"{_temp}\\""'    
 #+END_SRC
-
-#+RESULTS: status_bar_waybar
-: "~/.config/niri/scripts/statusbar"
 
 #+NAME: status_bar
 #+BEGIN_SRC python :results value
@@ -692,9 +530,6 @@ return " ".join(cmd)
   return " ".join(cmd)
 #+END_SRC
 
-#+RESULTS: status_bar
-: "qs" "-c" "DankMaterialShell"
-
 #+NAME: clipboard
 #+BEGIN_SRC python :results value
   cmd = [
@@ -705,64 +540,40 @@ return " ".join(cmd)
   return " ".join(cmd)
 #+END_SRC
 
-#+RESULTS: clipboard
-: "bash" "-c" "wl-paste --watch cliphist store &"
-
 #+NAME: spotify
 #+BEGIN_SRC python
   return f'"\\"spotify\\""'      
 #+END_SRC
-
-#+RESULTS: spotify
-: "spotify"
 
 #+NAME: element
 #+BEGIN_SRC python
   return f'"\\"element-desktop\\""'  
 #+END_SRC
 
-#+RESULTS: element
-: "element-desktop"
-
 #+NAME: sms
 #+BEGIN_SRC python
   return f'"\\"googlemessages\\""'  
 #+END_SRC
-
-#+RESULTS: sms
-: "googlemessages"
 
 #+NAME: calendar
 #+BEGIN_SRC python
   return f'"\\"google-calendar-nativefier-dark\\""'  
 #+END_SRC
 
-#+RESULTS: calendar
-: "google-calendar-nativefier-dark"
-
 #+NAME: discord
 #+BEGIN_SRC python
   return f'"\\"vesktop\\""'  
 #+END_SRC
-
-#+RESULTS: discord
-: "vesktop"
 
 #+NAME: email
 #+BEGIN_SRC python
   return f'"\\"geary\\""'  
 #+END_SRC
 
-#+RESULTS: email
-: "geary"
-
 #+NAME: xwayland
 #+BEGIN_SRC python
   return f'"\\"xwayland-satellite\\" \\"--display 2\\""'  
 #+END_SRC
-
-#+RESULTS: xwayland
-: "xwayland-satellite" "--display 2"
 
 #+NAME: screenshot_viewer
 #+BEGIN_SRC python :var _temp=niri_toolkit :results value
@@ -770,26 +581,17 @@ return " ".join(cmd)
   return f'"\\"{_temp}\\""'    
 #+END_SRC
 
-#+RESULTS: screenshot_viewer
-: "~/projects/niri_toolkit/niri-screenshot-picker"
-
 #+NAME: screenshot_viewer_emacs
 #+BEGIN_SRC python :var _temp=niri_toolkit :results value
   _temp = f"{_temp}/niri-screenshot-picker-emacs"
   return f'"\\"{_temp}\\""'    
 #+END_SRC
 
-#+RESULTS: screenshot_viewer_emacs
-: "~/projects/niri_toolkit/niri-screenshot-picker-emacs"
-
 #+NAME: niri_hot_change
 #+BEGIN_SRC python :var _temp=niri_toolkit :results value
   _temp = f"{_temp}/niri-hot-change"
   return f'"\\"{_temp}\\""'    
 #+END_SRC
-
-#+RESULTS: niri_hot_change
-: "~/projects/niri_toolkit/niri-hot-change"
 
 #+NAME: niri_theme_change
 #+BEGIN_SRC python :var _temp=niri_theme :results value
@@ -800,9 +602,6 @@ return " ".join(cmd)
   ]
   return " ".join(cmd)
 #+END_SRC
-
-#+RESULTS: niri_theme_change
-: "~/.config/niri/theme/theme.sh" "--pywal"
 
 * Environment
 This sets the niri environment variables. You can also pull environment variables in
@@ -1089,6 +888,7 @@ preprocessing and progamatic control to ensure they startup in the correct seque
         spawn-at-startup      <<calendar()>>
         spawn-at-startup      <<discord()>>
         spawn-at-startup      <<clipboard()>>
+        spawn-at-startup      <<status_bar()>>
 #+END_SRC
 
 * Workspaces
@@ -1593,9 +1393,9 @@ This is the bindings data section. Each key binding is loaded into a python dict
 
 1) Keybinding - the key sequence (e.g. Mod+Shift+X).
 2) Command - the command to invoke (.e.g. "floorp").
-3) Spawn Y | N - if a spawn command needs to be prepended to the command.
+3) Spawn {Y | N} - if a spawn command needs to be prepended to the command.
 4) Description - A description of the binding to be used for a custom hotkey overlay.
-5) Target "" (all) | all (common) | lenovo | dell - The target system for the keybinding. If
+5) Target {"" (all) | all (common) | lenovo | dell | omit} The target system for the keybinding. If
    the target is left blank it will generate all keybindings which is used for documenting
    the overlay. If you pass a target system in like "lenovo" it will return the commond
    bindings use across all systems plus the lenovo specific ones.
@@ -1668,88 +1468,19 @@ This is the bindings data section. Each key binding is loaded into a python dict
       ("Mod+Escape allow-inhibiting=false", "toggle-keyboard-shortcuts-inhibit", "N", "Toggle Keyboard Shortcuts - Inhibit", "all"),
       ("Ctrl+Alt+Delete", "quit", "N", "Quit", "all",),
       ("Mod+Space", '\"qs\" \"-c\" \"DankMaterialShell\" \"ipc\" \"call\" \"spotlight\" \"toggle\"', "Y", "Launcher", "all"),
-      ("XF86AudioRaiseVolume allow-when-locked=true",'\"qs\" \"-c\" \"DankMaterialShell\" \"ipc\" \"call\" \"audio\" \"increment\" \"3\"', "Y", "Vol+", "all"),
-      ("XF86AudioLowerVolume allow-when-locked=true",'\"qs\" \"-c\" \"DankMaterialShell\" \"ipc\" \"call\" \"audio\" \"decrement\" \"3\"', "Y", "Vol-", "all"),
-      ("XF86AudioMute allow-when-locked=true",'\"qs\" \"-c\" \"DankMaterialShell\" \"ipc\" \"call\" \"audio\" \"mute\"', "Y", "Mute", "all"),
-      ("XF86AudioMicMute allow-when-locked=true",'\"qs\" \"-c\" \"DankMaterialShell\" \"ipc\" \"call\" \"audio\" \"micmute\"', "Y", "Mic Mute", "all"),
+      ("XF86AudioRaiseVolume allow-when-locked=true", _audio_raise_volume,"Y", "Vol+", "all"),
+      ("XF86AudioLowerVolume allow-when-locked=true", _audio_lower_volume,"Y", "Vol-", "all"),
+      ("XF86AudioMute allow-when-locked=true", _audio_mute,"Y", "Mute", "all"),
+      ("XF86AudioMicMute allow-when-locked=true", _audio_mic_mute,"Y", "Mic Mute", "all"),            
+      ("XF86AudioRaiseVolume allow-when-locked=true",'\"qs\" \"-c\" \"DankMaterialShell\" \"ipc\" \"call\" \"audio\" \"increment\" \"3\"', "Y", "Vol+", "omit"),
+      ("XF86AudioLowerVolume allow-when-locked=true",'\"qs\" \"-c\" \"DankMaterialShell\" \"ipc\" \"call\" \"audio\" \"decrement\" \"3\"', "Y", "Vol-", "omit"),
+      ("XF86AudioMute allow-when-locked=true",'\"qs\" \"-c\" \"DankMaterialShell\" \"ipc\" \"call\" \"audio\" \"mute\"', "Y", "Mute", "omit"),
+      ("XF86AudioMicMute allow-when-locked=true",'\"qs\" \"-c\" \"DankMaterialShell\" \"ipc\" \"call\" \"audio\" \"micmute\"', "Y", "Mic Mute", "omit"),
       ("XF86MonBrightnessUp allow-when-locked=true",'\"qs\" \"-c\" \"DankMaterialShell\" \"ipc\" \"call\" \"brightness\" \"increment\" \"5\" \"\"', "Y", "Brightness Up", "all"),
       ("XF86MonBrightnessDown allow-when-locked=true",'\"qs\" \"-c\" \"DankMaterialShell\" \"ipc\" \"call\" \"brightness\" \"decrement\" \"5\" \"\"', "Y", "Brightness Down", "all")
   ]
 #+END_SRC
 
-#+RESULTS: keybindings-data
-| Mod+Shift+Slash                              | "~/.config/niri/scripts/rofi_bindings"                                                                               | Y | Niri Key Bindings                   | all    |
-| Mod+D                                        | "~/.config/niri/scripts/rofi_launcher"                                                                               | Y | Launcher                            | all    |
-| Mod+B                                        | "~/.config/niri/scripts/rofi_bluetooth"                                                                              | Y | Bluetooth                           | all    |
-| Mod+Shift+D                                  | "~/.config/niri/scripts/rofi_showwindows"                                                                            | Y | Show Active Windows                 | all    |
-| Mod+E                                        | "emacsclient" "-c" "-s" "emacs-prod"                                                                                 | Y | Emacs - Prod                        | all    |
-| Mod+Shift+E                                  | "emacsclient" "-c" "-s" "emacs-dev"                                                                                  | Y | Emacs - Dev                         | lenovo |
-| Mod+Shift+Y                                  | "sh" "-c" "kitty --detach yazi"                                                                                      | Y | File Manager - Term                 | all    |
-| Mod+Shift+N                                  | "pluma"                                                                                                              | Y | Notes                               | all    |
-| Mod+1                                        | "~/projects/niri_toolkit/niri-move-window.py" "--match" "Messages" "--target" "m" "--target_id" "HDMI-A-2" "--focus" | Y | SMS Get                             | all    |
-| Mod+Shift+1                                  | "~/projects/niri_toolkit/niri-move-window.py" "--match" "Messages" "--target" "w" "--target_id" "messaging"          | Y | SMS Put                             | all    |
-| Mod+2                                        | "~/projects/niri_toolkit/niri-move-window.py" "--match" "mu4e" "--target" "m" "--target_id" "HDMI-A-2" "--focus"     | Y | Email Get                           | all    |
-| Mod+Shift+2                                  | "~/projects/niri_toolkit/niri-move-window.py" "--match" "mu4e" "--target" "w" "--target_id" "messaging"              | Y | Email Put                           | all    |
-| Mod+P                                        | "~/projects/niri_toolkit/niri_scratchpad" "--action" "put" "--scratchpad_name" "scratchpad"                          | Y | Scratchpad Put                      | all    |
-| Mod+Shift+P                                  | "~/projects/niri_toolkit/niri_scratchpad" "--action" "get" "--scratchpad_name" "scratchpad"                          | Y | Scratchpad Get                      | all    |
-| Mod+Return                                   | "~/.config/niri/scripts/alacritty"                                                                                   | Y | Terminal                            | all    |
-| Mod+Shift+S                                  | "~/projects/niri_toolkit/niri-screenshot-picker"                                                                     | Y | Screenshot Picker                   | all    |
-| Mod+Ctrl+S                                   | "~/projects/niri_toolkit/niri-screenshot-picker-emacs"                                                               | Y | Screenshot Picker - Emacs           | lenovo |
-| Mod+T                                        | "~/.config/niri/theme/theme.sh" "--pywal"                                                                            | Y | Niri Theme Change                   | all    |
-| Mod+Shift+T                                  | "~/projects/niri_toolkit/niri-hot-change"                                                                            | Y | Niri Hot Change Config              | all    |
-| Mod+S                                        | screenshot                                                                                                           | N | Screenshot                          | all    |
-| Mod+O repeat=false                           | toggle-overview                                                                                                      | N | Toggle Overview                     | all    |
-| Mod+Q                                        | close-window                                                                                                         | N | Close Window                        | all    |
-| Mod+h                                        | focus-column-left                                                                                                    | N | Focus Column Left                   | all    |
-| Mod+j                                        | focus-window-down                                                                                                    | N | Focus Column Down                   | all    |
-| Mod+k                                        | focus-window-up                                                                                                      | N | Focus Window Down                   | all    |
-| Mod+l                                        | focus-column-right                                                                                                   | N | Focus Column Right                  | all    |
-| Mod+Shift+h                                  | move-column-left                                                                                                     | N | Move Column Left                    | all    |
-| Mod+Shift+j                                  | move-window-down                                                                                                     | N | Move Window Down                    | all    |
-| Mod+Shift+k                                  | move-window-up                                                                                                       | N | Move Window Up                      | all    |
-| Mod+Shift+l                                  | move-column-right                                                                                                    | N | Move Column Right                   | all    |
-| Mod+Ctrl+h                                   | focus-monitor-left                                                                                                   | N | Focus Monitor Left                  | all    |
-| Mod+Ctrl+l                                   | focus-monitor-right                                                                                                  | N | Focus Monitor Right                 | all    |
-| Mod+Shift+Ctrl+h                             | move-column-to-monitor-left                                                                                          | N | Move Column To Monitor Left         | all    |
-| Mod+Shift+Ctrl+l                             | move-column-to-monitor-right                                                                                         | N | Move Column To Monitor Right        | all    |
-| Mod+WheelScrollDown cooldown-ms=150          | focus-workspace-down                                                                                                 | N | Focus Workspace Down                | all    |
-| Mod+WheelScrollUp cooldown-ms=150            | focus-workspace-up                                                                                                   | N | Focus Workspace Up                  | all    |
-| Mod+Shift+WheelScrollDown                    | focus-column-right                                                                                                   | N | Focus Column Right                  | all    |
-| Mod+Shift+WheelScrollUp                      | focus-column-left                                                                                                    | N | Focus Column Left                   | all    |
-| Mod+Tab                                      | focus-workspace-previous                                                                                             | N | Focus Workspace Previous            | all    |
-| Mod+BracketLeft                              | consume-or-expel-window-left                                                                                         | N | Consume Or Expel Window Left        | all    |
-| Mod+BracketRight                             | consume-or-expel-window-right                                                                                        | N | Consume Or Expel Window Right       | all    |
-| Mod+Comma                                    | consume-window-into-column                                                                                           | N | Consume Window Into Column          | all    |
-| Mod+Period                                   | expel-window-from-column                                                                                             | N | Expel Window From Column            | all    |
-| Mod+R                                        | switch-preset-column-width                                                                                           | N | Switch Preset Column Width          | all    |
-| Mod+Shift+R                                  | switch-preset-window-height                                                                                          | N | Switch Preset Column Height         | all    |
-| Mod+Ctrl+R                                   | reset-window-height                                                                                                  | N | Reset Window Height                 | all    |
-| Mod+F                                        | maximize-column                                                                                                      | N | Maximize Column                     | all    |
-| Mod+Shift+F                                  | fullscreen-window                                                                                                    | N | Fullscreen Window                   | all    |
-| Mod+Ctrl+F                                   | expand-column-to-available-width                                                                                     | N | Expand Column To Available Width    | all    |
-| Mod+C                                        | center-column                                                                                                        | N | Center Column                       | all    |
-| Mod+Ctrl+C                                   | center-visible-columns                                                                                               | N | Center Visible Columns              | all    |
-| Mod+Minus                                    | set-column-width "-10%"                                                                                              | N | Set Column Width -10%               | all    |
-| Mod+Equal                                    | set-column-width "+10%"                                                                                              | N | Set Column Width +10%               | all    |
-| Mod+Ctrl+Minus                               | set-column-width "-1"                                                                                                | N | Set Column Width -1                 | all    |
-| Mod+Ctrl+Equal                               | set-column-width "+1"                                                                                                | N | Set Column Width +1                 | all    |
-| Mod+Shift+Minus                              | set-window-height "-10%"                                                                                             | N | Set Window Height -10%              | all    |
-| Mod+Shift+Equal                              | set-window-height "+10%"                                                                                             | N | Set Window Height +10%              | all    |
-| Mod+Shift+Ctrl+Minus                         | set-window-height "-1"                                                                                               | N | Set Window Height -1                | all    |
-| Mod+Shift+Ctrl+Equal                         | set-window-height "+1"                                                                                               | N | Set Window Height +1                | all    |
-| Mod+V                                        | toggle-window-floating                                                                                               | N | Toggle Window Floating              | all    |
-| Mod+Shift+V                                  | switch-focus-between-floating-and-tiling                                                                             | N | Switch Focus Floating And Tiling    | all    |
-| Mod+W                                        | toggle-column-tabbed-display                                                                                         | N | Toggle Column Tabbed Display        | all    |
-| Mod+Shift+Space                              | switch-layout "prev"                                                                                                 | N | Switch Layout - Prev                | all    |
-| Mod+Escape allow-inhibiting=false            | toggle-keyboard-shortcuts-inhibit                                                                                    | N | Toggle Keyboard Shortcuts - Inhibit | all    |
-| Ctrl+Alt+Delete                              | quit                                                                                                                 | N | Quit                                | all    |
-| Mod+Space                                    | "qs" "-c" "DankMaterialShell" "ipc" "call" "spotlight" "toggle"                                                      | Y | Launcher                            | all    |
-| XF86AudioRaiseVolume allow-when-locked=true  | "qs" "-c" "DankMaterialShell" "ipc" "call" "audio" "increment" "3"                                                   | Y | Vol+                                | all    |
-| XF86AudioLowerVolume allow-when-locked=true  | "qs" "-c" "DankMaterialShell" "ipc" "call" "audio" "decrement" "3"                                                   | Y | Vol-                                | all    |
-| XF86AudioMute allow-when-locked=true         | "qs" "-c" "DankMaterialShell" "ipc" "call" "audio" "mute"                                                            | Y | Mute                                | all    |
-| XF86AudioMicMute allow-when-locked=true      | "qs" "-c" "DankMaterialShell" "ipc" "call" "audio" "micmute"                                                         | Y | Mic Mute                            | all    |
-| XF86MonBrightnessUp allow-when-locked=true   | "qs" "-c" "DankMaterialShell" "ipc" "call" "brightness" "increment" "5" ""                                           | Y | Brightness Up                       | all    |
-| XF86MonBrightnessDown allow-when-locked=true | "qs" "-c" "DankMaterialShell" "ipc" "call" "brightness" "decrement" "5" ""                                           | Y | Brightness Down                     | all    |
 
 This is the keybindings-config code block which returns the keybindings base on the
 target system. There is mode option which will return the keybinding content to
@@ -1760,93 +1491,18 @@ lines = []
 
 for mod, cmd, spawn, desc, target in data:
     # Filter by target system
-    if target in (ts, "all") or ts == "":
+    if target != "omit" and (target in (ts, "all") or ts == ""):
         if mode == "config":
             if spawn.upper() == "Y":
                 lines.append(f'{mod:50} {{ spawn {cmd}; }}')
             else:
                 lines.append(f'{mod:50} {{ {cmd}; }}')
-        elif mode == "doc":
+        elif mode == "doc" and ts != "omit":
             lines.append(f"{mod:50} {desc}")
 
 return "\n".join(lines)
 #+END_SRC
 
-#+RESULTS: keybindings-config
-#+begin_example
-Mod+Shift+Slash                                    { spawn "~/.config/niri/scripts/rofi_bindings"; }
-Mod+D                                              { spawn "~/.config/niri/scripts/rofi_launcher"; }
-Mod+B                                              { spawn "~/.config/niri/scripts/rofi_bluetooth"; }
-Mod+Shift+D                                        { spawn "~/.config/niri/scripts/rofi_showwindows"; }
-Mod+E                                              { spawn "emacsclient" "-c" "-s" "emacs-prod"; }
-Mod+Shift+E                                        { spawn "emacsclient" "-c" "-s" "emacs-dev"; }
-Mod+Shift+Y                                        { spawn "sh" "-c" "kitty --detach yazi"; }
-Mod+Shift+N                                        { spawn "pluma"; }
-Mod+1                                              { spawn "~/projects/niri_toolkit/niri-move-window.py" "--match" "Messages" "--target" "m" "--target_id" "HDMI-A-2" "--focus"; }
-Mod+Shift+1                                        { spawn "~/projects/niri_toolkit/niri-move-window.py" "--match" "Messages" "--target" "w" "--target_id" "messaging"; }
-Mod+2                                              { spawn "~/projects/niri_toolkit/niri-move-window.py" "--match" "mu4e" "--target" "m" "--target_id" "HDMI-A-2" "--focus"; }
-Mod+Shift+2                                        { spawn "~/projects/niri_toolkit/niri-move-window.py" "--match" "mu4e" "--target" "w" "--target_id" "messaging"; }
-Mod+P                                              { spawn "~/projects/niri_toolkit/niri_scratchpad" "--action" "put" "--scratchpad_name" "scratchpad"; }
-Mod+Shift+P                                        { spawn "~/projects/niri_toolkit/niri_scratchpad" "--action" "get" "--scratchpad_name" "scratchpad"; }
-Mod+Return                                         { spawn "~/.config/niri/scripts/alacritty"; }
-Mod+Shift+S                                        { spawn "~/projects/niri_toolkit/niri-screenshot-picker"; }
-Mod+Ctrl+S                                         { spawn "~/projects/niri_toolkit/niri-screenshot-picker-emacs"; }
-Mod+T                                              { spawn "~/.config/niri/theme/theme.sh" "--pywal"; }
-Mod+Shift+T                                        { spawn "~/projects/niri_toolkit/niri-hot-change"; }
-Mod+S                                              { screenshot; }
-Mod+O repeat=false                                 { toggle-overview; }
-Mod+Q                                              { close-window; }
-Mod+h                                              { focus-column-left; }
-Mod+j                                              { focus-window-down; }
-Mod+k                                              { focus-window-up; }
-Mod+l                                              { focus-column-right; }
-Mod+Shift+h                                        { move-column-left; }
-Mod+Shift+j                                        { move-window-down; }
-Mod+Shift+k                                        { move-window-up; }
-Mod+Shift+l                                        { move-column-right; }
-Mod+Ctrl+h                                         { focus-monitor-left; }
-Mod+Ctrl+l                                         { focus-monitor-right; }
-Mod+Shift+Ctrl+h                                   { move-column-to-monitor-left; }
-Mod+Shift+Ctrl+l                                   { move-column-to-monitor-right; }
-Mod+WheelScrollDown cooldown-ms=150                { focus-workspace-down; }
-Mod+WheelScrollUp cooldown-ms=150                  { focus-workspace-up; }
-Mod+Shift+WheelScrollDown                          { focus-column-right; }
-Mod+Shift+WheelScrollUp                            { focus-column-left; }
-Mod+Tab                                            { focus-workspace-previous; }
-Mod+BracketLeft                                    { consume-or-expel-window-left; }
-Mod+BracketRight                                   { consume-or-expel-window-right; }
-Mod+Comma                                          { consume-window-into-column; }
-Mod+Period                                         { expel-window-from-column; }
-Mod+R                                              { switch-preset-column-width; }
-Mod+Shift+R                                        { switch-preset-window-height; }
-Mod+Ctrl+R                                         { reset-window-height; }
-Mod+F                                              { maximize-column; }
-Mod+Shift+F                                        { fullscreen-window; }
-Mod+Ctrl+F                                         { expand-column-to-available-width; }
-Mod+C                                              { center-column; }
-Mod+Ctrl+C                                         { center-visible-columns; }
-Mod+Minus                                          { set-column-width "-10%"; }
-Mod+Equal                                          { set-column-width "+10%"; }
-Mod+Ctrl+Minus                                     { set-column-width "-1"; }
-Mod+Ctrl+Equal                                     { set-column-width "+1"; }
-Mod+Shift+Minus                                    { set-window-height "-10%"; }
-Mod+Shift+Equal                                    { set-window-height "+10%"; }
-Mod+Shift+Ctrl+Minus                               { set-window-height "-1"; }
-Mod+Shift+Ctrl+Equal                               { set-window-height "+1"; }
-Mod+V                                              { toggle-window-floating; }
-Mod+Shift+V                                        { switch-focus-between-floating-and-tiling; }
-Mod+W                                              { toggle-column-tabbed-display; }
-Mod+Shift+Space                                    { switch-layout "prev"; }
-Mod+Escape allow-inhibiting=false                  { toggle-keyboard-shortcuts-inhibit; }
-Ctrl+Alt+Delete                                    { quit; }
-Mod+Space                                          { spawn "qs" "-c" "DankMaterialShell" "ipc" "call" "spotlight" "toggle"; }
-XF86AudioRaiseVolume allow-when-locked=true        { spawn "qs" "-c" "DankMaterialShell" "ipc" "call" "audio" "increment" "3"; }
-XF86AudioLowerVolume allow-when-locked=true        { spawn "qs" "-c" "DankMaterialShell" "ipc" "call" "audio" "decrement" "3"; }
-XF86AudioMute allow-when-locked=true               { spawn "qs" "-c" "DankMaterialShell" "ipc" "call" "audio" "mute"; }
-XF86AudioMicMute allow-when-locked=true            { spawn "qs" "-c" "DankMaterialShell" "ipc" "call" "audio" "micmute"; }
-XF86MonBrightnessUp allow-when-locked=true         { spawn "qs" "-c" "DankMaterialShell" "ipc" "call" "brightness" "increment" "5" ""; }
-XF86MonBrightnessDown allow-when-locked=true       { spawn "qs" "-c" "DankMaterialShell" "ipc" "call" "brightness" "decrement" "5" ""; }
-#+end_example
 
 This generates the keybindings and outputs them to the config.kdl file.
 #+BEGIN_SRC kdl :noweb yes :tangle ./config.kdl

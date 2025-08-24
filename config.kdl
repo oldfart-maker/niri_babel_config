@@ -1,4 +1,4 @@
-// LAST BUILD / DEPLOY: 2025-08-17 06:23:44
+// LAST BUILD / DEPLOY: 2025-08-23 07:08:20
 // ## NOTES  ###########################################################  
 // This config file has been created by emacs org babel. This was done
 // mostly as a learning experiment and to address the gaps that .kdl
@@ -117,7 +117,7 @@
 
 // ## STARTUP APPS  ###########################################################
       spawn-at-startup      "xwayland-satellite" "--display 2"  
-      spawn-at-startup      "sh" "-c" "swayidle -w timeout 600 ~/.config/niri/scripts/lockscreen"
+      spawn-at-startup      "sh" "-c" "swayidle -w timeout 600 <<niri_scripts()>>/lockscreen"
       spawn-at-startup      "~/.config/niri/scripts/setup_theme"
       spawn-at-startup      "~/.config/niri/scripts/wallpaper"
       spawn-at-startup      "~/.config/niri/scripts/notifications"
@@ -127,6 +127,7 @@
       spawn-at-startup      "google-calendar-nativefier-dark"
       spawn-at-startup      "vesktop"
       spawn-at-startup      "bash" "-c" "wl-paste --watch cliphist store &"
+      spawn-at-startup      "qs" "-c" "DankMaterialShell"
 
 // ## SETUP WORKSPACES ##################################################    
   
@@ -192,8 +193,8 @@
             focus-ring {
                     // off
                     width 2
-                    active-color "#AF9C93"
-                    inactive-color "#1d1f27"
+                    active-color "#C4351E"
+                    inactive-color "#111718"
                     // active-gradient from="#80c8ff" to="#bbddff" angle=45
                     // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
             }
@@ -508,10 +509,10 @@
     Mod+Escape allow-inhibiting=false                  { toggle-keyboard-shortcuts-inhibit; }
     Ctrl+Alt+Delete                                    { quit; }
     Mod+Space                                          { spawn "qs" "-c" "DankMaterialShell" "ipc" "call" "spotlight" "toggle"; }
-    XF86AudioRaiseVolume allow-when-locked=true        { spawn "qs" "-c" "DankMaterialShell" "ipc" "call" "audio" "increment" "3"; }
-    XF86AudioLowerVolume allow-when-locked=true        { spawn "qs" "-c" "DankMaterialShell" "ipc" "call" "audio" "decrement" "3"; }
-    XF86AudioMute allow-when-locked=true               { spawn "qs" "-c" "DankMaterialShell" "ipc" "call" "audio" "mute"; }
-    XF86AudioMicMute allow-when-locked=true            { spawn "qs" "-c" "DankMaterialShell" "ipc" "call" "audio" "micmute"; }
+    XF86AudioRaiseVolume allow-when-locked=true        { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "5%+"; }
+    XF86AudioLowerVolume allow-when-locked=true        { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "5%-"; }
+    XF86AudioMute allow-when-locked=true               { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
+    XF86AudioMicMute allow-when-locked=true            { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
     XF86MonBrightnessUp allow-when-locked=true         { spawn "qs" "-c" "DankMaterialShell" "ipc" "call" "brightness" "increment" "5" ""; }
     XF86MonBrightnessDown allow-when-locked=true       { spawn "qs" "-c" "DankMaterialShell" "ipc" "call" "brightness" "decrement" "5" ""; }          
  }

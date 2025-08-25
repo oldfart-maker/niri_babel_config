@@ -812,7 +812,7 @@ output "HDMI-A-1" {
 #+end_example
 
 This generates the output section based on the target-system. After now knowing more about how
-babel works, this can be done more elegantly and likely doe not need any if statements but just
+babel works, this can be done more elegantly and likely does not need any if statements but just
 variable matching logic.
 #+NAME: output_config_eval
 #+BEGIN_SRC python :eval yes :var loc=lenovo-output-config :var doc=dell-output-config :var poc=pi-output-config :var ts=target-system
@@ -893,7 +893,7 @@ preprocessing and progamatic control to ensure they startup in the correct seque
 
 * Workspaces
 This where I setup my static workspaces. These are mostly used for my 3 monitor setup, where I have
-a dedicated monitor for these workspaces. Similar to output there needs to evaluation to determine
+a dedicated monitor for these workspaces. Similar to output there needs to be evaluation to determine
 the target system as this is different between my desktop and laptop.
 #+NAME: lenovo-workspace-config
 #+BEGIN_SRC emacs-lisp :eval yes
@@ -928,38 +928,6 @@ the target system as this is different between my desktop and laptop.
 
 #+END_SRC
 
-#+RESULTS: lenovo-workspace-config
-#+begin_example
-
-workspace "scratchpad" {
-        open-on-output "HDMI-A-3"
-}
-
-workspace "messaging" {
-        open-on-output "HDMI-A-3"
-}
-
-workspace "spotify" {
-        open-on-output "HDMI-A-3"
-}
-
-workspace "cameras" {
-        open-on-output "HDMI-A-3"
-}
-
-workspace "virtbox" {
-        open-on-output "HDMI-A-3"
-}
-
-workspace "discord" {
-        open-on-output "HDMI-A-3"
-}
-
-workspace "element" {
-        open-on-output "HDMI-A-3"
-}
-#+end_example
-
 #+NAME: dell-workspace-config
 #+BEGIN_SRC emacs-lisp :eval yes
   (format "%s" "
@@ -978,25 +946,6 @@ workspace "element" {
   workspace \"messaging\" {
   }")  
 #+END_SRC
-
-#+RESULTS: dell-workspace-config
-#+begin_example
-
-workspace "scratchpad" {
-}
-
-workspace "spotify" {
-}
-
-workspace "discord" {
-}
-
-workspace "element" {
-}
-
-workspace "messaging" {
-}
-#+end_example
 
 #+NAME: pi-workspace-config
 #+BEGIN_SRC emacs-lisp :eval yes
@@ -1017,25 +966,6 @@ workspace "messaging" {
   }")  
 #+END_SRC
 
-#+RESULTS: pi-workspace-config
-#+begin_example
-
-workspace "scratchpad" {
-}
-
-workspace "spotify" {
-}
-
-workspace "discord" {
-}
-
-workspace "element" {
-}
-
-workspace "messaging" {
-}
-#+end_example
-
 This section will determine which workspace configuration to output into config.kdl.
 #+NAME: workspace_config_eval
 #+BEGIN_SRC python :eval yes :var loc=lenovo-workspace-config :var doc=dell-workspace-config :var poc=pi-workspace-config :var ts=target-system
@@ -1048,38 +978,6 @@ This section will determine which workspace configuration to output into config.
       
   return _config
 #+END_SRC
-
-#+RESULTS: workspace_config_eval
-#+begin_example
-
-workspace "scratchpad" {
-        open-on-output "HDMI-A-3"
-}
-
-workspace "messaging" {
-        open-on-output "HDMI-A-3"
-}
-
-workspace "spotify" {
-        open-on-output "HDMI-A-3"
-}
-
-workspace "cameras" {
-        open-on-output "HDMI-A-3"
-}
-
-workspace "virtbox" {
-        open-on-output "HDMI-A-3"
-}
-
-workspace "discord" {
-        open-on-output "HDMI-A-3"
-}
-
-workspace "element" {
-        open-on-output "HDMI-A-3"
-}
-#+end_example
 
 #+BEGIN_SRC kdl :noweb yes :tangle ./config.kdl
 // ## SETUP WORKSPACES ##################################################    
@@ -1396,7 +1294,8 @@ This is the bindings data section. Each key binding is loaded into a python dict
 3) Spawn {Y | N} - if a spawn command needs to be prepended to the command.
 4) Description - A description of the binding to be used for a custom hotkey overlay.
 5) Target {"" (all) | all (common) | lenovo | dell | omit} The target system for the keybinding. If
-   the target is left blank it will generate all keybindings which is used for documenting
+   the target is left blank it will generate all keybindings (with the exception of "omit" which
+   omits any key binding from output and useful for commenting bindings) which is used for documenting
    the overlay. If you pass a target system in like "lenovo" it will return the commond
    bindings use across all systems plus the lenovo specific ones.
 #+NAME: keybindings-data

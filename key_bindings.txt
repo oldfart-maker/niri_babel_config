@@ -21,8 +21,8 @@ Mod+S                                              Screenshot
 Mod+O repeat=false                                 Toggle Overview
 Mod+Q                                              Close Window
 Mod+h                                              Focus Column Left
-Mod+j                                              Focus Column Down
-Mod+k                                              Focus Window Down
+Mod+j                                              Focus Workspace Down
+Mod+k                                              Focus Workspace Up
 Mod+l                                              Focus Column Right
 Mod+Shift+h                                        Move Column Left
 Mod+Shift+j                                        Move Window Down
@@ -37,10 +37,10 @@ Mod+WheelScrollUp cooldown-ms=150                  Focus Workspace Up
 Mod+Shift+WheelScrollDown                          Focus Column Right
 Mod+Shift+WheelScrollUp                            Focus Column Left
 Mod+Tab                                            Focus Workspace Previous
-Mod+BracketLeft                                    Consume Or Expel Window Left
-Mod+BracketRight                                   Consume Or Expel Window Right
-Mod+Comma                                          Consume Window Into Column
-Mod+Period                                         Expel Window From Column
+Mod+BracketLeft                                    Consume Or Expel Focused Window Left
+Mod+BracketRight                                   Consume Or Expel Focused Window Right
+Mod+Comma                                          Consume Window Into Column From Right
+Mod+Period                                         Expel Bottom Window From Column To Right
 Mod+R                                              Switch Preset Column Width
 Mod+Shift+R                                        Switch Preset Column Height
 Mod+Ctrl+R                                         Reset Window Height

@@ -1,9 +1,10 @@
 # -*- indent-tabs-mode: nil; coding: utf-8-unix; -*-
 #+PROPERTY: header-args :results value silent
+
 #+TITLE: Niri Config.kdl
 
 * Overview
-#+BEGIN_SRC kdl :tangle ./config.kdl :noweb yes :results value
+#+BEGIN_SRC kdl :tangle ./config.kdl :noweb yes :results value :eval no
   // LAST BUILD / DEPLOY: <<timestamp()>>
   // ## NOTES  ###########################################################  
   // This config file has been created by emacs org babel. This was done
@@ -51,7 +52,7 @@ it relates to monitor, workspace and some limited customization if keybindings. 
 return value to be either "lenovo", "dell", or "pi" based on the target system.
 #+name: target-system
 #+begin_src python :results value
-  return "lenovo"
+  return "pi"
 #+end_src
 
 * Variables - Colors
@@ -272,6 +273,12 @@ give you the opportunity to execute some preprocessing logic if necessary.
   return f'"\\"{_temp}\\""'  
 #+END_SRC
 
+#+NAME: lobindings
+#+BEGIN_SRC python :var _temp=niri_scripts :results value
+  _temp = f'{_temp}/rofi_lobindings'
+  return f'"\\"{_temp}\\""'  
+#+END_SRC
+
 #+NAME: launcher
 #+BEGIN_SRC python :var _temp=niri_scripts :results value
   _temp = f"{_temp}/rofi_launcher"
@@ -438,9 +445,6 @@ return " ".join(cmd)
   return " ".join(cmd)
 #+END_SRC
 
-#+RESULTS: sms_put
-: "~/projects/niri_toolkit/niri-move-window.py" "--match" "Messages" "--target" "w" "--target_id" "messaging"
-
 #+NAME: audio_raise_volume
 #+BEGIN_SRC python :results value
   cmd = [
@@ -487,11 +491,12 @@ return " ".join(cmd)
 
 
 #+NAME: idle_lock
-#+BEGIN_SRC python :results value
+#+BEGIN_SRC python :var _temp=niri_scripts :results value
+  _temp = f"{_temp}/lockscreen"
   cmd = [
       '"sh"',
       '"-c"',
-      '"swayidle -w timeout 600 <<niri_scripts()>>/lockscreen"'
+      f'"swayidle -w timeout 600 {_temp}"'      
   ]
   return " ".join(cmd)
 #+END_SRC
@@ -607,8 +612,7 @@ return " ".join(cmd)
 This sets the niri environment variables. You can also pull environment variables in
 externally if you need reference to them which is a limitation in .kdl.  Currently
 I only need to set the DISPLAY variable for xwayland.
-#+BEGIN_SRC kdl :tangle ./config.kdl
-// ## ENVIRONMENT  ###########################################################  
+#+BEGIN_SRC kdl :tangle ./config.kdl :eval no
   environment {
           DISPLAY ":1"
   }
@@ -619,8 +623,7 @@ This section defined inputs such as keyboard, mouse, pen etc. Focus follows mous
 probably the most critical setting for my use so that when hovering a mouse over
 a windows the focus also it set to the window being hovered. I have adopted this sam
 behaviour in emacs since using tile managers.
-#+BEGIN_SRC kdl :tangle ./config.kdl
-// ## INPUT CONFIGURATION ####################################################  
+#+BEGIN_SRC kdl :tangle ./config.kdl :eval no
   input {
           keyboard {
                   xkb {
@@ -712,45 +715,6 @@ python, although I'm sure most of it is a limitation in my knowledge.
       }")  
 #+END_SRC
 
-#+RESULTS: lenovo-output-config
-#+begin_example
-output "HDMI-A-1" {
-
-          // off
-
-          mode "1920x1080@60"
-
-          scale 1
-          transform "normal"
-
-          position x=0 y=0
- }
-
- output "HDMI-A-2" {
-
-        // off
-
-        mode "1920x1080@60"
-
-        scale 1
-        transform "normal"
-
-        position x=1920 y=0
- }
-
- output "HDMI-A-3" {
-
-       // off
-
-       mode "1920x1080@60"
-
-       scale 1
-       transform "normal"
-
-       position x=3840 y=0
- }
-#+end_example
-
 #+NAME: dell-output-config
 #+BEGIN_SRC emacs-lisp :eval yes
      (format "%s" "output \"eDP1\" {
@@ -765,21 +729,6 @@ output "HDMI-A-1" {
                position x=0 y=0
       }")  
 #+END_SRC
-
-#+RESULTS: dell-output-config
-#+begin_example
-output "eDP1" {
-
-          // off
-
-          mode "1920x1080@60"
-
-          scale 1
-          transform "normal"
-
-          position x=0 y=0
- }
-#+end_example
 
 #+NAME: pi-output-config
 #+BEGIN_SRC emacs-lisp :eval yes
@@ -796,21 +745,6 @@ output "eDP1" {
       }")  
 #+END_SRC
 
-#+RESULTS: pi-output-config
-#+begin_example
-output "HDMI-A-1" {
-
-          // off
-
-          mode "1920x1080@60"
-
-          scale 1
-          transform "normal"
-
-          position x=0 y=0
- }
-#+end_example
-
 This generates the output section based on the target-system. After now knowing more about how
 babel works, this can be done more elegantly and likely does not need any if statements but just
 variable matching logic.
@@ -826,48 +760,8 @@ variable matching logic.
   return _config
 #+END_SRC
 
-#+RESULTS: output_config_eval
-#+begin_example
-output "HDMI-A-1" {
-
-          // off
-
-          mode "1920x1080@60"
-
-          scale 1
-          transform "normal"
-
-          position x=0 y=0
- }
-
- output "HDMI-A-2" {
-
-        // off
-
-        mode "1920x1080@60"
-
-        scale 1
-        transform "normal"
-
-        position x=1920 y=0
- }
-
- output "HDMI-A-3" {
-
-       // off
-
-       mode "1920x1080@60"
-
-       scale 1
-       transform "normal"
-
-       position x=3840 y=0
- }
-#+end_example
-
 #+NAME: output_config
-#+BEGIN_SRC kdl :noweb yes :tangle ./config.kdl
-// ## OUTPUT CONFIGURATION ####################################################    
+#+BEGIN_SRC kdl :noweb yes :tangle ./config.kdl :eval no
   <<output_config_eval()>>
 #+END_SRC
 
@@ -875,20 +769,71 @@ output "HDMI-A-1" {
 These are the apps that startup when niri starts. This actually works better in my opinion just
 putting all these in a single shell script and calling the shell script which enables
 preprocessing and progamatic control to ensure they startup in the correct sequence etc.
-#+BEGIN_SRC kdl :noweb yes :eval yes :tangle ./config.kdl
-  // ## STARTUP APPS  ###########################################################
-        spawn-at-startup      <<xwayland()>>  
-        spawn-at-startup      <<idle_lock()>>
-        spawn-at-startup      <<setup_theme()>>
-        spawn-at-startup      <<wallpaper()>>
-        spawn-at-startup      <<notifications()>>
-        spawn-at-startup      <<spotify()>>
-        spawn-at-startup      <<element()>>
-        spawn-at-startup      <<sms()>>
-        spawn-at-startup      <<calendar()>>
-        spawn-at-startup      <<discord()>>
-        spawn-at-startup      <<clipboard()>>
-        spawn-at-startup      <<status_bar()>>
+#+NAME: lenovo-startup-apps
+#+BEGIN_SRC python :results value :var xw=xwayland il=idle_lock st=setup_theme wp=wallpaper nt=notifications sp=spotify el=element sm=sms cal=calendar dc=discord cb=clipboard sb=status_bar W=24
+kw = "spawn-at-startup"
+fmt = f"{{:{W}}}"
+lines = [
+    f"{fmt.format(kw)} {xw}",
+    f"{fmt.format(kw)} {il}",
+    f"{fmt.format(kw)} {st}",
+    f"{fmt.format(kw)} {wp}",
+    f"{fmt.format(kw)} {nt}",
+    f"{fmt.format(kw)} {sp}",
+    f"{fmt.format(kw)} {el}",
+    f"{fmt.format(kw)} {sm}",
+    f"{fmt.format(kw)} {cal}",
+    f"{fmt.format(kw)} {dc}",
+    f"{fmt.format(kw)} {cb}",
+    f"{fmt.format(kw)} {sb}",
+]
+return "\n".join(lines)
+#+END_SRC
+
+#+NAME: dell-startup-apps
+#+BEGIN_SRC python :results value :var xw=xwayland il=idle_lock wp=wallpaper nt=notifications sm=sms cb=clipboard sb=status_bar W=24
+kw = "spawn-at-startup"
+fmt = f"{{:{W}}}"
+lines = [
+    f"{fmt.format(kw)} {xw}",
+    f"{fmt.format(kw)} {il}",
+    f"{fmt.format(kw)} {wp}",
+    f"{fmt.format(kw)} {nt}",
+    f"{fmt.format(kw)} {sm}",
+    f"{fmt.format(kw)} {cb}",
+    f"{fmt.format(kw)} {sb}",
+]
+return "\n".join(lines)
+#+END_SRC
+
+#+NAME: pi-startup-apps
+#+BEGIN_SRC python :results value :var xw=xwayland il=idle_lock wp=wallpaper nt=notifications W=24
+kw = "spawn-at-startup"
+fmt = f"{{:{W}}}"
+lines = [
+    f"{fmt.format(kw)} {xw}",
+    f"{fmt.format(kw)} {il}",
+    f"{fmt.format(kw)} {wp}",
+    f"{fmt.format(kw)} {nt}",
+]
+return "\n".join(lines)
+#+END_SRC
+
+This section will determine which startup apps to load.
+#+NAME: startup_apps_config_eval
+#+BEGIN_SRC python :eval yes :var loc=lenovo-startup-apps :var doc=dell-startup-apps :var poc=pi-startup-apps :var ts=target-system
+  if ts=="lenovo":
+      _config=loc
+  elif ts=="dell":
+      _config=doc
+  elif ts=="pi":
+      _config=poc
+      
+  return _config
+#+END_SRC
+
+#+BEGIN_SRC kdl :noweb yes :tangle ./config.kdl :eval no
+  <<startup_apps_config_eval()>>
 #+END_SRC
 
 * Workspaces
@@ -925,7 +870,6 @@ the target system as this is different between my desktop and laptop.
   workspace \"element\" {
           open-on-output \"HDMI-A-3\"
   }")
-
 #+END_SRC
 
 #+NAME: dell-workspace-config
@@ -951,18 +895,6 @@ the target system as this is different between my desktop and laptop.
 #+BEGIN_SRC emacs-lisp :eval yes
   (format "%s" "
   workspace \"scratchpad\" {
-  }
-
-  workspace \"spotify\" {
-  }
-
-  workspace \"discord\" {
-  }
-
-  workspace \"element\" {
-  }
-
-  workspace \"messaging\" {
   }")  
 #+END_SRC
 
@@ -979,16 +911,7 @@ This section will determine which workspace configuration to output into config.
   return _config
 #+END_SRC
 
-#+BEGIN_SRC kdl :noweb yes :tangle ./config.kdl
-// ## SETUP WORKSPACES ##################################################    
-  <<workspace_config_eval()>>
-#+END_SRC
-
-* Other
-Niri has some miscellaneous config options that I've placed in this section. I've created
-my own hotkey overlay referenced later.
-#+BEGIN_SRC kdl :tangle ./config.kdl
-// ## MISCELLANEOUS ##########################################################  
+#+BEGIN_SRC kdl :noweb yes :tangle ./config.kdl :eval no :tangle ./config.kdl
   hotkey-overlay {
           skip-at-startup
   }
@@ -1002,7 +925,6 @@ So for example, you would hit key sequence which pops up a window of these value
 the values save the config and apply. This would allow for quick visual changes to fine tune
 QOL.
 #+BEGIN_SRC kdl :tangle ./config.kdl :noweb yes :eval no :results value
-  // ## LAYOUT CONFIGURATION ####################################################  
       layout {
               gaps 4
 
@@ -1087,12 +1009,12 @@ QOL.
                       gradient from="#ffbb6680" to="#ffc88080" angle=45 relative-to="workspace-view"
               }
       }
-      // ## COMPOSITOR / OTHER CONFIGURATION ########################################
+
       prefer-no-csd
 
       screenshot-path "<<screenshot_path()>>/<<screenshot_file()>>"
 
-      // ## ANIMATIONS ##############################################################
+
       animations {
           // off
 
@@ -1144,10 +1066,9 @@ QOL.
               //hide-after-inactive-ms 1000
       }
 
-      // ## OVERVIEW SETTINGS ############################################################
       overview {
       	// backdrop-color "#566870"
-              zoom 0.625
+              zoom 0.3
               workspace-shadow {
       	 	off
       	}
@@ -1157,8 +1078,7 @@ QOL.
 * Window Rules
 This section defines the window rules for my windows. I mostly use this to set an app to
 floating / size and to assign the app to a specific workspace.
-#+BEGIN_SRC kdl :tangle ./config.kdl
-  // ## WINDOW / LAYER RULES #####################################################  
+#+BEGIN_SRC kdl :tangle ./config.kdl :eval no
       window-rule {
               default-column-width {}
               geometry-corner-radius 10
@@ -1299,9 +1219,10 @@ This is the bindings data section. Each key binding is loaded into a python dict
    the overlay. If you pass a target system in like "lenovo" it will return the commond
    bindings use across all systems plus the lenovo specific ones.
 #+NAME: keybindings-data
-#+BEGIN_SRC python :noweb= yes :results value :var _niri_hot_change=niri_hot_change :var _bindings=bindings :var _launcher=launcher :var _bluetooth=bluetooth :var _power_menu=power_menu :var _music=music :var _network=network :var _show_windows=show_windows :var _emacs_prod=emacs_prod :var _emacs_dev=emacs_dev :var _file_gui=file_gui :var _file_term=file_term :var _browser=browser :var _notes=notes :var _sms_get=sms_get :var _sms_put=sms_put :var _email_get=email_get :var _email_put=email_put :var _scratchpad_put=scratchpad_put :var _scratchpad_get=scratchpad_get :var _term=term :var _lock_screen=lock_screen :var _audio_raise_volume=audio_raise_volume :var _audio_lower_volume=audio_lower_volume :var _audio_mute=audio_mute :var _audio_mic_mute=audio_mic_mute :var _screenshot_viewer=screenshot_viewer :var _screenshot_viewer_emacs=screenshot_viewer_emacs :var _niri_theme_change=niri_theme_change
+#+BEGIN_SRC python :noweb= yes :results value :var _niri_hot_change=niri_hot_change :var _bindings=bindings :var _launcher=launcher :var _bluetooth=bluetooth :var _power_menu=power_menu :var _music=music :var _network=network :var _show_windows=show_windows :var _emacs_prod=emacs_prod :var _emacs_dev=emacs_dev :var _file_gui=file_gui :var _file_term=file_term :var _browser=browser :var _notes=notes :var _sms_get=sms_get :var _sms_put=sms_put :var _email_get=email_get :var _email_put=email_put :var _scratchpad_put=scratchpad_put :var _scratchpad_get=scratchpad_get :var _term=term :var _lock_screen=lock_screen :var _audio_raise_volume=audio_raise_volume :var _audio_lower_volume=audio_lower_volume :var _audio_mute=audio_mute :var _audio_mic_mute=audio_mic_mute :var _screenshot_viewer=screenshot_viewer :var _screenshot_viewer_emacs=screenshot_viewer_emacs :var _niri_theme_change=niri_theme_change :var _lobindings=lobindings
   return [
       ("Mod+Shift+Slash", _bindings, "Y", "Niri Key Bindings", "all"),
+      ("Mod+Slash", _lobindings, "Y", "LibreOffice Key Bindings", "all"),
       ("Mod+D", _launcher,"Y", "Launcher", "all"),
       ("Mod+B", _bluetooth, "Y", "Bluetooth", "all"),
       ("Mod+Shift+D", _show_windows, "Y", "Show Active Windows", "all"),
@@ -1402,17 +1323,50 @@ for mod, cmd, spawn, desc, target in data:
 return "\n".join(lines)
 #+END_SRC
 
+#+NAME: keybindings-config_v2
+#+BEGIN_SRC python :var data=keybindings-data :var ts="" :var mode="config"
+def _match_target(target, ts):
+    ts = (ts or "").strip().lower()
+    # Normalize the binding's target into a lowercase set
+    if isinstance(target, (list, tuple, set)):
+        tset = {str(x).strip().lower() for x in target if str(x).strip()}
+    else:
+        # allow single strings, or pipe/comma separated (e.g., "lenovo|dell")
+        s = str(target or "")
+        s = s.replace(",", "|")
+        tset = {p.strip().lower() for p in s.split("|") if p.strip()}
+
+    if "omit" in tset:
+        return False
+    if "all" in tset:
+        return True
+    return ts in tset
+
+lines = []
+
+for mod, cmd, spawn, desc, target in data:
+    # target is the binding's target (string or tuple/list); ts is the single requested system
+    if _match_target(target, ts):
+        if mode == "config":
+            if str(spawn).upper() == "Y":
+                lines.append(f'{mod:50} {{ spawn {cmd}; }}')
+            else:
+                lines.append(f'{mod:50} {{ {cmd}; }}')
+        elif mode == "doc":
+            lines.append(f"{mod:50} {desc}")
+
+return "\n".join(lines)
+#+END_SRC
 
 This generates the keybindings and outputs them to the config.kdl file.
-#+BEGIN_SRC kdl :noweb yes :tangle ./config.kdl
-  // ## BINDINGS ################################################################      
+#+BEGIN_SRC kdl :noweb yes :tangle ./config.kdl :eval no
    binds {
-      <<keybindings-config(data=keybindings-data, ts=target-system, mode="config")>>          
+      <<keybindings-config_v2(data=keybindings-data, ts=target-system, mode="config")>>          
    }
 #+END_SRC
 
 This generates the keybindings documentation and writes it to a text file that is
 referenced by a custom overlay displayed using a keybinding + rofi.
-#+BEGIN_SRC kdl :noweb yes :tangle ./key_bindings.txt
+#+BEGIN_SRC kdl :noweb yes :tangle ./key_bindings.txt :eval no
   <<keybindings-config(data=keybindings-data, ts="", mode="doc")>>
 #+END_SRC

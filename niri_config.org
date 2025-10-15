@@ -745,9 +745,7 @@ python, although I'm sure most of it is a limitation in my knowledge.
       }")  
 #+END_SRC
 
-This generates the output section based on the target-system. After now knowing more about how
-babel works, this can be done more elegantly and likely does not need any if statements but just
-variable matching logic.
+Output config evaluator.
 #+NAME: output_config_eval
 #+BEGIN_SRC python :eval yes :var loc=lenovo-output-config :var doc=dell-output-config :var poc=pi-output-config :var ts=target-system
   if ts=="lenovo":
@@ -819,7 +817,7 @@ lines = [
 return "\n".join(lines)
 #+END_SRC
 
-This section will determine which startup apps to load.
+Startup apps evaluator.
 #+NAME: startup_apps_config_eval
 #+BEGIN_SRC python :eval yes :var loc=lenovo-startup-apps :var doc=dell-startup-apps :var poc=pi-startup-apps :var ts=target-system
   if ts=="lenovo":
@@ -898,7 +896,7 @@ the target system as this is different between my desktop and laptop.
   }")  
 #+END_SRC
 
-This section will determine which workspace configuration to output into config.kdl.
+Workspace config evaluator.
 #+NAME: workspace_config_eval
 #+BEGIN_SRC python :eval yes :var loc=lenovo-workspace-config :var doc=dell-workspace-config :var poc=pi-workspace-config :var ts=target-system
   if ts=="lenovo":
@@ -909,6 +907,10 @@ This section will determine which workspace configuration to output into config.
       _config=poc
       
   return _config
+#+END_SRC
+
+#+BEGIN_SRC kdl :noweb yes :tangle ./config.kdl :eval no
+  <<workspace_config_eval()>>
 #+END_SRC
 
 #+BEGIN_SRC kdl :noweb yes :tangle ./config.kdl :eval no :tangle ./config.kdl
@@ -1222,25 +1224,25 @@ This is the bindings data section. Each key binding is loaded into a python dict
 #+BEGIN_SRC python :noweb= yes :results value :var _niri_hot_change=niri_hot_change :var _bindings=bindings :var _launcher=launcher :var _bluetooth=bluetooth :var _power_menu=power_menu :var _music=music :var _network=network :var _show_windows=show_windows :var _emacs_prod=emacs_prod :var _emacs_dev=emacs_dev :var _file_gui=file_gui :var _file_term=file_term :var _browser=browser :var _notes=notes :var _sms_get=sms_get :var _sms_put=sms_put :var _email_get=email_get :var _email_put=email_put :var _scratchpad_put=scratchpad_put :var _scratchpad_get=scratchpad_get :var _term=term :var _lock_screen=lock_screen :var _audio_raise_volume=audio_raise_volume :var _audio_lower_volume=audio_lower_volume :var _audio_mute=audio_mute :var _audio_mic_mute=audio_mic_mute :var _screenshot_viewer=screenshot_viewer :var _screenshot_viewer_emacs=screenshot_viewer_emacs :var _niri_theme_change=niri_theme_change :var _lobindings=lobindings
   return [
       ("Mod+Shift+Slash", _bindings, "Y", "Niri Key Bindings", "all"),
-      ("Mod+Slash", _lobindings, "Y", "LibreOffice Key Bindings", "all"),
+      ("Mod+Slash", _lobindings, "Y", "LibreOffice Key Bindings", "lenovo|dell"),
       ("Mod+D", _launcher,"Y", "Launcher", "all"),
       ("Mod+B", _bluetooth, "Y", "Bluetooth", "all"),
       ("Mod+Shift+D", _show_windows, "Y", "Show Active Windows", "all"),
       ("Mod+E", _emacs_prod, "Y", "Emacs - Prod", "all"),
       ("Mod+Shift+E", _emacs_dev, "Y", "Emacs - Dev", "lenovo"),
-      ("Mod+Shift+Y", _file_term, "Y", "File Manager - Term", "all"),
-      ("Mod+Shift+N", _notes, "Y", "Notes", "all"),
-      ("Mod+1", _sms_get, "Y", "SMS Get", "all"),
-      ("Mod+Shift+1", _sms_put, "Y", "SMS Put", "all"),
-      ("Mod+2", _email_get, "Y", "Email Get", "all"),
-      ("Mod+Shift+2", _email_put, "Y", "Email Put", "all"),
+      ("Mod+Shift+Y", _file_term, "Y", "File Manager - Term", "lenovo"),
+      ("Mod+Shift+N", _notes, "Y", "Notes", "lenovo"),
+      ("Mod+1", _sms_get, "Y", "SMS Get", "lenovo"),
+      ("Mod+Shift+1", _sms_put, "Y", "SMS Put", "lenovo"),
+      ("Mod+2", _email_get, "Y", "Email Get", "lenovo"),
+      ("Mod+Shift+2", _email_put, "Y", "Email Put", "lenovo"),
       ("Mod+P", _scratchpad_put, "Y", "Scratchpad Put", "all"),
       ("Mod+Shift+P", _scratchpad_get, "Y", "Scratchpad Get", "all"),
       ("Mod+Return", _term, "Y", "Terminal", "all"),
       ("Mod+Shift+S", _screenshot_viewer, "Y", "Screenshot Picker", "all"),
       ("Mod+Ctrl+S", _screenshot_viewer_emacs, "Y", "Screenshot Picker - Emacs", "lenovo"),
-      ("Mod+T", _niri_theme_change, "Y", "Niri Theme Change", "all"),      
-      ("Mod+Shift+T", _niri_hot_change, "Y", "Niri Hot Change Config", "all"),
+      ("Mod+T", _niri_theme_change, "Y", "Niri Theme Change", "lenovo"),      
+      ("Mod+Shift+T", _niri_hot_change, "Y", "Niri Hot Change Config", "lenonvo"),
       ("Mod+S", "screenshot", "N", "Screenshot", "all"),                                        
       ("Mod+O repeat=false", "toggle-overview", "N", "Toggle Overview", "all"),                           
       ("Mod+Q", "close-window", "N", "Close Window", "all"),                                       
@@ -1252,10 +1254,10 @@ This is the bindings data section. Each key binding is loaded into a python dict
       ("Mod+Shift+j", "move-window-down", "N", "Move Window Down", "all"),                               
       ("Mod+Shift+k", "move-window-up", "N", "Move Window Up", "all"),                               
       ("Mod+Shift+l", "move-column-right", "N", "Move Column Right", "all"),                                
-      ("Mod+Ctrl+h", "focus-monitor-left", "N", "Focus Monitor Left", "all"),                                 
-      ("Mod+Ctrl+l", "focus-monitor-right", "N", "Focus Monitor Right", "all"),
-      ("Mod+Shift+Ctrl+h", "move-column-to-monitor-left", "N", "Move Column To Monitor Left", "all"),
-      ("Mod+Shift+Ctrl+l", "move-column-to-monitor-right", "N", "Move Column To Monitor Right", "all"),
+      ("Mod+Ctrl+h", "focus-monitor-left", "N", "Focus Monitor Left", "lenovo"),                                 
+      ("Mod+Ctrl+l", "focus-monitor-right", "N", "Focus Monitor Right", "lenovo"),
+      ("Mod+Shift+Ctrl+h", "move-column-to-monitor-left", "N", "Move Column To Monitor Left", "lenovo"),
+      ("Mod+Shift+Ctrl+l", "move-column-to-monitor-right", "N", "Move Column To Monitor Right", "lenovo"),
       ("Mod+WheelScrollDown cooldown-ms=150", "focus-workspace-down", "N", "Focus Workspace Down", "all"),
       ("Mod+WheelScrollUp cooldown-ms=150", "focus-workspace-up", "N", "Focus Workspace Up", "all"),
       ("Mod+Shift+WheelScrollDown", "focus-column-right", "N", "Focus Column Right", "all"),
@@ -1307,24 +1309,6 @@ target system. There is mode option which will return the keybinding content to
 be used for configuration use or doc use.
 #+NAME: keybindings-config
 #+BEGIN_SRC python :var data=keybindings-data :var ts="" :var mode="config"
-lines = []
-
-for mod, cmd, spawn, desc, target in data:
-    # Filter by target system
-    if target != "omit" and (target in (ts, "all") or ts == ""):
-        if mode == "config":
-            if spawn.upper() == "Y":
-                lines.append(f'{mod:50} {{ spawn {cmd}; }}')
-            else:
-                lines.append(f'{mod:50} {{ {cmd}; }}')
-        elif mode == "doc" and ts != "omit":
-            lines.append(f"{mod:50} {desc}")
-
-return "\n".join(lines)
-#+END_SRC
-
-#+NAME: keybindings-config_v2
-#+BEGIN_SRC python :var data=keybindings-data :var ts="" :var mode="config"
 def _match_target(target, ts):
     ts = (ts or "").strip().lower()
     # Normalize the binding's target into a lowercase set
@@ -1358,10 +1342,10 @@ for mod, cmd, spawn, desc, target in data:
 return "\n".join(lines)
 #+END_SRC
 
-This generates the keybindings and outputs them to the config.kdl file.
+Keybindings config evaluator.
 #+BEGIN_SRC kdl :noweb yes :tangle ./config.kdl :eval no
    binds {
-      <<keybindings-config_v2(data=keybindings-data, ts=target-system, mode="config")>>          
+      <<keybindings-config(data=keybindings-data, ts=target-system, mode="config")>>          
    }
 #+END_SRC
 

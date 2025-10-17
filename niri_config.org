@@ -59,7 +59,7 @@ return value to be either "lenovo", "dell", or "pi" based on the target system.
 I currently use archraft as my base distro which included pywal for themeing. This section
 integrates the archcraft themeing approach by loading the colors.css file and applying
 them in a few areas like focued / unfocused window ring / border.
-#+name: theme-colors-json
+#+name: theme-colors-json-old
 #+begin_src python :results value
 import json
 
@@ -77,6 +77,66 @@ with open("/home/username/.cache/wal/colors.sh", "r") as f:
 
 return json.dumps(theme)
 #+end_src
+
+#+name: theme-colors-json
+#+begin_src python :results value :var ts=target-system
+import json, os
+
+# --- Fallback palette (tweak to taste) ---
+DEFAULTS = {
+    "background": "#1e1e2e",
+    "foreground": "#cdd6f4",
+    "color0":  "#45475a",
+    "color1":  "#f38ba8",
+    "color2":  "#a6e3a1",
+    "color3":  "#f9e2af",
+    "color4":  "#89b4fa",
+    "color5":  "#cba6f7",
+    "color6":  "#94e2d5",
+    "color7":  "#bac2de",
+    "color8":  "#585b70",
+    "color9":  "#f28fad",
+    "color10": "#b9e58c",
+    "color11": "#f7d794",
+    "color12": "#99c1f1",
+    "color13": "#d0a8ff",
+    "color14": "#a6e1e0",
+    "color15": "#ffffff",
+}
+
+def load_colors_sh(path):
+    theme = DEFAULTS.copy()
+    try:
+        with open(path, "r") as f:
+            for line in f:
+                line = line.strip()
+                if not line or line.startswith("#") or "=" not in line:
+                    continue
+                if line.startswith("export"):
+                    line = line.replace("export", "", 1).strip()
+                key, val = map(str.strip, line.split("=", 1))
+                val = val.strip("'\"")
+                theme[key] = val
+    except FileNotFoundError:
+        # fall back to defaults silently
+        pass
+    return theme
+
+ts_norm = (ts or "").strip().lower()
+
+if ts_norm == "pi":
+    theme = DEFAULTS.copy()
+else:
+    colors_path = os.path.expanduser("~/.cache/wal/colors.sh")
+    theme = load_colors_sh(colors_path)
+
+# Ensure all expected keys exist
+for k, v in DEFAULTS.items():
+    theme.setdefault(k, v)
+
+return json.dumps(theme)
+#+end_src
+
 
 #+name: colors-dict
 #+begin_src python :var colors_raw=theme-colors-json :results value

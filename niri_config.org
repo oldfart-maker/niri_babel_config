@@ -1262,7 +1262,7 @@ This is the bindings data section. Each key binding is loaded into a python dict
       ("Mod+P", _scratchpad_put, "Y", "Scratchpad Put", "all"),
       ("Mod+Shift+P", _scratchpad_get, "Y", "Scratchpad Get", "all"),
       ("Mod+Return", _term_foot, "Y", "Terminal", "all"),
-      ("Mod+Shift+S", _screenshot_viewer, "Y", "Screenshot Picker", "all"),
+      ("Mod+Shift+S", _screenshot_viewer, "Y", "Screenshot Picker", "lenovo"),
       ("Mod+Ctrl+S", _screenshot_viewer_emacs, "Y", "Screenshot Picker - Emacs", "lenovo"),
       ("Mod+T", _niri_theme_change, "Y", "Niri Theme Change", "lenovo"),      
       ("Mod+Shift+T", _niri_hot_change, "Y", "Niri Hot Change Config", "lenonvo"),

@@ -80,61 +80,61 @@ return json.dumps(theme)
 
 #+name: theme-colors-json
 #+begin_src python :results value :var ts=target-system
-import json, os
+  import json, os
 
-# --- Fallback palette (tweak to taste) ---
-DEFAULTS = {
-    "background": "#1e1e2e",
-    "foreground": "#cdd6f4",
-    "color0":  "#45475a",
-    "color1":  "#f38ba8",
-    "color2":  "#a6e3a1",
-    "color3":  "#f9e2af",
-    "color4":  "#89b4fa",
-    "color5":  "#cba6f7",
-    "color6":  "#94e2d5",
-    "color7":  "#bac2de",
-    "color8":  "#585b70",
-    "color9":  "#f28fad",
-    "color10": "#b9e58c",
-    "color11": "#f7d794",
-    "color12": "#99c1f1",
-    "color13": "#d0a8ff",
-    "color14": "#a6e1e0",
-    "color15": "#ffffff",
-}
+  # --- Fallback palette (tweak to taste) ---
+  DEFAULTS = {
+      "background": "#1e1e2e",
+      "foreground": "#cdd6f4",
+      "color0":  "#45475a",
+      "color1":  "#f38ba8",
+      "color2":  "#a6e3a1",
+      "color3":  "#f9e2af",
+      "color4":  "#89b4fa",
+      "color5":  "#cba6f7",
+      "color6":  "#94e2d5",
+      "color7":  "#bac2de",
+      "color8":  "#585b70",
+      "color9":  "#f28fad",
+      "color10": "#b9e58c",
+      "color11": "#f7d794",
+      "color12": "#99c1f1",
+      "color13": "#d0a8ff",
+      "color14": "#a6e1e0",
+      "color15": "#ffffff",
+  }
 
-def load_colors_sh(path):
-    theme = DEFAULTS.copy()
-    try:
-        with open(path, "r") as f:
-            for line in f:
-                line = line.strip()
-                if not line or line.startswith("#") or "=" not in line:
-                    continue
-                if line.startswith("export"):
-                    line = line.replace("export", "", 1).strip()
-                key, val = map(str.strip, line.split("=", 1))
-                val = val.strip("'\"")
-                theme[key] = val
-    except FileNotFoundError:
-        # fall back to defaults silently
-        pass
-    return theme
+  def load_colors_sh(path):
+      theme = DEFAULTS.copy()
+      try:
+          with open(path, "r") as f:
+              for line in f:
+                  line = line.strip()
+                  if not line or line.startswith("#") or "=" not in line:
+                      continue    # 
+                  if line.startswith("export"):
+                      line = line.replace("export", "", 1).strip()
+                  key, val = map(str.strip, line.split("=", 1))
+                  val = val.strip("'\"")
+                  theme[key] = val
+      except FileNotFoundError:
+          # fall back to defaults silently
+          pass
+      return theme
 
-ts_norm = (ts or "").strip().lower()
+  ts_norm = (ts or "").strip().lower()
 
-if ts_norm == "pi":
-    theme = DEFAULTS.copy()
-else:
-    colors_path = os.path.expanduser("~/.cache/wal/colors.sh")
-    theme = load_colors_sh(colors_path)
+  if ts_norm == "pi":
+      theme = DEFAULTS.copy()
+  else:
+      colors_path = os.path.expanduser("~/.cache/wal/colors.sh")
+      theme = load_colors_sh(colors_path)
 
-# Ensure all expected keys exist
-for k, v in DEFAULTS.items():
-    theme.setdefault(k, v)
+  # Ensure all expected keys exist
+  for k, v in DEFAULTS.items():
+      theme.setdefault(k, v)
 
-return json.dumps(theme)
+  return json.dumps(theme)
 #+end_src
 
 
@@ -827,71 +827,28 @@ Output config evaluator.
 These are the apps that startup when niri starts. This actually works better in my opinion just
 putting all these in a single shell script and calling the shell script which enables
 preprocessing and progamatic control to ensure they startup in the correct sequence etc.
-#+NAME: lenovo-startup-apps
-#+BEGIN_SRC python :results value :var xw=xwayland il=idle_lock st=setup_theme wp=wallpaper nt=notifications sp=spotify el=element sm=sms cal=calendar dc=discord cb=clipboard sb=status_bar W=24
+#+NAME: startup_apps
+#+BEGIN_SRC python :results value :eval yes :var ts=target-system xw=xwayland il=idle_lock st=setup_theme wp=wallpaper nt=notifications sp=spotify el=element sm=sms cal=calendar dc=discord cb=clipboard sb=status_bar sw=status_bar_waybar W=24
 kw = "spawn-at-startup"
 fmt = f"{{:{W}}}"
-lines = [
-    f"{fmt.format(kw)} {xw}",
-    f"{fmt.format(kw)} {il}",
-    f"{fmt.format(kw)} {st}",
-    f"{fmt.format(kw)} {wp}",
-    f"{fmt.format(kw)} {nt}",
-    f"{fmt.format(kw)} {sp}",
-    f"{fmt.format(kw)} {el}",
-    f"{fmt.format(kw)} {sm}",
-    f"{fmt.format(kw)} {cal}",
-    f"{fmt.format(kw)} {dc}",
-    f"{fmt.format(kw)} {cb}",
-    f"{fmt.format(kw)} {sb}",
-]
-return "\n".join(lines)
-#+END_SRC
 
-#+NAME: dell-startup-apps
-#+BEGIN_SRC python :results value :var xw=xwayland il=idle_lock wp=wallpaper nt=notifications sm=sms cb=clipboard sb=status_bar W=24
-kw = "spawn-at-startup"
-fmt = f"{{:{W}}}"
-lines = [
-    f"{fmt.format(kw)} {xw}",
-    f"{fmt.format(kw)} {il}",
-    f"{fmt.format(kw)} {wp}",
-    f"{fmt.format(kw)} {nt}",
-    f"{fmt.format(kw)} {sm}",
-    f"{fmt.format(kw)} {cb}",
-    f"{fmt.format(kw)} {sb}",
-]
-return "\n".join(lines)
-#+END_SRC
+def line(cmd: str) -> str:
+    return f"{fmt.format(kw)} {cmd}"
 
-#+NAME: pi-startup-apps
-#+BEGIN_SRC python :results value :var xw=xwayland il=idle_lock wp=wallpaper nt=notifications W=24
-kw = "spawn-at-startup"
-fmt = f"{{:{W}}}"
-lines = [
-    f"{fmt.format(kw)} {xw}",
-    f"{fmt.format(kw)} {il}",
-    f"{fmt.format(kw)} {wp}",
-    f"{fmt.format(kw)} {nt}",
-]
-return "\n".join(lines)
-#+END_SRC
+# Define per-host sequences using the variables you already pass in.
+profiles = {
+    "lenovo": [xw, il, st, wp, nt, sp, el, sm, cal, dc, cb, sb],
+    "dell":   [xw, il, wp, nt, sm, cb, sb],
+    "pi":     [xw, sw, nt],
+}
 
-Startup apps evaluator.
-#+NAME: startup_apps_config_eval
-#+BEGIN_SRC python :eval yes :var loc=lenovo-startup-apps :var doc=dell-startup-apps :var poc=pi-startup-apps :var ts=target-system
-  if ts=="lenovo":
-      _config=loc
-  elif ts=="dell":
-      _config=doc
-  elif ts=="pi":
-      _config=poc
-      
-  return _config
+# Keep only non-empty entries (lets you omit any var cleanly)
+commands = [c for c in profiles[ts] if c]
+return "\n".join(line(c) for c in commands)
 #+END_SRC
 
 #+BEGIN_SRC kdl :noweb yes :tangle ./config.kdl :eval no
-  <<startup_apps_config_eval()>>
+  <<startup_apps()>>
 #+END_SRC
 
 * Workspaces

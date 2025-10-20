@@ -742,91 +742,69 @@ This section sets the monitor configurations. These are different across environ
 has to be evaluation performed to determine which monitor configurations get exported to config.kdl.
 I've chose emacs-lisp for this because I found the string manipulation to be a little simper than
 python, although I'm sure most of it is a limitation in my knowledge.
-#+NAME: lenovo-output-config
-#+BEGIN_SRC emacs-lisp :eval yes
-     (format "%s" "output \"HDMI-A-1\" {
-
-               // off
-
-               mode \"1920x1080@60\"
-
-               scale 1
-               transform \"normal\"
-
-               position x=0 y=0
-      }
-    
-      output \"HDMI-A-2\" {
-
-             // off
-
-             mode \"1920x1080@60\"
-
-             scale 1
-             transform \"normal\"
-
-             position x=1920 y=0
-      }
-  
-      output \"HDMI-A-3\" {
-
-            // off
-
-            mode \"1920x1080@60\"
-
-            scale 1
-            transform \"normal\"
-
-            position x=3840 y=0
-      }")  
-#+END_SRC
-
-#+NAME: dell-output-config
-#+BEGIN_SRC emacs-lisp :eval yes
-     (format "%s" "output \"eDP1\" {
-
-               // off
-
-               mode \"1920x1080@60\"
-
-               scale 1
-               transform \"normal\"
-
-               position x=0 y=0
-      }")  
-#+END_SRC
-
-#+NAME: pi-output-config
-#+BEGIN_SRC emacs-lisp :eval yes
-     (format "%s" "output \"HDMI-A-1\" {
-
-               // off
-
-               mode \"1920x1080@60\"
-
-               scale 1
-               transform \"normal\"
-
-               position x=0 y=0
-      }")  
-#+END_SRC
-
-Output config evaluator.
-#+NAME: output_config_eval
-#+BEGIN_SRC python :eval yes :var loc=lenovo-output-config :var doc=dell-output-config :var poc=pi-output-config :var ts=target-system
-  if ts=="lenovo":
-      _config=loc
-  elif ts=="dell":
-      _config=doc
-  elif ts=="pi":
-      _config=poc
-      
-  return _config
-#+END_SRC
-
 #+NAME: output_config
+#+BEGIN_SRC python :eval yes :var ts=target-system
+def lenovo():
+    return """output "HDMI-A-1" {
+    // off
+    mode "1920x1080@60"
+    scale 1
+    transform "normal"
+    position x=0 y=0
+}
+
+output "HDMI-A-2" {
+    // off
+    mode "1920x1080@60"
+    scale 1
+    transform "normal"
+    position x=1920 y=0
+}
+
+output "HDMI-A-3" {
+    // off
+    mode "1920x1080@60"
+    scale 1
+    transform "normal"
+    position x=3840 y=0
+}"""
+
+def dell():
+    return """output "eDP1" {
+    // off
+    mode "1920x1080@60"
+    scale 1
+    transform "normal"
+    position x=0 y=0
+}"""
+
+def pi():
+    return """output "HDMI-A-1" {
+    // off
+    mode "1920x1080@60"
+    scale 1
+    transform "normal"
+    position x=0 y=0
+}"""
+
+def main(target):
+    target = str(target).strip().lower()
+    table = {
+        "lenovo": lenovo,
+        "dell": dell,
+        "pi": pi,
+    }
+    fn = table.get(target)
+    if not fn:
+        raise ValueError(f"Unknown target-system: {target!r}. "
+                         f"Expected one of: {', '.join(table)}")
+    return fn()
+
+return main(ts)
+#+END_SRC
+
 #+BEGIN_SRC kdl :noweb yes :tangle ./config.kdl :eval no
-  <<output_config_eval()>>
+<<output_config()>>
 #+END_SRC
 
 * Startup Apps
@@ -861,79 +839,81 @@ return "\n".join(line(c) for c in commands)
 This where I setup my static workspaces. These are mostly used for my 3 monitor setup, where I have
 a dedicated monitor for these workspaces. Similar to output there needs to be evaluation to determine
 the target system as this is different between my desktop and laptop.
-#+NAME: lenovo-workspace-config
-#+BEGIN_SRC emacs-lisp :eval yes
-  (format "%s" "
-  workspace \"scratchpad\" {
-          open-on-output \"HDMI-A-3\"
-  }
+#+NAME: workspace_config
+#+BEGIN_SRC python :eval yes :var ts=target-system
+def lenovo():
+    return """
+workspace "scratchpad" {
+        open-on-output "HDMI-A-3"
+}
 
-  workspace \"messaging\" {
-          open-on-output \"HDMI-A-3\"
-  }
+workspace "messaging" {
+        open-on-output "HDMI-A-3"
+}
 
-  workspace \"spotify\" {
-          open-on-output \"HDMI-A-3\"
-  }
+workspace "spotify" {
+        open-on-output "HDMI-A-3"
+}
 
-  workspace \"cameras\" {
-          open-on-output \"HDMI-A-3\"
-  }
+workspace "cameras" {
+        open-on-output "HDMI-A-3"
+}
 
-  workspace \"virtbox\" {
-          open-on-output \"HDMI-A-3\"
-  }
+workspace "virtbox" {
+        open-on-output "HDMI-A-3"
+}
 
-  workspace \"discord\" {
-          open-on-output \"HDMI-A-3\"
-  }
+workspace "discord" {
+        open-on-output "HDMI-A-3"
+}
 
-  workspace \"element\" {
-          open-on-output \"HDMI-A-3\"
-  }")
-#+END_SRC
+workspace "element" {
+        open-on-output "HDMI-A-3"
+}
+"""
 
-#+NAME: dell-workspace-config
-#+BEGIN_SRC emacs-lisp :eval yes
-  (format "%s" "
-  workspace \"scratchpad\" {
-  }
+def dell():
+    return """
+workspace "scratchpad" {
+}
 
-  workspace \"spotify\" {
-  }
+workspace "spotify" {
+}
 
-  workspace \"discord\" {
-  }
+workspace "discord" {
+}
 
-  workspace \"element\" {
-  }
+workspace "element" {
+}
 
-  workspace \"messaging\" {
-  }")  
-#+END_SRC
+workspace "messaging" {
+}
+"""
 
-#+NAME: pi-workspace-config
-#+BEGIN_SRC emacs-lisp :eval yes
-  (format "%s" "
-  workspace \"scratchpad\" {
-  }")  
-#+END_SRC
+def pi():
+    return """
+workspace "scratchpad" {
+}
+"""
 
-Workspace config evaluator.
-#+NAME: workspace_config_eval
-#+BEGIN_SRC python :eval yes :var loc=lenovo-workspace-config :var doc=dell-workspace-config :var poc=pi-workspace-config :var ts=target-system
-  if ts=="lenovo":
-      _config=loc
-  elif ts=="dell":
-      _config=doc
-  elif ts=="pi":
-      _config=poc
-      
-  return _config
+def main(target):
+    target = str(target).strip().lower()
+    table = {
+        "lenovo": lenovo,
+        "dell": dell,
+        "pi": pi,
+    }
+    fn = table.get(target)
+    if not fn:
+        raise ValueError(f"Unknown target-system: {target!r}. "
+                         f"Expected one of: {', '.join(table)}")
+    return fn()
+
+return main(ts)
 #+END_SRC
 
 #+BEGIN_SRC kdl :noweb yes :tangle ./config.kdl :eval no
-  <<workspace_config_eval()>>
+<<workspace_config()>>
 #+END_SRC
 
 #+BEGIN_SRC kdl :noweb yes :tangle ./config.kdl :eval no :tangle ./config.kdl

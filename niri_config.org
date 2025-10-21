@@ -579,6 +579,12 @@ return " ".join(cmd)
   return f'"\\"{_temp}\\""'    
 #+END_SRC
 
+#+NAME: wallpaper_switch
+#+BEGIN_SRC python :var _temp=niri_scripts :results value
+  _temp = f"{_temp}/wallpaper_switch
+  return f'"\\"{_temp}\\""'    
+#+END_SRC
+
 #+NAME: notifications
 #+BEGIN_SRC python :var _temp=niri_scripts :results value
   _temp = f"{_temp}/notifications"
@@ -1224,7 +1230,7 @@ This is the bindings data section. Each key binding is loaded into a python dict
    the overlay. If you pass a target system in like "lenovo" it will return the commond
    bindings use across all systems plus the lenovo specific ones.
 #+NAME: keybindings-data
-#+BEGIN_SRC python :noweb= yes :results value :var _niri_hot_change=niri_hot_change :var _bindings=bindings :var _launcher=launcher :var _bluetooth=bluetooth :var _power_menu=power_menu :var _music=music :var _network=network :var _show_windows=show_windows :var _emacs_prod=emacs_prod :var _emacs_dev=emacs_dev :var _file_gui=file_gui :var _file_term=file_term :var _browser=browser :var _notes=notes :var _sms_get=sms_get :var _sms_put=sms_put :var _email_get=email_get :var _email_put=email_put :var _scratchpad_put=scratchpad_put :var _scratchpad_get=scratchpad_get :var _term=term :var _lock_screen=lock_screen :var _audio_raise_volume=audio_raise_volume :var _audio_lower_volume=audio_lower_volume :var _audio_mute=audio_mute :var _audio_mic_mute=audio_mic_mute :var _screenshot_viewer=screenshot_viewer :var _screenshot_viewer_emacs=screenshot_viewer_emacs :var _niri_theme_change=niri_theme_change :var _lobindings=lobindings :var _term_foot=term_foot
+#+BEGIN_SRC python :noweb= yes :results value :var _niri_hot_change=niri_hot_change :var _bindings=bindings :var _launcher=launcher :var _bluetooth=bluetooth :var _power_menu=power_menu :var _music=music :var _network=network :var _show_windows=show_windows :var _emacs_prod=emacs_prod :var _emacs_dev=emacs_dev :var _file_gui=file_gui :var _file_term=file_term :var _browser=browser :var _notes=notes :var _sms_get=sms_get :var _sms_put=sms_put :var _email_get=email_get :var _email_put=email_put :var _scratchpad_put=scratchpad_put :var _scratchpad_get=scratchpad_get :var _term=term :var _lock_screen=lock_screen :var _audio_raise_volume=audio_raise_volume :var _audio_lower_volume=audio_lower_volume :var _audio_mute=audio_mute :var _audio_mic_mute=audio_mic_mute :var _screenshot_viewer=screenshot_viewer :var _screenshot_viewer_emacs=screenshot_viewer_emacs :var _niri_theme_change=niri_theme_change :var _lobindings=lobindings :var _term_foot=term_foot :var _wallpaper_switch=wallpaper_switch
   return [
       ("Mod+Shift+Slash", _bindings, "Y", "Niri Key Bindings", "all"),
       ("Mod+Slash", _lobindings, "Y", "LibreOffice Key Bindings", "lenovo|dell"),
@@ -1244,7 +1250,8 @@ This is the bindings data section. Each key binding is loaded into a python dict
       ("Mod+Return", _term_foot, "Y", "Terminal", "all"),
       ("Mod+Shift+S", _screenshot_viewer, "Y", "Screenshot Picker", "lenovo"),
       ("Mod+Ctrl+S", _screenshot_viewer_emacs, "Y", "Screenshot Picker - Emacs", "lenovo"),
-      ("Mod+T", _niri_theme_change, "Y", "Niri Theme Change", "lenovo"),      
+      ("Mod+T", _niri_theme_change, "Y", "Niri Theme Change", "lenovo"),
+      ("Mod+T", _wallpaper_switch, "Y", "Change Wallpaper", "pi"),            
       ("Mod+Shift+T", _niri_hot_change, "Y", "Niri Hot Change Config", "lenonvo"),
       ("Mod+S", "screenshot", "N", "Screenshot", "all"),                                        
       ("Mod+O repeat=false", "toggle-overview", "N", "Toggle Overview", "all"),                           

@@ -581,7 +581,7 @@ return " ".join(cmd)
 
 #+NAME: wallpaper_switch
 #+BEGIN_SRC python :var _temp=niri_scripts :results value
-  _temp = f"{_temp}/wallpaper_switch
+  _temp = f"{_temp}/wallpaper_switch"
   return f'"\\"{_temp}\\""'    
 #+END_SRC
 

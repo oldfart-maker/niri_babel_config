@@ -600,9 +600,8 @@ return " ".join(cmd)
 #+NAME: status_bar
 #+BEGIN_SRC python :results value
   cmd = [
-      '"qs"',
-      '"-c"',
-      '"DankMaterialShell"'
+      '"dms"',
+      '"run"'
   ]
   return " ".join(cmd)
 #+END_SRC

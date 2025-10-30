@@ -828,7 +828,7 @@ def line(cmd: str) -> str:
 profiles = {
     "lenovo": [xw, il, st, wp, nt, sp, el, sm, cal, dc, cb, sb],
     "dell":   [xw, il, wp, nt, sm, cb, sb],
-    "pi":     [xw, sw, nt],
+    "pi":     [xw, il, sw, nt],
 }
 
 # Keep only non-empty entries (lets you omit any var cleanly)

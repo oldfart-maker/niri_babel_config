@@ -52,7 +52,7 @@ it relates to monitor, workspace and some limited customization if keybindings. 
 return value to be either "lenovo", "dell", or "pi" based on the target system.
 #+name: target-system
 #+begin_src python :results value
-  return "pi"
+  return "dell"
 #+end_src
 
 * Variables - Colors
@@ -827,7 +827,7 @@ def line(cmd: str) -> str:
 # Define per-host sequences using the variables you already pass in.
 profiles = {
     "lenovo": [xw, il, st, wp, nt, sp, el, sm, cal, dc, cb, sb],
-    "dell":   [xw, il, wp, nt, sm, cb, sb],
+    "dell":   [xw, il, sw, nt],
     "pi":     [xw, il, sw, nt],
 }
 

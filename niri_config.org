@@ -1361,5 +1361,5 @@ Keybindings config evaluator.
 This generates the keybindings documentation and writes it to a text file that is
 referenced by a custom overlay displayed using a keybinding + rofi.
 #+BEGIN_SRC kdl :noweb yes :tangle ./key_bindings.txt :eval no
-  <<keybindings-config(data=keybindings-data, ts="", mode="doc")>>
+  <<keybindings-config(data=keybindings-data, ts=target-system, mode="doc")>>
 #+END_SRC

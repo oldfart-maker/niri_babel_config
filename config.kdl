@@ -1,4 +1,4 @@
-// LAST BUILD / DEPLOY: 2025-11-10 17:29:44
+// LAST BUILD / DEPLOY: 2025-11-13 16:40:27
 // ## NOTES  ###########################################################  
 // This config file has been created by emacs org babel. This was done
 // mostly as a learning experiment and to address the gaps that .kdl
@@ -141,8 +141,8 @@ layout {
         focus-ring {
                 // off
                 width 2
-                active-color "#E37226"
-                inactive-color "#181818"
+                active-color "#9B7388"
+                inactive-color "#0e0f16"
                 // active-gradient from="#80c8ff" to="#bbddff" angle=45
                 // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
         }
@@ -397,6 +397,7 @@ binds {
    Mod+P                                              { spawn "~/projects/niri_toolkit/niri_scratchpad" "--action" "put" "--scratchpad_name" "scratchpad"; }
    Mod+Shift+P                                        { spawn "~/projects/niri_toolkit/niri_scratchpad" "--action" "get" "--scratchpad_name" "scratchpad"; }
    Mod+Return                                         { spawn "~/.config/niri/scripts/foot"; }
+   Mod+T                                              { spawn "~/.config/niri/scripts/wallpaper_switch"; }
    Mod+S                                              { screenshot; }
    Mod+O repeat=false                                 { toggle-overview; }
    Mod+Q                                              { close-window; }

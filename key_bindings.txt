@@ -3,20 +3,9 @@ Mod+D                                              Launcher
 Mod+B                                              Bluetooth
 Mod+Shift+D                                        Show Active Windows
 Mod+E                                              Emacs - Prod
-Mod+Shift+E                                        Emacs - Dev
-Mod+Shift+Y                                        File Manager - Term
-Mod+Shift+N                                        Notes
-Mod+1                                              SMS Get
-Mod+Shift+1                                        SMS Put
-Mod+2                                              Email Get
-Mod+Shift+2                                        Email Put
 Mod+P                                              Scratchpad Put
 Mod+Shift+P                                        Scratchpad Get
 Mod+Return                                         Terminal
-Mod+Shift+S                                        Screenshot Picker
-Mod+Ctrl+S                                         Screenshot Picker - Emacs
-Mod+T                                              Niri Theme Change
-Mod+Shift+T                                        Niri Hot Change Config
 Mod+S                                              Screenshot
 Mod+O repeat=false                                 Toggle Overview
 Mod+Q                                              Close Window
@@ -28,10 +17,6 @@ Mod+Shift+h                                        Move Column Left
 Mod+Shift+j                                        Move Window Down
 Mod+Shift+k                                        Move Window Up
 Mod+Shift+l                                        Move Column Right
-Mod+Ctrl+h                                         Focus Monitor Left
-Mod+Ctrl+l                                         Focus Monitor Right
-Mod+Shift+Ctrl+h                                   Move Column To Monitor Left
-Mod+Shift+Ctrl+l                                   Move Column To Monitor Right
 Mod+WheelScrollDown cooldown-ms=150                Focus Workspace Down
 Mod+WheelScrollUp cooldown-ms=150                  Focus Workspace Up
 Mod+Shift+WheelScrollDown                          Focus Column Right

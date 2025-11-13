@@ -1,4 +1,4 @@
-// LAST BUILD / DEPLOY: 2025-08-28 13:47:23
+// LAST BUILD / DEPLOY: 2025-11-10 17:29:44
 // ## NOTES  ###########################################################  
 // This config file has been created by emacs org babel. This was done
 // mostly as a learning experiment and to address the gaps that .kdl
@@ -31,493 +31,419 @@
 // experimental as there are not really many places to apply colors to
 // a wtm in general (e.g. border, background).
 
-// ## ENVIRONMENT  ###########################################################  
-  environment {
-          DISPLAY ":1"
-  }
+environment {
+        DISPLAY ":1"
+}
 
-// ## INPUT CONFIGURATION ####################################################  
-  input {
-          keyboard {
-                  xkb {
-                     // layout "us,ru"
-                     // options "grp:win_space_toggle,compose:ralt,ctrl:nocaps"
-                  }
-                  numlock
-          }
+input {
+        keyboard {
+                xkb {
+                   // layout "us,ru"
+                   // options "grp:win_space_toggle,compose:ralt,ctrl:nocaps"
+                }
+                numlock
+        }
 
-          touchpad {
-                  // off
-                  tap
-                  // dwt
-                  // dwtp
-                  // drag false
-                  // drag-lock
-                  natural-scroll
-                  // accel-speed 0.2
-                  // accel-profile "flat"
-                  // scroll-method "two-finger"
-                  // disabled-on-external-mouse
-          }
+        touchpad {
+                // off
+                tap
+                // dwt
+                // dwtp
+                // drag false
+                // drag-lock
+                natural-scroll
+                // accel-speed 0.2
+                // accel-profile "flat"
+                // scroll-method "two-finger"
+                // disabled-on-external-mouse
+        }
 
-          mouse {
-                  // off
-                  natural-scroll
-                  accel-speed -0.5
-                  accel-profile "flat"
-                  scroll-method "no-scroll"
-          }
+        mouse {
+                // off
+                natural-scroll
+                accel-speed -0.5
+                accel-profile "flat"
+                scroll-method "no-scroll"
+        }
 
-          trackpoint {
-                  // off
-                  // natural-scroll
-                  // accel-speed 0.2
-                  // accel-profile "flat"
-                  // scroll-method "on-button-down"
-                  // scroll-button 273
-                  // middle-emulation
-          }
+        trackpoint {
+                // off
+                // natural-scroll
+                // accel-speed 0.2
+                // accel-profile "flat"
+                // scroll-method "on-button-down"
+                // scroll-button 273
+                // middle-emulation
+        }
 
-          warp-mouse-to-focus
+        warp-mouse-to-focus
 
-          focus-follows-mouse max-scroll-amount="50%"
-  }
+        focus-follows-mouse max-scroll-amount="50%"
+}
 
-// ## OUTPUT CONFIGURATION ####################################################    
-  output "HDMI-A-1" {
-  
-            // off
-  
-            mode "1920x1080@60"
-  
-            scale 1
-            transform "normal"
-  
-            position x=0 y=0
-   }
-  
-   output "HDMI-A-2" {
-  
-          // off
-  
-          mode "1920x1080@60"
-  
-          scale 1
-          transform "normal"
-  
-          position x=1920 y=0
-   }
-  
-   output "HDMI-A-3" {
-  
-         // off
-  
-         mode "1920x1080@60"
-  
-         scale 1
-         transform "normal"
-  
-         position x=3840 y=0
-   }
+output "eDP1" {
+    // off
+    mode "1920x1080@60"
+    scale 1
+    transform "normal"
+    position x=0 y=0
+}
 
-// ## STARTUP APPS  ###########################################################
-      spawn-at-startup      "xwayland-satellite" "--display 2"  
-      spawn-at-startup      "sh" "-c" "swayidle -w timeout 600 <<niri_scripts()>>/lockscreen"
-      spawn-at-startup      "~/.config/niri/scripts/setup_theme"
-      spawn-at-startup      "~/.config/niri/scripts/wallpaper"
-      spawn-at-startup      "~/.config/niri/scripts/notifications"
-      spawn-at-startup      "spotify"
-      spawn-at-startup      "element-desktop"
-      spawn-at-startup      "googlemessages"
-      spawn-at-startup      "google-calendar-nativefier-dark"
-      spawn-at-startup      "vesktop"
-      spawn-at-startup      "bash" "-c" "wl-paste --watch cliphist store &"
-      spawn-at-startup      "qs" "-c" "DankMaterialShell"
+spawn-at-startup         "xwayland-satellite" "--display 2"
+spawn-at-startup         "sh" "-c" "swayidle -w timeout 600 ~/.config/niri/scripts/lockscreen"
+spawn-at-startup         "~/.config/niri/scripts/statusbar"
+spawn-at-startup         "~/.config/niri/scripts/notifications"
 
-// ## SETUP WORKSPACES ##################################################    
-  
-  workspace "scratchpad" {
-          open-on-output "HDMI-A-3"
-  }
-  
-  workspace "messaging" {
-          open-on-output "HDMI-A-3"
-  }
-  
-  workspace "spotify" {
-          open-on-output "HDMI-A-3"
-  }
-  
-  workspace "cameras" {
-          open-on-output "HDMI-A-3"
-  }
-  
-  workspace "virtbox" {
-          open-on-output "HDMI-A-3"
-  }
-  
-  workspace "discord" {
-          open-on-output "HDMI-A-3"
-  }
-  
-  workspace "element" {
-          open-on-output "HDMI-A-3"
-  }
+workspace "scratchpad" {
+}
 
-// ## MISCELLANEOUS ##########################################################  
-  hotkey-overlay {
-          skip-at-startup
-  }
+workspace "spotify" {
+}
 
-// ## LAYOUT CONFIGURATION ####################################################  
-    layout {
-            gaps 4
+workspace "discord" {
+}
 
-            center-focused-column "never"
-          
-            always-center-single-column
+workspace "element" {
+}
 
-            preset-column-widths {
-                    proportion 0.33333
-                    proportion 0.5
-                    proportion 0.66667
-                    proportion 0.9
-                    proportion 1.0
-            }
+workspace "messaging" {
+}
 
-            // preset-window-heights { }
+hotkey-overlay {
+        skip-at-startup
+}
 
-            // default-column-width { proportion 0.5; }
+layout {
+        gaps 4
 
-            default-column-width {}
+        center-focused-column "never"
+      
+        always-center-single-column
 
-            // draw-border-with-background
+        preset-column-widths {
+                proportion 0.33333
+                proportion 0.5
+                proportion 0.66667
+                proportion 0.9
+                proportion 1.0
+        }
 
-            background-color "transparent"
+        // preset-window-heights { }
 
-            focus-ring {
-                    // off
-                    width 2
-                    active-color "#C3BDA5"
-                    inactive-color "#101212"
-                    // active-gradient from="#80c8ff" to="#bbddff" angle=45
-                    // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
-            }
+        // default-column-width { proportion 0.5; }
+
+        default-column-width {}
+
+        // draw-border-with-background
+
+        background-color "transparent"
+
+        focus-ring {
+                // off
+                width 2
+                active-color "#E37226"
+                inactive-color "#181818"
+                // active-gradient from="#80c8ff" to="#bbddff" angle=45
+                // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
+        }
 
 
-            border {
-                    off
-                    width 1
-                    active-color "#ffc87f"
-                    inactive-color "#505050"
-                    urgent-color "#9b0000"
-                    active-gradient from="#ffbb66" to="#ffc880" angle=45 relative-to="workspace-view"
-                    inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
-            }
-            
-            shadow {
-                    // on
-                    draw-behind-window false
-                    softness 30
-                    spread 5
-                    offset x=0 y=5
-                    color "#00000080"
-                    inactive-color "#00000060"
-            }
+        border {
+                off
+                width 1
+                active-color "#ffc87f"
+                inactive-color "#505050"
+                urgent-color "#9b0000"
+                active-gradient from="#ffbb66" to="#ffc880" angle=45 relative-to="workspace-view"
+                inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
+        }
+        
+        shadow {
+                // on
+                draw-behind-window false
+                softness 30
+                spread 5
+                offset x=0 y=5
+                color "#00000080"
+                inactive-color "#00000060"
+        }
 
-            struts {
-                    left 0
-                    right 0
-                    top 0
-                    bottom 0
-            }
+        struts {
+                left 0
+                right 0
+                top 0
+                bottom 0
+        }
 
-            tab-indicator {
-                    // off
-                    hide-when-single-tab
-                    place-within-column
-                    gap 5
-                    width 15
-                    length total-proportion=1.0
-                    position "top"
-                    gaps-between-tabs 5
-                    corner-radius 8
-                    active-color "bf616a"
-                    inactive-color "gray"
-                    // active-gradient from="#80c8ff" to="#bbddff" angle=45
-                    // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
-            }
+        tab-indicator {
+                // off
+                hide-when-single-tab
+                place-within-column
+                gap 5
+                width 15
+                length total-proportion=1.0
+                position "top"
+                gaps-between-tabs 5
+                corner-radius 8
+                active-color "bf616a"
+                inactive-color "gray"
+                // active-gradient from="#80c8ff" to="#bbddff" angle=45
+                // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
+        }
 
-            insert-hint {
-                    // off
-                    color "#ffc87f80"
-                    gradient from="#ffbb6680" to="#ffc88080" angle=45 relative-to="workspace-view"
-            }
-    }
-    // ## COMPOSITOR / OTHER CONFIGURATION ########################################
-    prefer-no-csd
+        insert-hint {
+                // off
+                color "#ffc87f80"
+                gradient from="#ffbb6680" to="#ffc88080" angle=45 relative-to="workspace-view"
+        }
+}
 
-    screenshot-path "~/Pictures/screenshots/Screenshot-from-%Y-%m-%d-%H-%M-%S.png"
+prefer-no-csd
 
-    // ## ANIMATIONS ##############################################################
-    animations {
-        // off
+screenshot-path "~/Pictures/screenshots/Screenshot-from-%Y-%m-%d-%H-%M-%S.png"
 
-     workspace-switch {
-                    spring damping-ratio=2.0 stiffness=1000 epsilon=0.0001
-            }
 
-            window-open {
-                    duration-ms 250
-                    curve "ease-out-cubic"
-            }
+animations {
+    // off
 
-            window-close {
-                    duration-ms 250
-                    curve "ease-out-quad"
-            }
+ workspace-switch {
+                spring damping-ratio=2.0 stiffness=1000 epsilon=0.0001
+        }
 
-            horizontal-view-movement {
-                    spring damping-ratio=2.0 stiffness=500 epsilon=0.0001
-            }
+        window-open {
+                duration-ms 250
+                curve "ease-out-cubic"
+        }
 
-            window-movement {
-                    spring damping-ratio=2.0 stiffness=500 epsilon=0.0001
-            }
+        window-close {
+                duration-ms 250
+                curve "ease-out-quad"
+        }
 
-            window-resize {
-                    spring damping-ratio=2.0 stiffness=500 epsilon=0.0001
-            }
+        horizontal-view-movement {
+                spring damping-ratio=2.0 stiffness=500 epsilon=0.0001
+        }
 
-            config-notification-open-close {
-                    spring damping-ratio=0.6 stiffness=500 epsilon=0.001
-            }
+        window-movement {
+                spring damping-ratio=2.0 stiffness=500 epsilon=0.0001
+        }
 
-            screenshot-ui-open {
-                    duration-ms 200
-                    curve "ease-out-quad"
-            }
+        window-resize {
+                spring damping-ratio=2.0 stiffness=500 epsilon=0.0001
+        }
 
-            overview-open-close {
-                    spring damping-ratio=2.0 stiffness=500 epsilon=0.0001
-            }
+        config-notification-open-close {
+                spring damping-ratio=0.6 stiffness=500 epsilon=0.001
+        }
 
-    }
+        screenshot-ui-open {
+                duration-ms 200
+                curve "ease-out-quad"
+        }
 
-    cursor {
-            xcursor-theme "Qogirr"
-            xcursor-size 12
-            hide-when-typing
-            //hide-after-inactive-ms 1000
-    }
+        overview-open-close {
+                spring damping-ratio=2.0 stiffness=500 epsilon=0.0001
+        }
 
-    // ## OVERVIEW SETTINGS ############################################################
-    overview {
-    	// backdrop-color "#566870"
-            zoom 0.625
-            workspace-shadow {
-    	 	off
-    	}
-    }
+}
 
-// ## WINDOW / LAYER RULES #####################################################  
-    window-rule {
-            default-column-width {}
-            geometry-corner-radius 10
-            clip-to-geometry true
-            draw-border-with-background false
-            opacity 0.60
-    }
+cursor {
+        xcursor-theme "Qogirr"
+        xcursor-size 12
+        hide-when-typing
+        //hide-after-inactive-ms 1000
+}
 
-    window-rule {
-            match is-active=true
-            opacity 1.0
-    }
+overview {
+	// backdrop-color "#566870"
+        zoom 0.3
+        workspace-shadow {
+	 	off
+	}
+}
 
-    window-rule {
-            match app-id="pluma"
-            open-floating true
-    }
+window-rule {
+        default-column-width {}
+        geometry-corner-radius 10
+        clip-to-geometry true
+        draw-border-with-background false
+        opacity 0.60
+}
 
-    window-rule {
-            match app-id="Sxiv"
-            open-floating true
-            open-fullscreen true
-    }
+window-rule {
+        match is-active=true
+        opacity 1.0
+}
 
-    window-rule {
-            match app-id="emacs"
-            open-floating false
-            open-maximized true
-    }
+window-rule {
+        match app-id="pluma"
+        open-floating true
+}
 
-    window-rule {
-            match app-id="org.pwmt.zathura"
-            open-floating true
-            default-column-width { fixed 900; }
-            default-window-height { fixed 900; }
-    }
+window-rule {
+        match app-id="Sxiv"
+        open-floating true
+        open-fullscreen true
+}
 
-    window-rule {
-            match app-id="qalculate-gtk"
-            open-floating true
-            default-column-width { fixed 400; }
-            default-window-height { fixed 400; }
-    }
+window-rule {
+        match app-id="emacs"
+        open-floating false
+        open-maximized true
+}
 
-    window-rule {
-            match app-id="Alacritty"
-            open-floating true
-            default-column-width { fixed 900; }
-            default-window-height { fixed 900; }
-    }
+window-rule {
+        match app-id="org.pwmt.zathura"
+        open-floating true
+        default-column-width { fixed 900; }
+        default-window-height { fixed 900; }
+}
 
-    window-rule {
-            match app-id="Spotify"
-            match app-id="spotify"
-            open-on-workspace "spotify"
-            open-maximized true
-    }
+window-rule {
+        match app-id="qalculate-gtk"
+        open-floating true
+        default-column-width { fixed 400; }
+        default-window-height { fixed 400; }
+}
 
-    window-rule {
-            match app-id="vesktop"
-            open-on-workspace "discord"
-            open-maximized true
-    }
+window-rule {
+        match app-id="Alacritty"
+        open-floating true
+        default-column-width { fixed 900; }
+        default-window-height { fixed 900; }
+}
 
-    window-rule {
-            match app-id="org.cctv-viewer.cctv-viewer"
-            open-on-workspace "cameras"
-            open-maximized true
-            opacity 1.0
-    }
+window-rule {
+        match app-id="Spotify"
+        match app-id="spotify"
+        open-on-workspace "spotify"
+        open-maximized true
+}
 
-    window-rule {
-            match app-id="VirtualBox Manager"
-            open-on-workspace "virtbox"
-            open-maximized true
-    }
+window-rule {
+        match app-id="vesktop"
+        open-on-workspace "discord"
+        open-maximized true
+}
 
-    window-rule {
-            match app-id="Element"
-            open-on-workspace "element"
-            open-maximized true
-    }
+window-rule {
+        match app-id="org.cctv-viewer.cctv-viewer"
+        open-on-workspace "cameras"
+        open-maximized true
+        opacity 1.0
+}
 
-    window-rule {
-            match app-id="GoogleMessages"
-            open-on-workspace "messaging"
-            open-maximized true
-    }
+window-rule {
+        match app-id="VirtualBox Manager"
+        open-on-workspace "virtbox"
+        open-maximized true
+}
 
-    window-rule {
-            match app-id="org.kde.kdeconnect.sms"
-            open-on-workspace "messaging"
-            open-maximized true
-    }
+window-rule {
+        match app-id="Element"
+        open-on-workspace "element"
+        open-maximized true
+}
 
-    window-rule {
-            match app-id="org.gnome.Geary"
-            open-on-workspace "messaging"
-            open-maximized true
-    }
+window-rule {
+        match app-id="GoogleMessages"
+        open-on-workspace "messaging"
+        open-maximized true
+}
 
-    window-rule {
-            match app-id="googlecalendardark-nativefier-e22938"
-            open-on-workspace "messaging"
-            open-maximized true
-    }
-  
-    window-rule {
-            match app-id="feh"
-            open-floating true
-            default-column-width { fixed 1200; }
-            default-window-height { fixed 800; }
-    }
+window-rule {
+        match app-id="org.kde.kdeconnect.sms"
+        open-on-workspace "messaging"
+        open-maximized true
+}
 
-    window-rule {
-          match app-id="niri-hot-change"
-          open-floating true
-          default-column-width { fixed 1050; }
-          default-window-height { fixed 500; }
-    }
+window-rule {
+        match app-id="org.gnome.Geary"
+        open-on-workspace "messaging"
+        open-maximized true
+}
 
-    layer-rule {
-            place-within-backdrop true
-    }
+window-rule {
+        match app-id="googlecalendardark-nativefier-e22938"
+        open-on-workspace "messaging"
+        open-maximized true
+}
 
-// ## BINDINGS ################################################################      
- binds {
-    Mod+Shift+Slash                                    { spawn "~/.config/niri/scripts/rofi_bindings"; }
-    Mod+D                                              { spawn "~/.config/niri/scripts/rofi_launcher"; }
-    Mod+B                                              { spawn "~/.config/niri/scripts/rofi_bluetooth"; }
-    Mod+Shift+D                                        { spawn "~/.config/niri/scripts/rofi_showwindows"; }
-    Mod+E                                              { spawn "emacsclient" "-c" "-s" "emacs-prod"; }
-    Mod+Shift+E                                        { spawn "emacsclient" "-c" "-s" "emacs-dev"; }
-    Mod+Shift+Y                                        { spawn "sh" "-c" "kitty --detach yazi"; }
-    Mod+Shift+N                                        { spawn "pluma"; }
-    Mod+1                                              { spawn "~/projects/niri_toolkit/niri-move-window.py" "--match" "Messages" "--target" "m" "--target_id" "HDMI-A-2" "--focus"; }
-    Mod+Shift+1                                        { spawn "~/projects/niri_toolkit/niri-move-window.py" "--match" "Messages" "--target" "w" "--target_id" "messaging"; }
-    Mod+2                                              { spawn "~/projects/niri_toolkit/niri-move-window.py" "--match" "mu4e" "--target" "m" "--target_id" "HDMI-A-2" "--focus"; }
-    Mod+Shift+2                                        { spawn "~/projects/niri_toolkit/niri-move-window.py" "--match" "mu4e" "--target" "w" "--target_id" "messaging"; }
-    Mod+P                                              { spawn "~/projects/niri_toolkit/niri_scratchpad" "--action" "put" "--scratchpad_name" "scratchpad"; }
-    Mod+Shift+P                                        { spawn "~/projects/niri_toolkit/niri_scratchpad" "--action" "get" "--scratchpad_name" "scratchpad"; }
-    Mod+Return                                         { spawn "~/.config/niri/scripts/alacritty"; }
-    Mod+Shift+S                                        { spawn "~/projects/niri_toolkit/niri-screenshot-picker"; }
-    Mod+Ctrl+S                                         { spawn "~/projects/niri_toolkit/niri-screenshot-picker-emacs"; }
-    Mod+T                                              { spawn "~/.config/niri/theme/theme.sh" "--pywal"; }
-    Mod+Shift+T                                        { spawn "~/projects/niri_toolkit/niri-hot-change"; }
-    Mod+S                                              { screenshot; }
-    Mod+O repeat=false                                 { toggle-overview; }
-    Mod+Q                                              { close-window; }
-    Mod+h                                              { focus-column-left; }
-    Mod+j                                              { focus-workspace-down; }
-    Mod+k                                              { focus-workspace-up; }
-    Mod+l                                              { focus-column-right; }
-    Mod+Shift+h                                        { move-column-left; }
-    Mod+Shift+j                                        { move-window-down; }
-    Mod+Shift+k                                        { move-window-up; }
-    Mod+Shift+l                                        { move-column-right; }
-    Mod+Ctrl+h                                         { focus-monitor-left; }
-    Mod+Ctrl+l                                         { focus-monitor-right; }
-    Mod+Shift+Ctrl+h                                   { move-column-to-monitor-left; }
-    Mod+Shift+Ctrl+l                                   { move-column-to-monitor-right; }
-    Mod+WheelScrollDown cooldown-ms=150                { focus-workspace-down; }
-    Mod+WheelScrollUp cooldown-ms=150                  { focus-workspace-up; }
-    Mod+Shift+WheelScrollDown                          { focus-column-right; }
-    Mod+Shift+WheelScrollUp                            { focus-column-left; }
-    Mod+Tab                                            { focus-workspace-previous; }
-    Mod+BracketLeft                                    { consume-or-expel-window-left; }
-    Mod+BracketRight                                   { consume-or-expel-window-right; }
-    Mod+Comma                                          { consume-window-into-column; }
-    Mod+Period                                         { expel-window-from-column; }
-    Mod+R                                              { switch-preset-column-width; }
-    Mod+Shift+R                                        { switch-preset-window-height; }
-    Mod+Ctrl+R                                         { reset-window-height; }
-    Mod+F                                              { maximize-column; }
-    Mod+Shift+F                                        { fullscreen-window; }
-    Mod+Ctrl+F                                         { expand-column-to-available-width; }
-    Mod+C                                              { center-column; }
-    Mod+Ctrl+C                                         { center-visible-columns; }
-    Mod+Minus                                          { set-column-width "-10%"; }
-    Mod+Equal                                          { set-column-width "+10%"; }
-    Mod+Ctrl+Minus                                     { set-column-width "-1"; }
-    Mod+Ctrl+Equal                                     { set-column-width "+1"; }
-    Mod+Shift+Minus                                    { set-window-height "-10%"; }
-    Mod+Shift+Equal                                    { set-window-height "+10%"; }
-    Mod+Shift+Ctrl+Minus                               { set-window-height "-1"; }
-    Mod+Shift+Ctrl+Equal                               { set-window-height "+1"; }
-    Mod+V                                              { toggle-window-floating; }
-    Mod+Shift+V                                        { switch-focus-between-floating-and-tiling; }
-    Mod+W                                              { toggle-column-tabbed-display; }
-    Mod+Shift+Space                                    { switch-layout "prev"; }
-    Mod+Escape allow-inhibiting=false                  { toggle-keyboard-shortcuts-inhibit; }
-    Ctrl+Alt+Delete                                    { quit; }
-    Mod+Space                                          { spawn "qs" "-c" "DankMaterialShell" "ipc" "call" "spotlight" "toggle"; }
-    XF86AudioRaiseVolume allow-when-locked=true        { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "5%+"; }
-    XF86AudioLowerVolume allow-when-locked=true        { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "5%-"; }
-    XF86AudioMute allow-when-locked=true               { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
-    XF86AudioMicMute allow-when-locked=true            { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
-    XF86MonBrightnessUp allow-when-locked=true         { spawn "qs" "-c" "DankMaterialShell" "ipc" "call" "brightness" "increment" "5" ""; }
-    XF86MonBrightnessDown allow-when-locked=true       { spawn "qs" "-c" "DankMaterialShell" "ipc" "call" "brightness" "decrement" "5" ""; }          
- }
+window-rule {
+        match app-id="feh"
+        open-floating true
+        default-column-width { fixed 1200; }
+        default-window-height { fixed 800; }
+}
+
+window-rule {
+      match app-id="niri-hot-change"
+      open-floating true
+      default-column-width { fixed 1050; }
+      default-window-height { fixed 500; }
+}
+
+layer-rule {
+        place-within-backdrop true
+}
+
+binds {
+   Mod+Shift+Slash                                    { spawn "~/.config/niri/scripts/rofi_bindings"; }
+   Mod+Slash                                          { spawn "~/.config/niri/scripts/rofi_lobindings"; }
+   Mod+D                                              { spawn "~/.config/niri/scripts/rofi_launcher"; }
+   Mod+B                                              { spawn "~/.config/niri/scripts/rofi_bluetooth"; }
+   Mod+Shift+D                                        { spawn "~/.config/niri/scripts/rofi_showwindows"; }
+   Mod+E                                              { spawn "emacsclient" "-c" "-s" "emacs-prod"; }
+   Mod+P                                              { spawn "~/projects/niri_toolkit/niri_scratchpad" "--action" "put" "--scratchpad_name" "scratchpad"; }
+   Mod+Shift+P                                        { spawn "~/projects/niri_toolkit/niri_scratchpad" "--action" "get" "--scratchpad_name" "scratchpad"; }
+   Mod+Return                                         { spawn "~/.config/niri/scripts/foot"; }
+   Mod+S                                              { screenshot; }
+   Mod+O repeat=false                                 { toggle-overview; }
+   Mod+Q                                              { close-window; }
+   Mod+h                                              { focus-column-left; }
+   Mod+j                                              { focus-workspace-down; }
+   Mod+k                                              { focus-workspace-up; }
+   Mod+l                                              { focus-column-right; }
+   Mod+Shift+h                                        { move-column-left; }
+   Mod+Shift+j                                        { move-window-down; }
+   Mod+Shift+k                                        { move-window-up; }
+   Mod+Shift+l                                        { move-column-right; }
+   Mod+WheelScrollDown cooldown-ms=150                { focus-workspace-down; }
+   Mod+WheelScrollUp cooldown-ms=150                  { focus-workspace-up; }
+   Mod+Shift+WheelScrollDown                          { focus-column-right; }
+   Mod+Shift+WheelScrollUp                            { focus-column-left; }
+   Mod+Tab                                            { focus-workspace-previous; }
+   Mod+BracketLeft                                    { consume-or-expel-window-left; }
+   Mod+BracketRight                                   { consume-or-expel-window-right; }
+   Mod+Comma                                          { consume-window-into-column; }
+   Mod+Period                                         { expel-window-from-column; }
+   Mod+R                                              { switch-preset-column-width; }
+   Mod+Shift+R                                        { switch-preset-window-height; }
+   Mod+Ctrl+R                                         { reset-window-height; }
+   Mod+F                                              { maximize-column; }
+   Mod+Shift+F                                        { fullscreen-window; }
+   Mod+Ctrl+F                                         { expand-column-to-available-width; }
+   Mod+C                                              { center-column; }
+   Mod+Ctrl+C                                         { center-visible-columns; }
+   Mod+Minus                                          { set-column-width "-10%"; }
+   Mod+Equal                                          { set-column-width "+10%"; }
+   Mod+Ctrl+Minus                                     { set-column-width "-1"; }
+   Mod+Ctrl+Equal                                     { set-column-width "+1"; }
+   Mod+Shift+Minus                                    { set-window-height "-10%"; }
+   Mod+Shift+Equal                                    { set-window-height "+10%"; }
+   Mod+Shift+Ctrl+Minus                               { set-window-height "-1"; }
+   Mod+Shift+Ctrl+Equal                               { set-window-height "+1"; }
+   Mod+V                                              { toggle-window-floating; }
+   Mod+Shift+V                                        { switch-focus-between-floating-and-tiling; }
+   Mod+W                                              { toggle-column-tabbed-display; }
+   Mod+Shift+Space                                    { switch-layout "prev"; }
+   Mod+Escape allow-inhibiting=false                  { toggle-keyboard-shortcuts-inhibit; }
+   Ctrl+Alt+Delete                                    { quit; }
+   Mod+Space                                          { spawn "qs" "-c" "DankMaterialShell" "ipc" "call" "spotlight" "toggle"; }
+   XF86AudioRaiseVolume allow-when-locked=true        { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "5%+"; }
+   XF86AudioLowerVolume allow-when-locked=true        { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "5%-"; }
+   XF86AudioMute allow-when-locked=true               { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
+   XF86AudioMicMute allow-when-locked=true            { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
+   XF86MonBrightnessUp allow-when-locked=true         { spawn "qs" "-c" "DankMaterialShell" "ipc" "call" "brightness" "increment" "5" ""; }
+   XF86MonBrightnessDown allow-when-locked=true       { spawn "qs" "-c" "DankMaterialShell" "ipc" "call" "brightness" "decrement" "5" ""; }          
+}

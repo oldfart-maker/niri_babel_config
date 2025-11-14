@@ -597,7 +597,7 @@ return " ".join(cmd)
   return f'"\\"{_temp}\\""'    
 #+END_SRC
 
-#+NAME: status_bar
+#+NAME: status_bar_dms
 #+BEGIN_SRC python :results value
   cmd = [
       '"dms"',
@@ -817,7 +817,7 @@ These are the apps that startup when niri starts. This actually works better in 
 putting all these in a single shell script and calling the shell script which enables
 preprocessing and progamatic control to ensure they startup in the correct sequence etc.
 #+NAME: startup_apps
-#+BEGIN_SRC python :results value :eval yes :var ts=target-system xw=xwayland il=idle_lock st=setup_theme wp=wallpaper nt=notifications sp=spotify el=element sm=sms cal=calendar dc=discord cb=clipboard sb=status_bar sw=status_bar_waybar W=24
+#+BEGIN_SRC python :results value :eval yes :var ts=target-system xw=xwayland il=idle_lock st=setup_theme wp=wallpaper nt=notifications sp=spotify el=element sm=sms cal=calendar dc=discord cb=clipboard sb=status_bar_dms sw=status_bar_waybar W=24
 kw = "spawn-at-startup"
 fmt = f"{{:{W}}}"
 

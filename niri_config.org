@@ -648,7 +648,7 @@ return " ".join(cmd)
 
 #+NAME: xwayland
 #+BEGIN_SRC python
-  return f'"\\"xwayland-satellite\\" \\"--display 2\\""'  
+  return f'"\\"xwayland-satellite\\""'  
 #+END_SRC
 
 #+NAME: screenshot_viewer

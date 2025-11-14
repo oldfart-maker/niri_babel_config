@@ -827,7 +827,7 @@ def line(cmd: str) -> str:
 # Define per-host sequences using the variables you already pass in.
 profiles = {
     "lenovo": [xw, il, st, wp, nt, sp, el, sm, cal, dc, cb, sb],
-    "dell":   [xw, il, sw, nt],
+    "dell":   [xw, il, sb, nt],
     "pi":     [xw, il, sw, nt],
 }
 

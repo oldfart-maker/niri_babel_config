@@ -1257,7 +1257,7 @@ This is the bindings data section. Each key binding is loaded into a python dict
       ("Mod+P", _scratchpad_put, "Y", "Scratchpad Put", "all"),
       ("Mod+Shift+P", _scratchpad_get, "Y", "Scratchpad Get", "all"),
       ("Mod+Return", _term_foot, "Y", "Terminal - Foot", "all"),
-      ("Mod+Shift+Return", _term_wezterm, "Y", "Terminal - Wezterm" "all"),      
+      ("Mod+Shift+Return", _term_wezterm, "Y", "Terminal - Wezterm", "all"),      
       ("Mod+Shift+S", _screenshot_viewer, "Y", "Screenshot Picker", "lenovo"),
       ("Mod+Ctrl+S", _screenshot_viewer_emacs, "Y", "Screenshot Picker - Emacs", "lenovo"),
       ("Mod+T", _niri_theme_change, "Y", "Niri Theme Change", "lenovo"),
@@ -1318,8 +1318,8 @@ This is the bindings data section. Each key binding is loaded into a python dict
       ("XF86AudioLowerVolume allow-when-locked=true",'\"qs\" \"-c\" \"DankMaterialShell\" \"ipc\" \"call\" \"audio\" \"decrement\" \"3\"', "Y", "Vol-", "omit"),
       ("XF86AudioMute allow-when-locked=true",'\"qs\" \"-c\" \"DankMaterialShell\" \"ipc\" \"call\" \"audio\" \"mute\"', "Y", "Mute", "omit"),
       ("XF86AudioMicMute allow-when-locked=true",'\"qs\" \"-c\" \"DankMaterialShell\" \"ipc\" \"call\" \"audio\" \"micmute\"', "Y", "Mic Mute", "omit"),
-      ("XF86MonBrightnessUp allow-when-locked=true",'\"qs\" \"-c\" \"DankMaterialShell\" \"ipc\" \"call\" \"brightness\" \"increment\" \"5\" \"\"', "Y", "Brightness Up", "all"),
-      ("XF86MonBrightnessDown allow-when-locked=true",'\"qs\" \"-c\" \"DankMaterialShell\" \"ipc\" \"call\" \"brightness\" \"decrement\" \"5\" \"\"', "Y", "Brightness Down", "all")
+      ("XF86MonBrightnessUp allow-when-locked=true",'\"qs\" \"-c\" \"DankMaterialShell\" \"ipc\" \"call\" \"brightness\" \"increment\" \"5\" \"\"', "Y", "Brightness Up", "omit"),
+      ("XF86MonBrightnessDown allow-when-locked=true",'\"qs\" \"-c\" \"DankMaterialShell\" \"ipc\" \"call\" \"brightness\" \"decrement\" \"5\" \"\"', "Y", "Brightness Down", "omit")
   ]
 #+END_SRC
 

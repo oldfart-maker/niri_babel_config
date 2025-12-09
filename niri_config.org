@@ -52,7 +52,7 @@ it relates to monitor, workspace and some limited customization if keybindings. 
 return value to be either "lenovo", "dell", or "pi" based on the target system.
 #+name: target-system
 #+begin_src python :results value
-  return "dell"
+  return "pi"
 #+end_src
 
 * Variables - Colors
@@ -638,12 +638,20 @@ return " ".join(cmd)
 
 #+NAME: sms
 #+BEGIN_SRC python
-  return f'"\\"googlemessages\\""'  
+  cmd = [
+      '"qutebrowser"',
+      '"https://messages.google.com"'
+  ]
+  return " ".join(cmd)
 #+END_SRC
 
 #+NAME: calendar
 #+BEGIN_SRC python
-  return f'"\\"google-calendar-nativefier-dark\\""'  
+  cmd = [
+      '"qutebrowser"',
+      '"https://calendar.google.com"'
+  ]
+  return " ".join(cmd)
 #+END_SRC
 
 #+NAME: discord
@@ -836,8 +844,8 @@ def line(cmd: str) -> str:
 
 # Define per-host sequences using the variables you already pass in.
 profiles = {
-    "lenovo": [xw, il, st, wp, nt, sp, el, sm, cal, dc, cb, sb],
-    "dell":   [xw, il, sb, nt],
+    "lenovo": [xw, il, st, wp, nt, sp, el, dc, cb, sb, sm, cal],
+    "dell":   [xw, il, sb, nt, sm, cal],
     "pi":     [xw, il, sw, nt],
 }
 

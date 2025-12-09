@@ -1,4 +1,4 @@
-// LAST BUILD / DEPLOY: 2025-11-16 17:43:09
+// LAST BUILD / DEPLOY: 2025-12-03 14:39:04
 // ## NOTES  ###########################################################  
 // This config file has been created by emacs org babel. This was done
 // mostly as a learning experiment and to address the gaps that .kdl
@@ -93,6 +93,8 @@ spawn-at-startup         "xwayland-satellite"
 spawn-at-startup         "sh" "-c" "swayidle -w timeout 600 ~/.config/niri/scripts/lockscreen"
 spawn-at-startup         "dms" "run"
 spawn-at-startup         "~/.config/niri/scripts/notifications"
+spawn-at-startup         "qutebrowser" "https://messages.google.com"
+spawn-at-startup         "qutebrowser" "https://calendar.google.com"
 
 workspace "scratchpad" {
 }
@@ -141,8 +143,8 @@ layout {
         focus-ring {
                 // off
                 width 2
-                active-color "#7C8393"
-                inactive-color "#0b0c13"
+                active-color "#97ADD1"
+                inactive-color "#171821"
                 // active-gradient from="#80c8ff" to="#bbddff" angle=45
                 // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
         }
@@ -388,5 +390,62 @@ layer-rule {
 }
 
 binds {
-             
+   Mod+Shift+Slash                                    { spawn "~/.config/niri/scripts/rofi_bindings"; }
+   Mod+Slash                                          { spawn "~/.config/niri/scripts/rofi_lobindings"; }
+   Mod+D                                              { spawn "~/.config/niri/scripts/rofi_launcher"; }
+   Mod+B                                              { spawn "~/.config/niri/scripts/rofi_bluetooth"; }
+   Mod+Shift+D                                        { spawn "~/.config/niri/scripts/rofi_showwindows"; }
+   Mod+E                                              { spawn "emacsclient" "-c" "-s" "emacs-prod"; }
+   Mod+P                                              { spawn "~/projects/niri_toolkit/niri_scratchpad" "--action" "put" "--scratchpad_name" "scratchpad"; }
+   Mod+Shift+P                                        { spawn "~/projects/niri_toolkit/niri_scratchpad" "--action" "get" "--scratchpad_name" "scratchpad"; }
+   Mod+Return                                         { spawn "~/.config/niri/scripts/foot"; }
+   Mod+Shift+Return                                   { spawn "sh" "-c" "wezterm"; }
+   Mod+T                                              { spawn "~/.config/niri/scripts/wallpaper_switch"; }
+   Mod+S                                              { screenshot; }
+   Mod+O repeat=false                                 { toggle-overview; }
+   Mod+Q                                              { close-window; }
+   Mod+h                                              { focus-column-left; }
+   Mod+j                                              { focus-workspace-down; }
+   Mod+k                                              { focus-workspace-up; }
+   Mod+l                                              { focus-column-right; }
+   Mod+Shift+h                                        { move-column-left; }
+   Mod+Shift+j                                        { move-window-down; }
+   Mod+Shift+k                                        { move-window-up; }
+   Mod+Shift+l                                        { move-column-right; }
+   Mod+WheelScrollDown cooldown-ms=150                { focus-workspace-down; }
+   Mod+WheelScrollUp cooldown-ms=150                  { focus-workspace-up; }
+   Mod+Shift+WheelScrollDown                          { focus-column-right; }
+   Mod+Shift+WheelScrollUp                            { focus-column-left; }
+   Mod+Tab                                            { focus-workspace-previous; }
+   Mod+BracketLeft                                    { consume-or-expel-window-left; }
+   Mod+BracketRight                                   { consume-or-expel-window-right; }
+   Mod+Comma                                          { consume-window-into-column; }
+   Mod+Period                                         { expel-window-from-column; }
+   Mod+R                                              { switch-preset-column-width; }
+   Mod+Shift+R                                        { switch-preset-window-height; }
+   Mod+Ctrl+R                                         { reset-window-height; }
+   Mod+F                                              { maximize-column; }
+   Mod+Shift+F                                        { fullscreen-window; }
+   Mod+Ctrl+F                                         { expand-column-to-available-width; }
+   Mod+C                                              { center-column; }
+   Mod+Ctrl+C                                         { center-visible-columns; }
+   Mod+Minus                                          { set-column-width "-10%"; }
+   Mod+Equal                                          { set-column-width "+10%"; }
+   Mod+Ctrl+Minus                                     { set-column-width "-1"; }
+   Mod+Ctrl+Equal                                     { set-column-width "+1"; }
+   Mod+Shift+Minus                                    { set-window-height "-10%"; }
+   Mod+Shift+Equal                                    { set-window-height "+10%"; }
+   Mod+Shift+Ctrl+Minus                               { set-window-height "-1"; }
+   Mod+Shift+Ctrl+Equal                               { set-window-height "+1"; }
+   Mod+V                                              { toggle-window-floating; }
+   Mod+Shift+V                                        { switch-focus-between-floating-and-tiling; }
+   Mod+W                                              { toggle-column-tabbed-display; }
+   Mod+Shift+Space                                    { switch-layout "prev"; }
+   Mod+Escape allow-inhibiting=false                  { toggle-keyboard-shortcuts-inhibit; }
+   Ctrl+Alt+Delete                                    { quit; }
+   Mod+Space                                          { spawn "qs" "-c" "DankMaterialShell" "ipc" "call" "spotlight" "toggle"; }
+   XF86AudioRaiseVolume allow-when-locked=true        { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "5%+"; }
+   XF86AudioLowerVolume allow-when-locked=true        { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "5%-"; }
+   XF86AudioMute allow-when-locked=true               { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
+   XF86AudioMicMute allow-when-locked=true            { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }          
 }

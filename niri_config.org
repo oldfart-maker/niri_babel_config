@@ -49,10 +49,10 @@ return datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 * Target System
 I have multiple systems (e.g. laptop, desktop, pi) that need different configurations mostly as
 it relates to monitor, workspace and some limited customization if keybindings. Change the
-return value to be either "lenovo", "dell", or "pi" based on the target system.
+return value to be either "desktop", "laptop", or "pi" based on the target system.
 #+name: target-system
 #+begin_src python :results value
-  return "pi"
+  return "desktop"
 #+end_src
 
 * Variables - Colors
@@ -767,7 +767,7 @@ I've chose emacs-lisp for this because I found the string manipulation to be a l
 python, although I'm sure most of it is a limitation in my knowledge.
 #+NAME: output_config
 #+BEGIN_SRC python :eval yes :var ts=target-system
-def lenovo():
+def desktop():
     return """output "HDMI-A-1" {
     // off
     mode "1920x1080@60"
@@ -792,7 +792,7 @@ output "HDMI-A-3" {
     position x=3840 y=0
 }"""
 
-def dell():
+def laptop():
     return """output "eDP1" {
     // off
     mode "1920x1080@60"
@@ -813,8 +813,8 @@ def pi():
 def main(target):
     target = str(target).strip().lower()
     table = {
-        "lenovo": lenovo,
-        "dell": dell,
+        "desktop": desktop,
+        "laptop": laptop,
         "pi": pi,
     }
     fn = table.get(target)
@@ -844,9 +844,9 @@ def line(cmd: str) -> str:
 
 # Define per-host sequences using the variables you already pass in.
 profiles = {
-    "lenovo": [xw, il, st, wp, nt, sp, el, dc, cb, sb, sm, cal],
-    "dell":   [xw, il, sb, nt, sm, cal],
-    "pi":     [xw, il, sw, nt],
+    "desktop": [xw, il, st, wp, nt, sp, el, dc, cb, sb, sm, cal],
+    "laptop":  [xw, il, sb, nt, sm, cal],
+    "pi":      [xw, il, sw, nt],
 }
 
 # Keep only non-empty entries (lets you omit any var cleanly)
@@ -864,7 +864,7 @@ a dedicated monitor for these workspaces. Similar to output there needs to be ev
 the target system as this is different between my desktop and laptop.
 #+NAME: workspace_config
 #+BEGIN_SRC python :eval yes :var ts=target-system
-def lenovo():
+def desktop():
     return """
 workspace "scratchpad" {
         open-on-output "HDMI-A-3"
@@ -895,7 +895,7 @@ workspace "element" {
 }
 """
 
-def dell():
+def laptop():
     return """
 workspace "scratchpad" {
 }
@@ -922,8 +922,8 @@ workspace "scratchpad" {
 def main(target):
     target = str(target).strip().lower()
     table = {
-        "lenovo": lenovo,
-        "dell": dell,
+        "desktop": desktop,
+        "laptop": laptop,
         "pi": pi,
     }
     fn = table.get(target)
@@ -1241,35 +1241,35 @@ This is the bindings data section. Each key binding is loaded into a python dict
 2) Command - the command to invoke (.e.g. "floorp").
 3) Spawn {Y | N} - if a spawn command needs to be prepended to the command.
 4) Description - A description of the binding to be used for a custom hotkey overlay.
-5) Target {"" (all) | all (common) | lenovo | dell | omit} The target system for the keybinding. If
+5) Target {"" (all) | all (common) | desktop | laptop | omit} The target system for the keybinding. If
    the target is left blank it will generate all keybindings (with the exception of "omit" which
    omits any key binding from output and useful for commenting bindings) which is used for documenting
-   the overlay. If you pass a target system in like "lenovo" it will return the commond
-   bindings use across all systems plus the lenovo specific ones.
+   the overlay. If you pass a target system in like "desktop" it will return the commond
+   bindings use across all systems plus the desktop specific ones.
 #+NAME: keybindings-data
 #+BEGIN_SRC python :noweb= yes :results value :var _niri_hot_change=niri_hot_change :var _bindings=bindings :var _launcher=launcher :var _bluetooth=bluetooth :var _power_menu=power_menu :var _music=music :var _network=network :var _show_windows=show_windows :var _emacs_prod=emacs_prod :var _emacs_dev=emacs_dev :var _file_gui=file_gui :var _file_term=file_term :var _browser=browser :var _notes=notes :var _sms_get=sms_get :var _sms_put=sms_put :var _email_get=email_get :var _email_put=email_put :var _scratchpad_put=scratchpad_put :var _scratchpad_get=scratchpad_get :var _term=term :var _lock_screen=lock_screen :var _audio_raise_volume=audio_raise_volume :var _audio_lower_volume=audio_lower_volume :var _audio_mute=audio_mute :var _audio_mic_mute=audio_mic_mute :var _screenshot_viewer=screenshot_viewer :var _screenshot_viewer_emacs=screenshot_viewer_emacs :var _niri_theme_change=niri_theme_change :var _lobindings=lobindings :var _term_foot=term_foot :var _term_wezterm=term_wezterm :var _wallpaper_switch=wallpaper_switch
   return [
       ("Mod+Shift+Slash", _bindings, "Y", "Niri Key Bindings", "all"),
-      ("Mod+Slash", _lobindings, "Y", "LibreOffice Key Bindings", "lenovo|dell"),
+      ("Mod+Slash", _lobindings, "Y", "LibreOffice Key Bindings", "desktop|laptop"),
       ("Mod+D", _launcher,"Y", "Launcher", "all"),
       ("Mod+B", _bluetooth, "Y", "Bluetooth", "all"),
       ("Mod+Shift+D", _show_windows, "Y", "Show Active Windows", "all"),
       ("Mod+E", _emacs_prod, "Y", "Emacs - Prod", "all"),
-      ("Mod+Shift+E", _emacs_dev, "Y", "Emacs - Dev", "lenovo"),
-      ("Mod+Shift+Y", _file_term, "Y", "File Manager - Term", "lenovo"),
-      ("Mod+Shift+N", _notes, "Y", "Notes", "lenovo"),
-      ("Mod+1", _sms_get, "Y", "SMS Get", "lenovo"),
-      ("Mod+Shift+1", _sms_put, "Y", "SMS Put", "lenovo"),
-      ("Mod+2", _email_get, "Y", "Email Get", "lenovo"),
-      ("Mod+Shift+2", _email_put, "Y", "Email Put", "lenovo"),
+      ("Mod+Shift+E", _emacs_dev, "Y", "Emacs - Dev", "desktop"),
+      ("Mod+Shift+Y", _file_term, "Y", "File Manager - Term", "desktop"),
+      ("Mod+Shift+N", _notes, "Y", "Notes", "desktop"),
+      ("Mod+1", _sms_get, "Y", "SMS Get", "desktop"),
+      ("Mod+Shift+1", _sms_put, "Y", "SMS Put", "desktop"),
+      ("Mod+2", _email_get, "Y", "Email Get", "desktop"),
+      ("Mod+Shift+2", _email_put, "Y", "Email Put", "desktop"),
       ("Mod+P", _scratchpad_put, "Y", "Scratchpad Put", "all"),
       ("Mod+Shift+P", _scratchpad_get, "Y", "Scratchpad Get", "all"),
       ("Mod+Return", _term_foot, "Y", "Terminal - Foot", "all"),
       ("Mod+Shift+Return", _term_wezterm, "Y", "Terminal - Wezterm", "all"),      
-      ("Mod+Shift+S", _screenshot_viewer, "Y", "Screenshot Picker", "lenovo"),
-      ("Mod+Ctrl+S", _screenshot_viewer_emacs, "Y", "Screenshot Picker - Emacs", "lenovo"),
-      ("Mod+T", _niri_theme_change, "Y", "Niri Theme Change", "lenovo"),
-      ("Mod+T", _wallpaper_switch, "Y", "Change Wallpaper", "pi|dell"),            
+      ("Mod+Shift+S", _screenshot_viewer, "Y", "Screenshot Picker", "desktop"),
+      ("Mod+Ctrl+S", _screenshot_viewer_emacs, "Y", "Screenshot Picker - Emacs", "desktop"),
+      ("Mod+T", _niri_theme_change, "Y", "Niri Theme Change", "desktop"),
+      ("Mod+T", _wallpaper_switch, "Y", "Change Wallpaper", "pi|laptop"),            
       ("Mod+Shift+T", _niri_hot_change, "Y", "Niri Hot Change Config", "lenonvo"),
       ("Mod+S", "screenshot", "N", "Screenshot", "all"),                                        
       ("Mod+O repeat=false", "toggle-overview", "N", "Toggle Overview", "all"),                           
@@ -1282,10 +1282,10 @@ This is the bindings data section. Each key binding is loaded into a python dict
       ("Mod+Shift+j", "move-window-down", "N", "Move Window Down", "all"),                               
       ("Mod+Shift+k", "move-window-up", "N", "Move Window Up", "all"),                               
       ("Mod+Shift+l", "move-column-right", "N", "Move Column Right", "all"),                                
-      ("Mod+Ctrl+h", "focus-monitor-left", "N", "Focus Monitor Left", "lenovo"),                                 
-      ("Mod+Ctrl+l", "focus-monitor-right", "N", "Focus Monitor Right", "lenovo"),
-      ("Mod+Shift+Ctrl+h", "move-column-to-monitor-left", "N", "Move Column To Monitor Left", "lenovo"),
-      ("Mod+Shift+Ctrl+l", "move-column-to-monitor-right", "N", "Move Column To Monitor Right", "lenovo"),
+      ("Mod+Ctrl+h", "focus-monitor-left", "N", "Focus Monitor Left", "desktop"),                                 
+      ("Mod+Ctrl+l", "focus-monitor-right", "N", "Focus Monitor Right", "desktop"),
+      ("Mod+Shift+Ctrl+h", "move-column-to-monitor-left", "N", "Move Column To Monitor Left", "desktop"),
+      ("Mod+Shift+Ctrl+l", "move-column-to-monitor-right", "N", "Move Column To Monitor Right", "desktop"),
       ("Mod+WheelScrollDown cooldown-ms=150", "focus-workspace-down", "N", "Focus Workspace Down", "all"),
       ("Mod+WheelScrollUp cooldown-ms=150", "focus-workspace-up", "N", "Focus Workspace Up", "all"),
       ("Mod+Shift+WheelScrollDown", "focus-column-right", "N", "Focus Column Right", "all"),
@@ -1343,7 +1343,7 @@ def _match_target(target, ts):
     if isinstance(target, (list, tuple, set)):
         tset = {str(x).strip().lower() for x in target if str(x).strip()}
     else:
-        # allow single strings, or pipe/comma separated (e.g., "lenovo|dell")
+        # allow single strings, or pipe/comma separated (e.g., "desktop|laptop")
         s = str(target or "")
         s = s.replace(",", "|")
         tset = {p.strip().lower() for p in s.split("|") if p.strip()}

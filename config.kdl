@@ -1,4 +1,4 @@
-// LAST BUILD / DEPLOY: 2025-12-15 10:09:01
+// LAST BUILD / DEPLOY: 2025-12-16 18:41:04
 // ## NOTES  ###########################################################  
 // This config file has been created by emacs org babel. This was done
 // mostly as a learning experiment and to address the gaps that .kdl
@@ -178,8 +178,8 @@ layout {
         focus-ring {
                 // off
                 width 2
-                active-color "#7587AE"
-                inactive-color "#1a1e25"
+                active-color "#6C758A"
+                inactive-color "#10151e"
                 // active-gradient from="#80c8ff" to="#bbddff" angle=45
                 // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
         }
@@ -445,6 +445,8 @@ binds {
    Mod+Shift+S                                        { spawn "~/projects/niri_toolkit/niri-screenshot-picker"; }
    Mod+Ctrl+S                                         { spawn "~/projects/niri_toolkit/niri-screenshot-picker-emacs"; }
    Mod+T                                              { spawn "~/.config/niri/theme/theme.sh" "--pywal"; }
+   Mod+T                                              { spawn "~/.config/niri/scripts/wallpaper_switch"; }
+   Mod+Shift+T                                        { spawn "~/projects/niri_toolkit/niri-hot-change"; }
    Mod+S                                              { screenshot; }
    Mod+O repeat=false                                 { toggle-overview; }
    Mod+Q                                              { close-window; }

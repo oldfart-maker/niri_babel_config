@@ -1,4 +1,4 @@
-// LAST BUILD / DEPLOY: 2025-12-14 13:06:51
+// LAST BUILD / DEPLOY: 2025-12-15 10:09:01
 // ## NOTES  ###########################################################  
 // This config file has been created by emacs org babel. This was done
 // mostly as a learning experiment and to address the gaps that .kdl
@@ -81,7 +81,7 @@ input {
         focus-follows-mouse max-scroll-amount="50%"
 }
 
-output "eDP1" {
+output "HDMI-A-1" {
     // off
     mode "1920x1080@60"
     scale 1
@@ -89,26 +89,61 @@ output "eDP1" {
     position x=0 y=0
 }
 
+output "HDMI-A-2" {
+    // off
+    mode "1920x1080@60"
+    scale 1
+    transform "normal"
+    position x=1920 y=0
+}
+
+output "HDMI-A-3" {
+    // off
+    mode "1920x1080@60"
+    scale 1
+    transform "normal"
+    position x=3840 y=0
+}
+
 spawn-at-startup         "xwayland-satellite"
 spawn-at-startup         "sh" "-c" "swayidle -w timeout 600 ~/.config/niri/scripts/lockscreen"
-spawn-at-startup         "dms" "run"
+spawn-at-startup         "~/.config/niri/scripts/setup_theme"
+spawn-at-startup         "~/.config/niri/scripts/wallpaper"
 spawn-at-startup         "~/.config/niri/scripts/notifications"
+spawn-at-startup         "spotify"
+spawn-at-startup         "element-desktop"
+spawn-at-startup         "vesktop"
+spawn-at-startup         "bash" "-c" "wl-paste --watch cliphist store &"
+spawn-at-startup         "dms" "run"
 spawn-at-startup         "qutebrowser" "https://messages.google.com"
 spawn-at-startup         "qutebrowser" "https://calendar.google.com"
 
 workspace "scratchpad" {
-}
-
-workspace "spotify" {
-}
-
-workspace "discord" {
-}
-
-workspace "element" {
+        open-on-output "HDMI-A-3"
 }
 
 workspace "messaging" {
+        open-on-output "HDMI-A-3"
+}
+
+workspace "spotify" {
+        open-on-output "HDMI-A-3"
+}
+
+workspace "cameras" {
+        open-on-output "HDMI-A-3"
+}
+
+workspace "virtbox" {
+        open-on-output "HDMI-A-3"
+}
+
+workspace "discord" {
+        open-on-output "HDMI-A-3"
+}
+
+workspace "element" {
+        open-on-output "HDMI-A-3"
 }
 
 hotkey-overlay {
@@ -143,8 +178,8 @@ layout {
         focus-ring {
                 // off
                 width 2
-                active-color "#CED0B3"
-                inactive-color "#13141c"
+                active-color "#7587AE"
+                inactive-color "#1a1e25"
                 // active-gradient from="#80c8ff" to="#bbddff" angle=45
                 // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
         }
@@ -396,11 +431,20 @@ binds {
    Mod+B                                              { spawn "~/.config/niri/scripts/rofi_bluetooth"; }
    Mod+Shift+D                                        { spawn "~/.config/niri/scripts/rofi_showwindows"; }
    Mod+E                                              { spawn "emacsclient" "-c" "-s" "emacs-prod"; }
+   Mod+Shift+E                                        { spawn "emacsclient" "-c" "-s" "emacs-dev"; }
+   Mod+Shift+Y                                        { spawn "sh" "-c" "kitty --detach yazi"; }
+   Mod+Shift+N                                        { spawn "pluma"; }
+   Mod+1                                              { spawn "~/projects/niri_toolkit/niri-move-window.py" "--match" "Messages" "--target" "m" "--target_id" "HDMI-A-2" "--focus"; }
+   Mod+Shift+1                                        { spawn "~/projects/niri_toolkit/niri-move-window.py" "--match" "Messages" "--target" "w" "--target_id" "messaging"; }
+   Mod+2                                              { spawn "~/projects/niri_toolkit/niri-move-window.py" "--match" "mu4e" "--target" "m" "--target_id" "HDMI-A-2" "--focus"; }
+   Mod+Shift+2                                        { spawn "~/projects/niri_toolkit/niri-move-window.py" "--match" "mu4e" "--target" "w" "--target_id" "messaging"; }
    Mod+P                                              { spawn "~/projects/niri_toolkit/niri_scratchpad" "--action" "put" "--scratchpad_name" "scratchpad"; }
    Mod+Shift+P                                        { spawn "~/projects/niri_toolkit/niri_scratchpad" "--action" "get" "--scratchpad_name" "scratchpad"; }
    Mod+Return                                         { spawn "~/.config/niri/scripts/foot"; }
    Mod+Shift+Return                                   { spawn "sh" "-c" "wezterm"; }
-   Mod+T                                              { spawn "~/.config/niri/scripts/wallpaper_switch"; }
+   Mod+Shift+S                                        { spawn "~/projects/niri_toolkit/niri-screenshot-picker"; }
+   Mod+Ctrl+S                                         { spawn "~/projects/niri_toolkit/niri-screenshot-picker-emacs"; }
+   Mod+T                                              { spawn "~/.config/niri/theme/theme.sh" "--pywal"; }
    Mod+S                                              { screenshot; }
    Mod+O repeat=false                                 { toggle-overview; }
    Mod+Q                                              { close-window; }
@@ -412,6 +456,10 @@ binds {
    Mod+Shift+j                                        { move-window-down; }
    Mod+Shift+k                                        { move-window-up; }
    Mod+Shift+l                                        { move-column-right; }
+   Mod+Ctrl+h                                         { focus-monitor-left; }
+   Mod+Ctrl+l                                         { focus-monitor-right; }
+   Mod+Shift+Ctrl+h                                   { move-column-to-monitor-left; }
+   Mod+Shift+Ctrl+l                                   { move-column-to-monitor-right; }
    Mod+WheelScrollDown cooldown-ms=150                { focus-workspace-down; }
    Mod+WheelScrollUp cooldown-ms=150                  { focus-workspace-up; }
    Mod+Shift+WheelScrollDown                          { focus-column-right; }

@@ -1,4 +1,4 @@
-// LAST BUILD / DEPLOY: 2025-12-16 18:41:04
+// LAST BUILD / DEPLOY: 2025-12-16 18:49:12
 // ## NOTES  ###########################################################  
 // This config file has been created by emacs org babel. This was done
 // mostly as a learning experiment and to address the gaps that .kdl
@@ -444,7 +444,6 @@ binds {
    Mod+Shift+Return                                   { spawn "sh" "-c" "wezterm"; }
    Mod+Shift+S                                        { spawn "~/projects/niri_toolkit/niri-screenshot-picker"; }
    Mod+Ctrl+S                                         { spawn "~/projects/niri_toolkit/niri-screenshot-picker-emacs"; }
-   Mod+T                                              { spawn "~/.config/niri/theme/theme.sh" "--pywal"; }
    Mod+T                                              { spawn "~/.config/niri/scripts/wallpaper_switch"; }
    Mod+Shift+T                                        { spawn "~/projects/niri_toolkit/niri-hot-change"; }
    Mod+S                                              { screenshot; }

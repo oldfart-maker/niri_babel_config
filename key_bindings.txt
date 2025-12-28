@@ -17,7 +17,6 @@ Mod+Return                                         Terminal - Foot
 Mod+Shift+Return                                   Terminal - Wezterm
 Mod+Shift+S                                        Screenshot Picker
 Mod+Ctrl+S                                         Screenshot Picker - Emacs
-Mod+T                                              Niri Theme Change
 Mod+T                                              Change Wallpaper
 Mod+Shift+T                                        Niri Hot Change Config
 Mod+S                                              Screenshot

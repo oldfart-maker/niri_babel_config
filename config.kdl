@@ -1,4 +1,4 @@
-// LAST BUILD / DEPLOY: 2025-12-16 18:49:12
+// LAST BUILD / DEPLOY: 2025-12-28 14:51:55
 // ## NOTES  ###########################################################  
 // This config file has been created by emacs org babel. This was done
 // mostly as a learning experiment and to address the gaps that .kdl
@@ -114,7 +114,6 @@ spawn-at-startup         "spotify"
 spawn-at-startup         "element-desktop"
 spawn-at-startup         "vesktop"
 spawn-at-startup         "bash" "-c" "wl-paste --watch cliphist store &"
-spawn-at-startup         "dms" "run"
 spawn-at-startup         "qutebrowser" "https://messages.google.com"
 spawn-at-startup         "qutebrowser" "https://calendar.google.com"
 
@@ -178,8 +177,8 @@ layout {
         focus-ring {
                 // off
                 width 2
-                active-color "#6C758A"
-                inactive-color "#10151e"
+                active-color "#5E81AC"
+                inactive-color "#121216"
                 // active-gradient from="#80c8ff" to="#bbddff" angle=45
                 // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
         }

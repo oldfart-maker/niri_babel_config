@@ -1,4 +1,4 @@
-// LAST BUILD / DEPLOY: 2025-12-28 14:51:55
+// LAST BUILD / DEPLOY: 2025-12-28 20:02:59
 // ## NOTES  ###########################################################  
 // This config file has been created by emacs org babel. This was done
 // mostly as a learning experiment and to address the gaps that .kdl
@@ -116,6 +116,7 @@ spawn-at-startup         "vesktop"
 spawn-at-startup         "bash" "-c" "wl-paste --watch cliphist store &"
 spawn-at-startup         "qutebrowser" "https://messages.google.com"
 spawn-at-startup         "qutebrowser" "https://calendar.google.com"
+spawn-at-startup         "dms" "run"
 
 workspace "scratchpad" {
         open-on-output "HDMI-A-3"

@@ -1,4 +1,4 @@
-// LAST BUILD / DEPLOY: 2026-01-06 19:01:02
+// LAST BUILD / DEPLOY: 2026-01-06 19:49:32
 // ## NOTES  ###########################################################  
 // This config file has been created by emacs org babel. This was done
 // mostly as a learning experiment and to address the gaps that .kdl
@@ -81,7 +81,7 @@ input {
         focus-follows-mouse max-scroll-amount="50%"
 }
 
-output "HDMI-A-1" {
+output "Samsung Electric Company S24R35xFZ H4TT200322" {
     // off
     mode "1920x1080@60"
     scale 1
@@ -89,7 +89,7 @@ output "HDMI-A-1" {
     position x=0 y=0
 }
 
-output "DP-2" {
+output "Samsung Electric Company S24R35xFZ H4TT200346" {
     // off
     mode "1920x1080@60"
     scale 1
@@ -97,7 +97,7 @@ output "DP-2" {
     position x=1920 y=0
 }
 
-output "DP-1" {
+output "Sceptre Tech Inc Sceptre E24 0x01010101" {
     // off
     mode "1920x1080@60"
     scale 1
@@ -119,31 +119,31 @@ spawn-at-startup         "qutebrowser" "https://calendar.google.com"
 spawn-at-startup         "dms" "run"
 
 workspace "scratchpad" {
-        open-on-output "DP-1"
+        open-on-output "Sceptre Tech Inc Sceptre E24 0x01010101"
 }
 
 workspace "messaging" {
-        open-on-output "DP-1"
+        open-on-output "Sceptre Tech Inc Sceptre E24 0x01010101"
 }
 
 workspace "spotify" {
-        open-on-output "DP-1"
+        open-on-output "Sceptre Tech Inc Sceptre E24 0x01010101"
 }
 
 workspace "cameras" {
-        open-on-output "DP-1"
+        open-on-output "Sceptre Tech Inc Sceptre E24 0x01010101"
 }
 
 workspace "virtbox" {
-        open-on-output "DP-1"
+        open-on-output "Sceptre Tech Inc Sceptre E24 0x01010101"
 }
 
 workspace "discord" {
-        open-on-output "DP-1"
+        open-on-output "Sceptre Tech Inc Sceptre E24 0x01010101"
 }
 
 workspace "element" {
-        open-on-output "DP-1"
+        open-on-output "Sceptre Tech Inc Sceptre E24 0x01010101"
 }
 
 hotkey-overlay {
@@ -178,8 +178,8 @@ layout {
         focus-ring {
                 // off
                 width 2
-                active-color "#6582A7"
-                inactive-color "#0f131b"
+                active-color "#B59B6A"
+                inactive-color "#181818"
                 // active-gradient from="#80c8ff" to="#bbddff" angle=45
                 // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
         }
@@ -434,9 +434,9 @@ binds {
    Mod+Shift+E                                        { spawn "emacsclient" "-c" "-s" "emacs-dev"; }
    Mod+Shift+Y                                        { spawn "sh" "-c" "kitty --detach yazi"; }
    Mod+Shift+N                                        { spawn "pluma"; }
-   Mod+1                                              { spawn "~/projects/niri_toolkit/niri-move-window.py" "--match" "Messages" "--target" "m" "--target_id" "HDMI-A-2" "--focus"; }
+   Mod+1                                              { spawn "~/projects/niri_toolkit/niri-move-window.py" "--match" "Messages" "--target" "m" "--target_id" "Samsung Electric Company S24R35xFZ H4TT200346" "--focus"; }
    Mod+Shift+1                                        { spawn "~/projects/niri_toolkit/niri-move-window.py" "--match" "Messages" "--target" "w" "--target_id" "messaging"; }
-   Mod+2                                              { spawn "~/projects/niri_toolkit/niri-move-window.py" "--match" "mu4e" "--target" "m" "--target_id" "HDMI-A-2" "--focus"; }
+   Mod+2                                              { spawn "~/projects/niri_toolkit/niri-move-window.py" "--match" "mu4e" "--target" "m" "--target_id" "Samsung Electric Company S24R35xFZ H4TT200346" "--focus"; }
    Mod+Shift+2                                        { spawn "~/projects/niri_toolkit/niri-move-window.py" "--match" "mu4e" "--target" "w" "--target_id" "messaging"; }
    Mod+P                                              { spawn "~/projects/niri_toolkit/niri_scratchpad" "--action" "put" "--scratchpad_name" "scratchpad"; }
    Mod+Shift+P                                        { spawn "~/projects/niri_toolkit/niri_scratchpad" "--action" "get" "--scratchpad_name" "scratchpad"; }

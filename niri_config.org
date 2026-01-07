@@ -478,7 +478,7 @@ return " ".join(cmd)
       f'"{_temp}"',
       '"--match"', '"mu4e"',
       '"--target"', '"m"',
-      '"--target_id"', '"HDMI-A-2"',
+      '"--target_id"', '"Samsung Electric Company S24R35xFZ H4TT200346"',
       '"--focus"'
   ]
   return " ".join(cmd)
@@ -503,7 +503,7 @@ return " ".join(cmd)
       f'"{_temp}"',
       '"--match"', '"Messages"',
       '"--target"', '"m"',
-      '"--target_id"', '"HDMI-A-2"',
+      '"--target_id"', '"Samsung Electric Company S24R35xFZ H4TT200346"',
       '"--focus"'
   ]
   return " ".join(cmd)
@@ -767,63 +767,64 @@ I've chose emacs-lisp for this because I found the string manipulation to be a l
 python, although I'm sure most of it is a limitation in my knowledge.
 #+NAME: output_config
 #+BEGIN_SRC python :eval yes :var ts=target-system
-def desktop():
-    return """output "HDMI-A-1" {
-    // off
-    mode "1920x1080@60"
-    scale 1
-    transform "normal"
-    position x=0 y=0
-}
+  def desktop():
+      
+      return """output "Samsung Electric Company S24R35xFZ H4TT200322" {
+      // off
+      mode "1920x1080@60"
+      scale 1
+      transform "normal"
+      position x=0 y=0
+  }
 
-output "DP-2" {
-    // off
-    mode "1920x1080@60"
-    scale 1
-    transform "normal"
-    position x=1920 y=0
-}
+  output "Samsung Electric Company S24R35xFZ H4TT200346" {
+      // off
+      mode "1920x1080@60"
+      scale 1
+      transform "normal"
+      position x=1920 y=0
+  }
 
-output "DP-1" {
-    // off
-    mode "1920x1080@60"
-    scale 1
-    transform "normal"
-    position x=3840 y=0
-}"""
+  output "Sceptre Tech Inc Sceptre E24 0x01010101" {
+      // off
+      mode "1920x1080@60"
+      scale 1
+      transform "normal"
+      position x=3840 y=0
+  }"""
 
-def laptop():
-    return """output "eDP1" {
-    // off
-    mode "1920x1080@60"
-    scale 1
-    transform "normal"
-    position x=0 y=0
-}"""
+  def laptop():
+      return """output "eDP1" {
+      // off
+      mode "1920x1080@60"
+      scale 1
+      transform "normal"
+      position x=0 y=0
+  }"""
 
-def pi():
-    return """output "HDMI-A-1" {
-    // off
-    mode "1920x1080@60"
-    scale 1
-    transform "normal"
-    position x=0 y=0
-}"""
+  def pi():
+      return """output "HDMI-A-1" {
+      // off
+      mode "1920x1080@60"
+      scale 1
+      transform "normal"
+      position x=0 y=0
+  }"""
 
-def main(target):
-    target = str(target).strip().lower()
-    table = {
-        "desktop": desktop,
-        "laptop": laptop,
-        "pi": pi,
-    }
-    fn = table.get(target)
-    if not fn:
-        raise ValueError(f"Unknown target-system: {target!r}. "
-                         f"Expected one of: {', '.join(table)}")
-    return fn()
+  def main(target):
+      target = str(target).strip().lower()
+      table = {
+          "desktop": desktop,
+          "laptop": laptop,
+          "pi": pi,
+      }
+      fn = table.get(target)
+      if not fn:
+          raise ValueError(f"Unknown target-system: {target!r}. "
+                           f"Expected one of: {', '.join(table)}")
+      return fn()
 
-return main(ts)
+  return main(ts)
 #+END_SRC
 
 #+BEGIN_SRC kdl :noweb yes :tangle ./config.kdl :eval no
@@ -867,31 +868,31 @@ the target system as this is different between my desktop and laptop.
 def desktop():
     return """
 workspace "scratchpad" {
-        open-on-output "DP-1"
+        open-on-output "Sceptre Tech Inc Sceptre E24 0x01010101"
 }
 
 workspace "messaging" {
-        open-on-output "DP-1"
+        open-on-output "Sceptre Tech Inc Sceptre E24 0x01010101"
 }
 
 workspace "spotify" {
-        open-on-output "DP-1"
+        open-on-output "Sceptre Tech Inc Sceptre E24 0x01010101"
 }
 
 workspace "cameras" {
-        open-on-output "DP-1"
+        open-on-output "Sceptre Tech Inc Sceptre E24 0x01010101"
 }
 
 workspace "virtbox" {
-        open-on-output "DP-1"
+        open-on-output "Sceptre Tech Inc Sceptre E24 0x01010101"
 }
 
 workspace "discord" {
-        open-on-output "DP-1"
+        open-on-output "Sceptre Tech Inc Sceptre E24 0x01010101"
 }
 
 workspace "element" {
-        open-on-output "DP-1"
+        open-on-output "Sceptre Tech Inc Sceptre E24 0x01010101"
 }
 """
 

@@ -656,7 +656,11 @@ return " ".join(cmd)
 
 #+NAME: discord
 #+BEGIN_SRC python
-  return f'"\\"vesktop\\""'  
+  cmd = [
+      '"vesktop"',
+      '"--disable-gpu"'
+  ]
+  return " ".join(cmd)  
 #+END_SRC
 
 #+NAME: email

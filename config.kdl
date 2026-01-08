@@ -1,4 +1,4 @@
-// LAST BUILD / DEPLOY: 2026-01-07 19:03:45
+// LAST BUILD / DEPLOY: 2026-01-07 19:14:28
 // ## NOTES  ###########################################################  
 // This config file has been created by emacs org babel. This was done
 // mostly as a learning experiment and to address the gaps that .kdl
@@ -441,7 +441,7 @@ binds {
    Mod+P                                              { spawn "~/projects/niri_toolkit/niri_scratchpad" "--action" "put" "--scratchpad_name" "scratchpad"; }
    Mod+Shift+P                                        { spawn "~/projects/niri_toolkit/niri_scratchpad" "--action" "get" "--scratchpad_name" "scratchpad"; }
    Mod+Return                                         { spawn "~/.config/niri/scripts/foot"; }
-   Mod+Shift+Return                                   { spawn wezterm; }
+   Mod+Shift+Return                                   { spawn "sh" "-c" "wezterm"; }
    Mod+Shift+S                                        { spawn "~/projects/niri_toolkit/niri-screenshot-picker"; }
    Mod+Ctrl+S                                         { spawn "~/projects/niri_toolkit/niri-screenshot-picker-emacs"; }
    Mod+T                                              { spawn "~/.config/niri/scripts/wallpaper_switch"; }

@@ -633,7 +633,12 @@ return " ".join(cmd)
 
 #+NAME: element
 #+BEGIN_SRC python
-  return f'"\\"element-desktop\\""'  
+  cmd = [
+      '"element-desktop"',
+      '"--disable-gpu"',
+      '"--ozone-platform=x11"'
+  ]
+  return " ".join(cmd)  
 #+END_SRC
 
 #+NAME: sms

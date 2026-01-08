@@ -391,6 +391,8 @@ give you the opportunity to execute some preprocessing logic if necessary.
 #+NAME: term_wezterm
 #+BEGIN_SRC python :results value
   cmd = [
+      '"sh"',
+      '"-c"',
       '"wezterm"'
   ]
   return " ".join(cmd)  
